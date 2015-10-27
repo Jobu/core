@@ -1,0 +1,58 @@
+{
+    "name":"netzmacht/contao-form-helper",
+    "description":"Library for supporting customized Contao form rendering",
+    "keywords":["contao", "form", "helper"],
+    "type":"contao-module",
+    "license":"LGPL-3.0+",
+    "authors":[
+        {
+            "name":"David Molineus",
+            "email":"mail@netzmacht.de",
+            "homepage":"http://www.netzmacht.de",
+            "role":"Project leader"
+        }
+    ],
+    "support":{
+        "email":"mail@netzmacht.de",
+        "issues":"https://github.com/netzmacht/contao-form-helper/issues",
+        "source":"https://github.com/netzmacht/contao-form-helper"
+    },
+    "require":{
+        "php":">=5.3",
+        "contao/core":">=3.1,<3.6-dev",
+        "contao-community-alliance/dependency-container":"~1.0",
+        "contao-community-alliance/event-dispatcher":"~1.0",
+        "netzmacht/html": "~1.0"
+    },
+    "require-dev":{
+        "phpspec/phpspec": "~2.1",
+        "henrikbjorn/phpspec-code-coverage" : "~0.2",
+        "netzmacht/contao-build-tools": "~1.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "Netzmacht\\Contao\\FormHelper": "src/"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "vendor/netzmacht/contao-build-tools/autoload.php"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "extra":{
+        "branch-alias": {
+            "dev-master": "1.0.x-dev",
+            "dev-develop": "1.1.x-dev"
+        },
+        "contao": {
+            "sources":{
+                "module": "system/modules/form-helper"
+            }
+        }
+    }
+}

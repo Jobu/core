@@ -1,0 +1,1673 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "039b2137582bd11a118f2c99619a5a11",
+    "content-hash": "c7be152218f9d66366ae06dd216a8c30",
+    "packages": [
+        {
+            "name": "contao-bootstrap/bundle",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/bundle.git",
+                "reference": "c558fb3ba6bc161e788c7d627606f368498bff0b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/bundle/zipball/c558fb3ba6bc161e788c7d627606f368498bff0b",
+                "reference": "c558fb3ba6bc161e788c7d627606f368498bff0b",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/buttons": "*",
+                "contao-bootstrap/carousel": "*",
+                "contao-bootstrap/core": "*",
+                "contao-bootstrap/form": "*",
+                "contao-bootstrap/grid-editor": "*",
+                "contao-bootstrap/layout": "*",
+                "contao-bootstrap/modal": "*",
+                "contao-bootstrap/navigation": "*",
+                "contao-bootstrap/panel": "*",
+                "contao-bootstrap/tab": "*",
+                "contao-bootstrap/templates": "*"
+            },
+            "conflict": {
+                "contao-bootstrap/components": "*",
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "type": "metapackage",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Install all modules of the Contao Bootstrap extension",
+            "keywords": [
+                "bootstrap",
+                "contao"
+            ],
+            "time": "2015-03-05 07:51:57"
+        },
+        {
+            "name": "contao-bootstrap/buttons",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/buttons.git",
+                "reference": "2d03fb49cadd04fe4d89459917f2f24b2648dee4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/buttons/zipball/2d03fb49cadd04fe4d89459917f2f24b2648dee4",
+                "reference": "2d03fb49cadd04fe4d89459917f2f24b2648dee4",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6",
+                "menatwork/contao-multicolumnwizard": "~3.2",
+                "netzmacht/html": "~1.1",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "contao-bootstrap/components": "*",
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-buttons"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "buttons-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Buttons": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap buttons for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "buttons",
+                "contao"
+            ],
+            "time": "2015-04-08 15:04:26"
+        },
+        {
+            "name": "contao-bootstrap/carousel",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/carousel.git",
+                "reference": "d509c3935ce68fdfdfb6a64f0f1a60e8c6a0f3e0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/carousel/zipball/d509c3935ce68fdfdfb6a64f0f1a60e8c6a0f3e0",
+                "reference": "d509c3935ce68fdfdfb6a64f0f1a60e8c6a0f3e0",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "netzmacht/html": "~1.1",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-carousel"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "carousel-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Carousel": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap carousel for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "carousel",
+                "contao"
+            ],
+            "time": "2015-04-17 13:28:35"
+        },
+        {
+            "name": "contao-bootstrap/core",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/core.git",
+                "reference": "70f55ed06819a302de7c61a93cb2ad68be975fa1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/core/zipball/70f55ed06819a302de7c61a93cb2ad68be975fa1",
+                "reference": "70f55ed06819a302de7c61a93cb2ad68be975fa1",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/dependency-container": "~1.4",
+                "contao-community-alliance/event-dispatcher": "~1.0",
+                "contao-community-alliance/meta-palettes": "~1.9",
+                "contao/core": ">=3.2,<3.6-dev",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "suggest": {
+                "components/bootstrap": "Bootstrap Components package",
+                "netzmacht/contao-theme-plus-importer": "Import assets into Theme+",
+                "twbs/bootstrap": "Official Bootstrap package"
+            },
+            "type": "contao-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev",
+                    "dev-develop": "1.2.x-dev"
+                },
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-core"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "core-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Netzmacht\\Bootstrap\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Core of Contao Bootstrap extension",
+            "keywords": [
+                "bootstrap",
+                "contao",
+                "core"
+            ],
+            "time": "2015-10-17 17:21:35"
+        },
+        {
+            "name": "contao-bootstrap/form",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/form.git",
+                "reference": "016b90255f25d058070298371032eab288a4f2d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/form/zipball/016b90255f25d058070298371032eab288a4f2d6",
+                "reference": "016b90255f25d058070298371032eab288a4f2d6",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "netzmacht/contao-form-helper": "~1.0",
+                "netzmacht/contao-iconwizard": "~1.0",
+                "netzmacht/html": "~1.0",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-form"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "form-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Form": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Navigation templates supporting bootstrap dropdown navigation",
+            "keywords": [
+                "bootstrap",
+                "contao",
+                "form"
+            ],
+            "time": "2015-05-24 18:00:39"
+        },
+        {
+            "name": "contao-bootstrap/grid-editor",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/grid-editor.git",
+                "reference": "ded9409606c338c990433bce0299ccac6456ac49"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/grid-editor/zipball/ded9409606c338c990433bce0299ccac6456ac49",
+                "reference": "ded9409606c338c990433bce0299ccac6456ac49",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/event-dispatcher": "~1.0",
+                "contao-community-alliance/meta-palettes": "~1.5",
+                "contao/core": ">=3.2,<3.6-dev",
+                "php": ">=5.3"
+            },
+            "replace": {
+                "contao-legacy/subcolumns_bootstrap_customize": "*",
+                "netzmacht/contao-boostrap-columnseteditor": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "suggest": {
+                "felixpfeiffer/subcolumns": "Integrate grid columns using subcolumns",
+                "menatwork/semantic_html5": "Integrate grid columns using semantic_html5"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-grid"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "grid-editor-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    },
+                    "runonce": [
+                        "runonce/migrate.php"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev",
+                    "dev-develop": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Netzmacht\\Bootstrap\\Grid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Backend grid editor for Contao CMS",
+            "homepage": "http://netzmacht.de/erweiterungen/frontend/spaltenseteditor/",
+            "keywords": [
+                "Grid editor",
+                "bootstrap",
+                "columns",
+                "contao",
+                "grid"
+            ],
+            "time": "2015-10-17 17:38:51"
+        },
+        {
+            "name": "contao-bootstrap/layout",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/layout.git",
+                "reference": "34e56dbe28fd662028c53dd52eed8e1b141ff7ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/layout/zipball/34e56dbe28fd662028c53dd52eed8e1b141ff7ac",
+                "reference": "34e56dbe28fd662028c53dd52eed8e1b141ff7ac",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/dependency-container": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "netzmacht/contao-flexible-sections": "~1.0",
+                "netzmacht/html": "~1.0",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-layout"
+                    },
+                    "runonce": [
+                        "migrate/sections.php"
+                    ],
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "layout-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Netzmacht\\Bootstrap\\Layout\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap layout integration in Contao",
+            "keywords": [
+                "bootstrap",
+                "contao",
+                "layout"
+            ],
+            "time": "2015-05-06 09:59:09"
+        },
+        {
+            "name": "contao-bootstrap/modal",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/modal.git",
+                "reference": "b5f1d22fa8fb69fb11226148f842af82ae782165"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/modal/zipball/b5f1d22fa8fb69fb11226148f842af82ae782165",
+                "reference": "b5f1d22fa8fb69fb11226148f842af82ae782165",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/buttons": "~1.0",
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "menatwork/contao-multicolumnwizard": "~3.2",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "contao-bootstrap/components": "~1.0",
+                "netzmacht/contao-bootstrap": "*",
+                "netzmacht/contao-form-helper": "~0.3"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-modal"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "modal-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Modal": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap modal component for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "components",
+                "contao",
+                "modal"
+            ],
+            "time": "2015-04-20 13:56:59"
+        },
+        {
+            "name": "contao-bootstrap/navigation",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/navigation.git",
+                "reference": "f72866c48a6af293a58d54684e8338f99ae77ba7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/navigation/zipball/f72866c48a6af293a58d54684e8338f99ae77ba7",
+                "reference": "f72866c48a6af293a58d54684e8338f99ae77ba7",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "menatwork/contao-multicolumnwizard": "~3.2",
+                "netzmacht/html": "~1.1",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*",
+                "netzmacht/contao-form-helper": "~0.3"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-navigation"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "navigation-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Navigation": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap navigation component for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "components",
+                "contao",
+                "dropdown",
+                "navbar"
+            ],
+            "time": "2015-10-17 18:06:51"
+        },
+        {
+            "name": "contao-bootstrap/panel",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/panel.git",
+                "reference": "9420d15b46bb03da5120d97d513d00113d5be735"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/panel/zipball/9420d15b46bb03da5120d97d513d00113d5be735",
+                "reference": "9420d15b46bb03da5120d97d513d00113d5be735",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "contao-bootstrap/components": "*",
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-panel"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "panel-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Panel": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap panel component for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "components",
+                "contao",
+                "panel"
+            ],
+            "time": "2015-10-17 18:02:57"
+        },
+        {
+            "name": "contao-bootstrap/tab",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/tab.git",
+                "reference": "e95e037afcfa0c0e2f400d1cda67c111c6434f89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/tab/zipball/e95e037afcfa0c0e2f400d1cda67c111c6434f89",
+                "reference": "e95e037afcfa0c0e2f400d1cda67c111c6434f89",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "menatwork/contao-multicolumnwizard": "~3.2",
+                "netzmacht/html": "~1.1",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "contao-bootstrap/components": "*",
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-tab"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "tab-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Tab": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Bootstrap tab component for Contao CMS",
+            "keywords": [
+                "bootstrap",
+                "component",
+                "contao",
+                "tab"
+            ],
+            "time": "2015-04-17 13:33:12"
+        },
+        {
+            "name": "contao-bootstrap/templates",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-bootstrap/templates.git",
+                "reference": "c831c65cf30fe272fbd95dbdb01156c2465db5ec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-bootstrap/templates/zipball/c831c65cf30fe272fbd95dbdb01156c2465db5ec",
+                "reference": "c831c65cf30fe272fbd95dbdb01156c2465db5ec",
+                "shasum": ""
+            },
+            "require": {
+                "contao-bootstrap/core": "~1.0",
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao/core": ">=3.2,<3.6",
+                "php": ">=5.3.4"
+            },
+            "conflict": {
+                "netzmacht/contao-bootstrap": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/bootstrap-templates"
+                    },
+                    "transifex": {
+                        "project": "contao-bootstrap",
+                        "prefix": "templates-",
+                        "languages_cto": "module/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Bootstrap\\Templates": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Modified Contao templates supporting Bootstrap markup",
+            "keywords": [
+                "bootstrap",
+                "contao",
+                "templates"
+            ],
+            "time": "2015-10-17 18:27:49"
+        },
+        {
+            "name": "contao-community-alliance/composer-client",
+            "version": "0.15.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/composer-client.git",
+                "reference": "5a6976c573e778d1190e855cf7c2a34b5635b44e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/composer-client/zipball/5a6976c573e778d1190e855cf7c2a34b5635b44e",
+                "reference": "5a6976c573e778d1190e855cf7c2a34b5635b44e",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.2",
+                "contao/core": ">=2.11,<5-dev",
+                "php": ">=5.3.4"
+            },
+            "replace": {
+                "contao-community-alliance/composer": "self.version"
+            },
+            "require-dev": {
+                "contao-community-alliance/build-system-tool-branch-alias-validation": "~1.0",
+                "phpmd/phpmd": "~2.0",
+                "phpunit/phpunit": ">=3.7.10,<4-dev",
+                "squizlabs/php_codesniffer": "~1.0"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "src/system/modules/!composer": "system/modules/!composer"
+                    },
+                    "transifex": {
+                        "project": "composer",
+                        "prefix": "client-",
+                        "languages_cto": "src/system/modules/!composer/languages",
+                        "languages_tx": ".tx"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "0.15.x-dev",
+                    "dev-develop": "0.16.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Tristan Lins",
+                    "email": "tristan.lins@bit3.de",
+                    "homepage": "http://bit3.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Christian Schiffler",
+                    "email": "c.schiffler@cyberspectrum.de",
+                    "homepage": "http://www.cyberspectrum.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The contao composer client.",
+            "keywords": [
+                "client",
+                "composer",
+                "contao"
+            ],
+            "time": "2015-08-12 15:10:04"
+        },
+        {
+            "name": "contao-community-alliance/composer-plugin",
+            "version": "2.3.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/composer-plugin.git",
+                "reference": "875a9d996604f7eca0264849d263d98acc28fd46"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/composer-plugin/zipball/875a9d996604f7eca0264849d263d98acc28fd46",
+                "reference": "875a9d996604f7eca0264849d263d98acc28fd46",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "php": ">=5.3.2"
+            },
+            "conflict": {
+                "contao-community-alliance/composer": "<0.9-dev",
+                "contao/core": "3.0.*"
+            },
+            "replace": {
+                "contao-community-alliance/composer-installer": "1.7.1"
+            },
+            "require-dev": {
+                "composer/composer": "~1.0@dev",
+                "contao/core": ">=2.11,<4.0",
+                "phpcq/all-tasks": "~1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "ContaoCommunityAlliance\\Composer\\Plugin\\Plugin",
+                "branch-alias": {
+                    "dev-master": "2.3.x-dev",
+                    "dev-develop": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ContaoCommunityAlliance\\Composer\\Plugin": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "description": "Composer plugin that provide contao integration and installer.",
+            "homepage": "http://c-c-a.org/",
+            "time": "2015-10-20 16:36:13"
+        },
+        {
+            "name": "contao-community-alliance/dependency-container",
+            "version": "1.8.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/dependency-container.git",
+                "reference": "11958f75df6f2e79382924ab138732e9f7c53484"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/dependency-container/zipball/11958f75df6f2e79382924ab138732e9f7c53484",
+                "reference": "11958f75df6f2e79382924ab138732e9f7c53484",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao/core": ">=3.2,<3.6-dev",
+                "php": ">=5.3",
+                "pimple/pimple": "~1.0"
+            },
+            "replace": {
+                "bit3/contao-dependency-container": "self.version",
+                "contao-legacy/dependency-container": "self.version"
+            },
+            "require-dev": {
+                "phpcq/all-tasks": "~1.0"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "contao": "system/modules/dependency-container"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.8.x-dev",
+                    "dev-develop": "1.9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "DependencyInjection\\Container": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Schiffler",
+                    "email": "c.schiffler@cyberspectrum.de",
+                    "homepage": "http://www.cyberspectrum.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Stefan Heimes",
+                    "email": "stefan_heimes@hotmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dependency container based on pimple for Contao open source cms.",
+            "homepage": "http://c-c-a.org/",
+            "keywords": [
+                "container",
+                "contao",
+                "dependency",
+                "di",
+                "injection"
+            ],
+            "time": "2015-07-07 21:23:46"
+        },
+        {
+            "name": "contao-community-alliance/event-dispatcher",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/event-dispatcher.git",
+                "reference": "fde30fa7e0c66dee2c30f5ee1ee90e394600b8a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/event-dispatcher/zipball/fde30fa7e0c66dee2c30f5ee1ee90e394600b8a0",
+                "reference": "fde30fa7e0c66dee2c30f5ee1ee90e394600b8a0",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/dependency-container": "~1.6",
+                "contao/core": ">=2.11,<4-dev",
+                "php": ">=5.3",
+                "symfony/event-dispatcher": "~2.3"
+            },
+            "replace": {
+                "bit3/contao-event-dispatcher": "self.version"
+            },
+            "require-dev": {
+                "contao-community-alliance/build-system": "~1.0",
+                "contao-community-alliance/build-system-all-tasks": "~1.0",
+                "contao-community-alliance/coding-standard": "~1.0"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "contao": "system/modules/event-dispatcher"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.3.x-dev",
+                    "dev-develop": "1.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "ContaoCommunityAlliance\\Contao\\EventDispatcher": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Tristan Lins",
+                    "email": "tristan.lins@bit3.de",
+                    "homepage": "http://bit3.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Event dispatcher service for Contao Open Source CMS",
+            "homepage": "http://c-c-a.org/",
+            "keywords": [
+                "contao",
+                "event"
+            ],
+            "time": "2014-11-28 14:49:55"
+        },
+        {
+            "name": "contao-community-alliance/meta-palettes",
+            "version": "1.9.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/meta-palettes.git",
+                "reference": "ea3b6b07b5d92e17c2d5fd514699c9587cdc90f9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/meta-palettes/zipball/ea3b6b07b5d92e17c2d5fd514699c9587cdc90f9",
+                "reference": "ea3b6b07b5d92e17c2d5fd514699c9587cdc90f9",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao/core": ">=2.11,<4",
+                "php": ">=5.3"
+            },
+            "conflict": {
+                "metamodels/dc_general": "<1-dev"
+            },
+            "replace": {
+                "bit3/contao-meta-palettes": "self.version",
+                "contao-legacy/metapalettes": "self.version"
+            },
+            "require-dev": {
+                "bit3/php-coding-standard": "@dev",
+                "contao-community-alliance/dc-general": "~2.0.0@dev",
+                "phpmd/phpmd": "~2.0",
+                "phpunit/phpunit": ">=3.7.10,<4-dev",
+                "squizlabs/php_codesniffer": "~1.0"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "contao": "system/modules/metapalettes"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.9.x-dev",
+                    "dev-develop": "1.10.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bit3\\Contao\\MetaPalettes\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Schiffler",
+                    "email": "c.schiffler@cyberspectrum.de",
+                    "homepage": "http://www.cyberspectrum.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MetaPalettes extension for Contao OpenSource CMS",
+            "homepage": "http://bit3.de",
+            "keywords": [
+                "contao",
+                "page",
+                "title"
+            ],
+            "time": "2015-07-22 18:13:16"
+        },
+        {
+            "name": "contao/core",
+            "version": "3.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/contao-community-alliance/composerized-contao-core.git",
+                "reference": "277566b8d97f33ec63b2464641c23bd1e3bdf80d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/contao-community-alliance/composerized-contao-core/zipball/277566b8d97f33ec63b2464641c23bd1e3bdf80d",
+                "reference": "3.5.4",
+                "shasum": "3.5.4"
+            },
+            "require": {
+                "contao-community-alliance/composer": "*"
+            },
+            "type": "metapackage"
+        },
+        {
+            "name": "menatwork/contao-multicolumnwizard",
+            "version": "3.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/menatwork/MultiColumnWizard.git",
+                "reference": "7a7b0dc81657fb0744c4af4d6340d5638cd956a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/menatwork/MultiColumnWizard/zipball/7a7b0dc81657fb0744c4af4d6340d5638cd956a2",
+                "reference": "7a7b0dc81657fb0744c4af4d6340d5638cd956a2",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-installer": "*",
+                "contao/core": ">=2.10,<4"
+            },
+            "replace": {
+                "contao-legacy/multicolumnwizard": "*"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "symlinks": {
+                        "system/modules/multicolumnwizard": "system/modules/multicolumnwizard"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "3.3.x-dev",
+                    "dev-dev": "3.4.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "system/"
+                ],
+                "psr-4": {
+                    "MenAtWork\\MultiColumnWizard\\": "system/modules/multicolumnwizard/src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Tristan Lins",
+                    "email": "tristan.lins@bit3.de",
+                    "homepage": "http://bit3.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Schempp",
+                    "email": "andreas.schempp@terminal42.ch",
+                    "homepage": "http://www.terminal42.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Yanick Witschi",
+                    "email": "yanick.witschi@terminal42.ch",
+                    "homepage": "http://www.terminal42.ch",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Andreas Isaak",
+                    "email": "contao@men-at-work.de",
+                    "homepage": "http://www.men-at-work.de",
+                    "role": "Project leader"
+                },
+                {
+                    "name": "David Maack",
+                    "email": "contao@men-at-work.de",
+                    "homepage": "http://www.men-at-work.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "MultiColumWizard for Contao OpenSource CMS",
+            "homepage": "http://www.men-at-work.de",
+            "keywords": [
+                "contao",
+                "widget",
+                "wizard"
+            ],
+            "time": "2015-06-08 08:31:58"
+        },
+        {
+            "name": "netzmacht/contao-flexible-sections",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netzmacht/contao-flexible-sections.git",
+                "reference": "f120f11162cf3b10950aadf054b0be55603e8e1e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netzmacht/contao-flexible-sections/zipball/f120f11162cf3b10950aadf054b0be55603e8e1e",
+                "reference": "f120f11162cf3b10950aadf054b0be55603e8e1e",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-community-alliance/meta-palettes": "~1.4",
+                "contao/core": ">=3.2,<3.6-dev",
+                "menatwork/contao-multicolumnwizard": "~3.2",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev",
+                    "dev-develop": "1.3.x-dev"
+                },
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/flexible-sections"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Contao\\FlexibleSections": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Contao flexible template sections extension",
+            "keywords": [
+                "Flexible",
+                "contao",
+                "frontend",
+                "sections",
+                "template"
+            ],
+            "time": "2015-06-24 12:18:34"
+        },
+        {
+            "name": "netzmacht/contao-form-helper",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netzmacht/contao-form-helper.git",
+                "reference": "54923b84c8a24783590fca8bbfa04aa124ea33de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netzmacht/contao-form-helper/zipball/54923b84c8a24783590fca8bbfa04aa124ea33de",
+                "reference": "54923b84c8a24783590fca8bbfa04aa124ea33de",
+                "shasum": ""
+            },
+            "require": {
+                "contao-community-alliance/dependency-container": "~1.0",
+                "contao-community-alliance/event-dispatcher": "~1.0",
+                "contao/core": ">=3.1,<3.6-dev",
+                "netzmacht/html": "~1.0",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~0.2",
+                "netzmacht/contao-build-tools": "~1.1",
+                "phpspec/phpspec": "~2.1"
+            },
+            "type": "contao-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev",
+                    "dev-develop": "1.1.x-dev"
+                },
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/form-helper"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Contao\\FormHelper": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Library for supporting customized Contao form rendering",
+            "keywords": [
+                "contao",
+                "form",
+                "helper"
+            ],
+            "time": "2015-08-22 09:03:58"
+        },
+        {
+            "name": "netzmacht/contao-iconwizard",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netzmacht/contao-icon-wizard.git",
+                "reference": "636f5e13da9f1ab1d73e1b9c8ae1aa52a1871c48"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netzmacht/contao-icon-wizard/zipball/636f5e13da9f1ab1d73e1b9c8ae1aa52a1871c48",
+                "reference": "636f5e13da9f1ab1d73e1b9c8ae1aa52a1871c48",
+                "shasum": ""
+            },
+            "require": {
+                "contao/core": ">=3.0,<3.6-dev",
+                "php": ">=5.3"
+            },
+            "replace": {
+                "contao-legacy/iconwizard": "*"
+            },
+            "require-dev": {
+                "netzmacht/contao-build-tools": "~1.1"
+            },
+            "suggest": {
+                "netzmacht/font-awesome": "Use Font Awesome icons"
+            },
+            "type": "contao-module",
+            "extra": {
+                "contao": {
+                    "sources": {
+                        "module": "system/modules/icon-wizard"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev",
+                    "dev-develop": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Netzmacht\\Contao\\IconWizard\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Provides an backend widget for choosing icons of an icon font",
+            "keywords": [
+                "contao",
+                "dca",
+                "icons",
+                "widget",
+                "wizard"
+            ],
+            "time": "2015-04-21 13:45:43"
+        },
+        {
+            "name": "netzmacht/html",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/netzmacht/html.git",
+                "reference": "74a948eaef5ba253c8ff11adc83c9292a754b037"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/netzmacht/html/zipball/74a948eaef5ba253c8ff11adc83c9292a754b037",
+                "reference": "74a948eaef5ba253c8ff11adc83c9292a754b037",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "henrikbjorn/phpspec-code-coverage": "~0.1.0",
+                "phpspec/phpspec": "~2.1@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Netzmacht\\Html\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "David Molineus",
+                    "email": "mail@netzmacht.de",
+                    "homepage": "http://www.netzmacht.de",
+                    "role": "Project leader"
+                }
+            ],
+            "description": "Simple library for html rendering",
+            "keywords": [
+                "helper",
+                "html"
+            ],
+            "time": "2014-10-16 15:03:41"
+        },
+        {
+            "name": "pimple/pimple",
+            "version": "v1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/silexphp/Pimple.git",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "reference": "2019c145fe393923f3441b23f29bbdfaa5c58c4d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Pimple": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Pimple is a simple Dependency Injection Container for PHP 5.3",
+            "homepage": "http://pimple.sensiolabs.org",
+            "keywords": [
+                "container",
+                "dependency injection"
+            ],
+            "time": "2013-11-22 08:30:29"
+        },
+        {
+            "name": "symfony/event-dispatcher",
+            "version": "v2.7.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "ae4dcc2a8d3de98bd794167a3ccda1311597c5d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/ae4dcc2a8d3de98bd794167a3ccda1311597c5d9",
+                "reference": "ae4dcc2a8d3de98bd794167a3ccda1311597c5d9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/config": "~2.0,>=2.0.5",
+                "symfony/dependency-injection": "~2.6",
+                "symfony/expression-language": "~2.6",
+                "symfony/phpunit-bridge": "~2.7",
+                "symfony/stopwatch": "~2.3"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "",
+                "symfony/http-kernel": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\EventDispatcher\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony EventDispatcher Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-09-22 13:49:29"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": true,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

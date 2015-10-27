@@ -1,0 +1,4 @@
+Composer Installation:
+	- allow_url_fopen in php.ini auf true setzen (Bei Xampp schon voreingestellt)
+	- cacert.pem in PHP Installations-Ordner kopieren und die Zeile curl.cainfo=C:\xampp\php\cacert.pem in der Datei php.ini ans Ende anfügen (Bei Xampp wichtig, da es ohne Zertifikate ausgeliefert wird)
+	- max_execution_time in der Datei php.ini erhöht
