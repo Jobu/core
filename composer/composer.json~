@@ -4,6 +4,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
+        "contao-bootstrap/bundle": ">=1.0.0.0,<1.1-dev",
         "contao-community-alliance/composer-client": "~0.12"
     },
     "prefer-stable": true,
