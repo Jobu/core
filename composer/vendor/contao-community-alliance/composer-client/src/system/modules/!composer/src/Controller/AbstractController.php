@@ -1,30 +1,30 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer\Controller;
 
 use Composer\Composer;
-use Composer\Console\HtmlOutputFormatter;
-use Composer\DependencyResolver\DefaultPolicy;
 use Composer\DependencyResolver\Pool;
-use Composer\DependencyResolver\Request;
-use Composer\DependencyResolver\Solver;
-use Composer\DependencyResolver\SolverProblemsException;
-use Composer\Factory;
 use Composer\Installer;
 use Composer\IO\BufferIO;
-use Composer\Json\JsonFile;
-use Composer\Package\BasePackage;
-use Composer\Package\CompletePackageInterface;
-use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\PackageInterface;
-use Composer\Package\RootPackageInterface;
-use Composer\Package\Version\VersionParser;
 use Composer\Repository\CompositeRepository;
-use Composer\Repository\InstalledArrayRepository;
 use Composer\Repository\PlatformRepository;
 use Composer\Repository\RepositoryInterface;
 use Composer\Repository\RepositoryManager;
-use Composer\Util\ConfigValidator;
+use Composer\Semver\Constraint\Constraint;
 
 /**
  * Class AbstractController
@@ -178,5 +178,24 @@ abstract class AbstractController extends \Backend implements ControllerInterfac
         $pool->addRepository($repositories);
 
         return $pool;
+    }
+
+    /**
+     * Create a constraint instance and set operator and version to compare a package with.
+     *
+     * @param string $operator A comparison operator.
+     * @param string $version  A version to compare to.
+     *
+     * @return Constraint|\Composer\Package\LinkConstraint\VersionConstraint
+     * @see    https://github.com/contao-community-alliance/composer-plugin/issues/44
+     * @see    https://github.com/composer/semver/issues/17
+     */
+    protected function createConstraint($operator, $version)
+    {
+        if (!class_exists('Composer\Semver\Constraint\Constraint')) {
+            return new \Composer\Package\LinkConstraint\VersionConstraint($operator, $version);
+        }
+
+        return new Constraint($operator, $version);
     }
 }

@@ -6,8 +6,10 @@
  * PHP version 5
  *
  * @copyright  ContaoCommunityAlliance 2013
- * @author     Dominik Zogg <dominik.zogg at gmail.com>
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
  * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @author     Dominik Zogg <dominik.zogg@gmail.com>
+ * @author     Oliver Hoff <oliver@hofff.com>
  * @package    Composer
  * @license    LGPLv3
  * @filesource
@@ -16,13 +18,6 @@
 if (version_compare(PHP_VERSION, '5.3', '<')) {
     trigger_error('Composer client requires PHP 5.3, even with Contao 2.11', E_USER_ERROR);
     return;
-}
-
-if (version_compare(VERSION, '3', '<')) {
-    include(TL_ROOT . '/system/modules/!composer/src/ClassLoader.php');
-    \ContaoCommunityAlliance\Contao\Composer\ClassLoader::register();
-    spl_autoload_register('__autoload');
-    \Contao2ClassFileExistsHack::register();
 }
 
 define('COMPOSER_MIN_PHPVERSION', '5.3.4');

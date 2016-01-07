@@ -1,30 +1,29 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @author     Dominik Zogg <dominik.zogg@gmail.com>
+ * @author     Oliver Hoff <oliver@hofff.com>
+ * @author     sapeish <sapeish@gmail.com>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer;
 
 use Composer\Composer;
 use Composer\Console\HtmlOutputFormatter;
-use Composer\DependencyResolver\DefaultPolicy;
-use Composer\DependencyResolver\Pool;
-use Composer\DependencyResolver\Request;
-use Composer\DependencyResolver\Solver;
-use Composer\DependencyResolver\SolverProblemsException;
 use Composer\Factory;
 use Composer\Installer;
 use Composer\IO\BufferIO;
-use Composer\Json\JsonFile;
-use Composer\Package\BasePackage;
-use Composer\Package\CompletePackageInterface;
-use Composer\Package\LinkConstraint\VersionConstraint;
-use Composer\Package\PackageInterface;
 use Composer\Package\RootPackage;
-use Composer\Package\RootPackageInterface;
-use Composer\Package\Version\VersionParser;
-use Composer\Repository\CompositeRepository;
-use Composer\Repository\InstalledArrayRepository;
-use Composer\Repository\PlatformRepository;
-use Composer\Repository\RepositoryInterface;
-use Composer\Util\ConfigValidator;
 use ContaoCommunityAlliance\Contao\Composer\Controller\ClearComposerCacheController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\DependencyGraphController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\DetachedController;
@@ -39,7 +38,6 @@ use ContaoCommunityAlliance\Contao\Composer\Controller\SearchController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\SettingsController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\SolveController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\ToolsController;
-use ContaoCommunityAlliance\Contao\Composer\Controller\UndoMigrationController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\UpdateDatabaseController;
 use ContaoCommunityAlliance\Contao\Composer\Controller\UpdatePackagesController;
 
@@ -136,11 +134,6 @@ class ClientBackend extends \Backend
             || !$extra['contao']['migrated']
         ) {
             $controller = new MigrationWizardController();
-        }
-
-        // undo migration
-        if ($input->get('migrate') == 'undo') {
-            $controller = new UndoMigrationController();
         }
 
         // do update database
@@ -277,8 +270,7 @@ class ClientBackend extends \Backend
         $composerDevWarningTime = Runtime::readComposerDevWarningTime();
         $incompatibleVersion    = mktime(11, 0, 0, 6, 5, 2014) > ($composerDevWarningTime - 30 * 86400);
 
-        if (
-            !$composerDevWarningTime
+        if (!$composerDevWarningTime
             || $GLOBALS['TL_CONFIG']['composerAutoUpdateLibrary']
                && ($incompatibleVersion || time() > $composerDevWarningTime)
         ) {
@@ -286,8 +278,7 @@ class ClientBackend extends \Backend
             $_SESSION['TL_CONFIRM']['composerUpdated'] = $GLOBALS['TL_LANG']['composer_client']['composerUpdated'];
         }
 
-        if (
-            $composerDevWarningTime
+        if ($composerDevWarningTime
             && !$GLOBALS['TL_CONFIG']['composerAutoUpdateLibrary']
             && $incompatibleVersion
         ) {

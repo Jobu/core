@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @author     Dominik Zogg <dominik.zogg@gmail.com>
+ * @author     Oliver Hoff <oliver@hofff.com>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer;
 
-use Composer\Composer;
 use Composer\Factory;
 use Composer\IO\IOInterface;
-use Composer\Json\JsonFile;
-use Composer\Package\Version\VersionParser;
 use Composer\Util\Filesystem;
 
 /**
@@ -82,6 +94,57 @@ EOF;
 EOF;
 
     /**
+     * Flag if curl is enabled and not disabled.
+     *
+     * @var bool
+     */
+    private static $curlIsEnabled = null;
+
+    /**
+     * List of curl functions to check against disabled functions.
+     *
+     * @var array
+     */
+    private static $curlFunctions = array(
+        'curl_close',
+        'curl_copy_handle',
+        'curl_errno',
+        'curl_error',
+        'curl_escape',
+        'curl_exec',
+        'curl_file_create',
+        'curl_getinfo',
+        'curl_init',
+        'curl_multi_add_handle',
+        'curl_multi_close',
+        'curl_multi_exec',
+        'curl_multi_getcontent',
+        'curl_multi_info_read',
+        'curl_multi_init',
+        'curl_multi_remove_handle',
+        'curl_multi_select',
+        'curl_multi_setopt',
+        'curl_multi_strerror',
+        'curl_pause',
+        'curl_reset',
+        'curl_setopt_array',
+        'curl_setopt',
+        'curl_share_close',
+        'curl_share_init',
+        'curl_share_setopt',
+        'curl_strerror',
+        'curl_unescape',
+        'curl_version',
+    );
+
+    /**
+     * List of disabled functions.
+     *
+     * @var array
+     */
+    private static $disabledFunctions = null;
+
+    /**
      * Initialize the composer environment.
      */
     public static function initialize()
@@ -130,8 +193,7 @@ EOF;
         }
 
         // check .htaccess exists and is up to date
-        if (
-            !file_exists(COMPOSER_DIR_ABSOULTE . '/.htaccess')
+        if (!file_exists(COMPOSER_DIR_ABSOULTE . '/.htaccess')
             || str_replace(array("\r", "\n", "\t", ' '), '', file_get_contents(COMPOSER_DIR_ABSOULTE . '/.htaccess'))
                == str_replace(array("\r", "\n", "\t", ' '), '', static::HTACCESS_OLD)
         ) {
@@ -219,8 +281,7 @@ EOF;
         $buffer         = '';
         do {
             $buffer .= fread($configPathname->handle, 1024);
-        } while (
-            !preg_match('#define\(\'COMPOSER_DEV_WARNING_TIME\',\s*(\d+)\);#', $buffer, $matches)
+        } while (!preg_match('#define\(\'COMPOSER_DEV_WARNING_TIME\',\s*(\d+)\);#', $buffer, $matches)
             && !feof($configPathname->handle)
         );
         if ($matches[1]) {
@@ -267,7 +328,19 @@ EOF;
      */
     public static function isCurlEnabled()
     {
-        return function_exists('curl_init');
+        if (null === self::$curlIsEnabled) {
+            self::$curlIsEnabled = true;
+
+            if (!function_exists('curl_init')) {
+                self::$curlIsEnabled = false;
+            }
+
+            if (count(array_intersect(self::$curlFunctions, self::getDisabledFunctions()))) {
+                self::$curlIsEnabled = false;
+            }
+        }
+
+        return self::$curlIsEnabled;
     }
 
     /**
@@ -329,13 +402,27 @@ EOF;
     }
 
     /**
+     * Get the disabled functions.
+     *
+     * @return array
+     */
+    public static function getDisabledFunctions()
+    {
+        if (null === self::$disabledFunctions) {
+            self::$disabledFunctions = array_map('trim', explode(',', ini_get('disable_functions')));
+        }
+
+        return self::$disabledFunctions;
+    }
+
+    /**
      * Try to disable APC.
      *
      * @return bool Return true on success, false if not.
      */
     public static function disableApc()
     {
-        if (in_array('ini_set', explode(',', ini_get('disable_functions')))) {
+        if (in_array('ini_set', self::getDisabledFunctions())) {
             return false;
         }
 
@@ -410,24 +497,8 @@ EOF;
         $registered = true;
 
         if (file_exists(COMPOSER_DIR_ABSOULTE . '/vendor/autoload.php')) {
-            $isContao2 = version_compare(VERSION, '3', '<');
-
-            // unregister contao class loader
-            if ($isContao2) {
-                spl_autoload_unregister('__autoload');
-            }
-
             // register composer vendor class loader
             require_once(COMPOSER_DIR_ABSOULTE . '/vendor/autoload.php');
-
-            // reregister contao class loader
-            if ($isContao2) {
-                spl_autoload_register('__autoload');
-
-                // swift is not autoloaded in Contao 2.x
-                require_once(TL_ROOT . '/plugins/swiftmailer/classes/Swift.php');
-                require_once(TL_ROOT . '/plugins/swiftmailer/swift_init.php');
-            }
         }
     }
 
@@ -444,21 +515,11 @@ EOF;
 
         $registered = true;
 
-        // unregister contao class loader
-        if (version_compare(VERSION, '3', '<')) {
-            spl_autoload_unregister('__autoload');
-        }
-
         // register composer class loader
         if (file_exists(COMPOSER_DIR_ABSOULTE . '/composer.phar')) {
             $phar             = new \Phar(COMPOSER_DIR_ABSOULTE . '/composer.phar');
             $autoloadPathname = $phar['vendor/autoload.php'];
             require_once($autoloadPathname->getPathname());
-        }
-
-        // reregister contao class loader
-        if (version_compare(VERSION, '3', '<')) {
-            spl_autoload_register('__autoload');
         }
     }
 
@@ -498,7 +559,7 @@ EOF;
      */
     public static function testProcess($cmd)
     {
-        if (in_array('proc_open', array_map('trim', explode(',', ini_get('disable_functions'))))) {
+        if (in_array('proc_open', self::getDisabledFunctions())) {
             return false;
         }
 

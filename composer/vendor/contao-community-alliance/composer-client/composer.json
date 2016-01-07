@@ -30,14 +30,11 @@
     },
     "require": {
         "php": ">=5.3.4",
-        "contao/core": ">=2.11,<5-dev",
-        "contao-community-alliance/composer-plugin": "~2.2"
+        "contao/core": ">=3.2,<4-dev",
+        "contao-community-alliance/composer-plugin": "^2.3.8"
     },
     "require-dev": {
-        "phpunit/phpunit": ">=3.7.10,<4-dev",
-        "squizlabs/php_codesniffer": "~1.0",
-        "phpmd/phpmd": "~2.0",
-        "contao-community-alliance/build-system-tool-branch-alias-validation": "~1.0"
+        "phpcq/all-tasks": "~1.1"
     },
     "replace": {
         "contao-community-alliance/composer": "self.version"
@@ -55,8 +52,8 @@
             }
         },
         "branch-alias": {
-            "dev-master": "0.15.x-dev",
-            "dev-develop": "0.16.x-dev"
+            "dev-master": "0.16.x-dev",
+            "dev-develop": "0.17.x-dev"
         }
     },
     "prefer-stable": true,

@@ -38,6 +38,9 @@ $GLOBALS['TL_DCA']['tl_bootstrap_config']['metapalettes']['form extends default'
 $GLOBALS['TL_DCA']['tl_bootstrap_config']['metasubpalettes']['form_styled_select'] = array(
     'form_styled_select_class',
     'form_styled_select_style',
+    'form_styled_select_size',
+    'form_styled_select_threshold',
+    'form_styled_select_format'
 );
 
 $GLOBALS['TL_DCA']['tl_bootstrap_config']['metasubpalettes']['form_styled_upload'] = array(
@@ -170,7 +173,6 @@ $GLOBALS['TL_DCA']['tl_bootstrap_config']['fields']['form_styled_select_class'] 
     'inputType' => 'text',
     'eval'      => array(
         'tl_class'       => 'clr w50',
-        'submitOnChange' => true,
         'maxlength'      => 32,
     ),
     'sql'       => "varchar(32) NOT NULL default ''"
@@ -183,6 +185,39 @@ $GLOBALS['TL_DCA']['tl_bootstrap_config']['fields']['form_styled_select_style'] 
     'eval'      => array(
         'tl_class'       => 'w50',
         'submitOnChange' => true,
+        'maxlength'      => 32,
+    ),
+    'sql'       => "varchar(32) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_bootstrap_config']['fields']['form_styled_select_threshold'] = array
+(
+    'label'     => &$GLOBALS['TL_LANG']['tl_bootstrap_config']['form_styled_select_threshold'],
+    'inputType' => 'text',
+    'eval'      => array(
+        'tl_class'       => 'w50',
+        'maxlength'      => 4,
+    ),
+    'sql'       => "char(4) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_bootstrap_config']['fields']['form_styled_select_size'] = array
+(
+    'label'     => &$GLOBALS['TL_LANG']['tl_bootstrap_config']['form_styled_select_size'],
+    'inputType' => 'text',
+    'eval'      => array(
+        'tl_class'       => 'w50',
+        'maxlength'      => 5,
+    ),
+    'sql'       => "char(5) NOT NULL default ''"
+);
+
+$GLOBALS['TL_DCA']['tl_bootstrap_config']['fields']['form_styled_select_format'] = array
+(
+    'label'     => &$GLOBALS['TL_LANG']['tl_bootstrap_config']['form_styled_select_format'],
+    'inputType' => 'text',
+    'eval'      => array(
+        'tl_class'       => 'clr w50',
         'maxlength'      => 32,
     ),
     'sql'       => "varchar(32) NOT NULL default ''"

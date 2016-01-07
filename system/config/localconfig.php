@@ -15,5 +15,9 @@ $GLOBALS['TL_CONFIG']['dbPort'] = 3306;
 $GLOBALS['TL_CONFIG']['dbSocket'] = '';
 $GLOBALS['TL_CONFIG']['maintenanceMode'] = true;
 $GLOBALS['TL_CONFIG']['inactiveModules'] = 'a:1:{i:0;s:10:"repository";}';
-$GLOBALS['TL_CONFIG']['latestVersion'] = '3.5.4';
+$GLOBALS['TL_CONFIG']['latestVersion'] = '3.5.6';
+$GLOBALS['TL_CONFIG']['bypassCache'] = true;
+$GLOBALS['TL_CONFIG']['displayErrors'] = true;
+$GLOBALS['TL_CONFIG']['bootstrapIconSet'] = 'glyphicons';
+$GLOBALS['TL_CONFIG']['adminEmail'] = 'joge@application-studios.com';
 ### INSTALL SCRIPT STOP ###

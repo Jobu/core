@@ -2,3 +2,11 @@ Composer Installation:
 	- allow_url_fopen in php.ini auf true setzen (Bei Xampp schon voreingestellt)
 	- cacert.pem in PHP Installations-Ordner kopieren und die Zeile curl.cainfo=C:\xampp\php\cacert.pem in der Datei php.ini ans Ende anfügen (Bei Xampp wichtig, da es ohne Zertifikate ausgeliefert wird)
 	- max_execution_time in der Datei php.ini erhöht
+
+Extension Entwicklung:
+	- System -> Einstellungen -> Internen Cache umgehen (Die internen Cache-Dateien ignorieren (z.B. nützlich bei der Extension-Entwicklung))
+	- System -> Einstellungen -> Fehlermeldungen anzeigen (Fehlermeldungen auf dem Bildschirm ausgeben (nicht empfohlen für produktive Seiten))
+
+Datenbank:
+	- varchar(11) NOT NULL default '' statt date
+	- ALTER TABLE tl_beachcup_team ADD UNIQUE KEY `players` (`player_1`, `player_2`); um gleiche Teams zu vermeiden

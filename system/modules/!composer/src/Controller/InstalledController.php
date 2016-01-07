@@ -1,32 +1,27 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer\Controller;
 
-use Composer\Composer;
-use Composer\Console\HtmlOutputFormatter;
-use Composer\DependencyResolver\DefaultPolicy;
-use Composer\DependencyResolver\Pool;
-use Composer\DependencyResolver\Request;
-use Composer\DependencyResolver\Solver;
-use Composer\DependencyResolver\SolverProblemsException;
-use Composer\Factory;
 use Composer\Installer;
-use Composer\IO\BufferIO;
-use Composer\Json\JsonFile;
 use Composer\Package\AliasPackage;
-use Composer\Package\BasePackage;
 use Composer\Package\CompletePackage;
-use Composer\Package\CompletePackageInterface;
 use Composer\Package\Link;
-use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\PackageInterface;
 use Composer\Package\RootPackageInterface;
-use Composer\Package\Version\VersionParser;
-use Composer\Repository\CompositeRepository;
-use Composer\Repository\InstalledArrayRepository;
-use Composer\Repository\PlatformRepository;
 use Composer\Repository\RepositoryInterface;
-use Composer\Util\ConfigValidator;
 use ContaoCommunityAlliance\Contao\Composer\ConsoleColorConverter;
 use ContaoCommunityAlliance\Contao\Composer\Downloader;
 
@@ -217,7 +212,7 @@ class InstalledController extends AbstractController
                 'removing'          => !in_array($name, $requiresList) && !isset($dependencyMap[$name]),
                 'pinable'           => $package->getStability() != 'dev',
                 'pinned'            => array_key_exists($name, $versionLocks),
-                'versionConstraint' => new VersionConstraint('=', $package->getVersion()),
+                'versionConstraint' => $this->createConstraint('=', $package->getVersion()),
                 'requireConstraint' => isset($requires[$package->getName()]) ? $requires[$package->getName(
                 )]->getConstraint() : false,
             );
@@ -250,7 +245,7 @@ class InstalledController extends AbstractController
                 'removing'          => false,
                 'pinable'           => false,
                 'pinned'            => false,
-                'versionConstraint' => new VersionConstraint('=', $package->getVersion()),
+                'versionConstraint' => $this->createConstraint('=', $package->getVersion()),
                 'requireConstraint' => false,
             );
 

@@ -1,29 +1,23 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer\Controller;
 
-use Composer\Composer;
-use Composer\Console\HtmlOutputFormatter;
-use Composer\DependencyResolver\DefaultPolicy;
-use Composer\DependencyResolver\Pool;
-use Composer\DependencyResolver\Request;
-use Composer\DependencyResolver\Solver;
-use Composer\DependencyResolver\SolverProblemsException;
-use Composer\Factory;
 use Composer\Installer;
-use Composer\IO\BufferIO;
 use Composer\Json\JsonFile;
-use Composer\Package\BasePackage;
-use Composer\Package\CompletePackageInterface;
-use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\PackageInterface;
-use Composer\Package\RootPackageInterface;
-use Composer\Package\Version\VersionParser;
-use Composer\Repository\CompositeRepository;
-use Composer\Repository\InstalledArrayRepository;
-use Composer\Repository\PlatformRepository;
-use Composer\Repository\RepositoryInterface;
-use Composer\Util\ConfigValidator;
 
 /**
  * Class DetailsController
@@ -137,37 +131,6 @@ class DetailsController extends AbstractController
                     /** @var \DateTime $dsb */
                     return $dsb->getTimestamp() - $dsa->getTimestamp();
                 }
-
-                /*
-                $versionA = $this->reformatVersion($packageA);
-                $versionB = $this->reformatVersion($packageB);
-
-                $classicA = preg_match('#^\d(\.\d+)*$#', $versionA);
-                $classicB = preg_match('#^\d(\.\d+)*$#', $versionB);
-
-                $branchA = 'dev-' == substr($packageA->getPrettyVersion(), 0, 4);
-                $branchB = 'dev-' == substr($packageB->getPrettyVersion(), 0, 4);
-
-                if ($branchA && $branchB) {
-                    return strcasecmp($branchA, $branchB);
-                }
-                if ($classicA && $classicB) {
-                    if ($packageA->getPrettyVersion() == 'dev-master') {
-                        return -1;
-                    }
-                    if ($packageB->getPrettyVersion() == 'dev-master') {
-                        return 1;
-                    }
-                    return version_compare($versionB, $versionA);
-                }
-                if ($classicA) {
-                    return -1;
-                }
-                if ($classicB) {
-                    return 1;
-                }
-                return 0;
-                */
             }
         );
 

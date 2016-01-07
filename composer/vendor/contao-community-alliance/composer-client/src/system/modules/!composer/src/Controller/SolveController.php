@@ -1,23 +1,29 @@
 <?php
 
+/**
+ * Composer integration for Contao.
+ *
+ * PHP version 5
+ *
+ * @copyright  ContaoCommunityAlliance 2013
+ * @author     Christian Schiffler <c.schiffler@cyberspectrum.de>
+ * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @package    Composer
+ * @license    LGPLv3
+ * @filesource
+ */
+
 namespace ContaoCommunityAlliance\Contao\Composer\Controller;
 
-use Composer\Composer;
-use Composer\Console\HtmlOutputFormatter;
 use Composer\DependencyResolver\DefaultPolicy;
-use Composer\DependencyResolver\Pool;
 use Composer\DependencyResolver\Request;
 use Composer\DependencyResolver\Solver;
 use Composer\DependencyResolver\SolverProblemsException;
-use Composer\Factory;
 use Composer\Installer;
-use Composer\IO\BufferIO;
 use Composer\Json\JsonFile;
 use Composer\Package\AliasPackage;
 use Composer\Package\BasePackage;
-use Composer\Package\CompletePackageInterface;
 use Composer\Package\Link;
-use Composer\Package\LinkConstraint\VersionConstraint;
 use Composer\Package\PackageInterface;
 use Composer\Package\RootPackage;
 use Composer\Package\RootPackageInterface;
@@ -25,9 +31,6 @@ use Composer\Package\Version\VersionParser;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\InstalledArrayRepository;
 use Composer\Repository\PlatformRepository;
-use Composer\Repository\RepositoryInterface;
-use Composer\Repository\RepositoryManager;
-use Composer\Util\ConfigValidator;
 
 /**
  * Class SolveController
@@ -107,7 +110,7 @@ class SolveController extends AbstractController
         $request = new Request($pool);
 
         // add root package
-        $rootPackageConstraint = new VersionConstraint('=', $rootPackage->getVersion());
+        $rootPackageConstraint = $this->createConstraint('=', $rootPackage->getVersion());
         $rootPackageConstraint->setPrettyString($rootPackage->getPrettyVersion());
         $request->install($rootPackage->getName(), $rootPackageConstraint);
 
@@ -121,7 +124,7 @@ class SolveController extends AbstractController
         }
         /** @var PackageInterface $package */
         foreach ($installedRepository->getPackages() as $package) {
-            $request->install($package->getName(), new VersionConstraint('=', $package->getVersion()));
+            $request->install($package->getName(), $this->createConstraint('=', $package->getVersion()));
         }
 
         $operations = array();

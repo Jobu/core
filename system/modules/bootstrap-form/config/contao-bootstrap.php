@@ -100,6 +100,9 @@ return array
                 'input-group' => true,
             ),
 
+            'upload' => array(
+                'form-control' => false,
+            )
         ),
 
         // which columns shall be used for the form in table mode
@@ -118,14 +121,17 @@ return array
         // add style select to select list, set to false to disable
         'styled-select'      => array
         (
-            'enabled'    => true,
-            'class'      => 'selectpicker',
-            'style'      => 'btn-default',
-            'javascript' => array(
-                'system/modules/bootstrap-form/assets/bootstrap-select/js/bootstrap-select.min.js',
-                'system/modules/bootstrap-form/assets/bootstrap-select.js'
+            'enabled'          => true,
+            'class'            => 'selectpicker',
+            'style'            => 'btn-default',
+            'search-threshold' => 10,
+            'size'             => 'auto',
+            'javascript'       => array(
+                'composer/vendor/bootstrap-select/bootstrap-select/dist/js/bootstrap-select.min.js|static',
+                'system/modules/bootstrap-form/assets/bootstrap-select.js|static'
             ),
-            'stylesheet' => 'system/modules/bootstrap-form/assets/bootstrap-select/css/bootstrap-select.min.css',
+            'stylesheet'       => 'composer/vendor/bootstrap-select/bootstrap-select/dist/css/bootstrap-select.min.css|all|static',
+            'i18n'             => 'composer/vendor/bootstrap-select/bootstrap-select/dist/js/i18n/defaults-%s.min.js|static',
         ),
 
         // style the upload button
