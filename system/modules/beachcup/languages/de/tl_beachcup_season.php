@@ -22,3 +22,8 @@ $GLOBALS['TL_LANG']['tl_beachcup_season']['delete'][1] = "Saison ID %s löschen"
 
 $GLOBALS['TL_LANG']['tl_beachcup_season']['show'][0] = "Saison Details";
 $GLOBALS['TL_LANG']['tl_beachcup_season']['show'][1] = "Details der Saison ID %s anzeigen";
+
+$GLOBALS['TL_LANG']['tl_beachcup_season']['administration_legend'] = 'Administration';
+
+$GLOBALS['TL_LANG']['tl_beachcup_season']['active'][0] = 'Aktiv';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['active'][1] = 'Saison als aktiv kennzeichen';

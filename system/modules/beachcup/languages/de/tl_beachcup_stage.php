@@ -2,8 +2,8 @@
 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['general_legend'] = 'Allgemeine Informationen';
 
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['code'][0] = 'Name';
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['code'][1] = 'Geben Sie hier den Namen Code ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name'][0] = 'Name';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name'][1] = 'Geben Sie hier den Namen Code ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['description'][0] = 'Beschreibung';
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['description'][1] = 'Geben Sie hier die Beschreibung der Etappe ein.';

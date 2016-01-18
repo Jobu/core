@@ -271,7 +271,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'search'                  => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "boolean NOT NULL default false"
+            'sql'                     => "boolean NOT NULL default false",
         ),
         'is_fipav' => array
         (

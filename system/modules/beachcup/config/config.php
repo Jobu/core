@@ -5,101 +5,101 @@ $GLOBALS['BE_MOD']['beachcup'] = array
     'player' => array
     (
         'tables'       => array('tl_beachcup_player'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/player.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'player_level' => array
     (
         'tables'       => array('tl_beachcup_player_level'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/player_level.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'team' => array
     (
         'tables'       => array('tl_beachcup_team'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/team.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'registration' => array
     (
         'tables'       => array('tl_beachcup_registration'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/registration.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'registration_state' => array
     (
         'tables'       => array('tl_beachcup_registration_state'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/registration_state.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'tournament' => array
     (
         'tables'       => array('tl_beachcup_tournament'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/tournament.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'tournament_type' => array
     (
         'tables'       => array('tl_beachcup_tournament_type'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/tournament_type.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'stage' => array
     (
         'tables'       => array('tl_beachcup_stage'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/stage.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'organizer' => array
     (
         'tables'       => array('tl_beachcup_organizer'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/organizer.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'venue' => array
     (
         'tables'       => array('tl_beachcup_venue'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/venue.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     ),
     'season' => array
     (
         'tables'       => array('tl_beachcup_season'),
-        'callback'     => 'ClassName',
-        'key'          => array('Class', 'method'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/season.png',
-        'stylesheet'   => 'path/to/stylesheet.css',
-        'javascript'   => 'path/to/javascript.js'
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
     )
 );
 

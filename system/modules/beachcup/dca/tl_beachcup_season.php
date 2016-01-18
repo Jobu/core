@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_season'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => '{general_legend},name,description,year;'
+        'default'                     => '{general_legend},name,description,year;{administration_legend},active'
 	),
 
 	// Subpalettes
@@ -146,6 +146,16 @@ $GLOBALS['TL_DCA']['tl_beachcup_season'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'digit'),
             'sql'                     => "int NOT NULL default 2015"
+        ),
+        'active' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_season']['active'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'checkbox',
+            'eval'                    => array('tl_class'=>'w50'),
+            'sql'                     => "boolean NOT NULL default false"
         )
 	)
 );
