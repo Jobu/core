@@ -5,8 +5,11 @@ $GLOBALS['TL_LANG']['tl_beachcup_registration_state']['general_legend'] = 'Allge
 $GLOBALS['TL_LANG']['tl_beachcup_registration_state']['code'][0] = 'Registrations-Status Code';
 $GLOBALS['TL_LANG']['tl_beachcup_registration_state']['code'][1] = 'Geben Sie hier den Registrations-Status Code ein.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description'][0] = 'Beschreibung';
-$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description'][1] = 'Geben Sie hier die Beschreibung des Registrations-Status ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description_de'][0] = 'Deutsche Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description_de'][1] = 'Geben Sie hier die Beschreibung des Registrations-Status in deutscher Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description_it'][0] = 'Italienische Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_registration_state']['description_it'][1] = 'Geben Sie hier die Beschreibung des Registrations-Status in italienischer Sprache ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_registration_state']['new'][0] = "Neuer Registrations-Status";
 $GLOBALS['TL_LANG']['tl_beachcup_registration_state']['new'][1] = "Einen neuen Registrations-Status anlegen";

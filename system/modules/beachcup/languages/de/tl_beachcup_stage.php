@@ -2,11 +2,17 @@
 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['general_legend'] = 'Allgemeine Informationen';
 
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['name'][0] = 'Name';
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['name'][1] = 'Geben Sie hier den Namen Code ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name_de'][0] = 'Deutscher Name';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name_de'][1] = 'Geben Sie hier den Namen in deutscher Sprache ein.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['description'][0] = 'Beschreibung';
-$GLOBALS['TL_LANG']['tl_beachcup_stage']['description'][1] = 'Geben Sie hier die Beschreibung der Etappe ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['description_de'][0] = 'Deutsche Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['description_de'][1] = 'Geben Sie hier die Beschreibung der Etappe in deutscher Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name_it'][0] = 'Italienischer Name';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['name_it'][1] = 'Geben Sie hier den Namen in italienischer Srpache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['description_it'][0] = 'Italienische Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['description_it'][1] = 'Geben Sie hier die Beschreibung der Etappe in italienischer Sprache ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['start_date'][0] = 'Start-Datum';
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['start_date'][1] = 'Geben Sie hier das Start-Datum ein.';

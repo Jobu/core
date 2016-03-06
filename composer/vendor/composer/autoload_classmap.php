@@ -6,7 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'MenAtWork\\MultiColumnWizard\\Event\\GetOptionsEvent' => $vendorDir . '/menatwork/contao-multicolumnwizard/system/modules/multicolumnwizard/src/Event/GetOptionsEvent.php',
-    'MultiColumnWizard' => $vendorDir . '/menatwork/contao-multicolumnwizard/system/modules/multicolumnwizard/MultiColumnWizard.php',
-    'MultiColumnWizardHelper' => $vendorDir . '/menatwork/contao-multicolumnwizard/system/modules/multicolumnwizard/MultiColumnWizardHelper.php',
 );

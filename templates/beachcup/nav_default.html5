@@ -1,0 +1,9 @@
+<ul id="menu-pages" class="nav">
+  <?php foreach ($this->items as $item): ?>
+    <?php if ($item['isActive']): ?>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item"><a><?= $item['link'] ?></a><?= $item['subitems'] ?></li>
+    <?php else: ?>
+      <li class="menu-item menu-item-type-custom menu-item-object-custom"><a href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>"><?= $item['link'] ?></a><?= $item['subitems'] ?></li>
+    <?php endif; ?>
+  <?php endforeach; ?>
+</ul>

@@ -136,7 +136,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_registration'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
-            'foreignKey'              => 'tl_beachcup_tournament.CONCAT((SELECT CONCAT(tl_beachcup_season.name, " [", tl_beachcup_season.year, "]") FROM tl_beachcup_season WHERE tl_beachcup_season.id IN (SELECT tl_beachcup_stage.season_id FROM tl_beachcup_stage WHERE tl_beachcup_stage.id = tl_beachcup_tournament.stage_id)), " - ", (SELECT tl_beachcup_stage.name FROM tl_beachcup_stage WHERE tl_beachcup_stage.id = tl_beachcup_tournament.stage_id), " - ", tl_beachcup_tournament.name)',
+            'foreignKey'              => 'tl_beachcup_tournament.CONCAT((SELECT CONCAT(tl_beachcup_season.name_de, " [", tl_beachcup_season.year, "]") FROM tl_beachcup_season WHERE tl_beachcup_season.id IN (SELECT tl_beachcup_stage.season_id FROM tl_beachcup_stage WHERE tl_beachcup_stage.id = tl_beachcup_tournament.stage_id)), " - ", (SELECT tl_beachcup_stage.name_de FROM tl_beachcup_stage WHERE tl_beachcup_stage.id = tl_beachcup_tournament.stage_id), " - ", tl_beachcup_tournament.name_de)',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL"
         ),

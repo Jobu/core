@@ -103,6 +103,11 @@ $GLOBALS['BE_MOD']['beachcup'] = array
     )
 );
 
+$GLOBALS['FE_MOD']['beachcup'] = array
+(
+    'stage_map' => 'ModuleStageMap'
+);
+
 /**
  * Contao Open Source CMS
  *

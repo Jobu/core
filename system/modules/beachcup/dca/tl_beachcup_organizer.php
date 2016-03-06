@@ -38,13 +38,13 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
 		'sorting' => array
 		(
 			'mode'                    => 2,
-			'fields'                  => array('name'),
+			'fields'                  => array('name_de'),
 			'flag'                    => 1,
             'panelLayout'             => 'filter,sort,search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array('name'),
+			'fields'                  => array('name_de'),
 			'format'                  => '%s'
 		),
 		'global_operations' => array
@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => '{general_legend},name,description;{contact_legend},contact_person,email,phone,fax,mobile_phone;'
+        'default'                     => '{general_legend},name_de,description_de,name_it,description_it;{contact_legend},contact_person,email,phone,fax,mobile_phone;'
 	),
 
 	// Subpalettes
@@ -117,9 +117,9 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-        'name' => array
+        'name_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['name'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['name_de'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
@@ -127,14 +127,32 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
             'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'description' => array
+        'description_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['description'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['description_de'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'sql'                     => "text NOT NULL default ''"
+        ),
+        'name_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['name_it'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('tl_class'=>'w50'),
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'description_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_organizer']['description_it'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
             'sql'                     => "text NOT NULL default ''"
         ),
         'contact_person' => array

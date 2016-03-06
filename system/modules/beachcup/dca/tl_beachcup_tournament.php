@@ -40,11 +40,11 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
 			'mode'                    => 2,
 			'fields'                  => array('stage_id'),
 			'flag'                    => 1,
-            'panelLayout'             => 'filter,sort,search,limit'
+            'panelLayout'             => 'filter;sort,search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array('name'),
+			'fields'                  => array('name_de'),
 			'format'                  => '%s',
             'label_callback'          => array('tl_beachcup_tournament', 'setLabel'),
             'group_callback'          => array('tl_beachcup_tournament', 'setGroupLabel')
@@ -105,7 +105,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => '{general_legend},name,type_id,stage_id;{administration_legend},max_teams;'
+		'default'                     => '{general_legend},name_de,name_it,type_id,stage_id;{administration_legend},max_teams;'
 	),
 
 	// Subpalettes
@@ -125,16 +125,26 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-		'name' => array
+		'name_de' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name'],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_de'],
 			'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'maxlength'=>255),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
+        'name_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_it'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('tl_class'=>'w50', 'mandatory'=>true, 'maxlength'=>255),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
         'type_id' => array
         (
             'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_tournament']['type_id'],
@@ -152,8 +162,9 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
+            'filter'                  => true,
             'inputType'               => 'select',
-            'foreignKey'              => 'tl_beachcup_stage.CONCAT((SELECT CONCAT(tl_beachcup_season.name, " [", tl_beachcup_season.year, "]") FROM tl_beachcup_season WHERE tl_beachcup_season.id = tl_beachcup_stage.season_id), " - ", tl_beachcup_stage.name)',
+            'foreignKey'              => 'tl_beachcup_stage.CONCAT((SELECT CONCAT(tl_beachcup_season.name_de, " [", tl_beachcup_season.year, "]") FROM tl_beachcup_season WHERE tl_beachcup_season.id = tl_beachcup_stage.season_id), " - ", tl_beachcup_stage.name_de)',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL"
         ),
@@ -183,7 +194,7 @@ class tl_beachcup_tournament extends Backend
 
     public function setLabel($row)
     {
-        return $this -> Database -> prepare("SELECT CONCAT(tl_beachcup_season.name, ' [', tl_beachcup_season.year, '] - ', tl_beachcup_stage.name, ' - ', tl_beachcup_tournament.name) as `label` FROM tl_beachcup_season JOIN tl_beachcup_stage ON tl_beachcup_season.id = tl_beachcup_stage.season_id JOIN tl_beachcup_tournament ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id WHERE tl_beachcup_tournament.id = ?") -> execute($row["id"]) -> label;
+        return $this -> Database -> prepare("SELECT CONCAT(tl_beachcup_season.name_de, ' [', tl_beachcup_season.year, '] - ', tl_beachcup_stage.name_de, ' - ', tl_beachcup_tournament.name_de) as `label` FROM tl_beachcup_season JOIN tl_beachcup_stage ON tl_beachcup_season.id = tl_beachcup_stage.season_id JOIN tl_beachcup_tournament ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id WHERE tl_beachcup_tournament.id = ?") -> execute($row["id"]) -> label;
     }
     
     public function setGroupLabel($group, $sortingMode, $firstOrderBy, $row)
@@ -191,7 +202,7 @@ class tl_beachcup_tournament extends Backend
         switch($firstOrderBy)
         {
             case "stage_id":
-                return $this -> Database -> prepare("SELECT CONCAT(tl_beachcup_season.name, ' [', tl_beachcup_season.year, '] - ', tl_beachcup_stage.name) as `group` FROM tl_beachcup_season JOIN tl_beachcup_stage ON tl_beachcup_season.id = tl_beachcup_stage.season_id WHERE tl_beachcup_stage.id = ?") -> execute($row["stage_id"]) -> group;
+                return $this -> Database -> prepare("SELECT CONCAT(tl_beachcup_season.name_de, ' [', tl_beachcup_season.year, '] - ', tl_beachcup_stage.name_de) as `group` FROM tl_beachcup_season JOIN tl_beachcup_stage ON tl_beachcup_season.id = tl_beachcup_stage.season_id WHERE tl_beachcup_stage.id = ?") -> execute($row["stage_id"]) -> group;
                 break;
 
             default:

@@ -103,7 +103,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player_level'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => '{general_legend},code,description;'
+		'default'                     => '{general_legend},code,description_de,description_it;'
 	),
 
 	// Subpalettes
@@ -130,17 +130,25 @@ $GLOBALS['TL_DCA']['tl_beachcup_player_level'] = array
             'sorting'                 => true,
             'search'                  => true,
 			'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'unique'=>true),
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'unique'=>true),
             'sql'                     => "varchar(255) NOT NULL UNIQUE default ''"
 		),
-        'description' => array
+        'description_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_de'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
-            'inputType'               => 'text',
-            'eval'                    => array('tl_class'=>'w50'),
+            'inputType'               => 'textarea',
+            'sql'                     => "text NOT NULL default ''"
+        ),
+        'description_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_it'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
             'sql'                     => "text NOT NULL default ''"
         )
 	)

@@ -1,7 +1,0 @@
-.project
-.settings
-.buildpath
-.idea
-vendor
-# ignore the phpunit configuration by the developer.
-phpunit.xml

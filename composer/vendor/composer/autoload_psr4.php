@@ -6,11 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
-    'Netzmacht\\Contao\\IconWizard\\' => array($vendorDir . '/netzmacht/contao-iconwizard/src'),
-    'Netzmacht\\Bootstrap\\Layout\\' => array($vendorDir . '/contao-bootstrap/layout/src'),
-    'Netzmacht\\Bootstrap\\Grid\\' => array($vendorDir . '/contao-bootstrap/grid-editor/src'),
-    'Netzmacht\\Bootstrap\\Core\\' => array($vendorDir . '/contao-bootstrap/core/src'),
-    'MenAtWork\\MultiColumnWizard\\' => array($vendorDir . '/menatwork/contao-multicolumnwizard/system/modules/multicolumnwizard/src'),
-    'Bit3\\Contao\\MetaPalettes\\' => array($vendorDir . '/contao-community-alliance/meta-palettes/src'),
 );

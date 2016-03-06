@@ -1,0 +1,15 @@
+
+<!-- indexer::stop -->
+<header id="main-header">
+	<div class="container clearfix">
+		<div id="top-navigation">
+			<nav>
+				<?= $this->items ?>
+			</nav>
+		</div>
+	</div>
+	<div id="et_mobile_nav_menu">
+		<a href="#" class="mobile_nav closed">Navigation Menu</a>
+	</div>
+</header>
+<!-- indexer::continue -->

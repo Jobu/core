@@ -5,8 +5,11 @@ $GLOBALS['TL_LANG']['tl_beachcup_player_level']['general_legend'] = 'Allgemeine 
 $GLOBALS['TL_LANG']['tl_beachcup_player_level']['code'][0] = 'Spieler-Level Code';
 $GLOBALS['TL_LANG']['tl_beachcup_player_level']['code'][1] = 'Geben Sie hier den Spieler-Level Code ein.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description'][0] = 'Beschreibung';
-$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description'][1] = 'Geben Sie hier die Beschreibung des Spieler-Levels ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_de'][0] = 'Deutsche Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_de'][1] = 'Geben Sie hier die Beschreibung des Spieler-Levels in deutscher Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_it'][0] = 'Italienische Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_player_level']['description_it'][1] = 'Geben Sie hier die Beschreibung des Spieler-Levels in italienischer Sprache ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player_level']['new'][0] = "Neues Spieler-Level";
 $GLOBALS['TL_LANG']['tl_beachcup_player_level']['new'][1] = "Ein neues Spieler-Level anlegen";

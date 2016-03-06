@@ -38,13 +38,13 @@ $GLOBALS['TL_DCA']['tl_beachcup_venue'] = array
 		'sorting' => array
 		(
 			'mode'                    => 2,
-			'fields'                  => array('name'),
+			'fields'                  => array('name_de'),
 			'flag'                    => 2,
             'panelLayout'             => 'filter,sort,search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array('name'),
+			'fields'                  => array('name_de'),
 			'format'                  => '%s'
 		),
 		'global_operations' => array
@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_venue'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-        'default'                     => '{general_legend},name,description,picture;{address_legend},address,zip_code,city,latitude,longitude;'
+        'default'                     => '{general_legend},name_de,description_de,name_it,description_it,picture;{address_legend},address_de,address_it,city_de,city_it,zip_code,latitude,longitude;'
 	),
 
 	// Subpalettes
@@ -117,25 +117,45 @@ $GLOBALS['TL_DCA']['tl_beachcup_venue'] = array
 		(
 			'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-        'name' => array
+        'name_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['name'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['name_de'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50'),
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
-        'description' => array
+        'description_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['description'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['description_de'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE'),
+            'sql'                     => "mediumtext NOT NULL default ''"
+        ),
+        'name_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['name_it'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('tl_class'=>'w50'),
-            'sql'                     => "text NOT NULL default ''"
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255),
+            'sql'                     => "varchar(255) NOT NULL default ''"
+        ),
+        'description_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['description_it'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'textarea',
+            'eval'                    => array('rte'=>'tinyMCE'),
+            'sql'                     => "mediumtext NOT NULL default ''"
         ),
         'picture' => array
         (
@@ -147,9 +167,39 @@ $GLOBALS['TL_DCA']['tl_beachcup_venue'] = array
             'eval'                    => array('tl_class'=>'clr', 'filesOnly'=>true, 'fieldType'=>'radio'),
             'sql'                     => "binary(16) NULL"
         ),
-        'address' => array
+        'address_de' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['address'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['address_de'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "text NOT NULL default ''"
+        ),
+        'address_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['address_it'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "text NOT NULL default ''"
+        ),
+        'city_de' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['city_de'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "text NOT NULL default ''"
+        ),
+        'city_it' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['city_it'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
@@ -164,18 +214,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_venue'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'digit'),
+            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'rgxp'=>'digit'),
             'sql'                     => "int"
-        ),
-        'city' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_venue']['city'],
-            'exclude'                 => true,
-            'sorting'                 => true,
-            'search'                  => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "text NOT NULL default ''"
         ),
         'latitude' => array
         (

@@ -32,4 +32,5 @@ $GLOBALS['TL_LANG']['MOD']['season'] = array('Saisonen', 'Saisonen verwalten');
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['beachcup'] = array('Beachcup', 'Beachcup Frontend-Module');
+$GLOBALS['TL_LANG']['FMD']['stage_map'] = array('Etappen Landkarte', 'Erzeugt eine Etappen Landkarte der Etappen');

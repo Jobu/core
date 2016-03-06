@@ -2,11 +2,17 @@
 
 $GLOBALS['TL_LANG']['tl_beachcup_season']['general_legend'] = 'Allgemeine Informationen';
 
-$GLOBALS['TL_LANG']['tl_beachcup_season']['name'][0] = 'Name';
-$GLOBALS['TL_LANG']['tl_beachcup_season']['name'][1] = 'Geben Sie hier den Name ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['name_de'][0] = 'Deutscher Name';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['name_de'][1] = 'Geben Sie hier den Namen in deutscher Sprache ein.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_season']['description'][0] = 'Beschreibung';
-$GLOBALS['TL_LANG']['tl_beachcup_season']['description'][1] = 'Geben Sie hier die Beschreibung der Saison ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['description_de'][0] = 'Deutsche Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['description_de'][1] = 'Geben Sie hier die Beschreibung der Saison in deutscher Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_season']['name_it'][0] = 'Italienischer Name';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['name_it'][1] = 'Geben Sie hier den Namen in italienischer Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_season']['description_it'][0] = 'Italienische Beschreibung';
+$GLOBALS['TL_LANG']['tl_beachcup_season']['description_it'][1] = 'Geben Sie hier die Beschreibung der Saison in italienischer Sprache ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_season']['year'][0] = 'Jahr';
 $GLOBALS['TL_LANG']['tl_beachcup_season']['year'][1] = 'Geben Sie hier das Jahr ein.';

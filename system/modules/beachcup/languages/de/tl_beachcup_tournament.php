@@ -2,8 +2,11 @@
 
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['general_legend'] = 'Allgemeine Informationen';
 
-$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name'][0] = 'Name';
-$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name'][1] = 'Geben Sie hier den Namen ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_de'][0] = 'Deutscher Name';
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_de'][1] = 'Geben Sie hier den Namen in deutscher Sprache ein.';
+
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_it'][0] = 'Italienischer Name';
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['name_it'][1] = 'Geben Sie hier den Namen in italienischer Sprache ein.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['type_id'][0] = 'Turnier-Typ';
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['type_id'][1] = 'Wählen Sie hier den Turnier-Typ aus.';

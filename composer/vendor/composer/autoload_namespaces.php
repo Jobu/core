@@ -6,19 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
-    'Netzmacht\\Html\\' => array($vendorDir . '/netzmacht/html/src'),
-    'Netzmacht\\Contao\\FormHelper' => array($vendorDir . '/netzmacht/contao-form-helper/src'),
-    'Netzmacht\\Contao\\FlexibleSections' => array($vendorDir . '/netzmacht/contao-flexible-sections/src'),
-    'Netzmacht\\Bootstrap\\Templates' => array($vendorDir . '/contao-bootstrap/templates/src'),
-    'Netzmacht\\Bootstrap\\Tab' => array($vendorDir . '/contao-bootstrap/tab/src'),
-    'Netzmacht\\Bootstrap\\Panel' => array($vendorDir . '/contao-bootstrap/panel/src'),
-    'Netzmacht\\Bootstrap\\Navigation' => array($vendorDir . '/contao-bootstrap/navigation/src'),
-    'Netzmacht\\Bootstrap\\Modal' => array($vendorDir . '/contao-bootstrap/modal/src'),
-    'Netzmacht\\Bootstrap\\Form' => array($vendorDir . '/contao-bootstrap/form/src'),
-    'Netzmacht\\Bootstrap\\Carousel' => array($vendorDir . '/contao-bootstrap/carousel/src'),
-    'Netzmacht\\Bootstrap\\Buttons' => array($vendorDir . '/contao-bootstrap/buttons/src'),
-    'DependencyInjection\\Container' => array($vendorDir . '/contao-community-alliance/dependency-container/src'),
-    'ContaoCommunityAlliance\\Contao\\EventDispatcher' => array($vendorDir . '/contao-community-alliance/event-dispatcher/src'),
-    'ContaoCommunityAlliance\\Composer\\Plugin' => array($vendorDir . '/contao-community-alliance/composer-plugin/src'),
+    'ContaoCommunityAlliance\\Composer\\Plugin\\' => array($vendorDir . '/contao-community-alliance/composer-plugin/src'),
 );
