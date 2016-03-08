@@ -87,11 +87,11 @@ class ModuleStageMap extends \Module
             {
                 if($objPage->language == "it")
                 {
-                    $tournament["description"] = $stage["description_it"];
+                    $tournament["description"] = $tournament["description_it"];
                 }
                 else
                 {
-                    $tournament["description"] = $stage["description_de"];
+                    $tournament["description"] = $tournament["description_de"];
                 }
             }
             

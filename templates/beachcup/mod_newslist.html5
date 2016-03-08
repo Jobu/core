@@ -1,0 +1,18 @@
+<div id="et-list-view" class="et-normal-listings">
+	<h2 id="listing-results">Beachcup News</h2>
+	<div id="et-listings">
+		<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+		<div class="viewport">
+			<div class="overview">
+				<ul>
+					<?php if (empty($this->articles)): ?>
+						<p class="empty"><?= $this->empty ?></p>
+					<?php else: ?>
+						<?= implode('', $this->articles) ?>
+						<?= $this->pagination ?>
+					<?php endif; ?>
+				</ul>
+			</div> <!-- .overview -->
+		</div> <!-- .viewport -->
+	</div> <!-- #et-listings -->
+</div> <!-- #et-list-view -->

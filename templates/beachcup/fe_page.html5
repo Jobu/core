@@ -84,7 +84,7 @@
 
       <?php $this->block('footer'); ?>
         <?php if ($this->footer): ?>
-          <footer id="footer">
+          <footer id="footer" style="z-index: 1;">
             <div class="inside">
               <?= $this->footer ?>
             </div>

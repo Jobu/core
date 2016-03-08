@@ -1,0 +1,14 @@
+<li class="clearfix">
+	<div class="listing-image">
+		<?php
+		if($this->addImage)
+		{
+			echo "<img src='" . $this->picture["img"]["src"] . "' alt='" . $this->picture["alt"] . "' width='60' height='60' />";
+		}
+		?>
+	</div> <!-- .listing-image -->
+	<div class="listing-text">
+		<h3><?= $this->linkHeadline ?></h3>
+		<p><?= $this->teaser ?></p>
+	</div> <!-- .listing-text -->
+</li>
