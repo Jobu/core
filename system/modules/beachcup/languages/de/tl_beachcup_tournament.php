@@ -14,6 +14,9 @@ $GLOBALS['TL_LANG']['tl_beachcup_tournament']['type_id'][1] = 'Wählen Sie hier 
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['stage_id'][0] = 'Etappe';
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['stage_id'][1] = 'Wählen Sie hier die Etappe aus.';
 
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['date'][0] = 'Datum';
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['date'][1] = 'Geben Sie hier das Datum ein.';
+
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['administration_legend'] = 'Administration';
 
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_teams'][0] = 'Maximale Team-Anzahl';

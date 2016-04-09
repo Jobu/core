@@ -43,7 +43,7 @@ class ModuleStageMap extends \Module
         global $objPage;
         
         $database = \Database::getInstance();
-        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_de, tl_beachcup_stage.name_it, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id")->fetchAllAssoc();
+        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_de, tl_beachcup_stage.name_it, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id WHERE tl_beachcup_season.active = true")->fetchAllAssoc();
         
         foreach($stages as &$stage)
         {
@@ -81,7 +81,7 @@ class ModuleStageMap extends \Module
             }
             
             //Trounaments
-            $tournaments = $database->query("SELECT tl_beachcup_tournament_type.description_de, tl_beachcup_tournament_type.description_it FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id WHERE tl_beachcup_tournament.stage_id = " . $stage["id"])->fetchAllAssoc();
+            $tournaments = $database->query("SELECT DISTINCT tl_beachcup_tournament_type.description_de, tl_beachcup_tournament_type.description_it FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id WHERE tl_beachcup_tournament.stage_id = " . $stage["id"])->fetchAllAssoc();
             
             foreach($tournaments as &$tournament)
             {

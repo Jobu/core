@@ -1,0 +1,27 @@
+<?php
+$count = 0;
+
+while($count < count($this->teams))
+{
+    $stage_id = $this->teams[$count]["stage_id"];
+    
+    echo "<div class='box'><h3>" . $this->teams[$count]["stage_name"] . "</h3>";
+    
+    while($stage_id == $this->teams[$count]["stage_id"])
+    {
+        $tournament_id = $this->teams[$count]["tournament_id"];
+        
+        echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
+        
+        while($tournament_id == $this->teams[$count]["tournament_id"])
+        {
+            echo "<dt></dt><dd>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["points"] . "</points></dd></br>";
+            $count++;
+        }
+        
+        echo "</dl></details>";
+    }
+    
+    echo "</div>";
+}
+?>

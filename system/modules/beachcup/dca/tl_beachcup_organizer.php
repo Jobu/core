@@ -172,8 +172,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('tl_class'=>'w50', 'rgxp'=>'email', 'unique'=>true),
-            'sql'                     => "varchar(255) UNIQUE"
+            'eval'                    => array('tl_class'=>'w50', 'rgxp'=>'email'),
+            'sql'                     => "varchar(255)"
         ),
         'phone' => array
         (
@@ -182,8 +182,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone', 'unique'=>true),
-            'sql'                     => "varchar(255) UNIQUE"
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone'),
+            'sql'                     => "varchar(255)"
         ),
         'fax' => array
         (
@@ -192,8 +192,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone', 'unique'=>true),
-            'sql'                     => "varchar(255) UNIQUE"
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone'),
+            'sql'                     => "varchar(255)"
         ),
         'mobile_phone' => array
         (
@@ -202,8 +202,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_organizer'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone', 'unique'=>true),
-            'sql'                     => "varchar(255) UNIQUE"
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone'),
+            'sql'                     => "varchar(255)"
         ),
 	)
 );

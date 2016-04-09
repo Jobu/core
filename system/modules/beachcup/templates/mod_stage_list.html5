@@ -1,0 +1,22 @@
+<ul class="thumbnail-list">
+    <?php
+    for($i=0; $i<count($this->stages); $i++)
+    {
+        $stage = $this->stages[$i];
+
+        echo "<li><img width='128px' src='" . $stage["src"] . "'><h3>" . $stage["name"] . "</h3><i class='date-tag'>" . $stage["date"] . "</i><p>" . $stage["description"] . "</p><ul class='horizontal-list'>";
+
+        foreach($stage["tournaments"] as $tournament)
+        {
+            echo "<li class='horizontal-list-item'>" . $tournament["description"] . "</li>";
+        }
+        
+        if($stage["is_enabled"] == 1)
+        {
+            echo "<li class='horizontal-list-item horizontal-list-item-button'><b>Register!</b></li>";
+        }
+        
+        echo "</ul></li><div class='clearfix'></div><div class='divider'></div>";
+    }
+    ?>
+</ul>

@@ -24,7 +24,10 @@ ClassLoader::addNamespaces(array
 ClassLoader::addClasses(array
 (
 	// Modules
-	'beachcup\ModuleStageMap' => 'system/modules/beachcup/modules/ModuleStageMap.php',
+	'beachcup\ModuleGameResults'  => 'system/modules/beachcup/modules/ModuleGameResults.php',
+	'beachcup\ModuleStageList'    => 'system/modules/beachcup/modules/ModuleStageList.php',
+	'beachcup\ModuleStageMap'     => 'system/modules/beachcup/modules/ModuleStageMap.php',
+	'beachcup\ModuleTotalResults' => 'system/modules/beachcup/modules/ModuleTotalResults.php',
 ));
 
 
@@ -33,5 +36,8 @@ ClassLoader::addClasses(array
  */
 TemplateLoader::addFiles(array
 (
-	'mod_stage_map' => 'system/modules/beachcup/templates',
+	'mod_game_results'  => 'system/modules/beachcup/templates',
+	'mod_stage_list'    => 'system/modules/beachcup/templates',
+	'mod_stage_map'     => 'system/modules/beachcup/templates',
+	'mod_total_results' => 'system/modules/beachcup/templates',
 ));
