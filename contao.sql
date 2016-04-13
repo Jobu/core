@@ -1,39 +1,38 @@
--- phpMyAdmin SQL Dump
--- version 4.5.0.2
+﻿-- phpMyAdmin SQL Dump
+-- version 2.11.11.3
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 09. Apr 2016 um 13:06
--- Server-Version: 10.0.17-MariaDB
--- PHP-Version: 5.6.14
+-- Host: 127.0.0.3
+-- Erstellungszeit: 12. April 2016 um 21:53
+-- Server Version: 5.6.19
+-- PHP-Version: 4.4.9
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
--- Datenbank: `contao`
+-- Datenbank: `db355346_1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_article`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_article`
 --
 
 CREATE TABLE `tl_article` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `author` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `author` int(10) unsigned NOT NULL DEFAULT '0',
   `inColumn` varchar(32) NOT NULL DEFAULT '',
   `keywords` text,
   `showTeaser` char(1) NOT NULL DEFAULT '',
@@ -48,11 +47,14 @@ CREATE TABLE `tl_article` (
   `space` varchar(64) NOT NULL DEFAULT '',
   `published` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
-  `stop` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stop` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`),
+  KEY `pid_start_stop_published_sorting` (`pid`,`start`,`stop`,`published`,`sorting`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
--- Daten für Tabelle `tl_article`
+-- Daten fÃ¼r Tabelle `tl_article`
 --
 
 INSERT INTO `tl_article` (`id`, `pid`, `sorting`, `tstamp`, `title`, `alias`, `author`, `inColumn`, `keywords`, `showTeaser`, `teaserCssID`, `teaser`, `printable`, `customTpl`, `protected`, `groups`, `guests`, `cssID`, `space`, `published`, `start`, `stop`) VALUES
@@ -60,27 +62,41 @@ INSERT INTO `tl_article` (`id`, `pid`, `sorting`, `tstamp`, `title`, `alias`, `a
 (11, 10, 128, 1458740508, 'Etappen', 'etappen', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
 (10, 9, 128, 1457018816, 'Turnier', 'turnier', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '', '', ''),
 (9, 8, 128, 1457020425, 'Home', 'home', 1, 'main', '', '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', NULL, '', '', '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '1', '', ''),
-(16, 15, 128, 1460195580, 'Gesamtstände', 'gesamtstaende', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(16, 15, 128, 1460195580, 'GesamtstÃ¤nde', 'gesamtstaende', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
 (14, 13, 128, 1457018870, 'Ranking', 'ranking', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '', '', ''),
 (15, 14, 128, 1460104024, 'Spielergebnisse', 'spielergebnisse', 1, 'main', '', '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', NULL, '', '', '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '1', '', ''),
-(13, 12, 128, 1458740008, 'Landesmeisterschaft', 'landesmeisterschaft', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(13, 12, 128, 1460404274, 'Landesmeisterschaft', 'landesmeisterschaft', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '', '', ''),
 (17, 16, 128, 1457018923, 'Media', 'media', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '', '', ''),
 (18, 17, 128, 1458739961, 'Fotos', 'fotos', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
 (19, 18, 128, 1458739980, 'Videos', 'videos', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
 (20, 19, 128, 1457018971, 'Kontakt', 'kontakt', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '', '', ''),
 (21, 20, 128, 1460096928, 'Kontaktformular', 'kontaktformular', 1, 'main', '', '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', NULL, '', '', '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '1', '', ''),
 (22, 21, 128, 1458739656, 'Impressum', 'impressum', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
-(24, 23, 128, 1457449654, 'Nachrichten', 'nachrichten', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', '');
+(24, 23, 128, 1457449654, 'Nachrichten', 'nachrichten', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(25, 25, 128, 1460401996, 'Notizie', 'notizie', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(26, 26, 128, 1460402114, 'Home', 'home-it', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(27, 27, 128, 1460402167, 'Torneo', 'torneo', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(28, 28, 128, 1460402227, 'Tappe', 'tappe', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(29, 29, 128, 1460402303, 'Regolamento', 'regolamento', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(30, 30, 128, 1460402702, 'Risultati', 'risultati', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(31, 31, 128, 1460403392, 'Partite', 'partite', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(32, 32, 128, 1460403451, 'Classifiche', 'classifiche', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(33, 33, 128, 1460403662, 'Foto e Video', 'foto-e-video', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(34, 34, 128, 1460403692, 'Foto', 'foto', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(35, 35, 128, 1460403743, 'Video', 'video-it', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(36, 36, 128, 1460403881, 'Contatto', 'contatto', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(37, 37, 128, 1460404009, 'Modulo di contatto', 'modulo-di-contatto', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', ''),
+(38, 38, 128, 1460404188, 'Note Legali', 'note-legali', 1, 'main', NULL, '', '', NULL, '', '', '', NULL, '', '', '', '1', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_organizer`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_organizer`
 --
 
 CREATE TABLE `tl_beachcup_organizer` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `contact_person` text NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -89,24 +105,25 @@ CREATE TABLE `tl_beachcup_organizer` (
   `name_de` varchar(255) NOT NULL DEFAULT '',
   `name_it` varchar(255) NOT NULL DEFAULT '',
   `description_de` text NOT NULL,
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Daten für Tabelle `tl_beachcup_organizer`
+-- Daten fÃ¼r Tabelle `tl_beachcup_organizer`
 --
 
 INSERT INTO `tl_beachcup_organizer` (`id`, `tstamp`, `contact_person`, `email`, `phone`, `fax`, `mobile_phone`, `name_de`, `name_it`, `description_de`, `description_it`) VALUES
-(6, 1458672224, '', '', '', '', '', 'AS Meran & STS Sport Team Südtirol', 'AS Merano & STS Sport Team Südtirol', '', '');
+(6, 1458672224, '', '', '', '', '', 'AS Meran & STS Sport Team SÃ¼dtirol', 'AS Merano & STS Sport Team SÃ¼dtirol', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_player`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_player`
 --
 
 CREATE TABLE `tl_beachcup_player` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL DEFAULT '',
   `surname` varchar(255) NOT NULL DEFAULT '',
   `birth_date` varchar(11) NOT NULL DEFAULT '',
@@ -127,36 +144,43 @@ CREATE TABLE `tl_beachcup_player` (
   `has_shirt` tinyint(1) NOT NULL DEFAULT '0',
   `username` varchar(255) NOT NULL DEFAULT '',
   `password` varchar(255) NOT NULL DEFAULT '',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `player_level` int(10) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `player_level` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `phone_number` (`phone_number`),
+  UNIQUE KEY `tax_number` (`tax_number`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
--- Daten für Tabelle `tl_beachcup_player`
+-- Daten fÃ¼r Tabelle `tl_beachcup_player`
 --
 
 INSERT INTO `tl_beachcup_player` (`id`, `name`, `surname`, `birth_date`, `birth_place`, `gender`, `address`, `zip_code`, `city`, `country`, `email`, `phone_number`, `tax_number`, `shirt_size`, `is_confirmed`, `is_fipav`, `has_medical_certificate`, `has_privacy`, `has_shirt`, `username`, `password`, `tstamp`, `player_level`) VALUES
 (17, 'Jakob', 'Pallhuber', '873064800', 'Innichen', 'male', 'Mitterfeldweg 7/A', 39030, 'Olang', 'it', 'jakob.pallhuber@gmail.com', '03485318251', 'PLLJKB97P01H786E', 'M', 1, 0, 1, 1, 0, 'Joge', '$2y$10$35T1pCPIayWQQNgtaw3cluvEXombCNK5Al4BmRbQ5U4ZtqvtAX38e', 1450015436, 11),
 (18, 'Greta', 'Pallhuber', '978994800', 'Innichen', 'female', 'Mitterfeldweg 7/A', 39030, 'Olang', 'it', 'greta.pallhuber@gmail.com', '3474934485', 'sadfassadfasdfas', 'S', 1, 0, 1, 1, 0, 'greta', '$2y$10$KCDFgwHRjeRcCKbXlCCL9OVTlyekWeE0ZiXdWFCxtyTd0pll3l7VC', 1450015407, 11),
-(22, 'Peter', 'Noname', '1451084400', 'Bruneck', 'male', 'Starße', 39030, 'Bruneck', 'it', 'noname@gmail.com', '3696276384', 'sadfassadfasdfae', 'M', 0, 0, 0, 0, 0, 'noname', '$2y$10$NZPRvHWZ6i1FYkPrcouaVeBVCR4MaIpRdui13eDhsrpvSGDmUZWne', 1450015446, 8),
+(22, 'Peter', 'Noname', '1451084400', 'Bruneck', 'male', 'StarÃŸe', 39030, 'Bruneck', 'it', 'noname@gmail.com', '3696276384', 'sadfassadfasdfae', 'M', 0, 0, 0, 0, 0, 'noname', '$2y$10$NZPRvHWZ6i1FYkPrcouaVeBVCR4MaIpRdui13eDhsrpvSGDmUZWne', 1450015446, 8),
 (23, 'Isolde', 'Wagner', '1450393200', 'Sterzing', 'female', 'Bahnhof', 40040, 'Sterzing', 'it', 'isi@gmail.com', '8458366274', 'sadfassadfasdsdd', 'S', 0, 0, 0, 0, 0, 'isi', '$2y$10$cHaU9eOT4QFwb35ZCcjneegC3iWrm8s.yPgCp2fr9cTCwA3GSFzwi', 1450015417, 8);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_player_level`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_player_level`
 --
 
 CREATE TABLE `tl_beachcup_player_level` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL DEFAULT '',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `description_de` text NOT NULL,
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Daten für Tabelle `tl_beachcup_player_level`
+-- Daten fÃ¼r Tabelle `tl_beachcup_player_level`
 --
 
 INSERT INTO `tl_beachcup_player_level` (`id`, `code`, `tstamp`, `description_de`, `description_it`) VALUES
@@ -174,19 +198,20 @@ INSERT INTO `tl_beachcup_player_level` (`id`, `code`, `tstamp`, `description_de`
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_registration`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_registration`
 --
 
 CREATE TABLE `tl_beachcup_registration` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tournament_id` int(10) UNSIGNED NOT NULL,
-  `team_id` int(10) UNSIGNED NOT NULL,
-  `points` int(10) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `tournament_id` int(10) unsigned NOT NULL,
+  `team_id` int(10) unsigned NOT NULL,
+  `points` int(10) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=32 ;
 
 --
--- Daten für Tabelle `tl_beachcup_registration`
+-- Daten fÃ¼r Tabelle `tl_beachcup_registration`
 --
 
 INSERT INTO `tl_beachcup_registration` (`id`, `tstamp`, `tournament_id`, `team_id`, `points`) VALUES
@@ -204,19 +229,21 @@ INSERT INTO `tl_beachcup_registration` (`id`, `tstamp`, `tournament_id`, `team_i
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_registration_state`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_registration_state`
 --
 
 CREATE TABLE `tl_beachcup_registration_state` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `code` varchar(255) NOT NULL DEFAULT '',
   `description_de` text NOT NULL,
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 --
--- Daten für Tabelle `tl_beachcup_registration_state`
+-- Daten fÃ¼r Tabelle `tl_beachcup_registration_state`
 --
 
 INSERT INTO `tl_beachcup_registration_state` (`id`, `tstamp`, `code`, `description_de`, `description_it`) VALUES
@@ -229,22 +256,23 @@ INSERT INTO `tl_beachcup_registration_state` (`id`, `tstamp`, `code`, `descripti
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_season`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_season`
 --
 
 CREATE TABLE `tl_beachcup_season` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `year` int(11) NOT NULL DEFAULT '2015',
   `active` tinyint(1) NOT NULL DEFAULT '0',
   `name_de` varchar(255) NOT NULL DEFAULT '',
   `description_de` text NOT NULL,
   `name_it` varchar(255) NOT NULL DEFAULT '',
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Daten für Tabelle `tl_beachcup_season`
+-- Daten fÃ¼r Tabelle `tl_beachcup_season`
 --
 
 INSERT INTO `tl_beachcup_season` (`id`, `tstamp`, `year`, `active`, `name_de`, `description_de`, `name_it`, `description_it`) VALUES
@@ -253,26 +281,27 @@ INSERT INTO `tl_beachcup_season` (`id`, `tstamp`, `year`, `active`, `name_de`, `
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_stage`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_stage`
 --
 
 CREATE TABLE `tl_beachcup_stage` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `start_date` varchar(11) NOT NULL DEFAULT '',
   `end_date` varchar(11) NOT NULL DEFAULT '',
-  `organizer_id` int(10) UNSIGNED NOT NULL,
-  `venue_id` int(10) UNSIGNED NOT NULL,
-  `season_id` int(10) UNSIGNED NOT NULL,
+  `organizer_id` int(10) unsigned NOT NULL,
+  `venue_id` int(10) unsigned NOT NULL,
+  `season_id` int(10) unsigned NOT NULL,
   `is_enabled` tinyint(1) NOT NULL DEFAULT '0',
   `name_de` varchar(255) NOT NULL DEFAULT '',
   `description_de` text NOT NULL,
   `name_it` varchar(255) NOT NULL DEFAULT '',
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
--- Daten für Tabelle `tl_beachcup_stage`
+-- Daten fÃ¼r Tabelle `tl_beachcup_stage`
 --
 
 INSERT INTO `tl_beachcup_stage` (`id`, `tstamp`, `start_date`, `end_date`, `organizer_id`, `venue_id`, `season_id`, `is_enabled`, `name_de`, `description_de`, `name_it`, `description_it`) VALUES
@@ -286,18 +315,19 @@ INSERT INTO `tl_beachcup_stage` (`id`, `tstamp`, `start_date`, `end_date`, `orga
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_team`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_team`
 --
 
 CREATE TABLE `tl_beachcup_team` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `player_1` int(10) UNSIGNED NOT NULL,
-  `player_2` int(10) UNSIGNED NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `player_1` int(10) unsigned NOT NULL,
+  `player_2` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
--- Daten für Tabelle `tl_beachcup_team`
+-- Daten fÃ¼r Tabelle `tl_beachcup_team`
 --
 
 INSERT INTO `tl_beachcup_team` (`id`, `tstamp`, `player_1`, `player_2`) VALUES
@@ -309,66 +339,69 @@ INSERT INTO `tl_beachcup_team` (`id`, `tstamp`, `player_1`, `player_2`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_tournament`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_tournament`
 --
 
 CREATE TABLE `tl_beachcup_tournament` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `type_id` int(10) UNSIGNED NOT NULL,
-  `stage_id` int(10) UNSIGNED NOT NULL,
-  `max_teams` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `type_id` int(10) unsigned NOT NULL,
+  `stage_id` int(10) unsigned NOT NULL,
+  `max_teams` int(10) unsigned NOT NULL DEFAULT '0',
   `name_de` varchar(255) NOT NULL DEFAULT '',
   `name_it` varchar(255) NOT NULL DEFAULT '',
-  `date` varchar(11) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date` varchar(11) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=33 ;
 
 --
--- Daten für Tabelle `tl_beachcup_tournament`
+-- Daten fÃ¼r Tabelle `tl_beachcup_tournament`
 --
 
 INSERT INTO `tl_beachcup_tournament` (`id`, `tstamp`, `type_id`, `stage_id`, `max_teams`, `name_de`, `name_it`, `date`) VALUES
 (9, 1458038228, 2, 14, 10, 'U18 weiblich', 'U18 femminile', ''),
-(10, 1458038248, 2, 14, 10, 'U17 männlich', 'U17 maschile', ''),
+(10, 1458038248, 2, 14, 10, 'U17 mÃ¤nnlich', 'U17 maschile', ''),
 (11, 1458038275, 2, 14, 10, 'U16 weiblich', 'U16 femminile', ''),
-(12, 1458038304, 2, 14, 10, 'U15 männlich', 'U15 maschile', ''),
+(12, 1458038304, 2, 14, 10, 'U15 mÃ¤nnlich', 'U15 maschile', ''),
 (13, 1458038330, 2, 14, 10, 'U14 weiblich', 'U146 femminile', ''),
-(14, 1458038354, 2, 14, 10, 'U13 männlich', 'U13 maschile', ''),
+(14, 1458038354, 2, 14, 10, 'U13 mÃ¤nnlich', 'U13 maschile', ''),
 (15, 1458038736, 1, 14, 10, 'Open Herren', 'Open maschile', ''),
 (16, 1458038751, 1, 14, 10, 'Open Damen', 'Open femminile', ''),
 (17, 1458038780, 3, 15, 10, 'Freizeit Herren', 'Amatoriale maschile', ''),
 (18, 1458038806, 2, 15, 10, 'U16 weiblich', 'U16 femminile', ''),
-(19, 1458038831, 2, 15, 10, 'U15 männlich', 'U15 maschile', ''),
+(19, 1458038831, 2, 15, 10, 'U15 mÃ¤nnlich', 'U15 maschile', ''),
 (20, 1458038855, 1, 16, 10, 'Open Herren', 'Open maschile', ''),
 (21, 1458038868, 1, 16, 10, 'Open Damen', 'Open femminile', ''),
 (22, 1458038888, 2, 17, 10, 'U16 weiblich', 'U16 femminile', ''),
-(23, 1458038906, 2, 17, 10, 'U15 männlich', 'U15 maschile', ''),
+(23, 1458038906, 2, 17, 10, 'U15 mÃ¤nnlich', 'U15 maschile', ''),
 (24, 1458038930, 2, 17, 10, 'U14 weiblich', 'U14 femminile', ''),
-(25, 1458038947, 2, 17, 10, 'U13 männlich', 'U13 maschile', ''),
+(25, 1458038947, 2, 17, 10, 'U13 mÃ¤nnlich', 'U13 maschile', ''),
 (26, 1458038966, 3, 18, 10, 'Freizeit Herren', 'Amatoriale maschile', ''),
 (27, 1458038986, 2, 18, 10, 'U18 weiblich', 'U18 femminile', ''),
-(28, 1458039008, 2, 18, 10, 'U17 männlich', 'U17 maschile', ''),
+(28, 1458039008, 2, 18, 10, 'U17 mÃ¤nnlich', 'U17 maschile', ''),
 (29, 1458039024, 2, 18, 10, 'U14 weiblich', 'U14 femminile', ''),
-(30, 1458039044, 2, 18, 10, 'U13 männlich', 'U13 maschile', ''),
+(30, 1458039044, 2, 18, 10, 'U13 mÃ¤nnlich', 'U13 maschile', ''),
 (31, 1458039080, 1, 19, 10, 'Open Herren', 'Open maschile', ''),
 (32, 1458039094, 1, 19, 10, 'Open Damen', 'Open femminile', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_tournament_type`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_tournament_type`
 --
 
 CREATE TABLE `tl_beachcup_tournament_type` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `code` varchar(255) NOT NULL DEFAULT '',
   `description_de` text NOT NULL,
-  `description_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description_it` text NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `code` (`code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Daten für Tabelle `tl_beachcup_tournament_type`
+-- Daten fÃ¼r Tabelle `tl_beachcup_tournament_type`
 --
 
 INSERT INTO `tl_beachcup_tournament_type` (`id`, `tstamp`, `code`, `description_de`, `description_it`) VALUES
@@ -380,12 +413,12 @@ INSERT INTO `tl_beachcup_tournament_type` (`id`, `tstamp`, `code`, `description_
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_beachcup_venue`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_beachcup_venue`
 --
 
 CREATE TABLE `tl_beachcup_venue` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `picture` binary(16) DEFAULT NULL,
   `zip_code` int(11) DEFAULT NULL,
   `longitude` double NOT NULL DEFAULT '0',
@@ -397,64 +430,71 @@ CREATE TABLE `tl_beachcup_venue` (
   `address_de` text NOT NULL,
   `address_it` text NOT NULL,
   `city_de` text NOT NULL,
-  `city_it` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `city_it` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
--- Daten für Tabelle `tl_beachcup_venue`
+-- Daten fÃ¼r Tabelle `tl_beachcup_venue`
 --
 
 INSERT INTO `tl_beachcup_venue` (`id`, `tstamp`, `picture`, `zip_code`, `longitude`, `latitude`, `name_de`, `name_it`, `description_de`, `description_it`, `address_de`, `address_it`, `city_de`, `city_it`) VALUES
-(3, 1457016646, 0xf7cd9751a19611e58304448a5b243f5c, 39030, 12.024752, 46.768522, 'Olang', 'Valdaora', '', '', 'Sportzone', 'Via Sportzone', 'Olang', 'Valdaora'),
+(3, 1457016646, '÷Í—Q¡–åƒDŠ[$?\\', 39030, 12.024752, 46.768522, 'Olang', 'Valdaora', '', '', 'Sportzone', 'Via Sportzone', 'Olang', 'Valdaora'),
 (6, 1457199914, NULL, 2345, 11.348244, 46.493796, 'Bozen', 'sadf', '', '', 'asdf', 'asdf', 'asdf', 'sadf'),
-(7, 1458039586, 0xf7cd9751a19611e58304448a5b243f5c, 39019, 11.160108, 46.68585, 'Tennis/Beach-Volley Dorf Tirol', 'Impianti tennis/beach-volley Tirolo', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Hauptstrasse 1', 'Via Principale 1', 'Dorf Tirol', 'Tirolo'),
-(8, 1458039524, 0xf7cd9751a19611e58304448a5b243f5c, 39043, 11.57601, 46.644968, 'Freibad Klausen', 'Piscina scoperta Chiusa', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Klausen', 'Chiusa'),
-(9, 1458039556, 0xf7cd9751a19611e58304448a5b243f5c, 39036, 11.942462, 46.566633, 'Sportzone Sankt Kassian', 'Zona sportiva San Cassiano', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Sankt Kassian', 'San Cassiano'),
-(10, 1458039610, 0xf7cd9751a19611e58304448a5b243f5c, 39040, 11.254671, 46.345471, 'Tennis/Beach-Volley Tramin', 'Impianti tennis/beach-volley Termeno', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Tramin', 'Termeno'),
-(11, 1458039452, 0xf7cd9751a19611e58304448a5b243f5c, 39049, 11.439338, 46.893184, 'Balneum Sterzing', 'Balneum Vipiteno', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Sterzing', 'Vipiteno'),
-(12, 1458039482, 0xf7cd9751a19611e58304448a5b243f5c, 39031, 11.947522, 46.792163, 'Freibad Bruneck', 'Piscina scoperta Brunico', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Bruneck', 'Brunico');
+(7, 1458039586, '÷Í—Q¡–åƒDŠ[$?\\', 39019, 11.160108, 46.68585, 'Tennis/Beach-Volley Dorf Tirol', 'Impianti tennis/beach-volley Tirolo', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Hauptstrasse 1', 'Via Principale 1', 'Dorf Tirol', 'Tirolo'),
+(8, 1458039524, '÷Í—Q¡–åƒDŠ[$?\\', 39043, 11.57601, 46.644968, 'Freibad Klausen', 'Piscina scoperta Chiusa', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Klausen', 'Chiusa'),
+(9, 1458039556, '÷Í—Q¡–åƒDŠ[$?\\', 39036, 11.942462, 46.566633, 'Sportzone Sankt Kassian', 'Zona sportiva San Cassiano', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Sankt Kassian', 'San Cassiano'),
+(10, 1458039610, '÷Í—Q¡–åƒDŠ[$?\\', 39040, 11.254671, 46.345471, 'Tennis/Beach-Volley Tramin', 'Impianti tennis/beach-volley Termeno', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Tramin', 'Termeno'),
+(11, 1458039452, '÷Í—Q¡–åƒDŠ[$?\\', 39049, 11.439338, 46.893184, 'Balneum Sterzing', 'Balneum Vipiteno', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Sterzing', 'Vipiteno'),
+(12, 1458039482, '÷Í—Q¡–åƒDŠ[$?\\', 39031, 11.947522, 46.792163, 'Freibad Bruneck', 'Piscina scoperta Brunico', '<p>DE: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '<p>IT: Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', 'Teststrasse 1', 'Via Test 1', 'Bruneck', 'Brunico');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_calendar`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_calendar`
 --
 
 CREATE TABLE `tl_calendar` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `protected` char(1) NOT NULL DEFAULT '',
   `groups` blob,
   `allowComments` char(1) NOT NULL DEFAULT '',
   `notify` varchar(32) NOT NULL DEFAULT '',
   `sortOrder` varchar(32) NOT NULL DEFAULT '',
-  `perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
   `moderate` char(1) NOT NULL DEFAULT '',
   `bbcode` char(1) NOT NULL DEFAULT '',
   `requireLogin` char(1) NOT NULL DEFAULT '',
-  `disableCaptcha` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `disableCaptcha` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_calendar`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_calendar_events`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_calendar_events`
 --
 
 CREATE TABLE `tl_calendar_events` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `author` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `author` int(10) unsigned NOT NULL DEFAULT '0',
   `addTime` char(1) NOT NULL DEFAULT '',
-  `startTime` int(10) UNSIGNED DEFAULT NULL,
-  `endTime` int(10) UNSIGNED DEFAULT NULL,
-  `startDate` int(10) UNSIGNED DEFAULT NULL,
-  `endDate` int(10) UNSIGNED DEFAULT NULL,
+  `startTime` int(10) unsigned DEFAULT NULL,
+  `endTime` int(10) unsigned DEFAULT NULL,
+  `startDate` int(10) unsigned DEFAULT NULL,
+  `endDate` int(10) unsigned DEFAULT NULL,
   `location` varchar(255) NOT NULL DEFAULT '',
   `teaser` text,
   `addImage` char(1) NOT NULL DEFAULT '',
@@ -468,98 +508,129 @@ CREATE TABLE `tl_calendar_events` (
   `floating` varchar(32) NOT NULL DEFAULT '',
   `recurring` char(1) NOT NULL DEFAULT '',
   `repeatEach` varchar(64) NOT NULL DEFAULT '',
-  `repeatEnd` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `recurrences` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `repeatEnd` int(10) unsigned NOT NULL DEFAULT '0',
+  `recurrences` smallint(5) unsigned NOT NULL DEFAULT '0',
   `addEnclosure` char(1) NOT NULL DEFAULT '',
   `enclosure` blob,
   `source` varchar(32) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `articleId` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
+  `articleId` int(10) unsigned NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL DEFAULT '',
   `target` char(1) NOT NULL DEFAULT '',
   `cssClass` varchar(255) NOT NULL DEFAULT '',
   `noComments` char(1) NOT NULL DEFAULT '',
   `published` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
-  `stop` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stop` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`),
+  KEY `pid_start_stop_published` (`pid`,`start`,`stop`,`published`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_calendar_events`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_calendar_feed`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_calendar_feed`
 --
 
 CREATE TABLE `tl_calendar_feed` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `language` varchar(32) NOT NULL DEFAULT '',
   `calendars` blob,
   `format` varchar(32) NOT NULL DEFAULT '',
   `source` varchar(32) NOT NULL DEFAULT '',
-  `maxItems` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `maxItems` smallint(5) unsigned NOT NULL DEFAULT '0',
   `feedBase` varchar(255) NOT NULL DEFAULT '',
-  `description` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description` text,
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_calendar_feed`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_comments`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_comments`
 --
 
 CREATE TABLE `tl_comments` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `source` varchar(32) NOT NULL DEFAULT '',
-  `parent` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `parent` int(10) unsigned NOT NULL DEFAULT '0',
   `date` varchar(64) NOT NULL DEFAULT '',
   `name` varchar(64) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `website` varchar(128) NOT NULL DEFAULT '',
   `comment` text,
   `addReply` char(1) NOT NULL DEFAULT '',
-  `author` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `author` int(10) unsigned NOT NULL DEFAULT '0',
   `reply` text,
   `published` char(1) NOT NULL DEFAULT '',
   `ip` varchar(64) NOT NULL DEFAULT '',
-  `notified` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `notified` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `published` (`published`),
+  KEY `source_parent_published` (`source`,`parent`,`published`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_comments`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_comments_notify`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_comments_notify`
 --
 
 CREATE TABLE `tl_comments_notify` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `source` varchar(32) NOT NULL DEFAULT '',
-  `parent` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `parent` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(128) NOT NULL DEFAULT '',
   `email` varchar(128) NOT NULL DEFAULT '',
   `url` varchar(255) NOT NULL DEFAULT '',
   `addedOn` varchar(10) NOT NULL DEFAULT '',
   `ip` varchar(64) NOT NULL DEFAULT '',
   `tokenConfirm` varchar(32) NOT NULL DEFAULT '',
-  `tokenRemove` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `tokenRemove` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `tokenRemove` (`tokenRemove`),
+  KEY `source_parent_tokenConfirm` (`source`,`parent`,`tokenConfirm`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_comments_notify`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_content`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_content`
 --
 
 CREATE TABLE `tl_content` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
   `ptable` varchar(64) NOT NULL DEFAULT '',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `type` varchar(32) NOT NULL DEFAULT '',
   `headline` varchar(255) NOT NULL DEFAULT '',
   `text` mediumtext,
@@ -582,7 +653,7 @@ CREATE TABLE `tl_content` (
   `tfoot` char(1) NOT NULL DEFAULT '',
   `tleft` char(1) NOT NULL DEFAULT '',
   `sortable` char(1) NOT NULL DEFAULT '',
-  `sortIndex` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `sortIndex` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sortOrder` varchar(32) NOT NULL DEFAULT '',
   `mooHeadline` varchar(255) NOT NULL DEFAULT '',
   `mooStyle` varchar(255) NOT NULL DEFAULT '',
@@ -600,9 +671,9 @@ CREATE TABLE `tl_content` (
   `multiSRC` blob,
   `orderSRC` blob,
   `useHomeDir` char(1) NOT NULL DEFAULT '',
-  `perRow` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `numberOfItems` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `perRow` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `numberOfItems` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sortBy` varchar(32) NOT NULL DEFAULT '',
   `metaIgnore` char(1) NOT NULL DEFAULT '',
   `galleryTpl` varchar(64) NOT NULL DEFAULT '',
@@ -612,15 +683,15 @@ CREATE TABLE `tl_content` (
   `posterSRC` binary(16) DEFAULT NULL,
   `playerSize` varchar(64) NOT NULL DEFAULT '',
   `autoplay` char(1) NOT NULL DEFAULT '',
-  `sliderDelay` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sliderSpeed` int(10) UNSIGNED NOT NULL DEFAULT '300',
-  `sliderStartSlide` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `sliderDelay` int(10) unsigned NOT NULL DEFAULT '0',
+  `sliderSpeed` int(10) unsigned NOT NULL DEFAULT '300',
+  `sliderStartSlide` smallint(5) unsigned NOT NULL DEFAULT '0',
   `sliderContinuous` char(1) NOT NULL DEFAULT '',
-  `cteAlias` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `articleAlias` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `article` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `form` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `module` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cteAlias` int(10) unsigned NOT NULL DEFAULT '0',
+  `articleAlias` int(10) unsigned NOT NULL DEFAULT '0',
+  `article` int(10) unsigned NOT NULL DEFAULT '0',
+  `form` int(10) unsigned NOT NULL DEFAULT '0',
+  `module` int(10) unsigned NOT NULL DEFAULT '0',
   `protected` char(1) NOT NULL DEFAULT '',
   `groups` blob,
   `guests` char(1) NOT NULL DEFAULT '',
@@ -630,64 +701,68 @@ CREATE TABLE `tl_content` (
   `start` varchar(10) NOT NULL DEFAULT '',
   `stop` varchar(10) NOT NULL DEFAULT '',
   `com_order` varchar(32) NOT NULL DEFAULT '',
-  `com_perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `com_perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
   `com_moderate` char(1) NOT NULL DEFAULT '',
   `com_bbcode` char(1) NOT NULL DEFAULT '',
   `com_disableCaptcha` char(1) NOT NULL DEFAULT '',
   `com_requireLogin` char(1) NOT NULL DEFAULT '',
-  `com_template` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `com_template` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid_ptable_invisible_sorting` (`pid`,`ptable`,`invisible`,`sorting`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
--- Daten für Tabelle `tl_content`
+-- Daten fÃ¼r Tabelle `tl_content`
 --
 
 INSERT INTO `tl_content` (`id`, `pid`, `ptable`, `sorting`, `tstamp`, `type`, `headline`, `text`, `addImage`, `singleSRC`, `alt`, `title`, `size`, `imagemargin`, `imageUrl`, `fullsize`, `caption`, `floating`, `html`, `listtype`, `listitems`, `tableitems`, `summary`, `thead`, `tfoot`, `tleft`, `sortable`, `sortIndex`, `sortOrder`, `mooHeadline`, `mooStyle`, `mooClasses`, `highlight`, `shClass`, `code`, `url`, `target`, `titleText`, `linkTitle`, `embed`, `rel`, `useImage`, `multiSRC`, `orderSRC`, `useHomeDir`, `perRow`, `perPage`, `numberOfItems`, `sortBy`, `metaIgnore`, `galleryTpl`, `customTpl`, `playerSRC`, `youtube`, `posterSRC`, `playerSize`, `autoplay`, `sliderDelay`, `sliderSpeed`, `sliderStartSlide`, `sliderContinuous`, `cteAlias`, `articleAlias`, `article`, `form`, `module`, `protected`, `groups`, `guests`, `cssID`, `space`, `invisible`, `start`, `stop`, `com_order`, `com_perPage`, `com_moderate`, `com_bbcode`, `com_disableCaptcha`, `com_requireLogin`, `com_template`) VALUES
 (9, 24, 'tl_article', 128, 1457449996, 'module', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:0:"";}', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 14, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (6, 9, 'tl_article', 64, 1457193165, 'module', '', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 11, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
-(10, 22, 'tl_article', 128, 1460102145, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:9:"Impressum";}', '<p><strong>SSV Bruneck Amateursportverein Sektion Volleyball</strong><br>Ferraristr. 26<br>I-39031 Bruneck (BZ)</p>\n<p>MwSt.Nr./Steuernr. 92015230219</p>\n<p>Sämtliche Bilder und Texte[nbsp]dieser Website sind urheberrechtlich geschützt. Jegliche Verwendung ohne schriftliche Genehmigung ist untersagt. Wir weisen ausdrücklich darauf hin, dass wir keinerlei Einfluss auf die Gestaltung und die Inhalte von Seiten haben, die von dieser Website aus verlinkt sind. Somit übernehmen wir keinerlei Haftung[nbsp]oder Garantie für den Inhalt dieser Seiten. Wir distanzieren uns klar von der auf diesen Seiten zum Ausdruck gebrachten Meinung, da diese nicht immer unserer Meinung entsprechen kann.</p>\n<p>Copyright: © SSV Bruneck Amateuersportverein</p>\n<p>[nbsp]</p>\n<p>[nbsp]</p>\n<h2>Nutzung von Cookies</h2>\n<p>Diese Website verwendet Cookies und verwandte Technologien um das korrekte Funktionieren zu ermöglichen und die Nutzung der angebotenen Dienste zu erleichtern.</p>\n<p><strong>Was sind Cookies?</strong><br>Ein Cookie ist ein kurzes Text-Snippet, das von einer von Ihnen besuchten Website an Ihren Browser gesendet wird. Es speichert Informationen zu Ihrem letzten Besuch, wie Ihre bevorzugte Sprache oder andere Einstellungen. So finden Sie sich auf der Website schneller zurecht und nutzen sie effektiver, wenn Sie sie das nächste Mal aufrufen. Cookies spielen eine wichtige Rolle. Ohne sie wäre das Surfen im Web oft frustrierend.</p>\n<p><strong>Warum nutzen wir Cookies?</strong><br>Wir nutzen diese Informationen, um unsere Website zu verbessern, damit unsere Besucher das bestmögliche Angebot erhalten. Unsere Plattform verwendet auch Cookies und ähnliche Technologien von sorgfältig ausgewählten Drittanbietern.</p>\n<p><strong>Arten von Cookies</strong><br>Diese Website verwendet folgende Cookies:</p>\n<ul>\n<li>technische Cookies und Cookies für analytische Zwecke: diese Cookies sammeln Informationen über die Nutzung der Website und helfen uns Auswertungen über die Auffindbarkeit der Informationen auf unserer Seite zu bekommen. Dies erfolgt zum Teil über einen Drittanbieter (Google). Diese Informationen sind nicht personenbezogen.</li>\n<li>Drittanbieter-Cookies: dies sind Cookies von anderen Anbietern. Beispiele dafür sind “social plugins” für Facebook, Twitter und Google+. Der Sinn davon ist z.B. das Teilen von Inhalten auf dne Social Network Plattformen zu ermöglichen oder zu erleichtern. Genaueres erfahren Sie auf den Informations-Seiten der Drittanbieter.</li>\n</ul>\n<p><strong>Cookies verwalten</strong><br>Sie können Cookies nach Belieben steuern und/oder löschen. Wie, erfahren Sie <a href="http://www.allaboutcookies.org/" target="_blank">hier</a>. Sie können alle auf Ihrem Rechner abgelegten Cookies löschen und die meisten Browser so einstellen, dass die Ablage von Cookies verhindert wird. Dann müssen Sie aber möglicherweise einige Einstellungen bei jedem Besuch einer Seite manuell vornehmen und die Beeinträchtigung mancher Funktionen in Kauf nehmen.</p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
+(10, 22, 'tl_article', 128, 1460102145, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:9:"Impressum";}', '<p><strong>SSV Bruneck Amateursportverein Sektion Volleyball</strong><br>Ferraristr. 26<br>I-39031 Bruneck (BZ)</p>\n<p>MwSt.Nr./Steuernr. 92015230219</p>\n<p>SÃ¤mtliche Bilder und Texte[nbsp]dieser Website sind urheberrechtlich geschÃ¼tzt. Jegliche Verwendung ohne schriftliche Genehmigung ist untersagt. Wir weisen ausdrÃ¼cklich darauf hin, dass wir keinerlei Einfluss auf die Gestaltung und die Inhalte von Seiten haben, die von dieser Website aus verlinkt sind. Somit Ã¼bernehmen wir keinerlei Haftung[nbsp]oder Garantie fÃ¼r den Inhalt dieser Seiten. Wir distanzieren uns klar von der auf diesen Seiten zum Ausdruck gebrachten Meinung, da diese nicht immer unserer Meinung entsprechen kann.</p>\n<p>Copyright: Â© SSV Bruneck Amateuersportverein</p>\n<p>[nbsp]</p>\n<p>[nbsp]</p>\n<h2>Nutzung von Cookies</h2>\n<p>Diese Website verwendet Cookies und verwandte Technologien um das korrekte Funktionieren zu ermÃ¶glichen und die Nutzung der angebotenen Dienste zu erleichtern.</p>\n<p><strong>Was sind Cookies?</strong><br>Ein Cookie ist ein kurzes Text-Snippet, das von einer von Ihnen besuchten Website an Ihren Browser gesendet wird. Es speichert Informationen zu Ihrem letzten Besuch, wie Ihre bevorzugte Sprache oder andere Einstellungen. So finden Sie sich auf der Website schneller zurecht und nutzen sie effektiver, wenn Sie sie das nÃ¤chste Mal aufrufen. Cookies spielen eine wichtige Rolle. Ohne sie wÃ¤re das Surfen im Web oft frustrierend.</p>\n<p><strong>Warum nutzen wir Cookies?</strong><br>Wir nutzen diese Informationen, um unsere Website zu verbessern, damit unsere Besucher das bestmÃ¶gliche Angebot erhalten. Unsere Plattform verwendet auch Cookies und Ã¤hnliche Technologien von sorgfÃ¤ltig ausgewÃ¤hlten Drittanbietern.</p>\n<p><strong>Arten von Cookies</strong><br>Diese Website verwendet folgende Cookies:</p>\n<ul>\n<li>technische Cookies und Cookies fÃ¼r analytische Zwecke: diese Cookies sammeln Informationen Ã¼ber die Nutzung der Website und helfen uns Auswertungen Ã¼ber die Auffindbarkeit der Informationen auf unserer Seite zu bekommen. Dies erfolgt zum Teil Ã¼ber einen Drittanbieter (Google). Diese Informationen sind nicht personenbezogen.</li>\n<li>Drittanbieter-Cookies: dies sind Cookies von anderen Anbietern. Beispiele dafÃ¼r sind â€œsocial pluginsâ€ fÃ¼r Facebook, Twitter und Google+. Der Sinn davon ist z.B. das Teilen von Inhalten auf dne Social Network Plattformen zu ermÃ¶glichen oder zu erleichtern. Genaueres erfahren Sie auf den Informations-Seiten der Drittanbieter.</li>\n</ul>\n<p><strong>Cookies verwalten</strong><br>Sie kÃ¶nnen Cookies nach Belieben steuern und/oder lÃ¶schen. Wie, erfahren Sie <a href="http://www.allaboutcookies.org/" target="_blank">hier</a>. Sie kÃ¶nnen alle auf Ihrem Rechner abgelegten Cookies lÃ¶schen und die meisten Browser so einstellen, dass die Ablage von Cookies verhindert wird. Dann mÃ¼ssen Sie aber mÃ¶glicherweise einige Einstellungen bei jedem Besuch einer Seite manuell vornehmen und die BeeintrÃ¤chtigung mancher Funktionen in Kauf nehmen.</p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (12, 18, 'tl_article', 128, 1460102314, 'gallery', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:5:"Fotos";}', NULL, '', NULL, '', '', 'a:3:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";}', 'a:5:{s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:5:"right";s:0:"";s:3:"top";s:0:"";s:4:"unit";s:0:"";}', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', 0x613a313a7b693a303b733a31363a22763e9a4fa19611e58304448a5b243f5c223b7d, 0x613a313a7b693a303b733a31363a22f7cd9751a19611e58304448a5b243f5c223b7d, '', 4, 0, 0, 'custom', '', 'gallery_default', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (13, 19, 'tl_article', 128, 1458739992, 'headline', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:6:"Videos";}', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (19, 21, 'tl_article', 256, 1460096749, 'form', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:7:"Kontakt";}', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 2, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (16, 11, 'tl_article', 128, 1458740523, 'module', '', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 16, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
-(17, 12, 'tl_article', 64, 1460096133, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:14:"Reglement 2015";}', '<p><strong><u>Spielregeln:</u><br></strong>Beim Raiffeisen Beachcup wird nach den internationalen Beachvolleyball-Regeln der FIVB gespielt. Mehr Informationen dazu finden Sie auf der Homepage der FIVB oder hier[nbsp]<a href="http://www.beachcup.it/content/media/rules%20german.pdf">download</a></p>\n<p><u><strong>NEU 2015: Technische Richtlinien für die Austragung der Beachcup Jugend-Etappen</strong></u></p>\n<p>Das OK des Beachcup möchte in Zusammenarbeit mit der FIPAV Bozen, Abteilung Beachvolleyball, einige Grundsätze schaffen um der Jugendförderung im Beachvolleyball in Südtirol gerecht zu werden.</p>\n<p>Die Richtlinien findet ihr hier zum <a href="http://www.beachcup.it/images/reglement_jugend/reglement_jugend_2015_de.pdf">DOWNLOAD </a></p>\n<p><u><strong>Teilnahmeberechtigt:</strong></u></p>\n<p><strong>Am „Raiffeisen Beachcup“ können alle Sportler/Innen welche beim Fachsportverband FIPAV tesseriert sind und von ihrem Verein nicht für die Aktivität Beachvolleyball über das Online Portal der FIPAV gesperrt sind, teilnehmen. Jene die nicht über eine Tesserierung beim Fachsportverband FIPAV verfügen, können bei der Einschreibung (Anmeldeformular) eine sogenannte Tagestesserierung „tesseramento per evento“ beantragen, welche vorbehaltlich dessen Annahme zur Teilnahme an den Turnieren berechtigt.</strong>[nbsp]</p>\n<p><u>Kategorie Open M/F:</u></p>\n<p>Die Teilnahme am Turnier wird nur nach Vorlage eines[nbsp]<strong><u>gültigen sportärztlichen Attestes</u></strong>[nbsp](Sportarzt!) gewährt, welches die uneingeschränkte Eignung für die Ausübung dieser Sportart bescheinigt![nbsp]</p>\n<p><u>Kategorie Freizeit Herren:<br></u>Es sind alle Sportler teilnahmeberechtigt, welche[nbsp]ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können und[nbsp]in der abgelaufenen Hallen-Saison maximal in der italienischen Serie D und noch nie in der italienischen Serie B2 oder höher[nbsp]gespielt haben. Die selbe Einschränkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier[nbsp]<u>nicht</u>[nbsp]spielberechtigt.</p>\n<p>Für Frauen- oder Mixed-Teams gibt es keine getrennte Wertung und keine Begrenzung bezüglich ihres Spielniveaus.[nbsp]</p>\n<p>Das OK des Beachcups behält sich das Recht vor einzelne Spieler oder Mannschaften aufgrund ihrer Spielstärke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren.</p>\n<p><u>Kategorie Freizeit Damen:<br></u>Es sind alle Sportlerinnen teilnahmeberechtigt, welche[nbsp]ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können und[nbsp]in der abgelaufenen Hallen-Saison maximal[nbsp]in der italienischen 1. Division und noch nie in der italienischen Serie C oder höher[nbsp]gespielt haben.[nbsp]Die selbe Einschränkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier[nbsp]<u>nicht</u>[nbsp]spielberechtigt.</p>\n<p>Das OK des Beachcups behält sich das Recht vor, einzelne Spieler oder Mannschaften aufgrund ihrer Spielstärke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren.</p>\n<p><u>Kategorie Jugend:<br></u></p>\n<p>Es sind alle SportlerInnen teilnahmeberechtigt, welche[nbsp]ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können. Es gelten folgende Altersbeschränkungen:</p>\n<p>U18 M/F: [nbsp]geboren nach dem 01.01.1998</p>\n<p>U16 M/F: [nbsp]geboren nach dem 01.01.2000</p>\n<p>U14 M/F: [nbsp]geboren nach dem 01.01.2002</p>\n<p><strong><u>Einschreibungen:</u></strong></p>\n<p>Die Anmeldungen können ausschließlich online auf[nbsp]<strong><a href="http://www.beachcup.it/undefined/">www.beachcup.it</a></strong>[nbsp]bis innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe gemacht werden, solange noch freie Plätze verfügbar sind. Die Einschreibung ist nur gültig, wenn[nbsp]die Eigenerklärung bzw.[nbsp]<a href="http://www.beachcup.it/download/2015/Eigenerklaerung.pdf">Datenschutzerklärung</a>[nbsp]sowie das ärztliche Attest (Details dazu unter der jeweiligen Kategorie)[nbsp]ebenfalls innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe entweder an die Faxnummer 0474 05 06 08 oder an[nbsp] <a href="mailto:info@beachcup.it">info@beachcup.it</a>[nbsp]gesendet wird. [nbsp]Weitere Infos unter Tel. +39 393 7064116 oder per mail: <a href="mailto:info@beachcup.it">info@beachcup.it</a></p>\n<p><strong><u>Turniermodus:</u></strong></p>\n<p>Die Veranstaltung gliedert sich in mehrere Etappen und unterschiedliche Kategorien (Details zu jeder Etappe unter <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>).[nbsp]Die Turniere finden bei jeder Witterung statt.</p>\n<p>Spielkategorien:</p>\n<p>- Open Damen [&][nbsp]Herren<br>- Freizeit Herren [&][nbsp]Damen<br>- Jugend U18 Mädchen [&][nbsp]Buben<br>- Jugend U16 Mädchen [&][nbsp]Buben<br>- Jugend U14 Mädchen [&][nbsp]Buben</p>\n<p>Es ist aus organisatorischer Sicht nicht möglich, an einem Tag an zwei Bewerben teilzunehmen. Bei den Gruppenspielen wird ein Satz mit mindestens 15 Punkten im Rally-Point System gespielt, wobei ein Mindestvorsprung von 2 Punkten notwendig ist. Die erst- und zweitplatzierte Mannschaft qualifizieren sich für die nächste Runde. Bei den darauf folgenden Spielen wird ein Satz bis 21 Punkten gespielt. Das Finale wird in 2 Gewinnsätzen entschieden (3. Satz bis 15 Punkte).</p>\n<p>Erscheint eine Mannschaft nicht innerhalb 5 Minuten zu einem Spiel (Zeitplan laut Spielplan), wird das Spiel als verloren gewertet und zwar mit 15:8 bzw. 21:11.</p>\n<p>Für die U14 Jugendbewerbe wird in einem Feld von 7 X 14 m gespielt, alle anderen Bewerbe spielen auf einem Spielfeld mit 8 x[nbsp]16 m. Die Netzhöhen gelten wie folgt:</p>\n<p>U14w [nbsp]- [nbsp]2,05mU14m [nbsp]- [nbsp]2,15m</p>\n<p>U16w [nbsp]- [nbsp]2,15m U16m [nbsp]- [nbsp]2,35m</p>\n<p>U18/Damen - [nbsp]2,24 m U18/Herren - [nbsp]2,43m</p>\n<p><strong><u>Gesamtwertung:</u><br></strong><strong>Open:[nbsp]</strong>Für die Gesamtwertung werden die Punkte der drei Etappen zusammengezählt. Sollten 2 oder mehrere Mannschaften in der Gesamtwertung dieselbe Punktezahl aufweisen, wird das Team besser gewertet, das mehr Teilnahmen am Raiffeisen Beachcup hatte. Bei neuerlichem Gleichstand entscheidet die beste Platzierung in der Turnierserie.</p>\n<p><strong>Freizeit Herren:</strong>[nbsp]Für die Gesamtwertung werden die Punkte der drei Freizeitturniere und der drei Open-Turniere zusammengezählt, wobei nur die besten vier Etappen gewertet werden.</p>\n<p><strong>Freizeit Damen:</strong>[nbsp]Für die Gesamtwertung werden die Punkte der zwei Freizeitturniere und der drei Open-Turniere zusammengezählt, wobei nur die besten vier Etappen gewertet werden.</p>\n<p>In den<strong> Jugend-Kategorien </strong>gibt[nbsp]es keine Gesamtwertung.</p>\n<p><strong>Punktevergabe:<br></strong>1. Platz - 100 Punkte<br>2. Platz - 90 Punkte<br>3. Platz - 80 Punkte<br>4. Platz - 70 Punkte<br>Verlierer Viertelfinale - 60 Punkte<br>Verlierer Achtelfinale - 50 Punkte<br>Gruppendrittletzter - 40 Punkte<br>Gruppenvorletzter - 30 Punkte<br>Gruppenletzter - 20 Punkte</p>\n<p>Die Punkte werden pro Mannschaft vergeben.<br><strong>Bei der letzten Etappe wird die doppelte Punktezahl vergeben.<br></strong><strong>(1. Platz - 200 Punkte.; 2. Platz - 180 Punkte; 3. Platz - 160 Punkte; usw.)</strong></p>\n<p><strong><u>Nenngebühr*:</u><br></strong>Die Nenngebühr beinhaltet den Eintritt in die jeweiligen Schwimmbäder (falls vorhanden), sowie einmal für die gesamte Tour ein Spielleibchen des "Raiffeisen Beachcup" pro Spieler. "<a href="http://www.bankthefuture.it/">Bank The Future</a>" Kunden erhalten eine Ermäßigung von 20%.</p>\n<p>Jedes weitere Spielleibchen wird vom Veranstalter gegen den Unkostenbeitrag von € 15,00 weitergegeben (Materialkosten und Aufdruck).</p>\n<table>\n<tbody>\n<tr>\n<td>\n<p><strong>Kategorie</strong></p>\n</td>\n<td>\n<p><strong>Nenngebühr Erstteilnahme</strong></p>\n</td>\n<td>\n<p><strong>jede weitere Etappe</strong></p>\n</td>\n<td>\n<p><strong>Bank The Future Kunden</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Open</p>\n</td>\n<td>\n<p>50 Euro</p>\n</td>\n<td>\n<p>40 Euro</p>\n</td>\n<td>\n<p>20% Ermäßigung</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Freizeit</p>\n</td>\n<td>\n<p>40 Euro</p>\n</td>\n<td>\n<p>30 Euro</p>\n</td>\n<td>\n<p>20% Ermäßigung</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Jugend</p>\n</td>\n<td>\n<p>30 Euro</p>\n</td>\n<td>\n<p>20 Euro</p>\n</td>\n<td>\n<p>20% Ermäßigung</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><u><strong>*WICHTIG:</strong></u>[nbsp]für Spieler welche noch nicht beim Fachsportverband „FIPAV“ gemeldet sind und über das Einschreibeformular (Datenschutzerklärung) eine Tagestesserierung „tesseramento per evento“ beantragen fallen zusätzlich 2,00 € pro Etappe an.</p>\n<p>Erscheint eine Mannschaft nicht zu einer Etappe ohne sich vorher rechtzeitig abzumelden, muss die Einschreibegebühr trotzdem entrichtet werden.</p>\n<p><strong><u>Spielbekleidung:</u><br></strong>Die Spieler müssen[nbsp]<u>immer</u>[nbsp]mit den offiziellen Turnierdressen spielen.</p>\n<p><strong><u>Spielball:</u><br></strong>Der offizielle Spielball des "Raiffeisen Beachcup" ist der Mikasa VLS300. Dieser wird [nbsp]für die Spiele[nbsp]vom OK[nbsp]zur Verfügung gestellt.</p>\n<p><strong><u>Preisgeld:</u><br></strong>Pro Turnier wird um folgendes Preisgeld gespielt:</p>\n<p><u>Kategorie Open Herren:<br></u>Erstplatzierte Mannschaft € 160,00, Zweitplatzierte Mannschaft € 120,00, Drittplatzierte Mannschaft € 80,00</p>\n<p><u>Kategorie Open Damen:<br></u>Erstplatzierte Mannschaft € 120,00, Zweitplatzierte Mannschaft € 80,00, Drittplatzierte Mannschaft € 40,00</p>\n<p><u>Kategorien Freizeit Herren [&] Damen:<br></u>Sachpreise für die ersten 4 Mannschaften.</p>\n<p><u>Kategorie Jugend:<br></u>Sachpreise.</p>\n<p>Für die Gesamtwertung werden dieselben Preisgelder ausbezahlt wie bei einer einzelnen Etappe.</p>\n<p><strong>Preisverteilung:<br></strong>Die Preisverteilung findet stets nach Beendigung des Turniers statt. Die ersten vier Mannschaften werden prämiert.</p>\n<p><strong>Rahmenprogramm:<br></strong>Bei den einzelnen Etappen werden verschiedene Rahmenprogramme geboten. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>.</p>\n<p><strong>Organisation:<br></strong>Der RAIFFEISEN BEACHCUP wird vom SSV Bruneck ASV - Sektion Volleyball koordiniert und von den jeweiligen lokalen Veranstaltern organisiert. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>.</p>\n<p>Das Organisationskomitee fungiert lediglich als Koordinator der Tour.[nbsp]Die einzelnen Turniere werden selbstständig von den lokalen Organisatoren durchgeführt.</p>\n<p>Die Teilnahme erfolgt auf eigenes Risiko. Der Korrdinator und die lokalen Veranstalter übernehmen keinerlei Haftung für Unfälle vor, während und nach den Turnieren, auch nicht Dritten gegenüber. Jeder einzelne Spieler trägt die volle persönliche Verantwortung für seinen Gesundheitszustand.</p>\n<p><strong>Änderungen:</strong></p>\n<p>Der Veranstalter behält sich die Möglichkeit vor, Programmänderungen durchzuführen. Die Internetseite www.beachcup.it ist die offizielle Informationsquelle der Veranstaltung. Aus diesem Grund sind alle offiziellen Mitteilungen auf dieser Seite zu finden.</p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
-(18, 13, 'tl_article', 256, 1460096100, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:36:"Beachvolley Landesmeisterschaft 2015";}', '<p>Auch 2015 werden die Südtiroler Beachvolleyball-Landesmeister wieder im Rahmen des Raiffeisen Beachcups gekürt. Die Landesmeisterschaft wird vom Raiffeisen Beachcup Organisationskomittee in Zusammenarbeit dem dem italienischen Volleyballverband der Provinz Bozen in der schönen Beachanlage beim Freibad von Bruneck organisiert.[nbsp]</p>\n<p>Am 15.08.2015 werden die Landesmeister der Kategorien Damen, Herren und U16 ermittelt. Am Sonntag folgen dann die Spiele der Jugendkategorien U14 und U18 jeweils männlich und weiblich.[nbsp]Bei diesem Turnieren können nur Mannschaften bzw. Spieler der Provinz Bozen teilnehmen.[nbsp]</p>\n<p><img src="http://www.beachcup.it/images/stories/sponsoren/fipavbz.png" alt="" width="144" height="144"></p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
+(17, 12, 'tl_article', 64, 1460096133, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:14:"Reglement 2015";}', '<p><strong><u>Spielregeln:</u><br></strong>Beim Raiffeisen Beachcup wird nach den internationalen Beachvolleyball-Regeln der FIVB gespielt. Mehr Informationen dazu finden Sie auf der Homepage der FIVB oder hier[nbsp]<a href="http://www.beachcup.it/content/media/rules%20german.pdf">download</a></p>\n<p><u><strong>NEU 2015: Technische Richtlinien fÃ¼r die Austragung der Beachcup Jugend-Etappen</strong></u></p>\n<p>Das OK des Beachcup mÃ¶chte in Zusammenarbeit mit der FIPAV Bozen, Abteilung Beachvolleyball, einige GrundsÃ¤tze schaffen um der JugendfÃ¶rderung im Beachvolleyball in SÃ¼dtirol gerecht zu werden.</p>\n<p>Die Richtlinien findet ihr hier zum <a href="http://www.beachcup.it/images/reglement_jugend/reglement_jugend_2015_de.pdf">DOWNLOAD </a></p>\n<p><u><strong>Teilnahmeberechtigt:</strong></u></p>\n<p><strong>Am â€žRaiffeisen Beachcupâ€œ kÃ¶nnen alle Sportler/Innen welche beim Fachsportverband FIPAV tesseriert sind und von ihrem Verein nicht fÃ¼r die AktivitÃ¤t Beachvolleyball Ã¼ber das Online Portal der FIPAV gesperrt sind, teilnehmen. Jene die nicht Ã¼ber eine Tesserierung beim Fachsportverband FIPAV verfÃ¼gen, kÃ¶nnen bei der Einschreibung (Anmeldeformular) eine sogenannte Tagestesserierung â€žtesseramento per eventoâ€œ beantragen, welche vorbehaltlich dessen Annahme zur Teilnahme an den Turnieren berechtigt.</strong>[nbsp]</p>\n<p><u>Kategorie Open M/F:</u></p>\n<p>Die Teilnahme am Turnier wird nur nach Vorlage eines[nbsp]<strong><u>gÃ¼ltigen sportÃ¤rztlichen Attestes</u></strong>[nbsp](Sportarzt!) gewÃ¤hrt, welches die uneingeschrÃ¤nkte Eignung fÃ¼r die AusÃ¼bung dieser Sportart bescheinigt![nbsp]</p>\n<p><u>Kategorie Freizeit Herren:<br></u>Es sind alle Sportler teilnahmeberechtigt, welche[nbsp]ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen und[nbsp]in der abgelaufenen Hallen-Saison maximal in der italienischen Serie D und noch nie in der italienischen Serie B2 oder hÃ¶her[nbsp]gespielt haben. Die selbe EinschrÃ¤nkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier[nbsp]<u>nicht</u>[nbsp]spielberechtigt.</p>\n<p>FÃ¼r Frauen- oder Mixed-Teams gibt es keine getrennte Wertung und keine Begrenzung bezÃ¼glich ihres Spielniveaus.[nbsp]</p>\n<p>Das OK des Beachcups behÃ¤lt sich das Recht vor einzelne Spieler oder Mannschaften aufgrund ihrer SpielstÃ¤rke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren.</p>\n<p><u>Kategorie Freizeit Damen:<br></u>Es sind alle Sportlerinnen teilnahmeberechtigt, welche[nbsp]ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen und[nbsp]in der abgelaufenen Hallen-Saison maximal[nbsp]in der italienischen 1. Division und noch nie in der italienischen Serie C oder hÃ¶her[nbsp]gespielt haben.[nbsp]Die selbe EinschrÃ¤nkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier[nbsp]<u>nicht</u>[nbsp]spielberechtigt.</p>\n<p>Das OK des Beachcups behÃ¤lt sich das Recht vor, einzelne Spieler oder Mannschaften aufgrund ihrer SpielstÃ¤rke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren.</p>\n<p><u>Kategorie Jugend:<br></u></p>\n<p>Es sind alle SportlerInnen teilnahmeberechtigt, welche[nbsp]ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen. Es gelten folgende AltersbeschrÃ¤nkungen:</p>\n<p>U18 M/F: [nbsp]geboren nach dem 01.01.1998</p>\n<p>U16 M/F: [nbsp]geboren nach dem 01.01.2000</p>\n<p>U14 M/F: [nbsp]geboren nach dem 01.01.2002</p>\n<p><strong><u>Einschreibungen:</u></strong></p>\n<p>Die Anmeldungen kÃ¶nnen ausschlieÃŸlich online auf[nbsp]<strong><a href="http://www.beachcup.it/undefined/">www.beachcup.it</a></strong>[nbsp]bis innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe gemacht werden, solange noch freie PlÃ¤tze verfÃ¼gbar sind. Die Einschreibung ist nur gÃ¼ltig, wenn[nbsp]die EigenerklÃ¤rung bzw.[nbsp]<a href="http://www.beachcup.it/download/2015/Eigenerklaerung.pdf">DatenschutzerklÃ¤rung</a>[nbsp]sowie das Ã¤rztliche Attest (Details dazu unter der jeweiligen Kategorie)[nbsp]ebenfalls innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe entweder an die Faxnummer 0474 05 06 08 oder an[nbsp] <a href="mailto:info@beachcup.it">info@beachcup.it</a>[nbsp]gesendet wird. [nbsp]Weitere Infos unter Tel. +39 393 7064116 oder per mail: <a href="mailto:info@beachcup.it">info@beachcup.it</a></p>\n<p><strong><u>Turniermodus:</u></strong></p>\n<p>Die Veranstaltung gliedert sich in mehrere Etappen und unterschiedliche Kategorien (Details zu jeder Etappe unter <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>).[nbsp]Die Turniere finden bei jeder Witterung statt.</p>\n<p>Spielkategorien:</p>\n<p>- Open Damen [&][nbsp]Herren<br>- Freizeit Herren [&][nbsp]Damen<br>- Jugend U18 MÃ¤dchen [&][nbsp]Buben<br>- Jugend U16 MÃ¤dchen [&][nbsp]Buben<br>- Jugend U14 MÃ¤dchen [&][nbsp]Buben</p>\n<p>Es ist aus organisatorischer Sicht nicht mÃ¶glich, an einem Tag an zwei Bewerben teilzunehmen. Bei den Gruppenspielen wird ein Satz mit mindestens 15 Punkten im Rally-Point System gespielt, wobei ein Mindestvorsprung von 2 Punkten notwendig ist. Die erst- und zweitplatzierte Mannschaft qualifizieren sich fÃ¼r die nÃ¤chste Runde. Bei den darauf folgenden Spielen wird ein Satz bis 21 Punkten gespielt. Das Finale wird in 2 GewinnsÃ¤tzen entschieden (3. Satz bis 15 Punkte).</p>\n<p>Erscheint eine Mannschaft nicht innerhalb 5 Minuten zu einem Spiel (Zeitplan laut Spielplan), wird das Spiel als verloren gewertet und zwar mit 15:8 bzw. 21:11.</p>\n<p>FÃ¼r die U14 Jugendbewerbe wird in einem Feld von 7 X 14 m gespielt, alle anderen Bewerbe spielen auf einem Spielfeld mit 8 x[nbsp]16 m. Die NetzhÃ¶hen gelten wie folgt:</p>\n<p>U14w [nbsp]- [nbsp]2,05mU14m [nbsp]- [nbsp]2,15m</p>\n<p>U16w [nbsp]- [nbsp]2,15m U16m [nbsp]- [nbsp]2,35m</p>\n<p>U18/Damen - [nbsp]2,24 m U18/Herren - [nbsp]2,43m</p>\n<p><strong><u>Gesamtwertung:</u><br></strong><strong>Open:[nbsp]</strong>FÃ¼r die Gesamtwertung werden die Punkte der drei Etappen zusammengezÃ¤hlt. Sollten 2 oder mehrere Mannschaften in der Gesamtwertung dieselbe Punktezahl aufweisen, wird das Team besser gewertet, das mehr Teilnahmen am Raiffeisen Beachcup hatte. Bei neuerlichem Gleichstand entscheidet die beste Platzierung in der Turnierserie.</p>\n<p><strong>Freizeit Herren:</strong>[nbsp]FÃ¼r die Gesamtwertung werden die Punkte der drei Freizeitturniere und der drei Open-Turniere zusammengezÃ¤hlt, wobei nur die besten vier Etappen gewertet werden.</p>\n<p><strong>Freizeit Damen:</strong>[nbsp]FÃ¼r die Gesamtwertung werden die Punkte der zwei Freizeitturniere und der drei Open-Turniere zusammengezÃ¤hlt, wobei nur die besten vier Etappen gewertet werden.</p>\n<p>In den<strong> Jugend-Kategorien </strong>gibt[nbsp]es keine Gesamtwertung.</p>\n<p><strong>Punktevergabe:<br></strong>1. Platz - 100 Punkte<br>2. Platz - 90 Punkte<br>3. Platz - 80 Punkte<br>4. Platz - 70 Punkte<br>Verlierer Viertelfinale - 60 Punkte<br>Verlierer Achtelfinale - 50 Punkte<br>Gruppendrittletzter - 40 Punkte<br>Gruppenvorletzter - 30 Punkte<br>Gruppenletzter - 20 Punkte</p>\n<p>Die Punkte werden pro Mannschaft vergeben.<br><strong>Bei der letzten Etappe wird die doppelte Punktezahl vergeben.<br></strong><strong>(1. Platz - 200 Punkte.; 2. Platz - 180 Punkte; 3. Platz - 160 Punkte; usw.)</strong></p>\n<p><strong><u>NenngebÃ¼hr*:</u><br></strong>Die NenngebÃ¼hr beinhaltet den Eintritt in die jeweiligen SchwimmbÃ¤der (falls vorhanden), sowie einmal fÃ¼r die gesamte Tour ein Spielleibchen des "Raiffeisen Beachcup" pro Spieler. "<a href="http://www.bankthefuture.it/">Bank The Future</a>" Kunden erhalten eine ErmÃ¤ÃŸigung von 20%.</p>\n<p>Jedes weitere Spielleibchen wird vom Veranstalter gegen den Unkostenbeitrag von â‚¬ 15,00 weitergegeben (Materialkosten und Aufdruck).</p>\n<table>\n<tbody>\n<tr>\n<td>\n<p><strong>Kategorie</strong></p>\n</td>\n<td>\n<p><strong>NenngebÃ¼hr Erstteilnahme</strong></p>\n</td>\n<td>\n<p><strong>jede weitere Etappe</strong></p>\n</td>\n<td>\n<p><strong>Bank The Future Kunden</strong></p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Open</p>\n</td>\n<td>\n<p>50 Euro</p>\n</td>\n<td>\n<p>40 Euro</p>\n</td>\n<td>\n<p>20% ErmÃ¤ÃŸigung</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Freizeit</p>\n</td>\n<td>\n<p>40 Euro</p>\n</td>\n<td>\n<p>30 Euro</p>\n</td>\n<td>\n<p>20% ErmÃ¤ÃŸigung</p>\n</td>\n</tr>\n<tr>\n<td>\n<p>Jugend</p>\n</td>\n<td>\n<p>30 Euro</p>\n</td>\n<td>\n<p>20 Euro</p>\n</td>\n<td>\n<p>20% ErmÃ¤ÃŸigung</p>\n</td>\n</tr>\n</tbody>\n</table>\n<p><u><strong>*WICHTIG:</strong></u>[nbsp]fÃ¼r Spieler welche noch nicht beim Fachsportverband â€žFIPAVâ€œ gemeldet sind und Ã¼ber das Einschreibeformular (DatenschutzerklÃ¤rung) eine Tagestesserierung â€žtesseramento per eventoâ€œ beantragen fallen zusÃ¤tzlich 2,00 â‚¬ pro Etappe an.</p>\n<p>Erscheint eine Mannschaft nicht zu einer Etappe ohne sich vorher rechtzeitig abzumelden, muss die EinschreibegebÃ¼hr trotzdem entrichtet werden.</p>\n<p><strong><u>Spielbekleidung:</u><br></strong>Die Spieler mÃ¼ssen[nbsp]<u>immer</u>[nbsp]mit den offiziellen Turnierdressen spielen.</p>\n<p><strong><u>Spielball:</u><br></strong>Der offizielle Spielball des "Raiffeisen Beachcup" ist der Mikasa VLS300. Dieser wird [nbsp]fÃ¼r die Spiele[nbsp]vom OK[nbsp]zur VerfÃ¼gung gestellt.</p>\n<p><strong><u>Preisgeld:</u><br></strong>Pro Turnier wird um folgendes Preisgeld gespielt:</p>\n<p><u>Kategorie Open Herren:<br></u>Erstplatzierte Mannschaft â‚¬ 160,00, Zweitplatzierte Mannschaft â‚¬ 120,00, Drittplatzierte Mannschaft â‚¬ 80,00</p>\n<p><u>Kategorie Open Damen:<br></u>Erstplatzierte Mannschaft â‚¬ 120,00, Zweitplatzierte Mannschaft â‚¬ 80,00, Drittplatzierte Mannschaft â‚¬ 40,00</p>\n<p><u>Kategorien Freizeit Herren [&] Damen:<br></u>Sachpreise fÃ¼r die ersten 4 Mannschaften.</p>\n<p><u>Kategorie Jugend:<br></u>Sachpreise.</p>\n<p>FÃ¼r die Gesamtwertung werden dieselben Preisgelder ausbezahlt wie bei einer einzelnen Etappe.</p>\n<p><strong>Preisverteilung:<br></strong>Die Preisverteilung findet stets nach Beendigung des Turniers statt. Die ersten vier Mannschaften werden prÃ¤miert.</p>\n<p><strong>Rahmenprogramm:<br></strong>Bei den einzelnen Etappen werden verschiedene Rahmenprogramme geboten. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>.</p>\n<p><strong>Organisation:<br></strong>Der RAIFFEISEN BEACHCUP wird vom SSV Bruneck ASV - Sektion Volleyball koordiniert und von den jeweiligen lokalen Veranstaltern organisiert. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf <a href="http://www.beachcup.it/de/turniere2015">Turniere 2015</a>.</p>\n<p>Das Organisationskomitee fungiert lediglich als Koordinator der Tour.[nbsp]Die einzelnen Turniere werden selbststÃ¤ndig von den lokalen Organisatoren durchgefÃ¼hrt.</p>\n<p>Die Teilnahme erfolgt auf eigenes Risiko. Der Korrdinator und die lokalen Veranstalter Ã¼bernehmen keinerlei Haftung fÃ¼r UnfÃ¤lle vor, wÃ¤hrend und nach den Turnieren, auch nicht Dritten gegenÃ¼ber. Jeder einzelne Spieler trÃ¤gt die volle persÃ¶nliche Verantwortung fÃ¼r seinen Gesundheitszustand.</p>\n<p><strong>Ã„nderungen:</strong></p>\n<p>Der Veranstalter behÃ¤lt sich die MÃ¶glichkeit vor, ProgrammÃ¤nderungen durchzufÃ¼hren. Die Internetseite www.beachcup.it ist die offizielle Informationsquelle der Veranstaltung. Aus diesem Grund sind alle offiziellen Mitteilungen auf dieser Seite zu finden.</p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
+(18, 13, 'tl_article', 256, 1460096100, 'text', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:36:"Beachvolley Landesmeisterschaft 2015";}', '<p>Auch 2015 werden die SÃ¼dtiroler Beachvolleyball-Landesmeister wieder im Rahmen des Raiffeisen Beachcups gekÃ¼rt. Die Landesmeisterschaft wird vom Raiffeisen Beachcup Organisationskomittee in Zusammenarbeit dem dem italienischen Volleyballverband der Provinz Bozen in der schÃ¶nen Beachanlage beim Freibad von Bruneck organisiert.[nbsp]</p>\n<p>Am 15.08.2015 werden die Landesmeister der Kategorien Damen, Herren und U16 ermittelt. Am Sonntag folgen dann die Spiele der Jugendkategorien U14 und U18 jeweils mÃ¤nnlich und weiblich.[nbsp]Bei diesem Turnieren kÃ¶nnen nur Mannschaften bzw. Spieler der Provinz Bozen teilnehmen.[nbsp]</p>\n<p><img src="http://www.beachcup.it/images/stories/sponsoren/fipavbz.png" alt="" width="144" height="144"></p>', '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 0, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (20, 15, 'tl_article', 128, 1460103956, 'module', '', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 19, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default'),
 (21, 16, 'tl_article', 128, 1460195574, 'module', '', NULL, '', NULL, '', '', '', '', '', '', '', 'above', NULL, '', NULL, NULL, '', '', '', '', '', 0, 'ascending', '', '', '', '', '', NULL, '', '', '', '', '', '', '', NULL, NULL, '', 4, 0, 0, '', '', '', '', NULL, '', NULL, '', '', 0, 300, 0, '', 0, 0, 0, 0, 20, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', '', '', '', 'ascending', 0, '', '', '', '', 'com_default');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_cron`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_cron`
 --
 
 CREATE TABLE `tl_cron` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(32) DEFAULT NULL,
-  `value` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `value` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
--- Daten für Tabelle `tl_cron`
+-- Daten fÃ¼r Tabelle `tl_cron`
 --
 
 INSERT INTO `tl_cron` (`id`, `name`, `value`) VALUES
-(1, 'lastrun', '1460136180'),
+(1, 'lastrun', '1460475780'),
 (2, 'monthly', '201604'),
-(3, 'weekly', '201614'),
-(4, 'daily', '20160408'),
+(3, 'weekly', '201615'),
+(4, 'daily', '20160412'),
 (5, 'hourly', '0'),
 (6, 'minutely', '0');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_extension`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_extension`
 --
 
 CREATE TABLE `tl_extension` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(64) NOT NULL DEFAULT '',
   `folder` varchar(48) NOT NULL DEFAULT '',
   `author` varchar(128) NOT NULL DEFAULT '',
@@ -703,30 +778,31 @@ CREATE TABLE `tl_extension` (
   `feTables` varchar(255) NOT NULL DEFAULT '',
   `feTemplates` varchar(255) NOT NULL DEFAULT '',
   `addLanguage` char(1) NOT NULL DEFAULT '',
-  `languages` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `languages` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Daten für Tabelle `tl_extension`
+-- Daten fÃ¼r Tabelle `tl_extension`
 --
 
 INSERT INTO `tl_extension` (`id`, `tstamp`, `title`, `folder`, `author`, `copyright`, `package`, `license`, `addBeMod`, `beClasses`, `beTables`, `beTemplates`, `addFeMod`, `feClasses`, `feTables`, `feTemplates`, `addLanguage`, `languages`) VALUES
-(2, 1446714932, 'beachcup', 'beachcup', 'Jakob Pallhuber', 'Copyright © Jakob Pallhuber All Rights Reserved', 'beachcup', 'LGPL', '1', '', 'tl_beachcup_season,tl_beachcup_stage,tl_beachcup_organizer,tl_beachcup_venue,tl_beachcup_tournament,tl_beachcup_tournament_type,tl_beachcup_registration,tl_beachcup_registration_state,tl_beachcup_team,tl_beachcup_player,tl_beachcup_player_level', '', '1', 'BeachcupStageList', '', 'beachcup_stage_list', '1', 'en,de,it');
+(2, 1446714932, 'beachcup', 'beachcup', 'Jakob Pallhuber', 'Copyright Â© Jakob Pallhuber All Rights Reserved', 'beachcup', 'LGPL', '1', '', 'tl_beachcup_season,tl_beachcup_stage,tl_beachcup_organizer,tl_beachcup_venue,tl_beachcup_tournament,tl_beachcup_tournament_type,tl_beachcup_registration,tl_beachcup_registration_state,tl_beachcup_team,tl_beachcup_player,tl_beachcup_player_level', '', '1', 'BeachcupStageList', '', 'beachcup_stage_list', '1', 'en,de,it');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_faq`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_faq`
 --
 
 CREATE TABLE `tl_faq` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `question` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `author` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `author` int(10) unsigned NOT NULL DEFAULT '0',
   `answer` text,
   `addImage` char(1) NOT NULL DEFAULT '',
   `singleSRC` binary(16) DEFAULT NULL,
@@ -740,41 +816,54 @@ CREATE TABLE `tl_faq` (
   `addEnclosure` char(1) NOT NULL DEFAULT '',
   `enclosure` blob,
   `noComments` char(1) NOT NULL DEFAULT '',
-  `published` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `published` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid_published_sorting` (`pid`,`published`,`sorting`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_faq`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_faq_category`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_faq_category`
 --
 
 CREATE TABLE `tl_faq_category` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `headline` varchar(255) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `allowComments` char(1) NOT NULL DEFAULT '',
   `notify` varchar(16) NOT NULL DEFAULT '',
   `sortOrder` varchar(12) NOT NULL DEFAULT '',
-  `perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
   `moderate` char(1) NOT NULL DEFAULT '',
   `bbcode` char(1) NOT NULL DEFAULT '',
   `requireLogin` char(1) NOT NULL DEFAULT '',
-  `disableCaptcha` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `disableCaptcha` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_faq_category`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_files`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_files`
 --
 
 CREATE TABLE `tl_files` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pid` binary(16) DEFAULT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `uuid` binary(16) DEFAULT NULL,
   `type` varchar(16) NOT NULL DEFAULT '',
   `path` varchar(1022) NOT NULL DEFAULT '',
@@ -786,44 +875,51 @@ CREATE TABLE `tl_files` (
   `importantPartY` int(10) NOT NULL DEFAULT '0',
   `importantPartWidth` int(10) NOT NULL DEFAULT '0',
   `importantPartHeight` int(10) NOT NULL DEFAULT '0',
-  `meta` blob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `meta` blob,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid` (`uuid`),
+  KEY `pid` (`pid`),
+  KEY `path` (`path`(333)),
+  KEY `extension` (`extension`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
--- Daten für Tabelle `tl_files`
+-- Daten fÃ¼r Tabelle `tl_files`
 --
 
 INSERT INTO `tl_files` (`id`, `pid`, `tstamp`, `uuid`, `type`, `path`, `extension`, `hash`, `found`, `name`, `importantPartX`, `importantPartY`, `importantPartWidth`, `importantPartHeight`, `meta`) VALUES
-(1, NULL, 1445967560, 0xa7bbe4f87cd111e5819f448a5b243f5c, 'folder', 'files/tiny_templates', '', 'eacf331f0ffc35d4b482f1d15a887d3b', '1', 'tiny_templates', 0, 0, 0, 0, NULL),
-(2, 0xa7bbe4f87cd111e5819f448a5b243f5c, 1445967560, 0xa7bbe4f27cd111e5819f448a5b243f5c, 'file', 'files/tiny_templates/index.html', 'html', 'aeebec42dc0335ea1e0853f4393259b4', '1', 'index.html', 0, 0, 0, 0, NULL),
-(3, NULL, 1445967560, 0xa7bbe4e97cd111e5819f448a5b243f5c, 'file', 'files/tinymce.css', 'css', 'e6cfd2993ed50341da010e66be287d2d', '1', 'tinymce.css', 0, 0, 0, 0, NULL),
-(4, NULL, 1450010327, 0x763e9a4fa19611e58304448a5b243f5c, 'folder', 'files/venue_pictures', '', 'e3578b88b25d7f7d7b21907724c7d6de', '1', 'venue_pictures', 0, 0, 0, 0, 0x613a313a7b733a323a226465223b613a333a7b733a353a227469746c65223b733a303a22223b733a343a226c696e6b223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b7d7d),
-(5, 0x763e9a4fa19611e58304448a5b243f5c, 1450010544, 0xf7cd9751a19611e58304448a5b243f5c, 'file', 'files/venue_pictures/olang.jpg', 'jpg', '32f4036af367216020f55d275619bd9a', '1', 'olang.jpg', 0, 0, 0, 0, NULL),
-(6, NULL, 1457019372, 0xa8841b6be15511e58982448a5b243f5c, 'folder', 'files/themes', '', '259690bf167e3dd892251f30db61689d', '1', 'themes', 0, 0, 0, 0, 0x613a313a7b733a323a226465223b613a333a7b733a353a227469746c65223b733a303a22223b733a343a226c696e6b223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b7d7d),
-(7, 0xa8841b6be15511e58982448a5b243f5c, 1457113714, 0x51383696e23111e5b9f0448a5b243f5c, 'folder', 'files/themes/css', '', 'b7694d90d912f21d44e3911da15c007d', '1', 'css', 0, 0, 0, 0, NULL),
-(8, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x5138368de23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/et_frontend_customizer.css', 'css', '1233057f526da2cd25d6854a6294349d', '1', 'et_frontend_customizer.css', 0, 0, 0, 0, NULL),
-(9, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x51383687e23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/et_google_fonts.css', 'css', '444a79aabb959bbcfe186f91f16c9b23', '1', 'et_google_fonts.css', 0, 0, 0, 0, NULL),
-(10, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x51383681e23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/jquery.fancybox-1.3.4.css', 'css', '87f88afe6cf8c1961b53d0a4581d17bc', '1', 'jquery.fancybox-1.3.4.css', 0, 0, 0, 0, NULL),
-(11, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x5138367be23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/pagenavi-css.css', 'css', '73d29ecb3ae4eb2b78712fab3a46d32d', '1', 'pagenavi-css.css', 0, 0, 0, 0, NULL),
-(12, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x51383672e23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/page_templates.css', 'css', 'c38c99fdfa248f7aa3f5e0a5b692a716', '1', 'page_templates.css', 0, 0, 0, 0, NULL),
-(13, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x5138366de23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/shortcodes.css', 'css', '40cb404848bc2e556105c8aea77f29aa', '1', 'shortcodes.css', 0, 0, 0, 0, NULL),
-(14, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x51383667e23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/shortcodes_responsive.css', 'css', '3a30a77569bc4544b9465acbee8e5f97', '1', 'shortcodes_responsive.css', 0, 0, 0, 0, NULL),
-(15, 0x51383696e23111e5b9f0448a5b243f5c, 1457113714, 0x5138365be23111e5b9f0448a5b243f5c, 'file', 'files/themes/css/style.css', 'css', 'd4202b85750ddac9d98ccdae7184bf27', '1', 'style.css', 0, 0, 0, 0, NULL),
-(16, 0x51383696e23111e5b9f0448a5b243f5c, 1458742360, 0x4d632ff2f10111e5a22f448a5b243f5c, 'file', 'files/themes/css/bootstrap.min.css', 'css', '2f624089c65f12185e79925bc5a7fc42', '1', 'bootstrap.min.css', 0, 0, 0, 0, NULL),
-(17, 0x51383696e23111e5b9f0448a5b243f5c, 1459865289, 0xd3a15facfb3711e5ade8448a5b243f5c, 'file', 'files/themes/css/beachcup.css', 'css', 'e9110012bd0658007a35efed583b0fd2', '1', 'beachcup.css', 0, 0, 0, 0, NULL);
+(1, NULL, 1445967560, '§»äø|ÑåŸDŠ[$?\\', 'folder', 'files/tiny_templates', '', 'eacf331f0ffc35d4b482f1d15a887d3b', '1', 'tiny_templates', 0, 0, 0, 0, NULL),
+(2, '§»äø|ÑåŸDŠ[$?\\', 1445967560, '§»äò|ÑåŸDŠ[$?\\', 'file', 'files/tiny_templates/index.html', 'html', 'aeebec42dc0335ea1e0853f4393259b4', '1', 'index.html', 0, 0, 0, 0, NULL),
+(3, NULL, 1445967560, '§»äé|ÑåŸDŠ[$?\\', 'file', 'files/tinymce.css', 'css', 'e6cfd2993ed50341da010e66be287d2d', '1', 'tinymce.css', 0, 0, 0, 0, NULL),
+(4, NULL, 1450010327, 'v>šO¡–åƒDŠ[$?\\', 'folder', 'files/venue_pictures', '', 'e3578b88b25d7f7d7b21907724c7d6de', '1', 'venue_pictures', 0, 0, 0, 0, 0x613a313a7b733a323a226465223b613a333a7b733a353a227469746c65223b733a303a22223b733a343a226c696e6b223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b7d7d),
+(5, 'v>šO¡–åƒDŠ[$?\\', 1450010544, '÷Í—Q¡–åƒDŠ[$?\\', 'file', 'files/venue_pictures/olang.jpg', 'jpg', '32f4036af367216020f55d275619bd9a', '1', 'olang.jpg', 0, 0, 0, 0, NULL),
+(6, NULL, 1457019372, '¨„káUå‰‚DŠ[$?\\', 'folder', 'files/themes', '', '259690bf167e3dd892251f30db61689d', '1', 'themes', 0, 0, 0, 0, 0x613a313a7b733a323a226465223b613a333a7b733a353a227469746c65223b733a303a22223b733a343a226c696e6b223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b7d7d),
+(7, '¨„káUå‰‚DŠ[$?\\', 1457113714, 'Q86–â1å¹ðDŠ[$?\\', 'folder', 'files/themes/css', '', 'b7694d90d912f21d44e3911da15c007d', '1', 'css', 0, 0, 0, 0, NULL),
+(8, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86â1å¹ðDŠ[$?\\', 'file', 'files/themes/css/et_frontend_customizer.css', 'css', '1233057f526da2cd25d6854a6294349d', '1', 'et_frontend_customizer.css', 0, 0, 0, 0, NULL),
+(9, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86‡â1å¹ðDŠ[$?\\', 'file', 'files/themes/css/et_google_fonts.css', 'css', '444a79aabb959bbcfe186f91f16c9b23', '1', 'et_google_fonts.css', 0, 0, 0, 0, NULL),
+(10, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86â1å¹ðDŠ[$?\\', 'file', 'files/themes/css/jquery.fancybox-1.3.4.css', 'css', '87f88afe6cf8c1961b53d0a4581d17bc', '1', 'jquery.fancybox-1.3.4.css', 0, 0, 0, 0, NULL),
+(11, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86{â1å¹ðDŠ[$?\\', 'file', 'files/themes/css/pagenavi-css.css', 'css', '73d29ecb3ae4eb2b78712fab3a46d32d', '1', 'pagenavi-css.css', 0, 0, 0, 0, NULL),
+(12, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86râ1å¹ðDŠ[$?\\', 'file', 'files/themes/css/page_templates.css', 'css', 'c38c99fdfa248f7aa3f5e0a5b692a716', '1', 'page_templates.css', 0, 0, 0, 0, NULL),
+(13, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86mâ1å¹ðDŠ[$?\\', 'file', 'files/themes/css/shortcodes.css', 'css', '40cb404848bc2e556105c8aea77f29aa', '1', 'shortcodes.css', 0, 0, 0, 0, NULL),
+(14, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86gâ1å¹ðDŠ[$?\\', 'file', 'files/themes/css/shortcodes_responsive.css', 'css', '3a30a77569bc4544b9465acbee8e5f97', '1', 'shortcodes_responsive.css', 0, 0, 0, 0, NULL),
+(15, 'Q86–â1å¹ðDŠ[$?\\', 1457113714, 'Q86[â1å¹ðDŠ[$?\\', 'file', 'files/themes/css/style.css', 'css', 'd4202b85750ddac9d98ccdae7184bf27', '1', 'style.css', 0, 0, 0, 0, NULL),
+(16, 'Q86–â1å¹ðDŠ[$?\\', 1458742360, 'Mc/òñå¢/DŠ[$?\\', 'file', 'files/themes/css/bootstrap.min.css', 'css', '2f624089c65f12185e79925bc5a7fc42', '1', 'bootstrap.min.css', 0, 0, 0, 0, NULL),
+(17, 'Q86–â1å¹ðDŠ[$?\\', 1459865289, 'Ó¡_¬û7å­èDŠ[$?\\', 'file', 'files/themes/css/beachcup.css', 'css', 'e9110012bd0658007a35efed583b0fd2', '1', 'beachcup.css', 0, 0, 0, 0, NULL),
+(18, NULL, 1460400730, 'û	\0æ¦\0>\0e’', 'folder', 'files/news-pictures', '', '5a43e1b08f7ef1f1d225577656d71f7b', '1', 'news-pictures', 0, 0, 0, 0, 0x613a313a7b733a323a226465223b613a333a7b733a353a227469746c65223b733a303a22223b733a343a226c696e6b223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b7d7d),
+(19, 'û	\0æ¦\0>\0e’', 1460400832, '»À°O\0æ¦\0>\0e’', 'file', 'files/news-pictures/DSC_3092.JPG', 'jpg', 'b352f71fe33f22b9fc01b5ed22156d30', '1', 'DSC_3092.JPG', 0, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_form`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_form`
 --
 
 CREATE TABLE `tl_form` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `sendViaEmail` char(1) NOT NULL DEFAULT '',
   `recipient` varchar(1022) NOT NULL DEFAULT '',
   `subject` varchar(255) NOT NULL DEFAULT '',
@@ -836,11 +932,13 @@ CREATE TABLE `tl_form` (
   `attributes` varchar(255) NOT NULL DEFAULT '',
   `formID` varchar(64) NOT NULL DEFAULT '',
   `tableless` char(1) NOT NULL DEFAULT '',
-  `allowTags` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `allowTags` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Daten für Tabelle `tl_form`
+-- Daten fÃ¼r Tabelle `tl_form`
 --
 
 INSERT INTO `tl_form` (`id`, `tstamp`, `title`, `alias`, `jumpTo`, `sendViaEmail`, `recipient`, `subject`, `format`, `skipEmpty`, `storeValues`, `targetTable`, `method`, `novalidate`, `attributes`, `formID`, `tableless`, `allowTags`) VALUES
@@ -849,14 +947,14 @@ INSERT INTO `tl_form` (`id`, `tstamp`, `title`, `alias`, `jumpTo`, `sendViaEmail
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_form_field`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_form_field`
 --
 
 CREATE TABLE `tl_form_field` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `invisible` char(1) NOT NULL DEFAULT '',
   `type` varchar(32) NOT NULL DEFAULT '',
   `name` varchar(64) NOT NULL DEFAULT '',
@@ -867,11 +965,11 @@ CREATE TABLE `tl_form_field` (
   `mandatory` char(1) NOT NULL DEFAULT '',
   `rgxp` varchar(32) NOT NULL DEFAULT '',
   `placeholder` varchar(255) NOT NULL DEFAULT '',
-  `minlength` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `maxlength` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `minlength` int(10) unsigned NOT NULL DEFAULT '0',
+  `maxlength` int(10) unsigned NOT NULL DEFAULT '0',
   `size` varchar(255) NOT NULL DEFAULT '',
   `multiple` char(1) NOT NULL DEFAULT '',
-  `mSize` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `mSize` smallint(5) unsigned NOT NULL DEFAULT '0',
   `extensions` varchar(255) NOT NULL DEFAULT '',
   `storeFile` char(1) NOT NULL DEFAULT '',
   `uploadFolder` binary(16) DEFAULT NULL,
@@ -881,17 +979,19 @@ CREATE TABLE `tl_form_field` (
   `class` varchar(255) NOT NULL DEFAULT '',
   `value` varchar(255) NOT NULL DEFAULT '',
   `accesskey` char(1) NOT NULL DEFAULT '',
-  `tabindex` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `fSize` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `tabindex` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `fSize` smallint(5) unsigned NOT NULL DEFAULT '0',
   `customTpl` varchar(64) NOT NULL DEFAULT '',
   `addSubmit` char(1) NOT NULL DEFAULT '',
   `slabel` varchar(255) NOT NULL DEFAULT '',
   `imageSubmit` char(1) NOT NULL DEFAULT '',
-  `singleSRC` binary(16) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `singleSRC` binary(16) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
--- Daten für Tabelle `tl_form_field`
+-- Daten fÃ¼r Tabelle `tl_form_field`
 --
 
 INSERT INTO `tl_form_field` (`id`, `pid`, `sorting`, `tstamp`, `invisible`, `type`, `name`, `label`, `text`, `html`, `options`, `mandatory`, `rgxp`, `placeholder`, `minlength`, `maxlength`, `size`, `multiple`, `mSize`, `extensions`, `storeFile`, `uploadFolder`, `useHomeDir`, `doNotOverwrite`, `fsType`, `class`, `value`, `accesskey`, `tabindex`, `fSize`, `customTpl`, `addSubmit`, `slabel`, `imageSubmit`, `singleSRC`) VALUES
@@ -903,33 +1003,40 @@ INSERT INTO `tl_form_field` (`id`, `pid`, `sorting`, `tstamp`, `invisible`, `typ
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_image_size`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_image_size`
 --
 
 CREATE TABLE `tl_image_size` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(64) DEFAULT NULL,
   `sizes` varchar(255) NOT NULL DEFAULT '',
   `densities` varchar(255) NOT NULL DEFAULT '',
   `width` int(10) DEFAULT NULL,
   `height` int(10) DEFAULT NULL,
   `resizeMode` varchar(255) NOT NULL DEFAULT '',
-  `zoom` int(10) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `zoom` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_image_size`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_image_size_item`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_image_size_item`
 --
 
 CREATE TABLE `tl_image_size_item` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `media` varchar(255) NOT NULL DEFAULT '',
   `sizes` varchar(255) NOT NULL DEFAULT '',
   `densities` varchar(255) NOT NULL DEFAULT '',
@@ -937,19 +1044,26 @@ CREATE TABLE `tl_image_size_item` (
   `height` int(10) DEFAULT NULL,
   `resizeMode` varchar(255) NOT NULL DEFAULT '',
   `zoom` int(10) DEFAULT NULL,
-  `invisible` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `invisible` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_image_size_item`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_layout`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_layout`
 --
 
 CREATE TABLE `tl_layout` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `rows` varchar(8) NOT NULL DEFAULT '',
   `headerHeight` varchar(255) NOT NULL DEFAULT '',
@@ -986,11 +1100,12 @@ CREATE TABLE `tl_layout` (
   `script` text,
   `static` char(1) NOT NULL DEFAULT '',
   `width` varchar(255) NOT NULL DEFAULT '',
-  `align` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `align` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Daten für Tabelle `tl_layout`
+-- Daten fÃ¼r Tabelle `tl_layout`
 --
 
 INSERT INTO `tl_layout` (`id`, `pid`, `tstamp`, `name`, `rows`, `headerHeight`, `footerHeight`, `cols`, `widthLeft`, `widthRight`, `sections`, `sPosition`, `framework`, `stylesheet`, `external`, `orderExt`, `loadingOrder`, `newsfeeds`, `calendarfeeds`, `modules`, `template`, `doctype`, `webfonts`, `picturefill`, `viewport`, `titleTag`, `cssClass`, `onload`, `head`, `addJQuery`, `jSource`, `jquery`, `addMooTools`, `mooSource`, `mootools`, `analytics`, `script`, `static`, `width`, `align`) VALUES
@@ -999,23 +1114,24 @@ INSERT INTO `tl_layout` (`id`, `pid`, `tstamp`, `name`, `rows`, `headerHeight`, 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_log`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_log`
 --
 
 CREATE TABLE `tl_log` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `source` varchar(32) NOT NULL DEFAULT '',
   `action` varchar(32) NOT NULL DEFAULT '',
   `username` varchar(64) NOT NULL DEFAULT '',
   `text` text,
   `func` varchar(255) NOT NULL DEFAULT '',
   `ip` varchar(64) NOT NULL DEFAULT '',
-  `browser` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `browser` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=910 ;
 
 --
--- Daten für Tabelle `tl_log`
+-- Daten fÃ¼r Tabelle `tl_log`
 --
 
 INSERT INTO `tl_log` (`id`, `tstamp`, `source`, `action`, `username`, `text`, `func`, `ip`, `browser`) VALUES
@@ -1418,17 +1534,99 @@ INSERT INTO `tl_log` (`id`, `tstamp`, `source`, `action`, `username`, `text`, `f
 (824, 1460196606, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_beachcup_registration.id=30&quot; has been created', 'Contao\\DC_Table::create', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
 (825, 1460196619, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_beachcup_registration.id=30&quot; has been created', 'Contao\\DC_Table::edit', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
 (826, 1460196621, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_beachcup_registration.id=31&quot; has been created', 'Contao\\DC_Table::create', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
-(827, 1460196628, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_beachcup_registration.id=31&quot; has been created', 'Contao\\DC_Table::edit', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36');
+(827, 1460196628, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_beachcup_registration.id=31&quot; has been created', 'Contao\\DC_Table::edit', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(828, 1460385065, 'FE', 'CRON', '', 'Purged the page cache', 'Contao\\Automator::purgePageCache', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(829, 1460385065, 'FE', 'CRON', '', 'Purged the script cache', 'Contao\\Automator::purgeScriptCache', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(830, 1460385065, 'FE', 'CRON', '', 'Purged the search cache', 'Contao\\Automator::purgeSearchCache', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(831, 1460385065, 'FE', 'CRON', '', 'Purged the temp folder', 'Contao\\Automator::purgeTempFolder', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(832, 1460385065, 'FE', 'CRON', '', 'Checked for Contao updates', 'Contao\\Automator::checkForUpdates', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(833, 1460385076, 'BE', 'ACCESS', '', 'Invalid password submitted for username &quot;beach-admin&quot;', 'Contao\\User::login', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(834, 1460385088, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged in', 'Contao\\User::login', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(835, 1460385267, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged in', 'Contao\\User::login', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(836, 1460385294, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged in', 'Contao\\User::login', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(837, 1460385868, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged out', 'Contao\\User::logout', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(838, 1460385877, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged in', 'Contao\\User::login', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(839, 1460386306, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged out', 'Contao\\User::logout', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(840, 1460386476, 'BE', 'CONFIGURATION', 'beach-admin', 'The global configuration variable &quot;maintenanceMode&quot; has been changed from &quot;true&quot; to &quot;&quot;', 'Contao\\DC_File::save', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(841, 1460387947, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged out', 'Contao\\User::logout', '31.207.113.0', 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36'),
+(842, 1460395424, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged in', 'Contao\\User::login', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(843, 1460395531, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=9&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(844, 1460395565, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=9&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(845, 1460395612, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=13&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(846, 1460395626, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=13&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(847, 1460395664, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=16&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(848, 1460395675, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=16&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(849, 1460395696, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=19&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(850, 1460395707, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=19&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(851, 1460400176, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_news.id=1&quot; has been created (parent records: tl_news_archive.id=2)', 'tl_news::toggleVisibility', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(852, 1460400190, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_news.id=1&quot; has been created (parent records: tl_news_archive.id=2)', 'tl_news::toggleVisibility', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(853, 1460400381, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_content.id=22&quot; has been created (parent records: tl_news.id=1, tl_news_archive.id=2)', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(854, 1460400467, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_content.id=23&quot; has been created (parent records: tl_news.id=1, tl_news_archive.id=2)', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(855, 1460400630, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_content.id=23&quot; has been created (parent records: tl_news.id=1, tl_news_archive.id=2)', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(856, 1460400730, 'BE', 'FILES', 'beach-admin', 'Folder &quot;files/news-pictures&quot; has been created', 'Contao\\DC_Folder::save', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(857, 1460400730, 'BE', 'GENERAL', 'beach-admin', 'A new version of file &quot;&quot; has been created', 'Contao\\DC_Folder::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(858, 1460400832, 'BE', 'FILES', 'beach-admin', 'File &quot;DSC_3092.JPG&quot; uploaded successfully', 'Contao\\FileUpload::uploadTo', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(859, 1460400934, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_content.id=23&quot; has been created (parent records: tl_news.id=1, tl_news_archive.id=2)', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(860, 1460401118, 'BE', 'GENERAL', 'beach-admin', 'DELETE FROM tl_content WHERE id=23', 'Contao\\DC_Table::delete', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(861, 1460401237, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_news.id=1&quot; has been created (parent records: tl_news_archive.id=2)', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(862, 1460401738, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=24&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(863, 1460401837, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=24&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(864, 1460401968, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=25&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(865, 1460401996, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=25&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(866, 1460402054, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=8&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(867, 1460402100, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=26&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(868, 1460402114, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=26&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(869, 1460402148, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=27&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(870, 1460402167, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=27&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(871, 1460402214, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=28&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(872, 1460402227, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=28&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(873, 1460402235, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=27&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(874, 1460402253, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=27&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(875, 1460402275, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=29&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(876, 1460402303, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=29&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(877, 1460402415, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=12&quot; has been created', 'tl_page::toggleVisibility', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(878, 1460402629, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=13&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(879, 1460402647, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=15&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(880, 1460402680, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=30&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(881, 1460402702, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=30&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(882, 1460403374, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=31&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(883, 1460403392, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=31&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(884, 1460403400, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=30&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(885, 1460403413, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=30&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(886, 1460403432, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=32&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(887, 1460403451, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=32&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(888, 1460403636, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=33&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(889, 1460403662, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=33&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(890, 1460403674, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=34&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(891, 1460403692, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=34&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(892, 1460403701, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=33&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(893, 1460403710, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=33&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(894, 1460403720, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=35&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(895, 1460403743, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=35&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(896, 1460403757, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=35&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(897, 1460403868, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=36&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(898, 1460403881, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=36&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(899, 1460403957, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=37&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(900, 1460404009, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=37&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(901, 1460404019, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=36&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(902, 1460404036, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=36&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(903, 1460404145, 'BE', 'GENERAL', 'beach-admin', 'A new entry &quot;tl_page.id=38&quot; has been created', 'Contao\\DC_Table::create', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(904, 1460404188, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=38&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(905, 1460404209, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_page.id=38&quot; has been created', 'Contao\\DC_Table::edit', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(906, 1460404274, 'BE', 'GENERAL', 'beach-admin', 'A new version of record &quot;tl_article.id=13&quot; has been created (parent records: tl_page.id=12)', 'tl_article::toggleVisibility', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(907, 1460405984, 'BE', 'ACCESS', 'beach-admin', 'User &quot;beach-admin&quot; has logged out', 'Contao\\User::logout', '188.10.218.0', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:45.0) Gecko/20100101 Firefox/45.0'),
+(908, 1460475834, 'FE', 'CRON', '', 'Purged the temp folder', 'Contao\\Automator::purgeTempFolder', '93.70.125.0', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36'),
+(909, 1460475834, 'FE', 'CRON', '', 'Checked for Contao updates', 'Contao\\Automator::checkForUpdates', '93.70.125.0', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_member`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_member`
 --
 
 CREATE TABLE `tl_member` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `firstname` varchar(255) NOT NULL DEFAULT '',
   `lastname` varchar(255) NOT NULL DEFAULT '',
   `dateOfBirth` varchar(11) NOT NULL DEFAULT '',
@@ -1454,54 +1652,70 @@ CREATE TABLE `tl_member` (
   `disable` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
   `stop` varchar(10) NOT NULL DEFAULT '',
-  `dateAdded` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `lastLogin` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `currentLogin` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `loginCount` smallint(5) UNSIGNED NOT NULL DEFAULT '3',
-  `locked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `dateAdded` int(10) unsigned NOT NULL DEFAULT '0',
+  `lastLogin` int(10) unsigned NOT NULL DEFAULT '0',
+  `currentLogin` int(10) unsigned NOT NULL DEFAULT '0',
+  `loginCount` smallint(5) unsigned NOT NULL DEFAULT '3',
+  `locked` int(10) unsigned NOT NULL DEFAULT '0',
   `session` blob,
   `autologin` varchar(32) DEFAULT NULL,
-  `createdOn` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `createdOn` int(10) unsigned NOT NULL DEFAULT '0',
   `activation` varchar(32) NOT NULL DEFAULT '',
-  `newsletter` blob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `newsletter` blob,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `autologin` (`autologin`),
+  KEY `email` (`email`),
+  KEY `activation` (`activation`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_member`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_member_group`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_member_group`
 --
 
 CREATE TABLE `tl_member_group` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `redirect` char(1) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `disable` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
-  `stop` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stop` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_member_group`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_module`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_module`
 --
 
 CREATE TABLE `tl_module` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `headline` varchar(255) NOT NULL DEFAULT '',
   `type` varchar(64) NOT NULL DEFAULT '',
-  `levelOffset` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `showLevel` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `levelOffset` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `showLevel` smallint(5) unsigned NOT NULL DEFAULT '0',
   `hardLimit` char(1) NOT NULL DEFAULT '',
   `showProtected` char(1) NOT NULL DEFAULT '',
   `defineRoot` char(1) NOT NULL DEFAULT '',
-  `rootPage` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `rootPage` int(10) unsigned NOT NULL DEFAULT '0',
   `navigationTpl` varchar(64) NOT NULL DEFAULT '',
   `customTpl` varchar(64) NOT NULL DEFAULT '',
   `pages` blob,
@@ -1509,22 +1723,22 @@ CREATE TABLE `tl_module` (
   `showHidden` char(1) NOT NULL DEFAULT '',
   `customLabel` varchar(64) NOT NULL DEFAULT '',
   `autologin` char(1) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `redirectBack` char(1) NOT NULL DEFAULT '',
   `cols` varchar(32) NOT NULL DEFAULT '',
   `editable` blob,
   `memberTpl` varchar(64) NOT NULL DEFAULT '',
   `tableless` char(1) NOT NULL DEFAULT '',
-  `form` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `form` int(10) unsigned NOT NULL DEFAULT '0',
   `queryType` varchar(32) NOT NULL DEFAULT '',
   `fuzzy` char(1) NOT NULL DEFAULT '',
-  `contextLength` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `totalLength` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `contextLength` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `totalLength` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
   `searchType` varchar(32) NOT NULL DEFAULT '',
   `searchTpl` varchar(64) NOT NULL DEFAULT '',
   `inColumn` varchar(32) NOT NULL DEFAULT '',
-  `skipFirst` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `skipFirst` smallint(5) unsigned NOT NULL DEFAULT '0',
   `loadFirst` char(1) NOT NULL DEFAULT '',
   `size` varchar(64) NOT NULL DEFAULT '',
   `transparent` char(1) NOT NULL DEFAULT '',
@@ -1542,10 +1756,10 @@ CREATE TABLE `tl_module` (
   `multiSRC` blob,
   `orderSRC` blob,
   `html` text,
-  `rss_cache` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `rss_cache` int(10) unsigned NOT NULL DEFAULT '0',
   `rss_feed` text,
   `rss_template` varchar(32) NOT NULL DEFAULT '',
-  `numberOfItems` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `numberOfItems` smallint(5) unsigned NOT NULL DEFAULT '0',
   `disableCaptcha` char(1) NOT NULL DEFAULT '',
   `reg_groups` blob,
   `reg_allowLogin` char(1) NOT NULL DEFAULT '',
@@ -1554,7 +1768,7 @@ CREATE TABLE `tl_module` (
   `reg_assignDir` char(1) NOT NULL DEFAULT '',
   `reg_homeDir` binary(16) DEFAULT NULL,
   `reg_activate` char(1) NOT NULL DEFAULT '',
-  `reg_jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `reg_jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `reg_text` text,
   `reg_password` text,
   `protected` char(1) NOT NULL DEFAULT '',
@@ -1564,12 +1778,12 @@ CREATE TABLE `tl_module` (
   `space` varchar(64) NOT NULL DEFAULT '',
   `cal_calendar` blob,
   `cal_noSpan` char(1) NOT NULL DEFAULT '',
-  `cal_startDay` smallint(5) UNSIGNED NOT NULL DEFAULT '1',
+  `cal_startDay` smallint(5) unsigned NOT NULL DEFAULT '1',
   `cal_format` varchar(32) NOT NULL DEFAULT '',
   `cal_ignoreDynamic` char(1) NOT NULL DEFAULT '',
   `cal_order` varchar(32) NOT NULL DEFAULT '',
-  `cal_readerModule` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `cal_limit` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `cal_readerModule` int(10) unsigned NOT NULL DEFAULT '0',
+  `cal_limit` smallint(5) unsigned NOT NULL DEFAULT '0',
   `cal_template` varchar(32) NOT NULL DEFAULT '',
   `cal_ctemplate` varchar(32) NOT NULL DEFAULT '',
   `cal_showQuantity` char(1) NOT NULL DEFAULT '',
@@ -1580,7 +1794,7 @@ CREATE TABLE `tl_module` (
   `com_disableCaptcha` char(1) NOT NULL DEFAULT '',
   `com_template` varchar(32) NOT NULL DEFAULT '',
   `faq_categories` blob,
-  `faq_readerModule` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `faq_readerModule` int(10) unsigned NOT NULL DEFAULT '0',
   `list_table` varchar(64) NOT NULL DEFAULT '',
   `list_fields` varchar(255) NOT NULL DEFAULT '',
   `list_where` varchar(255) NOT NULL DEFAULT '',
@@ -1593,11 +1807,11 @@ CREATE TABLE `tl_module` (
   `news_archives` blob,
   `news_featured` varchar(16) NOT NULL DEFAULT '',
   `news_jumpToCurrent` varchar(16) NOT NULL DEFAULT '',
-  `news_readerModule` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `news_readerModule` int(10) unsigned NOT NULL DEFAULT '0',
   `news_metaFields` varchar(255) NOT NULL DEFAULT '',
   `news_template` varchar(32) NOT NULL DEFAULT '',
   `news_format` varchar(32) NOT NULL DEFAULT '',
-  `news_startDay` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `news_startDay` smallint(5) unsigned NOT NULL DEFAULT '0',
   `news_order` varchar(255) NOT NULL DEFAULT '',
   `news_showQuantity` char(1) NOT NULL DEFAULT '',
   `newsletters` blob,
@@ -1605,11 +1819,12 @@ CREATE TABLE `tl_module` (
   `nl_hideChannels` char(1) NOT NULL DEFAULT '',
   `nl_subscribe` text,
   `nl_unsubscribe` text,
-  `nl_template` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `nl_template` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
--- Daten für Tabelle `tl_module`
+-- Daten fÃ¼r Tabelle `tl_module`
 --
 
 INSERT INTO `tl_module` (`id`, `pid`, `tstamp`, `name`, `headline`, `type`, `levelOffset`, `showLevel`, `hardLimit`, `showProtected`, `defineRoot`, `rootPage`, `navigationTpl`, `customTpl`, `pages`, `orderPages`, `showHidden`, `customLabel`, `autologin`, `jumpTo`, `redirectBack`, `cols`, `editable`, `memberTpl`, `tableless`, `form`, `queryType`, `fuzzy`, `contextLength`, `totalLength`, `perPage`, `searchType`, `searchTpl`, `inColumn`, `skipFirst`, `loadFirst`, `size`, `transparent`, `flashvars`, `altContent`, `source`, `singleSRC`, `url`, `interactive`, `flashID`, `flashJS`, `imgSize`, `useCaption`, `fullsize`, `multiSRC`, `orderSRC`, `html`, `rss_cache`, `rss_feed`, `rss_template`, `numberOfItems`, `disableCaptcha`, `reg_groups`, `reg_allowLogin`, `reg_skipName`, `reg_close`, `reg_assignDir`, `reg_homeDir`, `reg_activate`, `reg_jumpTo`, `reg_text`, `reg_password`, `protected`, `groups`, `guests`, `cssID`, `space`, `cal_calendar`, `cal_noSpan`, `cal_startDay`, `cal_format`, `cal_ignoreDynamic`, `cal_order`, `cal_readerModule`, `cal_limit`, `cal_template`, `cal_ctemplate`, `cal_showQuantity`, `com_order`, `com_moderate`, `com_bbcode`, `com_requireLogin`, `com_disableCaptcha`, `com_template`, `faq_categories`, `faq_readerModule`, `list_table`, `list_fields`, `list_where`, `list_search`, `list_sort`, `list_info`, `list_info_where`, `list_layout`, `list_info_layout`, `news_archives`, `news_featured`, `news_jumpToCurrent`, `news_readerModule`, `news_metaFields`, `news_template`, `news_format`, `news_startDay`, `news_order`, `news_showQuantity`, `newsletters`, `nl_channels`, `nl_hideChannels`, `nl_subscribe`, `nl_unsubscribe`, `nl_template`) VALUES
@@ -1620,23 +1835,23 @@ INSERT INTO `tl_module` (`id`, `pid`, `tstamp`, `name`, `headline`, `type`, `lev
 (15, 2, 1457450181, 'Nachrichtenliste', 'a:2:{s:4:"unit";s:2:"h1";s:5:"value";s:0:"";}', 'newslist', 0, 0, '', '', '', 0, '', '', NULL, NULL, '', '', '', 0, '', '2cl', NULL, '', '', 0, 'and', '', 48, 1000, 0, 'simple', '', 'main', 0, '', '', '', '', NULL, 'internal', NULL, '', '', '', NULL, 'a:3:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";}', '', '', NULL, NULL, NULL, 3600, NULL, 'rss_default', 0, '', NULL, '', '', '', '', NULL, '', 0, NULL, NULL, '', NULL, '', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', 'a:2:{i:0;s:0:"";i:1;s:0:"";}', NULL, '', 1, 'cal_month', '', 'ascending', 0, 0, 'event_full', 'cal_default', '', 'ascending', '', '', '', '', 'com_default', NULL, 0, '', '', '', '', '', '', '', 'list_default', 'info_default', 0x613a313a7b693a303b733a313a2232223b7d, 'all_items', '', 0, 'a:2:{i:0;s:4:"date";i:1;s:6:"author";}', 'news_latest', 'news_month', 0, 'descending', '', NULL, NULL, '', NULL, NULL, 'nl_simple'),
 (16, 2, 1458740497, 'Etappen Liste', '', 'stage_list', 0, 0, '', '', '', 0, '', '', NULL, NULL, '', '', '', 0, '', '2cl', NULL, '', '', 0, 'and', '', 48, 1000, 0, 'simple', '', 'main', 0, '', '', '', '', NULL, 'internal', NULL, '', '', '', NULL, '', '', '', NULL, NULL, NULL, 3600, NULL, 'rss_default', 3, '', NULL, '', '', '', '', NULL, '', 0, NULL, NULL, '', NULL, '', '', '', NULL, '', 1, 'cal_month', '', 'ascending', 0, 0, 'event_full', 'cal_default', '', 'ascending', '', '', '', '', 'com_default', NULL, 0, '', '', '', '', '', '', '', 'list_default', 'info_default', NULL, 'all_items', '', 0, 'a:2:{i:0;s:4:"date";i:1;s:6:"author";}', 'news_latest', 'news_month', 0, 'descending', '', NULL, NULL, '', NULL, NULL, 'nl_simple'),
 (19, 2, 1460103917, 'Spielergebnisse', '', 'game_results', 0, 0, '', '', '', 0, '', '', NULL, NULL, '', '', '', 0, '', '2cl', NULL, '', '', 0, 'and', '', 48, 1000, 0, 'simple', '', 'main', 0, '', '', '', '', NULL, 'internal', NULL, '', '', '', NULL, '', '', '', NULL, NULL, NULL, 3600, NULL, 'rss_default', 3, '', NULL, '', '', '', '', NULL, '', 0, NULL, NULL, '', NULL, '', '', '', NULL, '', 1, 'cal_month', '', 'ascending', 0, 0, 'event_full', 'cal_default', '', 'ascending', '', '', '', '', 'com_default', NULL, 0, '', '', '', '', '', '', '', 'list_default', 'info_default', NULL, 'all_items', '', 0, 'a:2:{i:0;s:4:"date";i:1;s:6:"author";}', 'news_latest', 'news_month', 0, 'descending', '', NULL, NULL, '', NULL, NULL, 'nl_simple'),
-(20, 2, 1460195548, 'Gesamtstände', '', 'total_results', 0, 0, '', '', '', 0, '', '', NULL, NULL, '', '', '', 0, '', '2cl', NULL, '', '', 0, 'and', '', 48, 1000, 0, 'simple', '', 'main', 0, '', '', '', '', NULL, 'internal', NULL, '', '', '', NULL, '', '', '', NULL, NULL, NULL, 3600, NULL, 'rss_default', 3, '', NULL, '', '', '', '', NULL, '', 0, NULL, NULL, '', NULL, '', '', '', NULL, '', 1, 'cal_month', '', 'ascending', 0, 0, 'event_full', 'cal_default', '', 'ascending', '', '', '', '', 'com_default', NULL, 0, '', '', '', '', '', '', '', 'list_default', 'info_default', NULL, 'all_items', '', 0, 'a:2:{i:0;s:4:"date";i:1;s:6:"author";}', 'news_latest', 'news_month', 0, 'descending', '', NULL, NULL, '', NULL, NULL, 'nl_simple');
+(20, 2, 1460195548, 'GesamtstÃ¤nde', '', 'total_results', 0, 0, '', '', '', 0, '', '', NULL, NULL, '', '', '', 0, '', '2cl', NULL, '', '', 0, 'and', '', 48, 1000, 0, 'simple', '', 'main', 0, '', '', '', '', NULL, 'internal', NULL, '', '', '', NULL, '', '', '', NULL, NULL, NULL, 3600, NULL, 'rss_default', 3, '', NULL, '', '', '', '', NULL, '', 0, NULL, NULL, '', NULL, '', '', '', NULL, '', 1, 'cal_month', '', 'ascending', 0, 0, 'event_full', 'cal_default', '', 'ascending', '', '', '', '', 'com_default', NULL, 0, '', '', '', '', '', '', '', 'list_default', 'info_default', NULL, 'all_items', '', 0, 'a:2:{i:0;s:4:"date";i:1;s:6:"author";}', 'news_latest', 'news_month', 0, 'descending', '', NULL, NULL, '', NULL, NULL, 'nl_simple');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_news`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_news`
 --
 
 CREATE TABLE `tl_news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `headline` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `author` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `date` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `time` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `author` int(10) unsigned NOT NULL DEFAULT '0',
+  `date` int(10) unsigned NOT NULL DEFAULT '0',
+  `time` int(10) unsigned NOT NULL DEFAULT '0',
   `subheadline` varchar(255) NOT NULL DEFAULT '',
   `teaser` text,
   `addImage` char(1) NOT NULL DEFAULT '',
@@ -1651,8 +1866,8 @@ CREATE TABLE `tl_news` (
   `addEnclosure` char(1) NOT NULL DEFAULT '',
   `enclosure` blob,
   `source` varchar(12) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `articleId` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
+  `articleId` int(10) unsigned NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL DEFAULT '',
   `target` char(1) NOT NULL DEFAULT '',
   `cssClass` varchar(255) NOT NULL DEFAULT '',
@@ -1660,26 +1875,29 @@ CREATE TABLE `tl_news` (
   `featured` char(1) NOT NULL DEFAULT '',
   `published` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
-  `stop` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stop` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`),
+  KEY `pid_start_stop_published` (`pid`,`start`,`stop`,`published`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Daten für Tabelle `tl_news`
+-- Daten fÃ¼r Tabelle `tl_news`
 --
 
 INSERT INTO `tl_news` (`id`, `pid`, `tstamp`, `headline`, `alias`, `author`, `date`, `time`, `subheadline`, `teaser`, `addImage`, `singleSRC`, `alt`, `size`, `imagemargin`, `imageUrl`, `fullsize`, `caption`, `floating`, `addEnclosure`, `enclosure`, `source`, `jumpTo`, `articleId`, `url`, `target`, `cssClass`, `noComments`, `featured`, `published`, `start`, `stop`) VALUES
-(1, 2, 1457448843, 'Auf nach Partschins', 'auf-nach-partschins', 1, 1457448720, 1457448720, '', '<p>Zweite Open-Etappe</p>', '1', 0xf7cd9751a19611e58304448a5b243f5c, 'test', 'a:3:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";}', 'a:5:{s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:5:"right";s:0:"";s:3:"top";s:0:"";s:4:"unit";s:0:"";}', '', '', '', 'above', '', NULL, 'default', 0, 0, '', '', '', '', '', '1', '', '');
+(1, 2, 1460401237, 'Es wird wieder gebaggert!', 'es-wird-wieder-gebaggert', 1, 1457448720, 1457448720, '', '<p>Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>', '1', '»À°O\0æ¦\0>\0e’', '', 'a:3:{i:0;s:0:"";i:1;s:0:"";i:2;s:0:"";}', 'a:5:{s:6:"bottom";s:0:"";s:4:"left";s:0:"";s:5:"right";s:0:"";s:3:"top";s:0:"";s:4:"unit";s:0:"";}', '', '', '', 'above', '', NULL, 'default', 0, 0, '', '', '', '', '', '1', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_newsletter`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_newsletter`
 --
 
 CREATE TABLE `tl_newsletter` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `subject` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `content` mediumtext,
@@ -1692,71 +1910,93 @@ CREATE TABLE `tl_newsletter` (
   `sender` varchar(128) NOT NULL DEFAULT '',
   `senderName` varchar(128) NOT NULL DEFAULT '',
   `sent` char(1) NOT NULL DEFAULT '',
-  `date` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `date` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_newsletter`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_newsletter_channel`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_newsletter_channel`
 --
 
 CREATE TABLE `tl_newsletter_channel` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `useSMTP` char(1) NOT NULL DEFAULT '',
   `smtpHost` varchar(64) NOT NULL DEFAULT '',
   `smtpUser` varchar(128) NOT NULL DEFAULT '',
   `smtpPass` varchar(32) NOT NULL DEFAULT '',
   `smtpEnc` varchar(3) NOT NULL DEFAULT '',
-  `smtpPort` smallint(5) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `smtpPort` smallint(5) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_newsletter_channel`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_newsletter_recipients`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_newsletter_recipients`
 --
 
 CREATE TABLE `tl_newsletter_recipients` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `email` varchar(255) NOT NULL DEFAULT '',
   `active` char(1) NOT NULL DEFAULT '',
   `addedOn` varchar(10) NOT NULL DEFAULT '',
   `confirmed` varchar(10) NOT NULL DEFAULT '',
   `ip` varchar(64) NOT NULL DEFAULT '',
-  `token` varchar(32) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `token` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `email` (`email`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_newsletter_recipients`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_news_archive`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_news_archive`
 --
 
 CREATE TABLE `tl_news_archive` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `protected` char(1) NOT NULL DEFAULT '',
   `groups` blob,
   `allowComments` char(1) NOT NULL DEFAULT '',
   `notify` varchar(16) NOT NULL DEFAULT '',
   `sortOrder` varchar(32) NOT NULL DEFAULT '',
-  `perPage` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `perPage` smallint(5) unsigned NOT NULL DEFAULT '0',
   `moderate` char(1) NOT NULL DEFAULT '',
   `bbcode` char(1) NOT NULL DEFAULT '',
   `requireLogin` char(1) NOT NULL DEFAULT '',
-  `disableCaptcha` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `disableCaptcha` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Daten für Tabelle `tl_news_archive`
+-- Daten fÃ¼r Tabelle `tl_news_archive`
 --
 
 INSERT INTO `tl_news_archive` (`id`, `tstamp`, `title`, `jumpTo`, `protected`, `groups`, `allowComments`, `notify`, `sortOrder`, `perPage`, `moderate`, `bbcode`, `requireLogin`, `disableCaptcha`) VALUES
@@ -1765,34 +2005,41 @@ INSERT INTO `tl_news_archive` (`id`, `tstamp`, `title`, `jumpTo`, `protected`, `
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_news_feed`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_news_feed`
 --
 
 CREATE TABLE `tl_news_feed` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `language` varchar(32) NOT NULL DEFAULT '',
   `archives` blob,
   `format` varchar(32) NOT NULL DEFAULT '',
   `source` varchar(32) NOT NULL DEFAULT '',
-  `maxItems` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `maxItems` smallint(5) unsigned NOT NULL DEFAULT '0',
   `feedBase` varchar(255) NOT NULL DEFAULT '',
-  `description` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `description` text,
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_news_feed`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_page`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_page`
 --
 
 CREATE TABLE `tl_page` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(128) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `type` varchar(32) NOT NULL DEFAULT '',
@@ -1801,7 +2048,7 @@ CREATE TABLE `tl_page` (
   `robots` varchar(32) NOT NULL DEFAULT '',
   `description` text,
   `redirect` varchar(32) NOT NULL DEFAULT '',
-  `jumpTo` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `jumpTo` int(10) unsigned NOT NULL DEFAULT '0',
   `url` varchar(255) NOT NULL DEFAULT '',
   `target` char(1) NOT NULL DEFAULT '',
   `dns` varchar(255) NOT NULL DEFAULT '',
@@ -1819,57 +2066,75 @@ CREATE TABLE `tl_page` (
   `protected` char(1) NOT NULL DEFAULT '',
   `groups` blob,
   `includeLayout` char(1) NOT NULL DEFAULT '',
-  `layout` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `mobileLayout` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `layout` int(10) unsigned NOT NULL DEFAULT '0',
+  `mobileLayout` int(10) unsigned NOT NULL DEFAULT '0',
   `includeCache` char(1) NOT NULL DEFAULT '',
-  `cache` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cache` int(10) unsigned NOT NULL DEFAULT '0',
   `includeChmod` char(1) NOT NULL DEFAULT '',
-  `cuser` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `cgroup` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cuser` int(10) unsigned NOT NULL DEFAULT '0',
+  `cgroup` int(10) unsigned NOT NULL DEFAULT '0',
   `chmod` varchar(255) NOT NULL DEFAULT '',
   `noSearch` char(1) NOT NULL DEFAULT '',
   `cssClass` varchar(64) NOT NULL DEFAULT '',
   `sitemap` varchar(32) NOT NULL DEFAULT '',
   `hide` char(1) NOT NULL DEFAULT '',
   `guests` char(1) NOT NULL DEFAULT '',
-  `tabindex` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `tabindex` smallint(5) unsigned NOT NULL DEFAULT '0',
   `accesskey` char(1) NOT NULL DEFAULT '',
   `published` char(1) NOT NULL DEFAULT '',
   `start` varchar(10) NOT NULL DEFAULT '',
-  `stop` varchar(10) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `stop` varchar(10) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `alias` (`alias`),
+  KEY `pid_type_start_stop_published` (`pid`,`type`,`start`,`stop`,`published`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
--- Daten für Tabelle `tl_page`
+-- Daten fÃ¼r Tabelle `tl_page`
 --
 
 INSERT INTO `tl_page` (`id`, `pid`, `sorting`, `tstamp`, `title`, `alias`, `type`, `pageTitle`, `language`, `robots`, `description`, `redirect`, `jumpTo`, `url`, `target`, `dns`, `staticFiles`, `staticPlugins`, `fallback`, `adminEmail`, `dateFormat`, `timeFormat`, `datimFormat`, `createSitemap`, `sitemapName`, `useSSL`, `autoforward`, `protected`, `groups`, `includeLayout`, `layout`, `mobileLayout`, `includeCache`, `cache`, `includeChmod`, `cuser`, `cgroup`, `chmod`, `noSearch`, `cssClass`, `sitemap`, `hide`, `guests`, `tabindex`, `accesskey`, `published`, `start`, `stop`) VALUES
-(13, 7, 384, 1457019064, 'Ranking', 'ranking', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(13, 7, 384, 1460402629, 'Resultate', 'resultate', 'forward', '', '', 'index,follow', '', 'permanent', 14, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (7, 0, 128, 1457019927, 'Beachcup Deutsch', 'beachcup-deutsch', 'root', '', 'de', '', NULL, 'permanent', 0, '', '', '', '', '', '1', '', '', '', '', '', '', '', '', '', NULL, '1', 2, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', '', '', '', 0, '', '1', '', ''),
-(8, 7, 128, 1457019064, 'Home', 'home', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(9, 7, 256, 1457019064, 'Turnier', 'turnier', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(8, 7, 128, 1460402054, 'Home', 'home-de', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(9, 7, 256, 1460395565, 'Turnier', 'turnier', 'forward', '', '', 'index,follow', '', 'permanent', 10, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (10, 9, 128, 1457019064, 'Etappen', 'etappen', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (11, 9, 256, 1457019064, 'Reglement', 'reglement', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(12, 9, 384, 1457019064, 'Landesmeisterschaft', 'landesmeisterschaft', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(12, 9, 384, 1460402415, 'Landesmeisterschaft', 'landesmeisterschaft', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '', '', ''),
 (14, 13, 128, 1457019064, 'Spielergebnisse', 'spielergebnisse', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(15, 13, 256, 1457019064, 'Gesamtstände', 'gesamtstaende', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(16, 7, 512, 1457019064, 'Media', 'media', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(15, 13, 256, 1460402647, 'Ranking', 'ranking', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(16, 7, 512, 1460395675, 'Media', 'media', 'forward', '', '', 'index,follow', '', 'permanent', 17, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (17, 16, 128, 1457019064, 'Fotos', 'fotos', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (18, 16, 256, 1457019064, 'Videos', 'videos', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(19, 7, 640, 1457019064, 'Kontakt', 'kontakt', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(19, 7, 640, 1460395707, 'Kontakt', 'kontakt', 'forward', '', '', 'index,follow', '', 'permanent', 20, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (20, 19, 128, 1457019064, 'Kontaktformular', 'kontaktformular', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
 (21, 19, 256, 1457019064, 'Impressum', 'impressum', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
-(23, 7, 64, 1457449666, 'Nachrichten', 'nachrichten', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '1', '', 0, '', '1', '', '');
+(23, 7, 64, 1457449666, 'Nachrichten', 'nachrichten', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '1', '', 0, '', '1', '', ''),
+(24, 0, 64, 1460401837, 'Beachcup Italienisch', 'beachcup-italiano', 'root', 'Raiffeisen Beachcup', 'it', '', NULL, 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', '', '', '', 0, '', '1', '', ''),
+(25, 24, 128, 1460401996, 'Notizie', 'notizie', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '1', '', 0, '', '1', '', ''),
+(26, 24, 256, 1460402114, 'Home', 'home-it', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(27, 24, 384, 1460402253, 'Torneo', 'torneo', 'forward', '', '', 'index,follow', '', 'permanent', 28, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(28, 27, 128, 1460402227, 'Tappe', 'tappe', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(29, 27, 256, 1460402303, 'Regolamento', 'regolamento', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(30, 24, 512, 1460403413, 'Risultati', 'risultati', 'forward', '', '', 'index,follow', '', 'permanent', 31, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(31, 30, 128, 1460403392, 'Partite', 'partite', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(32, 30, 256, 1460403451, 'Classifiche', 'classifiche', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(33, 24, 640, 1460403710, 'Foto e Video', 'foto-e-video', 'forward', '', '', 'index,follow', '', 'permanent', 34, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(34, 33, 128, 1460403692, 'Foto', 'foto', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(35, 33, 256, 1460403757, 'Video', 'video', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(36, 24, 768, 1460404036, 'Contatto', 'contatto', 'forward', '', '', 'index,follow', '', 'permanent', 37, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(37, 36, 128, 1460404009, 'Modulo di contatto', 'modulo-di-contatto', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', ''),
+(38, 36, 256, 1460404209, 'Note legali', 'note-legali', 'regular', '', '', 'index,follow', '', 'permanent', 0, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 0, 0, '', 0, '', 0, 0, 'a:9:{i:0;s:2:"u1";i:1;s:2:"u2";i:2;s:2:"u3";i:3;s:2:"u4";i:4;s:2:"u5";i:5;s:2:"u6";i:6;s:2:"g4";i:7;s:2:"g5";i:8;s:2:"g6";}', '', '', 'map_default', '', '', 0, '', '1', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_repository_installs`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_repository_installs`
 --
 
 CREATE TABLE `tl_repository_installs` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `extension` varchar(32) NOT NULL DEFAULT '',
   `version` int(9) NOT NULL DEFAULT '0',
   `build` int(9) NOT NULL DEFAULT '0',
@@ -1880,11 +2145,12 @@ CREATE TABLE `tl_repository_installs` (
   `lickey` varchar(255) NOT NULL DEFAULT '',
   `delprot` char(1) NOT NULL DEFAULT '',
   `updprot` char(1) NOT NULL DEFAULT '',
-  `error` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `error` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Daten für Tabelle `tl_repository_installs`
+-- Daten fÃ¼r Tabelle `tl_repository_installs`
 --
 
 INSERT INTO `tl_repository_installs` (`id`, `tstamp`, `extension`, `version`, `build`, `alpha`, `beta`, `rc`, `stable`, `lickey`, `delprot`, `updprot`, `error`) VALUES
@@ -1893,20 +2159,22 @@ INSERT INTO `tl_repository_installs` (`id`, `tstamp`, `extension`, `version`, `b
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_repository_instfiles`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_repository_instfiles`
 --
 
 CREATE TABLE `tl_repository_instfiles` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `filename` varchar(255) NOT NULL DEFAULT '',
   `filetype` char(1) NOT NULL DEFAULT 'F',
-  `flag` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `flag` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=122 ;
 
 --
--- Daten für Tabelle `tl_repository_instfiles`
+-- Daten fÃ¼r Tabelle `tl_repository_instfiles`
 --
 
 INSERT INTO `tl_repository_instfiles` (`id`, `pid`, `tstamp`, `filename`, `filetype`, `flag`) VALUES
@@ -2035,86 +2303,89 @@ INSERT INTO `tl_repository_instfiles` (`id`, `pid`, `tstamp`, `filename`, `filet
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_search`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_search`
 --
 
 CREATE TABLE `tl_search` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `url` varchar(255) NOT NULL DEFAULT '',
   `text` mediumtext,
-  `filesize` double UNSIGNED NOT NULL DEFAULT '0',
+  `filesize` double unsigned NOT NULL DEFAULT '0',
   `checksum` varchar(32) NOT NULL DEFAULT '',
   `protected` char(1) NOT NULL DEFAULT '',
   `groups` blob,
-  `language` varchar(5) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `language` varchar(5) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `url` (`url`),
+  FULLTEXT KEY `text` (`text`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
--- Daten für Tabelle `tl_search`
+-- Daten fÃ¼r Tabelle `tl_search`
 --
 
 INSERT INTO `tl_search` (`id`, `pid`, `tstamp`, `title`, `url`, `text`, `filesize`, `checksum`, `protected`, `groups`, `language`) VALUES
-(6, 8, 1457449333, 'Home', '', 'Home Beachcup News Auf nach Partschins Zweite Open-Etappe Read more Weiterlesen … Auf nach Partschins Den Artikel lesen: Auf nach Partschins, Banner', 15.28, '31a4d112ea0f89d4b6c7a92a6ea3b689', '', 0x30, 'de'),
-(7, 8, 1459866552, 'Home', 'index.php/home.html', 'Home Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 17.3, '62ea669187070ccfebb67c1b32298dff', '', 0x30, 'de'),
-(8, 10, 1460056741, 'Etappen', 'index.php/etappen.html', 'Etappen Dorf Tirol 4. bis 5. Juni 2016 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, Open Herren Open Damen U18 weiblich U17 männlich U16 weiblich U15 männlich U14 weiblich U13 männlich Register! Klausen 2. bis 3. Juli 2016 U16 weiblich U15 männlich Freizeit Herren Sankt Kassian 9. bis 10. Juli 2016 Open Herren Open Damen Tramin 16. bis 17. Juli 2016 U16 weiblich U15 männlich U14 weiblich U13 männlich Sterzing 23. bis 24. Juli 2016 U18 weiblich U17 männlich U14 weiblich U13 männlich Freizeit Herren Bruneck 6. August 2016 Open Herren Open Damen Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 11.15, '2badcda71cd5b9c618e6416f5db45088', '', 0x30, 'de'),
-(9, 11, 1460198646, 'Reglement', 'index.php/reglement.html', 'Reglement Reglement 2015 Spielregeln: Beim Raiffeisen Beachcup wird nach den internationalen Beachvolleyball-Regeln der FIVB gespielt. Mehr Informationen dazu finden Sie auf der Homepage der FIVB oder hier download NEU 2015: Technische Richtlinien für die Austragung der Beachcup Jugend-Etappen Das OK des Beachcup möchte in Zusammenarbeit mit der FIPAV Bozen, Abteilung Beachvolleyball, einige Grundsätze schaffen um der Jugendförderung im Beachvolleyball in Südtirol gerecht zu werden. Die Richtlinien findet ihr hier zum DOWNLOAD Teilnahmeberechtigt: Am „Raiffeisen Beachcup“ können alle Sportler/Innen welche beim Fachsportverband FIPAV tesseriert sind und von ihrem Verein nicht für die Aktivität Beachvolleyball über das Online Portal der FIPAV gesperrt sind, teilnehmen. Jene die nicht über eine Tesserierung beim Fachsportverband FIPAV verfügen, können bei der Einschreibung (Anmeldeformular) eine sogenannte Tagestesserierung „tesseramento per evento“ beantragen, welche vorbehaltlich dessen Annahme zur Teilnahme an den Turnieren berechtigt. Kategorie Open M/F: Die Teilnahme am Turnier wird nur nach Vorlage eines gültigen sportärztlichen Attestes (Sportarzt!) gewährt, welches die uneingeschränkte Eignung für die Ausübung dieser Sportart bescheinigt! Kategorie Freizeit Herren: Es sind alle Sportler teilnahmeberechtigt, welche ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können und in der abgelaufenen Hallen-Saison maximal in der italienischen Serie D und noch nie in der italienischen Serie B2 oder höher gespielt haben. Die selbe Einschränkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier nicht spielberechtigt. Für Frauen- oder Mixed-Teams gibt es keine getrennte Wertung und keine Begrenzung bezüglich ihres Spielniveaus. Das OK des Beachcups behält sich das Recht vor einzelne Spieler oder Mannschaften aufgrund ihrer Spielstärke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren. Kategorie Freizeit Damen: Es sind alle Sportlerinnen teilnahmeberechtigt, welche ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können und in der abgelaufenen Hallen-Saison maximal in der italienischen 1. Division und noch nie in der italienischen Serie C oder höher gespielt haben. Die selbe Einschränkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier nicht spielberechtigt. Das OK des Beachcups behält sich das Recht vor, einzelne Spieler oder Mannschaften aufgrund ihrer Spielstärke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren. Kategorie Jugend: Es sind alle SportlerInnen teilnahmeberechtigt, welche ein gültiges ärztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen können. Es gelten folgende Altersbeschränkungen: U18 M/F: geboren nach dem 01.01.1998 U16 M/F: geboren nach dem 01.01.2000 U14 M/F: geboren nach dem 01.01.2002 Einschreibungen: Die Anmeldungen können ausschließlich online auf www.beachcup.it bis innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe gemacht werden, solange noch freie Plätze verfügbar sind. Die Einschreibung ist nur gültig, wenn die Eigenerklärung bzw. Datenschutzerklärung sowie das ärztliche Attest (Details dazu unter der jeweiligen Kategorie) ebenfalls innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe entweder an die Faxnummer 0474 05 06 08 oder an info@beachcup.it gesendet wird. Weitere Infos unter Tel. +39 393 7064116 oder per mail: info@beachcup.it Turniermodus: Die Veranstaltung gliedert sich in mehrere Etappen und unterschiedliche Kategorien (Details zu jeder Etappe unter Turniere 2015). Die Turniere finden bei jeder Witterung statt. Spielkategorien: - Open Damen & Herren - Freizeit Herren & Damen - Jugend U18 Mädchen & Buben - Jugend U16 Mädchen & Buben - Jugend U14 Mädchen & Buben Es ist aus organisatorischer Sicht nicht möglich, an einem Tag an zwei Bewerben teilzunehmen. Bei den Gruppenspielen wird ein Satz mit mindestens 15 Punkten im Rally-Point System gespielt, wobei ein Mindestvorsprung von 2 Punkten notwendig ist. Die erst- und zweitplatzierte Mannschaft qualifizieren sich für die nächste Runde. Bei den darauf folgenden Spielen wird ein Satz bis 21 Punkten gespielt. Das Finale wird in 2 Gewinnsätzen entschieden (3. Satz bis 15 Punkte). Erscheint eine Mannschaft nicht innerhalb 5 Minuten zu einem Spiel (Zeitplan laut Spielplan), wird das Spiel als verloren gewertet und zwar mit 15:8 bzw. 21:11. Für die U14 Jugendbewerbe wird in einem Feld von 7 X 14 m gespielt, alle anderen Bewerbe spielen auf einem Spielfeld mit 8 x 16 m. Die Netzhöhen gelten wie folgt: U14w - 2,05mU14m - 2,15m U16w - 2,15m U16m - 2,35m U18/Damen - 2,24 m U18/Herren - 2,43m Gesamtwertung: Open: Für die Gesamtwertung werden die Punkte der drei Etappen zusammengezählt. Sollten 2 oder mehrere Mannschaften in der Gesamtwertung dieselbe Punktezahl aufweisen, wird das Team besser gewertet, das mehr Teilnahmen am Raiffeisen Beachcup hatte. Bei neuerlichem Gleichstand entscheidet die beste Platzierung in der Turnierserie. Freizeit Herren: Für die Gesamtwertung werden die Punkte der drei Freizeitturniere und der drei Open-Turniere zusammengezählt, wobei nur die besten vier Etappen gewertet werden. Freizeit Damen: Für die Gesamtwertung werden die Punkte der zwei Freizeitturniere und der drei Open-Turniere zusammengezählt, wobei nur die besten vier Etappen gewertet werden. In den Jugend-Kategorien gibt es keine Gesamtwertung. Punktevergabe: 1. Platz - 100 Punkte 2. Platz - 90 Punkte 3. Platz - 80 Punkte 4. Platz - 70 Punkte Verlierer Viertelfinale - 60 Punkte Verlierer Achtelfinale - 50 Punkte Gruppendrittletzter - 40 Punkte Gruppenvorletzter - 30 Punkte Gruppenletzter - 20 Punkte Die Punkte werden pro Mannschaft vergeben. Bei der letzten Etappe wird die doppelte Punktezahl vergeben. (1. Platz - 200 Punkte.; 2. Platz - 180 Punkte; 3. Platz - 160 Punkte; usw.) Nenngebühr*: Die Nenngebühr beinhaltet den Eintritt in die jeweiligen Schwimmbäder (falls vorhanden), sowie einmal für die gesamte Tour ein Spielleibchen des "Raiffeisen Beachcup" pro Spieler. "Bank The Future" Kunden erhalten eine Ermäßigung von 20%. Jedes weitere Spielleibchen wird vom Veranstalter gegen den Unkostenbeitrag von € 15,00 weitergegeben (Materialkosten und Aufdruck). Kategorie Nenngebühr Erstteilnahme jede weitere Etappe Bank The Future Kunden Open 50 Euro 40 Euro 20% Ermäßigung Freizeit 40 Euro 30 Euro 20% Ermäßigung Jugend 30 Euro 20 Euro 20% Ermäßigung *WICHTIG: für Spieler welche noch nicht beim Fachsportverband „FIPAV“ gemeldet sind und über das Einschreibeformular (Datenschutzerklärung) eine Tagestesserierung „tesseramento per evento“ beantragen fallen zusätzlich 2,00 € pro Etappe an. Erscheint eine Mannschaft nicht zu einer Etappe ohne sich vorher rechtzeitig abzumelden, muss die Einschreibegebühr trotzdem entrichtet werden. Spielbekleidung: Die Spieler müssen immer mit den offiziellen Turnierdressen spielen. Spielball: Der offizielle Spielball des "Raiffeisen Beachcup" ist der Mikasa VLS300. Dieser wird für die Spiele vom OK zur Verfügung gestellt. Preisgeld: Pro Turnier wird um folgendes Preisgeld gespielt: Kategorie Open Herren: Erstplatzierte Mannschaft € 160,00, Zweitplatzierte Mannschaft € 120,00, Drittplatzierte Mannschaft € 80,00 Kategorie Open Damen: Erstplatzierte Mannschaft € 120,00, Zweitplatzierte Mannschaft € 80,00, Drittplatzierte Mannschaft € 40,00 Kategorien Freizeit Herren & Damen: Sachpreise für die ersten 4 Mannschaften. Kategorie Jugend: Sachpreise. Für die Gesamtwertung werden dieselben Preisgelder ausbezahlt wie bei einer einzelnen Etappe. Preisverteilung: Die Preisverteilung findet stets nach Beendigung des Turniers statt. Die ersten vier Mannschaften werden prämiert. Rahmenprogramm: Bei den einzelnen Etappen werden verschiedene Rahmenprogramme geboten. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf Turniere 2015. Organisation: Der RAIFFEISEN BEACHCUP wird vom SSV Bruneck ASV - Sektion Volleyball koordiniert und von den jeweiligen lokalen Veranstaltern organisiert. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf Turniere 2015. Das Organisationskomitee fungiert lediglich als Koordinator der Tour. Die einzelnen Turniere werden selbstständig von den lokalen Organisatoren durchgeführt. Die Teilnahme erfolgt auf eigenes Risiko. Der Korrdinator und die lokalen Veranstalter übernehmen keinerlei Haftung für Unfälle vor, während und nach den Turnieren, auch nicht Dritten gegenüber. Jeder einzelne Spieler trägt die volle persönliche Verantwortung für seinen Gesundheitszustand. Änderungen: Der Veranstalter behält sich die Möglichkeit vor, Programmänderungen durchzuführen. Die Internetseite www.beachcup.it ist die offizielle Informationsquelle der Veranstaltung. Aus diesem Grund sind alle offiziellen Mitteilungen auf dieser Seite zu finden. Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 20, '8b1a6cf61bdcd1d331494dbc849596eb', '', 0x30, 'de'),
-(10, 14, 1460198764, 'Spielergebnisse', 'index.php/spielergebnisse.html', 'Spielergebnisse Dorf Tirol U15 männlich Jakob Pallhuber und Greta Pallhuber Punkte: 8 Open Herren Jakob Pallhuber und Greta Pallhuber Punkte: 4 Jakob Pallhuber und Greta Pallhuber Punkte: 1 Bruneck Open Damen Peter Noname und Isolde Wagner Punkte: 12 Jakob Pallhuber und Greta Pallhuber Punkte: 11 Jakob Pallhuber und Peter Noname Punkte: 8 Greta Pallhuber und Isolde Wagner Punkte: 7 Jakob Pallhuber und Greta Pallhuber Punkte: 3 Jakob Pallhuber und Greta Pallhuber Punkte: 2 Peter Noname und Isolde Wagner Punkte: 1 Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 8.66, 'f079d58932d58512f2d6074fbc060d74', '', 0x30, 'de'),
+(6, 8, 1457449333, 'Home', '', 'Home Beachcup News Auf nach Partschins Zweite Open-Etappe Read more Weiterlesen â€¦ Auf nach Partschins Den Artikel lesen: Auf nach Partschins, Banner', 15.28, '31a4d112ea0f89d4b6c7a92a6ea3b689', '', 0x30, 'de'),
+(7, 8, 1460401246, 'Home', 'index.php/home.html', 'Home Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 17.77, '1af81bc0231e3d45634403cd312cb5df', '', 0x30, 'de'),
+(8, 10, 1460402064, 'Etappen', 'index.php/etappen.html', 'Etappen Dorf Tirol 4. bis 5. Juni 2016 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, Open Herren Open Damen U18 weiblich U17 mÃ¤nnlich U16 weiblich U15 mÃ¤nnlich U14 weiblich U13 mÃ¤nnlich Register! Klausen 2. bis 3. Juli 2016 U16 weiblich U15 mÃ¤nnlich Freizeit Herren Sankt Kassian 9. bis 10. Juli 2016 Open Herren Open Damen Tramin 16. bis 17. Juli 2016 U16 weiblich U15 mÃ¤nnlich U14 weiblich U13 mÃ¤nnlich Sterzing 23. bis 24. Juli 2016 U18 weiblich U17 mÃ¤nnlich U14 weiblich U13 mÃ¤nnlich Freizeit Herren Bruneck 6. August 2016 Open Herren Open Damen Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 11.69, '36af82b6c65b17e4336fd031264e7dc1', '', 0x30, 'de'),
+(9, 11, 1460435453, 'Reglement', 'index.php/reglement.html', 'Reglement Reglement 2015 Spielregeln: Beim Raiffeisen Beachcup wird nach den internationalen Beachvolleyball-Regeln der FIVB gespielt. Mehr Informationen dazu finden Sie auf der Homepage der FIVB oder hier download NEU 2015: Technische Richtlinien fÃ¼r die Austragung der Beachcup Jugend-Etappen Das OK des Beachcup mÃ¶chte in Zusammenarbeit mit der FIPAV Bozen, Abteilung Beachvolleyball, einige GrundsÃ¤tze schaffen um der JugendfÃ¶rderung im Beachvolleyball in SÃ¼dtirol gerecht zu werden. Die Richtlinien findet ihr hier zum DOWNLOAD Teilnahmeberechtigt: Am â€žRaiffeisen Beachcupâ€œ kÃ¶nnen alle Sportler/Innen welche beim Fachsportverband FIPAV tesseriert sind und von ihrem Verein nicht fÃ¼r die AktivitÃ¤t Beachvolleyball Ã¼ber das Online Portal der FIPAV gesperrt sind, teilnehmen. Jene die nicht Ã¼ber eine Tesserierung beim Fachsportverband FIPAV verfÃ¼gen, kÃ¶nnen bei der Einschreibung (Anmeldeformular) eine sogenannte Tagestesserierung â€žtesseramento per eventoâ€œ beantragen, welche vorbehaltlich dessen Annahme zur Teilnahme an den Turnieren berechtigt. Kategorie Open M/F: Die Teilnahme am Turnier wird nur nach Vorlage eines gÃ¼ltigen sportÃ¤rztlichen Attestes (Sportarzt!) gewÃ¤hrt, welches die uneingeschrÃ¤nkte Eignung fÃ¼r die AusÃ¼bung dieser Sportart bescheinigt! Kategorie Freizeit Herren: Es sind alle Sportler teilnahmeberechtigt, welche ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen und in der abgelaufenen Hallen-Saison maximal in der italienischen Serie D und noch nie in der italienischen Serie B2 oder hÃ¶her gespielt haben. Die selbe EinschrÃ¤nkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier nicht spielberechtigt. FÃ¼r Frauen- oder Mixed-Teams gibt es keine getrennte Wertung und keine Begrenzung bezÃ¼glich ihres Spielniveaus. Das OK des Beachcups behÃ¤lt sich das Recht vor einzelne Spieler oder Mannschaften aufgrund ihrer SpielstÃ¤rke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren. Kategorie Freizeit Damen: Es sind alle Sportlerinnen teilnahmeberechtigt, welche ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen und in der abgelaufenen Hallen-Saison maximal in der italienischen 1. Division und noch nie in der italienischen Serie C oder hÃ¶her gespielt haben. Die selbe EinschrÃ¤nkung wird auf andere Ligen im Ausland angewendet. Zudem sind die Halbfinalisten der Raiffeisen Beachcup Open Etappen der letzten beiden Jahre hier nicht spielberechtigt. Das OK des Beachcups behÃ¤lt sich das Recht vor, einzelne Spieler oder Mannschaften aufgrund ihrer SpielstÃ¤rke die Teilnahme in dieser Kategorie zu erlauben oder zu verwehren. Kategorie Jugend: Es sind alle SportlerInnen teilnahmeberechtigt, welche ein gÃ¼ltiges Ã¤rztliches Zeugnis (Hausarzt oder Sportarzt) vorweisen kÃ¶nnen. Es gelten folgende AltersbeschrÃ¤nkungen: U18 M/F: geboren nach dem 01.01.1998 U16 M/F: geboren nach dem 01.01.2000 U14 M/F: geboren nach dem 01.01.2002 Einschreibungen: Die Anmeldungen kÃ¶nnen ausschlieÃŸlich online auf www.beachcup.it bis innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe gemacht werden, solange noch freie PlÃ¤tze verfÃ¼gbar sind. Die Einschreibung ist nur gÃ¼ltig, wenn die EigenerklÃ¤rung bzw. DatenschutzerklÃ¤rung sowie das Ã¤rztliche Attest (Details dazu unter der jeweiligen Kategorie) ebenfalls innerhalb Mittwoch 18:00 Uhr vor der jeweiligen Etappe entweder an die Faxnummer 0474 05 06 08 oder an info@beachcup.it gesendet wird. Weitere Infos unter Tel. +39 393 7064116 oder per mail: info@beachcup.it Turniermodus: Die Veranstaltung gliedert sich in mehrere Etappen und unterschiedliche Kategorien (Details zu jeder Etappe unter Turniere 2015). Die Turniere finden bei jeder Witterung statt. Spielkategorien: - Open Damen & Herren - Freizeit Herren & Damen - Jugend U18 MÃ¤dchen & Buben - Jugend U16 MÃ¤dchen & Buben - Jugend U14 MÃ¤dchen & Buben Es ist aus organisatorischer Sicht nicht mÃ¶glich, an einem Tag an zwei Bewerben teilzunehmen. Bei den Gruppenspielen wird ein Satz mit mindestens 15 Punkten im Rally-Point System gespielt, wobei ein Mindestvorsprung von 2 Punkten notwendig ist. Die erst- und zweitplatzierte Mannschaft qualifizieren sich fÃ¼r die nÃ¤chste Runde. Bei den darauf folgenden Spielen wird ein Satz bis 21 Punkten gespielt. Das Finale wird in 2 GewinnsÃ¤tzen entschieden (3. Satz bis 15 Punkte). Erscheint eine Mannschaft nicht innerhalb 5 Minuten zu einem Spiel (Zeitplan laut Spielplan), wird das Spiel als verloren gewertet und zwar mit 15:8 bzw. 21:11. FÃ¼r die U14 Jugendbewerbe wird in einem Feld von 7 X 14 m gespielt, alle anderen Bewerbe spielen auf einem Spielfeld mit 8 x 16 m. Die NetzhÃ¶hen gelten wie folgt: U14w - 2,05mU14m - 2,15m U16w - 2,15m U16m - 2,35m U18/Damen - 2,24 m U18/Herren - 2,43m Gesamtwertung: Open: FÃ¼r die Gesamtwertung werden die Punkte der drei Etappen zusammengezÃ¤hlt. Sollten 2 oder mehrere Mannschaften in der Gesamtwertung dieselbe Punktezahl aufweisen, wird das Team besser gewertet, das mehr Teilnahmen am Raiffeisen Beachcup hatte. Bei neuerlichem Gleichstand entscheidet die beste Platzierung in der Turnierserie. Freizeit Herren: FÃ¼r die Gesamtwertung werden die Punkte der drei Freizeitturniere und der drei Open-Turniere zusammengezÃ¤hlt, wobei nur die besten vier Etappen gewertet werden. Freizeit Damen: FÃ¼r die Gesamtwertung werden die Punkte der zwei Freizeitturniere und der drei Open-Turniere zusammengezÃ¤hlt, wobei nur die besten vier Etappen gewertet werden. In den Jugend-Kategorien gibt es keine Gesamtwertung. Punktevergabe: 1. Platz - 100 Punkte 2. Platz - 90 Punkte 3. Platz - 80 Punkte 4. Platz - 70 Punkte Verlierer Viertelfinale - 60 Punkte Verlierer Achtelfinale - 50 Punkte Gruppendrittletzter - 40 Punkte Gruppenvorletzter - 30 Punkte Gruppenletzter - 20 Punkte Die Punkte werden pro Mannschaft vergeben. Bei der letzten Etappe wird die doppelte Punktezahl vergeben. (1. Platz - 200 Punkte.; 2. Platz - 180 Punkte; 3. Platz - 160 Punkte; usw.) NenngebÃ¼hr*: Die NenngebÃ¼hr beinhaltet den Eintritt in die jeweiligen SchwimmbÃ¤der (falls vorhanden), sowie einmal fÃ¼r die gesamte Tour ein Spielleibchen des "Raiffeisen Beachcup" pro Spieler. "Bank The Future" Kunden erhalten eine ErmÃ¤ÃŸigung von 20%. Jedes weitere Spielleibchen wird vom Veranstalter gegen den Unkostenbeitrag von â‚¬ 15,00 weitergegeben (Materialkosten und Aufdruck). Kategorie NenngebÃ¼hr Erstteilnahme jede weitere Etappe Bank The Future Kunden Open 50 Euro 40 Euro 20% ErmÃ¤ÃŸigung Freizeit 40 Euro 30 Euro 20% ErmÃ¤ÃŸigung Jugend 30 Euro 20 Euro 20% ErmÃ¤ÃŸigung *WICHTIG: fÃ¼r Spieler welche noch nicht beim Fachsportverband â€žFIPAVâ€œ gemeldet sind und Ã¼ber das Einschreibeformular (DatenschutzerklÃ¤rung) eine Tagestesserierung â€žtesseramento per eventoâ€œ beantragen fallen zusÃ¤tzlich 2,00 â‚¬ pro Etappe an. Erscheint eine Mannschaft nicht zu einer Etappe ohne sich vorher rechtzeitig abzumelden, muss die EinschreibegebÃ¼hr trotzdem entrichtet werden. Spielbekleidung: Die Spieler mÃ¼ssen immer mit den offiziellen Turnierdressen spielen. Spielball: Der offizielle Spielball des "Raiffeisen Beachcup" ist der Mikasa VLS300. Dieser wird fÃ¼r die Spiele vom OK zur VerfÃ¼gung gestellt. Preisgeld: Pro Turnier wird um folgendes Preisgeld gespielt: Kategorie Open Herren: Erstplatzierte Mannschaft â‚¬ 160,00, Zweitplatzierte Mannschaft â‚¬ 120,00, Drittplatzierte Mannschaft â‚¬ 80,00 Kategorie Open Damen: Erstplatzierte Mannschaft â‚¬ 120,00, Zweitplatzierte Mannschaft â‚¬ 80,00, Drittplatzierte Mannschaft â‚¬ 40,00 Kategorien Freizeit Herren & Damen: Sachpreise fÃ¼r die ersten 4 Mannschaften. Kategorie Jugend: Sachpreise. FÃ¼r die Gesamtwertung werden dieselben Preisgelder ausbezahlt wie bei einer einzelnen Etappe. Preisverteilung: Die Preisverteilung findet stets nach Beendigung des Turniers statt. Die ersten vier Mannschaften werden prÃ¤miert. Rahmenprogramm: Bei den einzelnen Etappen werden verschiedene Rahmenprogramme geboten. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf Turniere 2015. Organisation: Der RAIFFEISEN BEACHCUP wird vom SSV Bruneck ASV - Sektion Volleyball koordiniert und von den jeweiligen lokalen Veranstaltern organisiert. Details dazu findet man unter dem Link des jeweiligen Veranstaltungsortes auf Turniere 2015. Das Organisationskomitee fungiert lediglich als Koordinator der Tour. Die einzelnen Turniere werden selbststÃ¤ndig von den lokalen Organisatoren durchgefÃ¼hrt. Die Teilnahme erfolgt auf eigenes Risiko. Der Korrdinator und die lokalen Veranstalter Ã¼bernehmen keinerlei Haftung fÃ¼r UnfÃ¤lle vor, wÃ¤hrend und nach den Turnieren, auch nicht Dritten gegenÃ¼ber. Jeder einzelne Spieler trÃ¤gt die volle persÃ¶nliche Verantwortung fÃ¼r seinen Gesundheitszustand. Ã„nderungen: Der Veranstalter behÃ¤lt sich die MÃ¶glichkeit vor, ProgrammÃ¤nderungen durchzufÃ¼hren. Die Internetseite www.beachcup.it ist die offizielle Informationsquelle der Veranstaltung. Aus diesem Grund sind alle offiziellen Mitteilungen auf dieser Seite zu finden. Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 20.38, '9119921bdd148ea4ebcd1c2e2550ed0d', '', 0x30, 'de'),
+(10, 14, 1460435462, 'Spielergebnisse', 'index.php/spielergebnisse.html', 'Spielergebnisse Dorf Tirol U15 mÃ¤nnlich Jakob Pallhuber und Greta Pallhuber Punkte: 8 Open Herren Jakob Pallhuber und Greta Pallhuber Punkte: 4 Jakob Pallhuber und Greta Pallhuber Punkte: 1 Bruneck Open Damen Peter Noname und Isolde Wagner Punkte: 12 Jakob Pallhuber und Greta Pallhuber Punkte: 11 Jakob Pallhuber und Peter Noname Punkte: 8 Greta Pallhuber und Isolde Wagner Punkte: 7 Jakob Pallhuber und Greta Pallhuber Punkte: 3 Jakob Pallhuber und Greta Pallhuber Punkte: 2 Peter Noname und Isolde Wagner Punkte: 1 Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 8.99, '2ad8ac9759f33657a6c035b37e03fd42', '', 0x30, 'de'),
 (11, 9, 1458739403, 'Turnier', 'index.php/turnier.html', 'Turnier Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.44, 'f75d8dd3a93c6c9b54e5552fddd44afa', '', 0x30, 'de'),
 (12, 13, 1460195593, 'Ranking', 'index.php/ranking.html', 'Ranking Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.35, '052ff9d319260e72f2b9993c9c9bbdc8', '', 0x30, 'de'),
-(13, 12, 1460096085, 'Landesmeisterschaft', 'index.php/landesmeisterschaft.html', 'Landesmeisterschaft Beachvolley Landesmeisterschaft 2015 Auch 2015 werden die Südtiroler Beachvolleyball-Landesmeister wieder im Rahmen des Raiffeisen Beachcups gekürt. Die Landesmeisterschaft wird vom Raiffeisen Beachcup Organisationskomittee in Zusammenarbeit dem dem italienischen Volleyballverband der Provinz Bozen in der schönen Beachanlage beim Freibad von Bruneck organisiert. Am 15.08.2015 werden die Landesmeister der Kategorien Damen, Herren und U16 ermittelt. Am Sonntag folgen dann die Spiele der Jugendkategorien U14 und U18 jeweils männlich und weiblich. Bei diesem Turnieren können nur Mannschaften bzw. Spieler der Provinz Bozen teilnehmen. Beachcup News Auf nach Partschins Zweite Open-Etappe , Den Artikel lesen: Auf nach Partschins, Banner', 8.29, '474cd7a2e6fcf1882d0f3df7fb253d8d', '', 0x30, 'de'),
-(14, 23, 1457450193, 'Auf nach Partschins', 'index.php/nachrichten/auf-nach-partschins.html', 'Auf nach Partschins Zweite Open-Etappe Auf nach Partschins 2016-03-08 15:52 von Jakob Pallhuber Zweite Open-Etappe Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 8.06, 'f7902845d57b6b689ef32c3cf7555352', '', 0x30, 'de'),
-(15, 21, 1460102151, 'Impressum', 'index.php/impressum.html', 'Impressum Impressum SSV Bruneck Amateursportverein Sektion Volleyball Ferraristr. 26 I-39031 Bruneck (BZ) MwSt.Nr./Steuernr. 92015230219 Sämtliche Bilder und Texte dieser Website sind urheberrechtlich geschützt. Jegliche Verwendung ohne schriftliche Genehmigung ist untersagt. Wir weisen ausdrücklich darauf hin, dass wir keinerlei Einfluss auf die Gestaltung und die Inhalte von Seiten haben, die von dieser Website aus verlinkt sind. Somit übernehmen wir keinerlei Haftung oder Garantie für den Inhalt dieser Seiten. Wir distanzieren uns klar von der auf diesen Seiten zum Ausdruck gebrachten Meinung, da diese nicht immer unserer Meinung entsprechen kann. Copyright: © SSV Bruneck Amateuersportverein Nutzung von Cookies Diese Website verwendet Cookies und verwandte Technologien um das korrekte Funktionieren zu ermöglichen und die Nutzung der angebotenen Dienste zu erleichtern. Was sind Cookies? Ein Cookie ist ein kurzes Text-Snippet, das von einer von Ihnen besuchten Website an Ihren Browser gesendet wird. Es speichert Informationen zu Ihrem letzten Besuch, wie Ihre bevorzugte Sprache oder andere Einstellungen. So finden Sie sich auf der Website schneller zurecht und nutzen sie effektiver, wenn Sie sie das nächste Mal aufrufen. Cookies spielen eine wichtige Rolle. Ohne sie wäre das Surfen im Web oft frustrierend. Warum nutzen wir Cookies? Wir nutzen diese Informationen, um unsere Website zu verbessern, damit unsere Besucher das bestmögliche Angebot erhalten. Unsere Plattform verwendet auch Cookies und ähnliche Technologien von sorgfältig ausgewählten Drittanbietern. Arten von Cookies Diese Website verwendet folgende Cookies: technische Cookies und Cookies für analytische Zwecke: diese Cookies sammeln Informationen über die Nutzung der Website und helfen uns Auswertungen über die Auffindbarkeit der Informationen auf unserer Seite zu bekommen. Dies erfolgt zum Teil über einen Drittanbieter (Google). Diese Informationen sind nicht personenbezogen. Drittanbieter-Cookies: dies sind Cookies von anderen Anbietern. Beispiele dafür sind “social plugins” für Facebook, Twitter und Google+. Der Sinn davon ist z.B. das Teilen von Inhalten auf dne Social Network Plattformen zu ermöglichen oder zu erleichtern. Genaueres erfahren Sie auf den Informations-Seiten der Drittanbieter. Cookies verwalten Sie können Cookies nach Belieben steuern und/oder löschen. Wie, erfahren Sie hier. Sie können alle auf Ihrem Rechner abgelegten Cookies löschen und die meisten Browser so einstellen, dass die Ablage von Cookies verhindert wird. Dann müssen Sie aber möglicherweise einige Einstellungen bei jedem Besuch einer Seite manuell vornehmen und die Beeinträchtigung mancher Funktionen in Kauf nehmen. Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 10.46, '5725a560a51dbd154e37efc1ed14cfc4', '', 0x30, 'de'),
+(13, 12, 1460096085, 'Landesmeisterschaft', 'index.php/landesmeisterschaft.html', 'Landesmeisterschaft Beachvolley Landesmeisterschaft 2015 Auch 2015 werden die SÃ¼dtiroler Beachvolleyball-Landesmeister wieder im Rahmen des Raiffeisen Beachcups gekÃ¼rt. Die Landesmeisterschaft wird vom Raiffeisen Beachcup Organisationskomittee in Zusammenarbeit dem dem italienischen Volleyballverband der Provinz Bozen in der schÃ¶nen Beachanlage beim Freibad von Bruneck organisiert. Am 15.08.2015 werden die Landesmeister der Kategorien Damen, Herren und U16 ermittelt. Am Sonntag folgen dann die Spiele der Jugendkategorien U14 und U18 jeweils mÃ¤nnlich und weiblich. Bei diesem Turnieren kÃ¶nnen nur Mannschaften bzw. Spieler der Provinz Bozen teilnehmen. Beachcup News Auf nach Partschins Zweite Open-Etappe , Den Artikel lesen: Auf nach Partschins, Banner', 8.29, '474cd7a2e6fcf1882d0f3df7fb253d8d', '', 0x30, 'de'),
+(14, 23, 1460401161, 'Auf nach Partschins', 'index.php/nachrichten/auf-nach-partschins.html', 'Auf nach Partschins Zweite Open-Etappe Auf nach Partschins 2016-03-08 15:52 von Jakob Pallhuber Zweite Open-Etappe Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 8.1, 'f7902845d57b6b689ef32c3cf7555352', '', 0x30, 'de'),
+(15, 21, 1460435511, 'Impressum', 'index.php/impressum.html', 'Impressum Impressum SSV Bruneck Amateursportverein Sektion Volleyball Ferraristr. 26 I-39031 Bruneck (BZ) MwSt.Nr./Steuernr. 92015230219 SÃ¤mtliche Bilder und Texte dieser Website sind urheberrechtlich geschÃ¼tzt. Jegliche Verwendung ohne schriftliche Genehmigung ist untersagt. Wir weisen ausdrÃ¼cklich darauf hin, dass wir keinerlei Einfluss auf die Gestaltung und die Inhalte von Seiten haben, die von dieser Website aus verlinkt sind. Somit Ã¼bernehmen wir keinerlei Haftung oder Garantie fÃ¼r den Inhalt dieser Seiten. Wir distanzieren uns klar von der auf diesen Seiten zum Ausdruck gebrachten Meinung, da diese nicht immer unserer Meinung entsprechen kann. Copyright: Â© SSV Bruneck Amateuersportverein Nutzung von Cookies Diese Website verwendet Cookies und verwandte Technologien um das korrekte Funktionieren zu ermÃ¶glichen und die Nutzung der angebotenen Dienste zu erleichtern. Was sind Cookies? Ein Cookie ist ein kurzes Text-Snippet, das von einer von Ihnen besuchten Website an Ihren Browser gesendet wird. Es speichert Informationen zu Ihrem letzten Besuch, wie Ihre bevorzugte Sprache oder andere Einstellungen. So finden Sie sich auf der Website schneller zurecht und nutzen sie effektiver, wenn Sie sie das nÃ¤chste Mal aufrufen. Cookies spielen eine wichtige Rolle. Ohne sie wÃ¤re das Surfen im Web oft frustrierend. Warum nutzen wir Cookies? Wir nutzen diese Informationen, um unsere Website zu verbessern, damit unsere Besucher das bestmÃ¶gliche Angebot erhalten. Unsere Plattform verwendet auch Cookies und Ã¤hnliche Technologien von sorgfÃ¤ltig ausgewÃ¤hlten Drittanbietern. Arten von Cookies Diese Website verwendet folgende Cookies: technische Cookies und Cookies fÃ¼r analytische Zwecke: diese Cookies sammeln Informationen Ã¼ber die Nutzung der Website und helfen uns Auswertungen Ã¼ber die Auffindbarkeit der Informationen auf unserer Seite zu bekommen. Dies erfolgt zum Teil Ã¼ber einen Drittanbieter (Google). Diese Informationen sind nicht personenbezogen. Drittanbieter-Cookies: dies sind Cookies von anderen Anbietern. Beispiele dafÃ¼r sind â€œsocial pluginsâ€ fÃ¼r Facebook, Twitter und Google+. Der Sinn davon ist z.B. das Teilen von Inhalten auf dne Social Network Plattformen zu ermÃ¶glichen oder zu erleichtern. Genaueres erfahren Sie auf den Informations-Seiten der Drittanbieter. Cookies verwalten Sie kÃ¶nnen Cookies nach Belieben steuern und/oder lÃ¶schen. Wie, erfahren Sie hier. Sie kÃ¶nnen alle auf Ihrem Rechner abgelegten Cookies lÃ¶schen und die meisten Browser so einstellen, dass die Ablage von Cookies verhindert wird. Dann mÃ¼ssen Sie aber mÃ¶glicherweise einige Einstellungen bei jedem Besuch einer Seite manuell vornehmen und die BeeintrÃ¤chtigung mancher Funktionen in Kauf nehmen. Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 10.84, '004416655734ce5494fc6c5560efabe2', '', 0x30, 'de'),
 (16, 19, 1458739588, 'Kontakt', 'index.php/kontakt.html', 'Kontakt Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.44, '79cd1f39410ec08bd5248901adf4809c', '', 0x30, 'de'),
-(17, 20, 1460096758, 'Kontaktformular', 'index.php/kontaktformular.html', 'Kontaktformular Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 9.4, 'c66d62ce26738d4fa220ca175cfe4e4a', '', 0x30, 'de'),
-(18, 15, 1460196631, 'Gesamtstände', 'index.php/gesamtstaende.html', 'Gesamtstände Open Damen ', 8.38, 'ffc2bec7abe80959f88acd5a8fb87262', '', 0x30, 'de'),
-(19, 17, 1460057610, 'Fotos', 'index.php/fotos.html', 'Fotos Fotos Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.47, 'e192adb27ebe06a4197e9fdab9102ccc', '', 0x30, 'de'),
-(20, 18, 1460057614, 'Videos', 'index.php/videos.html', 'Videos Videos Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.47, '423d5e00507a8939d9ca0425d3e46066', '', 0x30, 'de');
+(17, 20, 1460435501, 'Kontaktformular', 'index.php/kontaktformular.html', 'Kontaktformular Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 9.8, 'c85fcce473807ee2d0e9f3e3ed964404', '', 0x30, 'de'),
+(18, 15, 1460196631, 'GesamtstÃ¤nde', 'index.php/gesamtstaende.html', 'GesamtstÃ¤nde Open Damen ', 8.38, 'ffc2bec7abe80959f88acd5a8fb87262', '', 0x30, 'de'),
+(19, 17, 1460435491, 'Fotos', 'index.php/fotos.html', 'Fotos Fotos Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. olang.jpg, Den Artikel lesen: Es wird wieder gebaggert!, Banner', 8.22, '0ef0383a68cc627fe00d2f9f3b2eb91a', '', 0x30, 'de'),
+(20, 18, 1460435496, 'Videos', 'index.php/videos.html', 'Videos Videos Beachcup News Es wird wieder gebaggert! Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Den Artikel lesen: Es wird wieder gebaggert!, Banner', 7.83, '46a630117b7d0ce6526f12f1710bc161', '', 0x30, 'de'),
+(21, 16, 1460385718, 'Media', 'index.php/media.html', 'Media Beachcup News Auf nach Partschins Zweite Open-Etappe Den Artikel lesen: Auf nach Partschins, Banner', 7.46, 'b7e86f05b9b295569758a2d1f5df9102', '', 0x30, 'de'),
+(22, 15, 1460435473, 'Ranking', 'index.php/ranking.html', 'Ranking Open Damen ', 8.75, '9a6407469edd065701d44f13298189a0', '', 0x30, 'de');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_search_index`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_search_index`
 --
 
 CREATE TABLE `tl_search_index` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
   `word` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
-  `relevance` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `language` varchar(5) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `relevance` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `language` varchar(5) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `word` (`word`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14067 ;
 
 --
--- Daten für Tabelle `tl_search_index`
+-- Daten fÃ¼r Tabelle `tl_search_index`
 --
 
 INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VALUES
-(722, 14, 'banner', 1, 'de'),
-(721, 14, 'lesen', 1, 'de'),
-(720, 14, 'artikel', 1, 'de'),
-(719, 14, 'den', 1, 'de'),
-(718, 14, 'news', 1, 'de'),
-(717, 14, 'beachcup', 1, 'de'),
-(716, 14, 'pallhuber', 1, 'de'),
-(715, 14, 'jakob', 1, 'de'),
-(714, 14, 'von', 1, 'de'),
-(713, 14, '15:52', 1, 'de'),
-(712, 14, '2016-03-08', 1, 'de'),
-(711, 14, 'open-etappe', 3, 'de'),
-(707, 14, 'auf', 4, 'de'),
-(708, 14, 'nach', 4, 'de'),
-(709, 14, 'partschins', 4, 'de'),
-(710, 14, 'zweite', 3, 'de'),
-(2300, 8, 'lesen', 1, 'de'),
-(1719, 7, 'banner', 1, 'de'),
-(1718, 7, 'lesen', 1, 'de'),
-(1717, 7, 'artikel', 1, 'de'),
-(1716, 7, 'den', 1, 'de'),
-(1715, 7, 'open-etappe', 1, 'de'),
-(1714, 7, 'zweite', 1, 'de'),
+(12651, 7, 'culpa', 1, 'de'),
+(12650, 7, 'sunt', 1, 'de'),
+(12649, 7, 'proident', 1, 'de'),
+(12648, 7, 'non', 1, 'de'),
+(12647, 7, 'cupiditat', 1, 'de'),
+(12646, 7, 'obcaecat', 1, 'de'),
+(12645, 7, 'sint', 1, 'de'),
+(12644, 7, 'excepteur', 1, 'de'),
+(12643, 7, 'pariatur', 1, 'de'),
+(12642, 7, 'nulla', 1, 'de'),
+(12641, 7, 'fugiat', 1, 'de'),
+(12640, 7, 'eu', 1, 'de'),
+(12759, 8, 'juli', 4, 'de'),
+(12602, 7, 'sit', 1, 'de'),
+(12601, 7, 'dolor', 1, 'de'),
+(12600, 7, 'ipsum', 1, 'de'),
+(12598, 7, 'gebaggert', 2, 'de'),
 (660, 6, 'banner', 1, 'de'),
 (659, 6, 'lesen', 1, 'de'),
 (658, 6, 'artikel', 1, 'de'),
@@ -2131,16 +2402,15 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (4341, 13, 'beachvolleyball-landesmeister', 1, 'de'),
 (10098, 12, 'ranking', 1, 'de'),
 (735, 11, 'turnier', 1, 'de'),
-(1713, 7, 'partschins', 2, 'de'),
+(12599, 7, 'lorem', 1, 'de'),
 (647, 6, 'beachcup', 1, 'de'),
 (646, 6, 'home', 1, 'de'),
-(2299, 8, 'artikel', 1, 'de'),
-(2298, 8, 'den', 1, 'de'),
-(2297, 8, 'open-etappe', 1, 'de'),
-(2296, 8, 'zweite', 1, 'de'),
-(2295, 8, 'partschins', 2, 'de'),
-(2294, 8, 'nach', 2, 'de'),
-(2293, 8, 'auf', 2, 'de'),
+(12758, 8, '3', 1, 'de'),
+(12757, 8, '2', 1, 'de'),
+(12756, 8, 'klausen', 1, 'de'),
+(12755, 8, 'register', 1, 'de'),
+(12754, 8, 'u13', 3, 'de'),
+(12753, 8, 'u14', 3, 'de'),
 (736, 11, 'beachcup', 1, 'de'),
 (737, 11, 'news', 1, 'de'),
 (738, 11, 'auf', 2, 'de'),
@@ -2152,13 +2422,11 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (744, 11, 'artikel', 1, 'de'),
 (745, 11, 'lesen', 1, 'de'),
 (746, 11, 'banner', 1, 'de'),
-(7401, 15, '26', 1, 'de'),
-(7400, 15, 'ferraristr', 1, 'de'),
-(7399, 15, 'volleyball', 1, 'de'),
-(7398, 15, 'sektion', 1, 'de'),
-(7397, 15, 'amateursportverein', 1, 'de'),
-(7396, 15, 'bruneck', 3, 'de'),
-(7395, 15, 'ssv', 2, 'de'),
+(13954, 15, 'dafÃ¼r', 1, 'de'),
+(13953, 15, 'beispiele', 1, 'de'),
+(13952, 15, 'anbietern', 1, 'de'),
+(13951, 15, 'anderen', 1, 'de'),
+(13950, 15, 'drittanbieter-cookies', 1, 'de'),
 (759, 16, 'kontakt', 1, 'de'),
 (760, 16, 'beachcup', 1, 'de'),
 (761, 16, 'news', 1, 'de'),
@@ -2171,136 +2439,110 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (768, 16, 'artikel', 1, 'de'),
 (769, 16, 'lesen', 1, 'de'),
 (770, 16, 'banner', 1, 'de'),
-(7394, 15, 'impressum', 2, 'de'),
-(5407, 17, 'artikel', 1, 'de'),
-(5406, 17, 'den', 1, 'de'),
-(5405, 17, 'open-etappe', 1, 'de'),
-(5404, 17, 'zweite', 1, 'de'),
-(5403, 17, 'partschins', 2, 'de'),
-(5402, 17, 'nach', 2, 'de'),
-(5401, 17, 'auf', 2, 'de'),
-(5400, 17, 'news', 1, 'de'),
-(5399, 17, 'beachcup', 1, 'de'),
-(5398, 17, 'kontaktformular', 1, 'de'),
-(2292, 8, 'news', 1, 'de'),
-(2291, 8, 'beachcup', 1, 'de'),
-(2290, 8, 'august', 1, 'de'),
-(2289, 8, '6', 1, 'de'),
-(2288, 8, 'bruneck', 1, 'de'),
-(2287, 8, '24', 1, 'de'),
-(2286, 8, '23', 1, 'de'),
-(2285, 8, 'sterzing', 1, 'de'),
-(2284, 8, '17', 1, 'de'),
-(2283, 8, '16', 1, 'de'),
-(2282, 8, 'tramin', 1, 'de'),
-(2281, 8, '10', 1, 'de'),
-(2280, 8, '9', 1, 'de'),
-(2279, 8, 'kassian', 1, 'de'),
-(2278, 8, 'sankt', 1, 'de'),
-(2277, 8, 'freizeit', 2, 'de'),
-(2276, 8, 'juli', 4, 'de'),
-(2275, 8, '3', 1, 'de'),
-(2274, 8, '2', 1, 'de'),
-(2273, 8, 'klausen', 1, 'de'),
-(2272, 8, 'register', 1, 'de'),
-(2271, 8, 'u13', 3, 'de'),
-(2270, 8, 'u14', 3, 'de'),
-(2269, 8, 'u15', 3, 'de'),
-(2268, 8, 'u16', 3, 'de'),
-(2267, 8, 'männlich', 8, 'de'),
-(2266, 8, 'u17', 2, 'de'),
-(2265, 8, 'weiblich', 8, 'de'),
-(2264, 8, 'u18', 2, 'de'),
-(2263, 8, 'damen', 3, 'de'),
-(2262, 8, 'herren', 5, 'de'),
-(2261, 8, 'open', 6, 'de'),
-(2260, 8, 'facilisi', 1, 'de'),
-(2259, 8, 'feugait', 1, 'de'),
-(2258, 8, 'te', 1, 'de'),
-(2257, 8, 'augue', 1, 'de'),
-(2256, 8, 'delenit', 1, 'de'),
-(2255, 8, 'zzril', 1, 'de'),
-(2254, 8, 'luptatum', 1, 'de'),
-(2253, 8, 'praesent', 1, 'de'),
-(2252, 8, 'blandit', 1, 'de'),
-(2251, 8, 'qui', 1, 'de'),
-(2250, 8, 'dignissim', 1, 'de'),
-(2249, 8, 'odio', 1, 'de'),
-(2248, 8, 'iusto', 1, 'de'),
-(2247, 8, 'accumsan', 1, 'de'),
-(2246, 8, 'eros', 1, 'de'),
-(2245, 8, 'facilisis', 1, 'de'),
-(2244, 8, 'nulla', 2, 'de'),
-(2243, 8, 'feugiat', 1, 'de'),
-(2242, 8, 'eu', 1, 'de'),
-(1711, 7, 'auf', 2, 'de'),
-(1712, 7, 'nach', 2, 'de'),
-(1710, 7, 'news', 1, 'de'),
-(1708, 7, 'home', 1, 'de'),
-(1709, 7, 'beachcup', 1, 'de'),
-(2241, 8, 'illum', 1, 'de'),
-(2240, 8, 'consequat', 1, 'de'),
-(2239, 8, 'molestie', 1, 'de'),
-(2238, 8, 'esse', 1, 'de'),
-(2237, 8, 'velit', 1, 'de'),
-(2236, 8, 'vulputate', 1, 'de'),
-(2235, 8, 'hendrerit', 1, 'de'),
-(2234, 8, 'in', 2, 'de'),
-(2233, 8, 'iriure', 1, 'de'),
-(2232, 8, 'eum', 1, 'de'),
-(2231, 8, 'vel', 2, 'de'),
-(2230, 8, 'autem', 1, 'de'),
-(2229, 8, 'duis', 2, 'de'),
-(2228, 8, 'est', 3, 'de'),
-(2227, 8, 'sanctus', 3, 'de'),
-(2226, 8, 'takimata', 3, 'de'),
-(2225, 8, 'sea', 3, 'de'),
-(2224, 8, 'no', 3, 'de'),
-(2223, 8, 'gubergren', 3, 'de'),
-(2222, 8, 'kasd', 3, 'de'),
-(2221, 8, 'clita', 3, 'de'),
-(2220, 8, 'stet', 3, 'de'),
-(2219, 8, 'rebum', 3, 'de'),
-(2218, 8, 'ea', 3, 'de'),
-(2217, 8, 'dolores', 3, 'de'),
-(2216, 8, 'duo', 3, 'de'),
-(2215, 8, 'justo', 3, 'de'),
-(2214, 8, 'accusam', 3, 'de'),
-(2213, 8, 'eos', 3, 'de'),
-(2212, 8, 'vero', 4, 'de'),
-(2211, 8, 'at', 4, 'de'),
-(2210, 8, 'voluptua', 3, 'de'),
-(2209, 8, 'erat', 3, 'de'),
-(2208, 8, 'aliquyam', 3, 'de'),
-(2207, 8, 'magna', 3, 'de'),
-(2206, 8, 'dolore', 5, 'de'),
-(2205, 8, 'et', 14, 'de'),
-(2204, 8, 'labore', 3, 'de'),
-(2203, 8, 'ut', 3, 'de'),
-(2202, 8, 'invidunt', 3, 'de'),
-(2201, 8, 'tempor', 3, 'de'),
-(2200, 8, 'eirmod', 3, 'de'),
-(2199, 8, 'nonumy', 3, 'de'),
-(2198, 8, 'diam', 6, 'de'),
-(2197, 8, 'sed', 6, 'de'),
-(2196, 8, 'elitr', 3, 'de'),
-(2195, 8, 'sadipscing', 3, 'de'),
-(2194, 8, 'consetetur', 3, 'de'),
-(2193, 8, 'amet', 7, 'de'),
-(2192, 8, 'sit', 7, 'de'),
-(2191, 8, 'dolor', 8, 'de'),
-(2190, 8, 'ipsum', 7, 'de'),
-(2189, 8, 'lorem', 7, 'de'),
-(2188, 8, '2016', 6, 'de'),
-(2186, 8, '5', 1, 'de'),
-(2187, 8, 'juni', 1, 'de'),
-(2185, 8, 'bis', 5, 'de'),
-(2184, 8, '4', 1, 'de'),
-(2183, 8, 'tirol', 1, 'de'),
-(2182, 8, 'dorf', 1, 'de'),
-(2181, 8, 'etappen', 1, 'de'),
-(2301, 8, 'banner', 1, 'de'),
-(4340, 13, 'südtiroler', 1, 'de'),
+(13949, 15, 'personenbezogen', 1, 'de'),
+(13722, 17, 'sit', 1, 'de'),
+(13721, 17, 'dolor', 1, 'de'),
+(13720, 17, 'ipsum', 1, 'de'),
+(13719, 17, 'lorem', 1, 'de'),
+(13718, 17, 'gebaggert', 2, 'de'),
+(13717, 17, 'wieder', 2, 'de'),
+(13716, 17, 'wird', 2, 'de'),
+(13715, 17, 'es', 2, 'de'),
+(13714, 17, 'news', 1, 'de'),
+(13713, 17, 'beachcup', 1, 'de'),
+(12752, 8, 'u15', 3, 'de'),
+(12751, 8, 'u16', 3, 'de'),
+(12750, 8, 'mÃ¤nnlich', 8, 'de'),
+(12749, 8, 'u17', 2, 'de'),
+(12748, 8, 'weiblich', 8, 'de'),
+(12747, 8, 'u18', 2, 'de'),
+(12746, 8, 'damen', 3, 'de'),
+(12745, 8, 'herren', 5, 'de'),
+(12744, 8, 'open', 6, 'de'),
+(12743, 8, 'facilisi', 1, 'de'),
+(12742, 8, 'feugait', 1, 'de'),
+(12741, 8, 'te', 1, 'de'),
+(12740, 8, 'augue', 1, 'de'),
+(12739, 8, 'delenit', 1, 'de'),
+(12738, 8, 'zzril', 1, 'de'),
+(12737, 8, 'luptatum', 1, 'de'),
+(12736, 8, 'praesent', 1, 'de'),
+(12735, 8, 'blandit', 1, 'de'),
+(12734, 8, 'qui', 2, 'de'),
+(12733, 8, 'dignissim', 1, 'de'),
+(12732, 8, 'odio', 1, 'de'),
+(12731, 8, 'iusto', 1, 'de'),
+(12730, 8, 'accumsan', 1, 'de'),
+(12729, 8, 'eros', 1, 'de'),
+(12728, 8, 'facilisis', 1, 'de'),
+(12727, 8, 'nulla', 3, 'de'),
+(12726, 8, 'feugiat', 1, 'de'),
+(12725, 8, 'eu', 2, 'de'),
+(12724, 8, 'illum', 1, 'de'),
+(12723, 8, 'consequat', 2, 'de'),
+(12722, 8, 'molestie', 1, 'de'),
+(12721, 8, 'esse', 2, 'de'),
+(12720, 8, 'velit', 2, 'de'),
+(12719, 8, 'vulputate', 1, 'de'),
+(12718, 8, 'hendrerit', 1, 'de'),
+(12717, 8, 'in', 4, 'de'),
+(12716, 8, 'iriure', 1, 'de'),
+(12715, 8, 'eum', 1, 'de'),
+(12714, 8, 'vel', 2, 'de'),
+(12597, 7, 'wieder', 2, 'de'),
+(12596, 7, 'wird', 2, 'de'),
+(12595, 7, 'es', 2, 'de'),
+(12713, 8, 'autem', 1, 'de'),
+(12712, 8, 'duis', 2, 'de'),
+(12711, 8, 'est', 4, 'de'),
+(12710, 8, 'sanctus', 3, 'de'),
+(12709, 8, 'takimata', 3, 'de'),
+(12708, 8, 'sea', 3, 'de'),
+(12707, 8, 'no', 3, 'de'),
+(12706, 8, 'gubergren', 3, 'de'),
+(12705, 8, 'kasd', 3, 'de'),
+(12704, 8, 'clita', 3, 'de'),
+(12703, 8, 'stet', 3, 'de'),
+(12702, 8, 'rebum', 3, 'de'),
+(12701, 8, 'ea', 4, 'de'),
+(12700, 8, 'dolores', 3, 'de'),
+(12699, 8, 'duo', 3, 'de'),
+(12698, 8, 'justo', 3, 'de'),
+(12697, 8, 'accusam', 3, 'de'),
+(12696, 8, 'eos', 3, 'de'),
+(12695, 8, 'vero', 4, 'de'),
+(12694, 8, 'at', 4, 'de'),
+(12693, 8, 'voluptua', 3, 'de'),
+(12692, 8, 'erat', 3, 'de'),
+(12691, 8, 'aliquyam', 3, 'de'),
+(12690, 8, 'magna', 4, 'de'),
+(12689, 8, 'dolore', 7, 'de'),
+(12688, 8, 'et', 15, 'de'),
+(12687, 8, 'labore', 4, 'de'),
+(12686, 8, 'ut', 6, 'de'),
+(12685, 8, 'invidunt', 3, 'de'),
+(12684, 8, 'tempor', 4, 'de'),
+(12683, 8, 'eirmod', 3, 'de'),
+(12682, 8, 'nonumy', 3, 'de'),
+(12681, 8, 'diam', 6, 'de'),
+(12680, 8, 'sed', 7, 'de'),
+(12679, 8, 'elitr', 3, 'de'),
+(12678, 8, 'sadipscing', 3, 'de'),
+(12677, 8, 'consetetur', 3, 'de'),
+(12676, 8, 'amet', 8, 'de'),
+(12675, 8, 'sit', 8, 'de'),
+(12674, 8, 'dolor', 9, 'de'),
+(12673, 8, 'ipsum', 8, 'de'),
+(12672, 8, 'lorem', 8, 'de'),
+(12671, 8, '2016', 6, 'de'),
+(12670, 8, 'juni', 1, 'de'),
+(12669, 8, '5', 1, 'de'),
+(12668, 8, 'bis', 5, 'de'),
+(12667, 8, '4', 1, 'de'),
+(12666, 8, 'tirol', 1, 'de'),
+(12665, 8, 'dorf', 1, 'de'),
+(12664, 8, 'etappen', 1, 'de'),
+(4340, 13, 'sÃ¼dtiroler', 1, 'de'),
 (4339, 13, 'die', 4, 'de'),
 (4338, 13, 'werden', 2, 'de'),
 (4337, 13, 'auch', 1, 'de'),
@@ -2314,41 +2556,37 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (10370, 18, 'zweite', 1, 'de'),
 (10369, 18, 'partschins', 2, 'de'),
 (10368, 18, 'nach', 2, 'de'),
-(2326, 19, 'fotos', 2, 'de'),
-(2327, 19, 'beachcup', 1, 'de'),
-(2328, 19, 'news', 1, 'de'),
-(2329, 19, 'auf', 2, 'de'),
-(2330, 19, 'nach', 2, 'de'),
-(2331, 19, 'partschins', 2, 'de'),
-(2332, 19, 'zweite', 1, 'de'),
-(2333, 19, 'open-etappe', 1, 'de'),
-(2334, 19, 'den', 1, 'de'),
-(2335, 19, 'artikel', 1, 'de'),
-(2336, 19, 'lesen', 1, 'de'),
-(2337, 19, 'banner', 1, 'de'),
-(2338, 20, 'videos', 2, 'de'),
-(2339, 20, 'beachcup', 1, 'de'),
-(2340, 20, 'news', 1, 'de'),
-(2341, 20, 'auf', 2, 'de'),
-(2342, 20, 'nach', 2, 'de'),
-(2343, 20, 'partschins', 2, 'de'),
-(2344, 20, 'zweite', 1, 'de'),
-(2345, 20, 'open-etappe', 1, 'de'),
-(2346, 20, 'den', 1, 'de'),
-(2347, 20, 'artikel', 1, 'de'),
-(2348, 20, 'lesen', 1, 'de'),
-(2349, 20, 'banner', 1, 'de'),
-(11469, 10, 'banner', 1, 'de'),
-(11468, 10, 'lesen', 1, 'de'),
-(11467, 10, 'artikel', 1, 'de'),
-(11466, 10, 'den', 1, 'de'),
-(11404, 9, 'banner', 1, 'de'),
-(11403, 9, 'lesen', 1, 'de'),
+(13576, 19, 'dolor', 1, 'de'),
+(13575, 19, 'ipsum', 1, 'de'),
+(13574, 19, 'lorem', 1, 'de'),
+(13573, 19, 'gebaggert', 2, 'de'),
+(13572, 19, 'wieder', 2, 'de'),
+(13571, 19, 'wird', 2, 'de'),
+(13570, 19, 'es', 2, 'de'),
+(13569, 19, 'news', 1, 'de'),
+(13568, 19, 'beachcup', 1, 'de'),
+(13567, 19, 'fotos', 2, 'de'),
+(13649, 20, 'dolor', 1, 'de'),
+(13648, 20, 'ipsum', 1, 'de'),
+(13647, 20, 'lorem', 1, 'de'),
+(13646, 20, 'gebaggert', 2, 'de'),
+(13645, 20, 'wieder', 2, 'de'),
+(13644, 20, 'wird', 2, 'de'),
+(13643, 20, 'es', 2, 'de'),
+(13642, 20, 'news', 1, 'de'),
+(13641, 20, 'beachcup', 1, 'de'),
+(13640, 20, 'videos', 2, 'de'),
+(13414, 10, 'sit', 1, 'de'),
+(13413, 10, 'dolor', 1, 'de'),
+(13412, 10, 'ipsum', 1, 'de'),
+(13411, 10, 'lorem', 1, 'de'),
+(13236, 9, 'offizielle', 2, 'de'),
+(13235, 9, 'spielball', 2, 'de'),
 (10375, 18, 'banner', 1, 'de'),
 (10367, 18, 'auf', 2, 'de'),
 (10366, 18, 'news', 1, 'de'),
 (10365, 18, 'beachcup', 1, 'de'),
-(10364, 18, 'männlich', 1, 'de'),
+(10364, 18, 'mÃ¤nnlich', 1, 'de'),
 (10363, 18, 'u15', 1, 'de'),
 (10362, 18, '5', 1, 'de'),
 (10361, 18, 'herren', 1, 'de'),
@@ -2367,7 +2605,7 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (10348, 18, 'jakob', 4, 'de'),
 (10347, 18, 'damen', 1, 'de'),
 (10346, 18, 'open', 2, 'de'),
-(10345, 18, 'gesamtstände', 1, 'de'),
+(10345, 18, 'gesamtstÃ¤nde', 1, 'de'),
 (10109, 12, 'banner', 1, 'de'),
 (10108, 12, 'lesen', 1, 'de'),
 (10107, 12, 'artikel', 1, 'de'),
@@ -2379,373 +2617,227 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (10101, 12, 'auf', 2, 'de'),
 (10100, 12, 'news', 1, 'de'),
 (10099, 12, 'beachcup', 1, 'de'),
-(11402, 9, 'artikel', 1, 'de'),
-(11401, 9, 'open-etappe', 1, 'de'),
-(11400, 9, 'zweite', 1, 'de'),
-(11399, 9, 'partschins', 2, 'de'),
-(11398, 9, 'news', 1, 'de'),
-(11397, 9, 'seite', 1, 'de'),
-(11396, 9, 'mitteilungen', 1, 'de'),
-(11395, 9, 'grund', 1, 'de'),
-(11394, 9, 'diesem', 1, 'de'),
-(11393, 9, 'informationsquelle', 1, 'de'),
-(11392, 9, 'internetseite', 1, 'de'),
-(11391, 9, 'durchzuführen', 1, 'de'),
-(11390, 9, 'programmänderungen', 1, 'de'),
-(11389, 9, 'möglichkeit', 1, 'de'),
-(11388, 9, 'änderungen', 1, 'de'),
-(11387, 9, 'gesundheitszustand', 1, 'de'),
-(11386, 9, 'seinen', 1, 'de'),
-(11385, 9, 'verantwortung', 1, 'de'),
-(11384, 9, 'persönliche', 1, 'de'),
-(11383, 9, 'volle', 1, 'de'),
-(11382, 9, 'trägt', 1, 'de'),
-(11381, 9, 'gegenüber', 1, 'de'),
-(11380, 9, 'dritten', 1, 'de'),
-(11379, 9, 'auch', 1, 'de'),
-(11378, 9, 'während', 1, 'de'),
-(11377, 9, 'unfälle', 1, 'de'),
-(11376, 9, 'haftung', 1, 'de'),
-(11375, 9, 'keinerlei', 1, 'de'),
-(11374, 9, 'übernehmen', 1, 'de'),
-(11373, 9, 'korrdinator', 1, 'de'),
-(11372, 9, 'risiko', 1, 'de'),
-(11371, 9, 'eigenes', 1, 'de'),
-(11370, 9, 'erfolgt', 1, 'de'),
-(11369, 9, 'durchgeführt', 1, 'de'),
-(11368, 9, 'organisatoren', 1, 'de'),
-(11367, 9, 'selbstständig', 1, 'de'),
-(11366, 9, 'koordinator', 1, 'de'),
-(11365, 9, 'lediglich', 1, 'de'),
-(11364, 9, 'fungiert', 1, 'de'),
-(11363, 9, 'organisationskomitee', 1, 'de'),
-(11362, 9, 'organisiert', 1, 'de'),
-(11361, 9, 'veranstaltern', 1, 'de'),
-(11360, 9, 'lokalen', 3, 'de'),
-(11359, 9, 'koordiniert', 1, 'de'),
-(11358, 9, 'volleyball', 1, 'de'),
-(11357, 9, 'sektion', 1, 'de'),
-(11356, 9, 'asv', 1, 'de'),
-(11355, 9, 'bruneck', 1, 'de'),
-(11354, 9, 'ssv', 1, 'de'),
-(11353, 9, 'organisation', 1, 'de'),
-(11352, 9, 'veranstaltungsortes', 2, 'de'),
-(11351, 9, 'link', 2, 'de'),
-(11350, 9, 'man', 2, 'de'),
-(11349, 9, 'geboten', 1, 'de'),
-(11348, 9, 'rahmenprogramme', 1, 'de'),
-(11347, 9, 'verschiedene', 1, 'de'),
-(11346, 9, 'rahmenprogramm', 1, 'de'),
-(11345, 9, 'prämiert', 1, 'de'),
-(11344, 9, 'turniers', 1, 'de'),
-(11343, 9, 'beendigung', 1, 'de'),
-(11342, 9, 'stets', 1, 'de'),
-(11341, 9, 'preisverteilung', 2, 'de'),
-(11340, 9, 'einzelnen', 3, 'de'),
-(11339, 9, 'ausbezahlt', 1, 'de'),
-(11338, 9, 'preisgelder', 1, 'de'),
-(11337, 9, 'dieselben', 1, 'de'),
-(11336, 9, 'ersten', 2, 'de'),
-(11335, 9, 'sachpreise', 2, 'de'),
-(11334, 9, '40,00', 1, 'de'),
-(11333, 9, '80,00', 2, 'de'),
-(11332, 9, 'drittplatzierte', 2, 'de'),
-(11331, 9, '120,00', 2, 'de'),
-(11330, 9, '160,00', 1, 'de'),
-(11329, 9, 'erstplatzierte', 2, 'de'),
-(11328, 9, 'folgendes', 1, 'de'),
-(11327, 9, 'preisgeld', 2, 'de'),
-(11326, 9, 'gestellt', 1, 'de'),
-(11325, 9, 'verfügung', 1, 'de'),
-(11324, 9, 'spiele', 1, 'de'),
-(11323, 9, 'vls300', 1, 'de'),
-(11322, 9, 'mikasa', 1, 'de'),
-(11321, 9, 'offizielle', 2, 'de'),
-(11320, 9, 'spielball', 2, 'de'),
-(11319, 9, 'turnierdressen', 1, 'de'),
-(11318, 9, 'offiziellen', 2, 'de'),
-(11317, 9, 'immer', 1, 'de'),
-(11316, 9, 'müssen', 1, 'de'),
-(11315, 9, 'spielbekleidung', 1, 'de'),
-(11314, 9, 'entrichtet', 1, 'de'),
-(11313, 9, 'trotzdem', 1, 'de'),
-(11312, 9, 'einschreibegebühr', 1, 'de'),
-(11311, 9, 'muss', 1, 'de'),
-(11310, 9, 'abzumelden', 1, 'de'),
-(11309, 9, 'rechtzeitig', 1, 'de'),
-(11308, 9, 'vorher', 1, 'de'),
-(11307, 9, 'ohne', 1, 'de'),
-(11306, 9, 'einer', 2, 'de'),
-(11304, 9, 'zusätzlich', 1, 'de'),
-(11305, 9, '2,00', 1, 'de'),
-(11303, 9, 'fallen', 1, 'de'),
-(11302, 9, 'einschreibeformular', 1, 'de'),
-(11301, 9, 'gemeldet', 1, 'de'),
-(11300, 9, 'wichtig', 1, 'de'),
-(11299, 9, 'euro', 6, 'de'),
-(11298, 9, 'jede', 1, 'de'),
-(11297, 9, 'erstteilnahme', 1, 'de'),
-(11296, 9, 'aufdruck', 1, 'de'),
-(11295, 9, 'materialkosten', 1, 'de'),
-(11294, 9, 'weitergegeben', 1, 'de'),
-(11293, 9, '15,00', 1, 'de'),
-(11292, 9, 'unkostenbeitrag', 1, 'de'),
-(11291, 9, 'gegen', 1, 'de'),
-(11290, 9, 'veranstalter', 3, 'de'),
-(11289, 9, 'vom', 3, 'de'),
-(11288, 9, 'jedes', 1, 'de'),
-(11287, 9, 'ermäßigung', 4, 'de'),
-(11286, 9, 'erhalten', 1, 'de'),
-(11285, 9, 'kunden', 2, 'de'),
-(11284, 9, 'future', 2, 'de'),
-(11283, 9, 'the', 2, 'de'),
-(11282, 9, 'bank', 2, 'de'),
-(11281, 9, 'spielleibchen', 2, 'de'),
-(11280, 9, 'tour', 2, 'de'),
-(11279, 9, 'gesamte', 1, 'de'),
-(11278, 9, 'einmal', 1, 'de'),
-(11277, 9, 'vorhanden', 1, 'de'),
-(11276, 9, 'falls', 1, 'de'),
-(11275, 9, 'schwimmbäder', 1, 'de'),
-(11274, 9, 'eintritt', 1, 'de'),
-(11273, 9, 'beinhaltet', 1, 'de'),
-(11272, 9, 'nenngebühr', 3, 'de'),
-(11271, 9, 'usw', 1, 'de'),
-(11270, 9, '160', 1, 'de'),
-(11269, 9, '180', 1, 'de'),
-(11268, 9, '200', 1, 'de'),
-(11267, 9, 'doppelte', 1, 'de'),
-(11266, 9, 'vergeben', 2, 'de'),
-(11265, 9, 'pro', 4, 'de'),
-(11264, 9, '20', 6, 'de'),
-(11263, 9, 'gruppenletzter', 1, 'de'),
-(11262, 9, '30', 3, 'de'),
-(11261, 9, 'gruppenvorletzter', 1, 'de'),
-(11260, 9, '40', 3, 'de'),
-(11259, 9, 'gruppendrittletzter', 1, 'de'),
-(11258, 9, '50', 2, 'de'),
-(11257, 9, 'achtelfinale', 1, 'de'),
-(11256, 9, '60', 1, 'de'),
-(11255, 9, 'viertelfinale', 1, 'de'),
-(11254, 9, 'verlierer', 2, 'de'),
-(11253, 9, '70', 1, 'de'),
-(11252, 9, '4', 2, 'de'),
-(11251, 9, '80', 1, 'de'),
-(11250, 9, '90', 1, 'de'),
-(11249, 9, '100', 1, 'de'),
-(11248, 9, 'platz', 7, 'de'),
-(11247, 9, 'punktevergabe', 1, 'de'),
-(11246, 9, 'jugend-kategorien', 1, 'de'),
-(11245, 9, 'vier', 3, 'de'),
-(11244, 9, 'besten', 2, 'de'),
-(11243, 9, 'open-turniere', 2, 'de'),
-(11242, 9, 'freizeitturniere', 2, 'de'),
-(11241, 9, 'turnierserie', 1, 'de'),
-(11240, 9, 'platzierung', 1, 'de'),
-(11239, 9, 'beste', 1, 'de'),
-(11238, 9, 'entscheidet', 1, 'de'),
-(11237, 9, 'gleichstand', 1, 'de'),
-(11236, 9, 'neuerlichem', 1, 'de'),
-(11235, 9, 'hatte', 1, 'de'),
-(11234, 9, 'teilnahmen', 1, 'de'),
-(11233, 9, 'besser', 1, 'de'),
-(11232, 9, 'team', 1, 'de'),
-(11231, 9, 'aufweisen', 1, 'de'),
-(11230, 9, 'punktezahl', 2, 'de'),
-(11229, 9, 'dieselbe', 1, 'de'),
-(11228, 9, 'sollten', 1, 'de'),
-(11227, 9, 'zusammengezählt', 3, 'de'),
-(11226, 9, 'drei', 4, 'de'),
-(11225, 9, 'gesamtwertung', 7, 'de'),
-(11224, 9, '2,43m', 1, 'de'),
-(11223, 9, '2,24', 1, 'de'),
-(11222, 9, '2,35m', 1, 'de'),
-(11221, 9, 'u16m', 1, 'de'),
-(11220, 9, 'u16w', 1, 'de'),
-(11219, 9, '2,15m', 2, 'de'),
-(11218, 9, '2,05mu14m', 1, 'de'),
-(11217, 9, 'u14w', 1, 'de'),
-(11216, 9, 'folgt', 1, 'de'),
-(11215, 9, 'wie', 2, 'de'),
-(11214, 9, 'netzhöhen', 1, 'de'),
-(11213, 9, '16', 1, 'de'),
-(11212, 9, '8', 1, 'de'),
-(11211, 9, 'spielfeld', 1, 'de'),
-(11210, 9, 'bewerbe', 1, 'de'),
-(11209, 9, 'anderen', 1, 'de'),
-(11208, 9, '14', 1, 'de'),
-(11207, 9, 'x', 2, 'de'),
-(11206, 9, '7', 1, 'de'),
-(11205, 9, 'feld', 1, 'de'),
-(11204, 9, 'jugendbewerbe', 1, 'de'),
-(11203, 9, '21:11', 1, 'de'),
-(11202, 9, '15:8', 1, 'de'),
-(11201, 9, 'zwar', 1, 'de'),
-(11200, 9, 'gewertet', 4, 'de'),
-(11199, 9, 'verloren', 1, 'de'),
-(11198, 9, 'als', 2, 'de'),
-(11197, 9, 'spielplan', 1, 'de'),
-(11196, 9, 'laut', 1, 'de'),
-(11195, 9, 'zeitplan', 1, 'de'),
-(11194, 9, 'spiel', 2, 'de'),
-(11193, 9, 'minuten', 1, 'de'),
-(11192, 9, '5', 1, 'de'),
-(11191, 9, 'erscheint', 2, 'de'),
-(11190, 9, 'punkte', 17, 'de'),
-(11189, 9, '3', 3, 'de'),
-(11188, 9, 'entschieden', 1, 'de'),
-(11187, 9, 'gewinnsätzen', 1, 'de'),
-(11186, 9, 'finale', 1, 'de'),
-(11185, 9, '21', 1, 'de'),
-(11184, 9, 'spielen', 3, 'de'),
-(11183, 9, 'folgenden', 1, 'de'),
-(11182, 9, 'darauf', 1, 'de'),
-(11181, 9, 'runde', 1, 'de'),
-(11180, 9, 'nächste', 1, 'de'),
-(11179, 9, 'qualifizieren', 1, 'de'),
-(11178, 9, 'mannschaft', 10, 'de'),
-(11177, 9, 'zweitplatzierte', 3, 'de'),
-(11176, 9, 'erst', 1, 'de'),
-(11175, 9, 'notwendig', 1, 'de'),
-(11174, 9, '2', 5, 'de'),
-(11173, 9, 'mindestvorsprung', 1, 'de'),
-(11172, 9, 'wobei', 3, 'de'),
-(11171, 9, 'system', 1, 'de'),
-(11170, 9, 'rally-point', 1, 'de'),
-(11169, 9, 'punkten', 3, 'de'),
-(11168, 9, '15', 2, 'de'),
-(11167, 9, 'mindestens', 1, 'de'),
-(11166, 9, 'satz', 3, 'de'),
-(11165, 9, 'gruppenspielen', 1, 'de'),
-(11164, 9, 'teilzunehmen', 1, 'de'),
-(11163, 9, 'bewerben', 1, 'de'),
-(11162, 9, 'zwei', 2, 'de'),
-(11161, 9, 'tag', 1, 'de'),
-(11160, 9, 'einem', 4, 'de'),
-(11159, 9, 'möglich', 1, 'de'),
-(11158, 9, 'sicht', 1, 'de'),
-(11157, 9, 'organisatorischer', 1, 'de'),
-(11156, 9, 'aus', 2, 'de'),
-(11155, 9, 'buben', 3, 'de'),
-(11154, 9, 'mädchen', 3, 'de'),
-(11153, 9, 'spielkategorien', 1, 'de'),
-(11152, 9, 'statt', 2, 'de'),
-(11151, 9, 'witterung', 1, 'de'),
-(11150, 9, 'turniere', 5, 'de'),
-(11149, 9, 'jeder', 3, 'de'),
-(11147, 9, 'unterschiedliche', 1, 'de'),
-(11148, 9, 'kategorien', 2, 'de'),
-(11146, 9, 'mehrere', 2, 'de'),
-(11145, 9, 'gliedert', 1, 'de'),
-(11144, 9, 'veranstaltung', 2, 'de'),
-(11143, 9, 'turniermodus', 1, 'de'),
-(11142, 9, 'mail', 1, 'de'),
-(11141, 9, '7064116', 1, 'de'),
-(11140, 9, '393', 1, 'de'),
-(11139, 9, '39', 1, 'de'),
-(11138, 9, 'tel', 1, 'de'),
-(11137, 9, 'infos', 1, 'de'),
-(11136, 9, 'weitere', 3, 'de'),
-(11135, 9, 'gesendet', 1, 'de'),
-(11134, 9, 'beachcup.it', 2, 'de'),
-(11133, 9, 'info', 2, 'de'),
-(11132, 9, '08', 1, 'de'),
-(11131, 9, '06', 1, 'de'),
-(11130, 9, '05', 1, 'de'),
-(11129, 9, '0474', 1, 'de'),
-(11128, 9, 'faxnummer', 1, 'de'),
-(11127, 9, 'entweder', 1, 'de'),
-(11126, 9, 'ebenfalls', 1, 'de'),
-(11125, 9, 'unter', 5, 'de'),
-(11124, 9, 'details', 4, 'de'),
-(11123, 9, 'attest', 1, 'de'),
-(11122, 9, 'ärztliche', 1, 'de'),
-(11121, 9, 'sowie', 2, 'de'),
-(11120, 9, 'datenschutzerklärung', 2, 'de'),
-(11119, 9, 'bzw', 2, 'de'),
-(11118, 9, 'eigenerklärung', 1, 'de'),
-(11117, 9, 'wenn', 1, 'de'),
-(11116, 9, 'gültig', 1, 'de'),
-(11115, 9, 'ist', 5, 'de'),
-(11114, 9, 'verfügbar', 1, 'de'),
-(11113, 9, 'plätze', 1, 'de'),
-(11112, 9, 'freie', 1, 'de'),
-(11111, 9, 'solange', 1, 'de'),
-(11110, 9, 'gemacht', 1, 'de'),
-(11109, 9, 'etappe', 8, 'de'),
-(11108, 9, 'jeweiligen', 7, 'de'),
-(11107, 9, 'uhr', 2, 'de'),
-(11106, 9, '18:00', 2, 'de'),
-(11105, 9, 'mittwoch', 2, 'de'),
-(11104, 9, 'innerhalb', 3, 'de'),
-(11103, 9, 'bis', 3, 'de'),
-(11102, 9, 'www.beachcup.it', 2, 'de'),
-(11101, 9, 'ausschließlich', 1, 'de'),
-(11100, 9, 'anmeldungen', 1, 'de'),
-(11099, 9, 'einschreibungen', 1, 'de'),
-(11098, 9, '01.01.2002', 1, 'de'),
-(11097, 9, 'u14', 3, 'de'),
-(11096, 9, '01.01.2000', 1, 'de'),
-(11095, 9, 'u16', 2, 'de'),
-(11094, 9, '01.01.1998', 1, 'de'),
-(11093, 9, 'dem', 5, 'de'),
-(11092, 9, 'geboren', 3, 'de'),
-(11091, 9, 'u18', 4, 'de'),
-(11090, 9, 'altersbeschränkungen', 1, 'de'),
-(11089, 9, 'folgende', 1, 'de'),
-(11088, 9, 'gelten', 2, 'de'),
-(11087, 9, 'jugend', 6, 'de'),
-(11086, 9, 'c', 1, 'de'),
-(11085, 9, 'division', 1, 'de'),
-(11084, 9, '1', 3, 'de'),
-(11083, 9, 'sportlerinnen', 2, 'de'),
-(11082, 9, 'damen', 7, 'de'),
-(11081, 9, 'verwehren', 2, 'de'),
-(11080, 9, 'erlauben', 2, 'de'),
-(11079, 9, 'spielstärke', 2, 'de'),
-(11078, 9, 'ihrer', 2, 'de'),
-(11077, 9, 'aufgrund', 2, 'de'),
-(11076, 9, 'mannschaften', 5, 'de'),
-(11075, 9, 'spieler', 6, 'de'),
-(11074, 9, 'einzelne', 3, 'de'),
-(11073, 9, 'vor', 6, 'de'),
-(11072, 9, 'recht', 2, 'de'),
-(11071, 9, 'sich', 6, 'de'),
-(11070, 9, 'behält', 3, 'de'),
-(11069, 9, 'beachcups', 2, 'de'),
-(11068, 9, 'spielniveaus', 1, 'de'),
-(11067, 9, 'ihres', 1, 'de'),
-(11066, 9, 'bezüglich', 1, 'de'),
-(11065, 9, 'begrenzung', 1, 'de'),
-(11064, 9, 'wertung', 1, 'de'),
-(11063, 9, 'getrennte', 1, 'de'),
-(11062, 9, 'keine', 3, 'de'),
-(11061, 9, 'gibt', 2, 'de'),
-(11060, 9, 'mixed-teams', 1, 'de'),
-(11059, 9, 'frauen', 1, 'de'),
-(11058, 9, 'spielberechtigt', 2, 'de'),
-(11057, 9, 'jahre', 2, 'de'),
-(11056, 9, 'beiden', 2, 'de'),
-(11055, 9, 'letzten', 3, 'de'),
-(11054, 9, 'etappen', 7, 'de'),
-(11053, 9, 'halbfinalisten', 2, 'de'),
-(11052, 9, 'zudem', 2, 'de'),
-(11051, 9, 'angewendet', 2, 'de'),
-(11050, 9, 'ausland', 2, 'de'),
-(11049, 9, 'ligen', 2, 'de'),
-(11048, 9, 'andere', 2, 'de'),
-(11047, 9, 'einschränkung', 2, 'de'),
-(11046, 9, 'selbe', 2, 'de'),
-(11042, 9, 'nie', 2, 'de'),
-(11043, 9, 'b2', 1, 'de'),
-(11044, 9, 'höher', 2, 'de'),
+(13234, 9, 'turnierdressen', 1, 'de'),
+(13233, 9, 'offiziellen', 2, 'de'),
+(13232, 9, 'immer', 1, 'de'),
+(13231, 9, 'mÃ¼ssen', 1, 'de'),
+(13230, 9, 'spielbekleidung', 1, 'de'),
+(13229, 9, 'entrichtet', 1, 'de'),
+(13228, 9, 'trotzdem', 1, 'de'),
+(13227, 9, 'einschreibegebÃ¼hr', 1, 'de'),
+(13226, 9, 'muss', 1, 'de'),
+(13225, 9, 'abzumelden', 1, 'de'),
+(13224, 9, 'rechtzeitig', 1, 'de'),
+(13223, 9, 'vorher', 1, 'de'),
+(13222, 9, 'ohne', 1, 'de'),
+(13221, 9, 'einer', 2, 'de'),
+(13220, 9, '2,00', 1, 'de'),
+(13219, 9, 'zusÃ¤tzlich', 1, 'de'),
+(13218, 9, 'fallen', 1, 'de'),
+(13217, 9, 'einschreibeformular', 1, 'de'),
+(13216, 9, 'gemeldet', 1, 'de'),
+(13215, 9, 'wichtig', 1, 'de'),
+(13214, 9, 'euro', 6, 'de'),
+(13213, 9, 'jede', 1, 'de'),
+(13212, 9, 'erstteilnahme', 1, 'de'),
+(13211, 9, 'aufdruck', 1, 'de'),
+(13210, 9, 'materialkosten', 1, 'de'),
+(13209, 9, 'weitergegeben', 1, 'de'),
+(13208, 9, '15,00', 1, 'de'),
+(13207, 9, 'unkostenbeitrag', 1, 'de'),
+(13206, 9, 'gegen', 1, 'de'),
+(13205, 9, 'veranstalter', 3, 'de'),
+(13204, 9, 'vom', 3, 'de'),
+(13203, 9, 'jedes', 1, 'de'),
+(13202, 9, 'ermÃ¤ÃŸigung', 4, 'de'),
+(13201, 9, 'erhalten', 1, 'de'),
+(13200, 9, 'kunden', 2, 'de'),
+(13199, 9, 'future', 2, 'de'),
+(13198, 9, 'the', 2, 'de'),
+(13197, 9, 'bank', 2, 'de'),
+(13196, 9, 'spielleibchen', 2, 'de'),
+(13195, 9, 'tour', 2, 'de'),
+(13194, 9, 'gesamte', 1, 'de'),
+(13193, 9, 'einmal', 1, 'de'),
+(13192, 9, 'vorhanden', 1, 'de'),
+(13191, 9, 'falls', 1, 'de'),
+(13190, 9, 'schwimmbÃ¤der', 1, 'de'),
+(13189, 9, 'eintritt', 1, 'de'),
+(13188, 9, 'beinhaltet', 1, 'de'),
+(13187, 9, 'nenngebÃ¼hr', 3, 'de'),
+(13186, 9, 'usw', 1, 'de'),
+(13185, 9, '160', 1, 'de'),
+(13184, 9, '180', 1, 'de'),
+(13183, 9, '200', 1, 'de'),
+(13182, 9, 'doppelte', 1, 'de'),
+(13181, 9, 'vergeben', 2, 'de'),
+(13180, 9, 'pro', 4, 'de'),
+(13179, 9, '20', 6, 'de'),
+(13178, 9, 'gruppenletzter', 1, 'de'),
+(13177, 9, '30', 3, 'de'),
+(13176, 9, 'gruppenvorletzter', 1, 'de'),
+(13175, 9, '40', 3, 'de'),
+(13174, 9, 'gruppendrittletzter', 1, 'de'),
+(13173, 9, '50', 2, 'de'),
+(13172, 9, 'achtelfinale', 1, 'de'),
+(13171, 9, '60', 1, 'de'),
+(13170, 9, 'viertelfinale', 1, 'de'),
+(13169, 9, 'verlierer', 2, 'de'),
+(13168, 9, '70', 1, 'de'),
+(13167, 9, '4', 2, 'de'),
+(13166, 9, '80', 1, 'de'),
+(13165, 9, '90', 1, 'de'),
+(13164, 9, '100', 1, 'de'),
+(13163, 9, 'platz', 7, 'de'),
+(13162, 9, 'punktevergabe', 1, 'de'),
+(13161, 9, 'jugend-kategorien', 1, 'de'),
+(13160, 9, 'vier', 3, 'de'),
+(13159, 9, 'besten', 2, 'de'),
+(13158, 9, 'open-turniere', 2, 'de'),
+(13157, 9, 'freizeitturniere', 2, 'de'),
+(13156, 9, 'turnierserie', 1, 'de'),
+(13155, 9, 'platzierung', 1, 'de'),
+(13154, 9, 'beste', 1, 'de'),
+(13153, 9, 'entscheidet', 1, 'de'),
+(13152, 9, 'gleichstand', 1, 'de'),
+(13151, 9, 'neuerlichem', 1, 'de'),
+(13150, 9, 'hatte', 1, 'de'),
+(13149, 9, 'teilnahmen', 1, 'de'),
+(13148, 9, 'besser', 1, 'de'),
+(13147, 9, 'team', 1, 'de'),
+(13146, 9, 'aufweisen', 1, 'de'),
+(13145, 9, 'punktezahl', 2, 'de'),
+(13144, 9, 'dieselbe', 1, 'de'),
+(13143, 9, 'sollten', 1, 'de'),
+(13142, 9, 'zusammengezÃ¤hlt', 3, 'de'),
+(13141, 9, 'drei', 4, 'de'),
+(13140, 9, 'gesamtwertung', 7, 'de'),
+(13139, 9, '2,43m', 1, 'de'),
+(13138, 9, '2,24', 1, 'de'),
+(13137, 9, '2,35m', 1, 'de'),
+(13136, 9, 'u16m', 1, 'de'),
+(13135, 9, 'u16w', 1, 'de'),
+(13134, 9, '2,15m', 2, 'de'),
+(13133, 9, '2,05mu14m', 1, 'de'),
+(13132, 9, 'u14w', 1, 'de'),
+(13131, 9, 'folgt', 1, 'de'),
+(13130, 9, 'wie', 2, 'de'),
+(13129, 9, 'netzhÃ¶hen', 1, 'de'),
+(13128, 9, '16', 1, 'de'),
+(13127, 9, '8', 1, 'de'),
+(13126, 9, 'spielfeld', 1, 'de'),
+(13125, 9, 'bewerbe', 1, 'de'),
+(13124, 9, 'anderen', 1, 'de'),
+(13123, 9, '14', 1, 'de'),
+(13122, 9, 'x', 2, 'de'),
+(13121, 9, '7', 1, 'de'),
+(13120, 9, 'feld', 1, 'de'),
+(13119, 9, 'jugendbewerbe', 1, 'de'),
+(13118, 9, '21:11', 1, 'de'),
+(13117, 9, '15:8', 1, 'de'),
+(13116, 9, 'zwar', 1, 'de'),
+(13115, 9, 'gewertet', 4, 'de'),
+(13114, 9, 'verloren', 1, 'de'),
+(13113, 9, 'als', 2, 'de'),
+(13112, 9, 'spielplan', 1, 'de'),
+(13111, 9, 'laut', 1, 'de'),
+(13110, 9, 'zeitplan', 1, 'de'),
+(13109, 9, 'spiel', 2, 'de'),
+(13108, 9, 'minuten', 1, 'de'),
+(13107, 9, '5', 1, 'de'),
+(13106, 9, 'erscheint', 2, 'de'),
+(13105, 9, 'punkte', 17, 'de'),
+(13104, 9, '3', 3, 'de'),
+(13103, 9, 'entschieden', 1, 'de'),
+(13102, 9, 'gewinnsÃ¤tzen', 1, 'de'),
+(13101, 9, 'finale', 1, 'de'),
+(13100, 9, '21', 1, 'de'),
+(13099, 9, 'spielen', 3, 'de'),
+(13098, 9, 'folgenden', 1, 'de'),
+(13097, 9, 'darauf', 1, 'de'),
+(13096, 9, 'runde', 1, 'de'),
+(13095, 9, 'nÃ¤chste', 1, 'de'),
+(13094, 9, 'qualifizieren', 1, 'de'),
+(13093, 9, 'mannschaft', 10, 'de'),
+(13092, 9, 'zweitplatzierte', 3, 'de'),
+(13091, 9, 'erst', 1, 'de'),
+(13090, 9, 'notwendig', 1, 'de'),
+(13089, 9, '2', 5, 'de'),
+(13088, 9, 'mindestvorsprung', 1, 'de'),
+(13087, 9, 'wobei', 3, 'de'),
+(13086, 9, 'system', 1, 'de'),
+(13085, 9, 'rally-point', 1, 'de'),
+(13084, 9, 'punkten', 3, 'de'),
+(13083, 9, '15', 2, 'de'),
+(13082, 9, 'mindestens', 1, 'de'),
+(13081, 9, 'satz', 3, 'de'),
+(13080, 9, 'gruppenspielen', 1, 'de'),
+(13079, 9, 'teilzunehmen', 1, 'de'),
+(13078, 9, 'bewerben', 1, 'de'),
+(13077, 9, 'zwei', 2, 'de'),
+(13076, 9, 'tag', 1, 'de'),
+(13075, 9, 'einem', 4, 'de'),
+(13074, 9, 'mÃ¶glich', 1, 'de'),
+(13073, 9, 'sicht', 1, 'de'),
+(13072, 9, 'organisatorischer', 1, 'de'),
+(13071, 9, 'aus', 2, 'de'),
+(13070, 9, 'buben', 3, 'de'),
+(13069, 9, 'mÃ¤dchen', 3, 'de'),
+(13068, 9, 'spielkategorien', 1, 'de'),
+(13067, 9, 'statt', 2, 'de'),
+(13066, 9, 'witterung', 1, 'de'),
+(13065, 9, 'turniere', 5, 'de'),
+(13064, 9, 'jeder', 3, 'de'),
+(13063, 9, 'kategorien', 2, 'de'),
+(13062, 9, 'unterschiedliche', 1, 'de'),
+(13061, 9, 'mehrere', 2, 'de'),
+(13060, 9, 'gliedert', 1, 'de'),
+(13059, 9, 'veranstaltung', 2, 'de'),
+(13058, 9, 'turniermodus', 1, 'de'),
+(13057, 9, 'mail', 1, 'de'),
+(13056, 9, '7064116', 1, 'de'),
+(13055, 9, '393', 1, 'de'),
+(13054, 9, '39', 1, 'de'),
+(13053, 9, 'tel', 1, 'de'),
+(13052, 9, 'infos', 1, 'de'),
+(13051, 9, 'weitere', 3, 'de'),
+(13050, 9, 'gesendet', 1, 'de'),
+(13049, 9, 'beachcup.it', 2, 'de'),
+(13048, 9, 'info', 2, 'de'),
+(13047, 9, '08', 1, 'de'),
+(13046, 9, '06', 1, 'de'),
+(13045, 9, '05', 1, 'de'),
+(13044, 9, '0474', 1, 'de'),
+(13043, 9, 'faxnummer', 1, 'de'),
+(13042, 9, 'entweder', 1, 'de'),
+(13041, 9, 'ebenfalls', 1, 'de'),
+(13040, 9, 'unter', 5, 'de'),
+(13039, 9, 'details', 4, 'de'),
+(13038, 9, 'attest', 1, 'de'),
+(13037, 9, 'Ã¤rztliche', 1, 'de'),
+(13036, 9, 'sowie', 2, 'de'),
+(13035, 9, 'datenschutzerklÃ¤rung', 2, 'de'),
+(13034, 9, 'bzw', 2, 'de'),
+(13033, 9, 'eigenerklÃ¤rung', 1, 'de'),
+(13032, 9, 'wenn', 1, 'de'),
+(13031, 9, 'gÃ¼ltig', 1, 'de'),
+(13030, 9, 'ist', 5, 'de'),
+(13029, 9, 'verfÃ¼gbar', 1, 'de'),
+(13028, 9, 'plÃ¤tze', 1, 'de'),
+(13027, 9, 'freie', 1, 'de'),
+(13026, 9, 'solange', 1, 'de'),
+(13025, 9, 'gemacht', 1, 'de'),
+(13024, 9, 'etappe', 8, 'de'),
+(13023, 9, 'jeweiligen', 7, 'de'),
+(13022, 9, 'uhr', 2, 'de'),
+(13021, 9, '18:00', 2, 'de'),
 (4342, 13, 'wieder', 1, 'de'),
 (4343, 13, 'im', 1, 'de'),
 (4344, 13, 'rahmen', 1, 'de'),
 (4345, 13, 'des', 1, 'de'),
 (4346, 13, 'raiffeisen', 2, 'de'),
 (4347, 13, 'beachcups', 1, 'de'),
-(4348, 13, 'gekürt', 1, 'de'),
+(4348, 13, 'gekÃ¼rt', 1, 'de'),
 (4349, 13, 'wird', 1, 'de'),
 (4350, 13, 'vom', 1, 'de'),
 (4351, 13, 'beachcup', 2, 'de'),
@@ -2758,7 +2850,7 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (4358, 13, 'der', 5, 'de'),
 (4359, 13, 'provinz', 2, 'de'),
 (4360, 13, 'bozen', 2, 'de'),
-(4361, 13, 'schönen', 1, 'de'),
+(4361, 13, 'schÃ¶nen', 1, 'de'),
 (4362, 13, 'beachanlage', 1, 'de'),
 (4363, 13, 'beim', 1, 'de'),
 (4364, 13, 'freibad', 1, 'de'),
@@ -2782,12 +2874,12 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (4382, 13, 'u14', 1, 'de'),
 (4383, 13, 'u18', 1, 'de'),
 (4384, 13, 'jeweils', 1, 'de'),
-(4385, 13, 'männlich', 1, 'de'),
+(4385, 13, 'mÃ¤nnlich', 1, 'de'),
 (4386, 13, 'weiblich', 1, 'de'),
 (4387, 13, 'bei', 1, 'de'),
 (4388, 13, 'diesem', 1, 'de'),
 (4389, 13, 'turnieren', 1, 'de'),
-(4390, 13, 'können', 1, 'de'),
+(4390, 13, 'kÃ¶nnen', 1, 'de'),
 (4391, 13, 'nur', 1, 'de'),
 (4392, 13, 'mannschaften', 1, 'de'),
 (4393, 13, 'bzw', 1, 'de'),
@@ -2803,427 +2895,1174 @@ INSERT INTO `tl_search_index` (`id`, `pid`, `word`, `relevance`, `language`) VAL
 (4403, 13, 'artikel', 1, 'de'),
 (4404, 13, 'lesen', 1, 'de'),
 (4405, 13, 'banner', 1, 'de'),
-(11045, 9, 'haben', 2, 'de'),
-(11041, 9, 'noch', 4, 'de'),
-(11040, 9, 'd', 1, 'de'),
-(11039, 9, 'serie', 3, 'de'),
-(11038, 9, 'italienischen', 4, 'de'),
-(11037, 9, 'maximal', 2, 'de'),
-(11036, 9, 'hallen-saison', 2, 'de'),
-(11035, 9, 'abgelaufenen', 2, 'de'),
-(11034, 9, 'vorweisen', 3, 'de'),
-(11033, 9, 'hausarzt', 3, 'de'),
-(11032, 9, 'zeugnis', 3, 'de'),
-(11031, 9, 'ärztliches', 3, 'de'),
-(11030, 9, 'gültiges', 3, 'de'),
-(11029, 9, 'ein', 7, 'de'),
-(11028, 9, 'es', 7, 'de'),
-(11027, 9, 'herren', 7, 'de'),
-(11026, 9, 'freizeit', 7, 'de'),
-(11025, 9, 'bescheinigt', 1, 'de'),
-(11024, 9, 'sportart', 1, 'de'),
-(11023, 9, 'dieser', 5, 'de'),
-(11022, 9, 'ausübung', 1, 'de'),
-(5408, 17, 'lesen', 1, 'de'),
-(5409, 17, 'banner', 1, 'de'),
-(11021, 9, 'eignung', 1, 'de'),
-(11020, 9, 'uneingeschränkte', 1, 'de'),
-(11019, 9, 'welches', 1, 'de'),
-(11018, 9, 'gewährt', 1, 'de'),
-(11017, 9, 'sportarzt', 4, 'de'),
-(11016, 9, 'attestes', 1, 'de'),
-(11015, 9, 'sportärztlichen', 1, 'de'),
-(11014, 9, 'gültigen', 1, 'de'),
-(11013, 9, 'eines', 1, 'de'),
-(11012, 9, 'vorlage', 1, 'de'),
-(11011, 9, 'nur', 4, 'de'),
-(11010, 9, 'turnier', 2, 'de'),
-(7402, 15, 'i-39031', 1, 'de'),
-(7403, 15, 'bz', 1, 'de'),
-(7404, 15, 'mwst.nr', 1, 'de'),
-(7405, 15, 'steuernr', 1, 'de'),
-(7406, 15, '92015230219', 1, 'de'),
-(7407, 15, 'sämtliche', 1, 'de'),
-(7408, 15, 'bilder', 1, 'de'),
-(7409, 15, 'und', 12, 'de'),
-(7410, 15, 'texte', 1, 'de'),
-(7411, 15, 'dieser', 3, 'de'),
-(7412, 15, 'website', 8, 'de'),
-(7413, 15, 'sind', 6, 'de'),
-(7414, 15, 'urheberrechtlich', 1, 'de'),
-(7415, 15, 'geschützt', 1, 'de'),
-(7416, 15, 'jegliche', 1, 'de'),
-(7417, 15, 'verwendung', 1, 'de'),
-(7418, 15, 'ohne', 2, 'de'),
-(7419, 15, 'schriftliche', 1, 'de'),
-(7420, 15, 'genehmigung', 1, 'de'),
-(7421, 15, 'ist', 3, 'de'),
-(7422, 15, 'untersagt', 1, 'de'),
-(7423, 15, 'wir', 6, 'de'),
-(7424, 15, 'weisen', 1, 'de'),
-(7425, 15, 'ausdrücklich', 1, 'de'),
-(7426, 15, 'darauf', 1, 'de'),
-(7427, 15, 'hin', 1, 'de'),
-(7428, 15, 'dass', 2, 'de'),
-(7429, 15, 'keinerlei', 2, 'de'),
-(7430, 15, 'einfluss', 1, 'de'),
-(7431, 15, 'auf', 9, 'de'),
-(7432, 15, 'die', 9, 'de'),
-(7433, 15, 'gestaltung', 1, 'de'),
-(7434, 15, 'inhalte', 1, 'de'),
-(7435, 15, 'von', 11, 'de'),
-(7436, 15, 'seiten', 3, 'de'),
-(7437, 15, 'haben', 1, 'de'),
-(7438, 15, 'aus', 1, 'de'),
-(7439, 15, 'verlinkt', 1, 'de'),
-(7440, 15, 'somit', 1, 'de'),
-(7441, 15, 'übernehmen', 1, 'de'),
-(7442, 15, 'haftung', 1, 'de'),
-(7443, 15, 'oder', 4, 'de'),
-(7444, 15, 'garantie', 1, 'de'),
-(7445, 15, 'für', 3, 'de'),
-(7446, 15, 'den', 3, 'de'),
-(7447, 15, 'inhalt', 1, 'de'),
-(7448, 15, 'distanzieren', 1, 'de'),
-(7449, 15, 'uns', 2, 'de'),
-(7450, 15, 'klar', 1, 'de'),
-(7451, 15, 'der', 7, 'de'),
-(7452, 15, 'diesen', 1, 'de'),
-(7453, 15, 'zum', 2, 'de'),
-(7454, 15, 'ausdruck', 1, 'de'),
-(7455, 15, 'gebrachten', 1, 'de'),
-(7456, 15, 'meinung', 2, 'de'),
-(7457, 15, 'da', 1, 'de'),
-(7458, 15, 'diese', 6, 'de'),
-(7459, 15, 'nicht', 2, 'de'),
-(7460, 15, 'immer', 1, 'de'),
-(7461, 15, 'unserer', 2, 'de'),
-(7462, 15, 'entsprechen', 1, 'de'),
-(7463, 15, 'kann', 1, 'de'),
-(7464, 15, 'copyright', 1, 'de'),
-(7465, 15, 'amateuersportverein', 1, 'de'),
-(7466, 15, 'nutzung', 3, 'de'),
-(7467, 15, 'cookies', 16, 'de'),
-(7468, 15, 'verwendet', 3, 'de'),
-(7469, 15, 'verwandte', 1, 'de'),
-(7470, 15, 'technologien', 2, 'de'),
-(7471, 15, 'um', 2, 'de'),
-(7472, 15, 'das', 6, 'de'),
-(7473, 15, 'korrekte', 1, 'de'),
-(7474, 15, 'funktionieren', 1, 'de'),
-(7475, 15, 'zu', 7, 'de'),
-(7476, 15, 'ermöglichen', 2, 'de'),
-(7477, 15, 'angebotenen', 1, 'de'),
-(7478, 15, 'dienste', 1, 'de'),
-(7479, 15, 'erleichtern', 2, 'de'),
-(7480, 15, 'was', 1, 'de'),
-(7481, 15, 'ein', 2, 'de'),
-(7482, 15, 'cookie', 1, 'de'),
-(7483, 15, 'kurzes', 1, 'de'),
-(7484, 15, 'text-snippet', 1, 'de'),
-(7485, 15, 'einer', 2, 'de'),
-(7486, 15, 'ihnen', 1, 'de'),
-(7487, 15, 'besuchten', 1, 'de'),
-(7488, 15, 'an', 1, 'de'),
-(7489, 15, 'ihren', 1, 'de'),
-(7490, 15, 'browser', 2, 'de'),
-(7491, 15, 'gesendet', 1, 'de'),
-(7492, 15, 'wird', 2, 'de'),
-(7493, 15, 'es', 1, 'de'),
-(7494, 15, 'speichert', 1, 'de'),
-(7495, 15, 'informationen', 5, 'de'),
-(7496, 15, 'ihrem', 2, 'de'),
-(7497, 15, 'letzten', 1, 'de'),
-(7498, 15, 'besuch', 2, 'de'),
-(7499, 15, 'wie', 2, 'de'),
-(7500, 15, 'ihre', 1, 'de'),
-(7501, 15, 'bevorzugte', 1, 'de'),
-(7502, 15, 'sprache', 1, 'de'),
-(7503, 15, 'andere', 1, 'de'),
-(7504, 15, 'einstellungen', 2, 'de'),
-(7505, 15, 'so', 2, 'de'),
-(7506, 15, 'finden', 1, 'de'),
-(7507, 15, 'sie', 10, 'de'),
-(7508, 15, 'sich', 1, 'de'),
-(7509, 15, 'schneller', 1, 'de'),
-(7510, 15, 'zurecht', 1, 'de'),
-(7511, 15, 'nutzen', 3, 'de'),
-(7512, 15, 'effektiver', 1, 'de'),
-(7513, 15, 'wenn', 1, 'de'),
-(7514, 15, 'nächste', 1, 'de'),
-(7515, 15, 'mal', 1, 'de'),
-(7516, 15, 'aufrufen', 1, 'de'),
-(7517, 15, 'spielen', 1, 'de'),
-(7518, 15, 'eine', 1, 'de'),
-(7519, 15, 'wichtige', 1, 'de'),
-(7520, 15, 'rolle', 1, 'de'),
-(7521, 15, 'wäre', 1, 'de'),
-(7522, 15, 'surfen', 1, 'de'),
-(7523, 15, 'im', 1, 'de'),
-(7524, 15, 'web', 1, 'de'),
-(7525, 15, 'oft', 1, 'de'),
-(7526, 15, 'frustrierend', 1, 'de'),
-(7527, 15, 'warum', 1, 'de'),
-(7528, 15, 'unsere', 3, 'de'),
-(7529, 15, 'verbessern', 1, 'de'),
-(7530, 15, 'damit', 1, 'de'),
-(7531, 15, 'besucher', 1, 'de'),
-(7532, 15, 'bestmögliche', 1, 'de'),
-(7533, 15, 'angebot', 1, 'de'),
-(7534, 15, 'erhalten', 1, 'de'),
-(7535, 15, 'plattform', 1, 'de'),
-(7536, 15, 'auch', 1, 'de'),
-(7537, 15, 'ähnliche', 1, 'de'),
-(7538, 15, 'sorgfältig', 1, 'de'),
-(7539, 15, 'ausgewählten', 1, 'de'),
-(7540, 15, 'drittanbietern', 1, 'de'),
-(7541, 15, 'arten', 1, 'de'),
-(7542, 15, 'folgende', 1, 'de'),
-(7543, 15, 'technische', 1, 'de'),
-(7544, 15, 'analytische', 1, 'de'),
-(7545, 15, 'zwecke', 1, 'de'),
-(7546, 15, 'sammeln', 1, 'de'),
-(7547, 15, 'über', 3, 'de'),
-(7548, 15, 'helfen', 1, 'de'),
-(7549, 15, 'auswertungen', 1, 'de'),
-(7550, 15, 'auffindbarkeit', 1, 'de'),
-(7551, 15, 'seite', 2, 'de'),
-(7552, 15, 'bekommen', 1, 'de'),
-(7553, 15, 'dies', 2, 'de'),
-(7554, 15, 'erfolgt', 1, 'de'),
-(7555, 15, 'teil', 1, 'de'),
-(7556, 15, 'einen', 1, 'de'),
-(7557, 15, 'drittanbieter', 2, 'de'),
-(7558, 15, 'google', 1, 'de'),
-(7559, 15, 'personenbezogen', 1, 'de'),
-(7560, 15, 'drittanbieter-cookies', 1, 'de'),
-(7561, 15, 'anderen', 1, 'de'),
-(7562, 15, 'anbietern', 1, 'de'),
-(7563, 15, 'beispiele', 1, 'de'),
-(7564, 15, 'dafür', 1, 'de'),
-(7565, 15, 'social', 2, 'de'),
-(7566, 15, 'plugins', 1, 'de'),
-(7567, 15, 'facebook', 1, 'de'),
-(7568, 15, 'twitter', 1, 'de'),
-(7569, 15, 'google+', 1, 'de'),
-(7570, 15, 'sinn', 1, 'de'),
-(7571, 15, 'davon', 1, 'de'),
-(7572, 15, 'z.b', 1, 'de'),
-(7573, 15, 'teilen', 1, 'de'),
-(7574, 15, 'inhalten', 1, 'de'),
-(7575, 15, 'dne', 1, 'de'),
-(7576, 15, 'network', 1, 'de'),
-(7577, 15, 'plattformen', 1, 'de'),
-(7578, 15, 'genaueres', 1, 'de'),
-(7579, 15, 'erfahren', 2, 'de'),
-(7580, 15, 'informations-seiten', 1, 'de'),
-(7581, 15, 'verwalten', 1, 'de'),
-(7582, 15, 'können', 2, 'de'),
-(7583, 15, 'nach', 3, 'de'),
-(7584, 15, 'belieben', 1, 'de'),
-(7585, 15, 'steuern', 1, 'de'),
-(7586, 15, 'löschen', 2, 'de'),
-(7587, 15, 'hier', 1, 'de'),
-(7588, 15, 'alle', 1, 'de'),
-(7589, 15, 'rechner', 1, 'de'),
-(7590, 15, 'abgelegten', 1, 'de'),
-(7591, 15, 'meisten', 1, 'de'),
-(7592, 15, 'einstellen', 1, 'de'),
-(7593, 15, 'ablage', 1, 'de'),
-(7594, 15, 'verhindert', 1, 'de'),
-(7595, 15, 'dann', 1, 'de'),
-(7596, 15, 'müssen', 1, 'de'),
-(7597, 15, 'aber', 1, 'de'),
-(7598, 15, 'möglicherweise', 1, 'de'),
-(7599, 15, 'einige', 1, 'de'),
-(7600, 15, 'bei', 1, 'de'),
-(7601, 15, 'jedem', 1, 'de'),
-(7602, 15, 'manuell', 1, 'de'),
-(7603, 15, 'vornehmen', 1, 'de'),
-(7604, 15, 'beeinträchtigung', 1, 'de'),
-(7605, 15, 'mancher', 1, 'de'),
-(7606, 15, 'funktionen', 1, 'de'),
-(7607, 15, 'in', 1, 'de'),
-(7608, 15, 'kauf', 1, 'de'),
-(7609, 15, 'nehmen', 1, 'de'),
-(7610, 15, 'beachcup', 1, 'de'),
-(7611, 15, 'news', 1, 'de'),
-(7612, 15, 'partschins', 2, 'de'),
-(7613, 15, 'zweite', 1, 'de'),
-(7614, 15, 'open-etappe', 1, 'de'),
-(7615, 15, 'artikel', 1, 'de'),
-(7616, 15, 'lesen', 1, 'de'),
-(7617, 15, 'banner', 1, 'de'),
-(11009, 9, 'f', 4, 'de'),
-(11008, 9, 'm', 7, 'de'),
-(11007, 9, 'open', 8, 'de'),
-(11006, 9, 'kategorie', 11, 'de'),
-(11005, 9, 'berechtigt', 1, 'de'),
-(11004, 9, 'turnieren', 2, 'de'),
-(11003, 9, 'an', 6, 'de'),
-(11002, 9, 'teilnahme', 5, 'de'),
-(11001, 9, 'zur', 2, 'de'),
-(11000, 9, 'annahme', 1, 'de'),
-(10999, 9, 'dessen', 1, 'de'),
-(10998, 9, 'vorbehaltlich', 1, 'de'),
-(10997, 9, 'beantragen', 2, 'de'),
-(10996, 9, 'evento', 2, 'de'),
-(10995, 9, 'per', 3, 'de'),
-(10994, 9, 'tesseramento', 2, 'de'),
-(10993, 9, 'tagestesserierung', 2, 'de'),
-(10992, 9, 'sogenannte', 1, 'de'),
-(10991, 9, 'anmeldeformular', 1, 'de'),
-(10990, 9, 'einschreibung', 2, 'de'),
-(10989, 9, 'bei', 8, 'de'),
-(10988, 9, 'verfügen', 1, 'de'),
-(10987, 9, 'tesserierung', 1, 'de'),
-(10986, 9, 'eine', 6, 'de'),
-(10985, 9, 'jene', 1, 'de'),
-(10984, 9, 'teilnehmen', 1, 'de'),
-(10983, 9, 'gesperrt', 1, 'de'),
-(10982, 9, 'portal', 1, 'de'),
-(10981, 9, 'online', 2, 'de'),
-(10980, 9, 'über', 3, 'de'),
-(10979, 9, 'aktivität', 1, 'de'),
-(10978, 9, 'nicht', 9, 'de'),
-(10977, 9, 'verein', 1, 'de'),
-(10976, 9, 'ihrem', 1, 'de'),
-(10975, 9, 'von', 7, 'de'),
-(10974, 9, 'und', 16, 'de'),
-(10973, 9, 'sind', 10, 'de'),
-(10972, 9, 'tesseriert', 1, 'de'),
-(10971, 9, 'fachsportverband', 3, 'de'),
-(10970, 9, 'welche', 6, 'de'),
-(10969, 9, 'innen', 1, 'de'),
-(10968, 9, 'sportler', 2, 'de'),
-(10967, 9, 'alle', 6, 'de'),
-(10966, 9, 'können', 6, 'de'),
-(10965, 9, 'am', 3, 'de'),
-(10964, 9, 'teilnahmeberechtigt', 4, 'de'),
-(10963, 9, 'zum', 1, 'de'),
-(10962, 9, 'ihr', 1, 'de'),
-(10961, 9, 'findet', 4, 'de'),
-(10960, 9, 'werden', 13, 'de'),
-(10959, 9, 'zu', 9, 'de'),
-(10958, 9, 'gerecht', 1, 'de'),
-(10957, 9, 'südtirol', 1, 'de'),
-(10956, 9, 'im', 4, 'de'),
-(10955, 9, 'jugendförderung', 1, 'de'),
-(10954, 9, 'um', 2, 'de'),
-(10953, 9, 'schaffen', 1, 'de'),
-(10952, 9, 'grundsätze', 1, 'de'),
-(10951, 9, 'einige', 1, 'de'),
-(10950, 9, 'beachvolleyball', 3, 'de'),
-(10949, 9, 'abteilung', 1, 'de'),
-(10948, 9, 'bozen', 1, 'de'),
-(10947, 9, 'fipav', 5, 'de'),
-(10946, 9, 'mit', 5, 'de'),
-(10945, 9, 'zusammenarbeit', 1, 'de'),
-(10944, 9, 'in', 17, 'de'),
-(10943, 9, 'möchte', 1, 'de'),
-(10942, 9, 'des', 8, 'de'),
-(10941, 9, 'ok', 4, 'de'),
-(10940, 9, 'das', 13, 'de'),
-(10939, 9, 'jugend-etappen', 1, 'de'),
-(10938, 9, 'austragung', 1, 'de'),
-(10937, 9, 'die', 51, 'de'),
-(10936, 9, 'für', 16, 'de'),
-(10935, 9, 'richtlinien', 2, 'de'),
-(10934, 9, 'technische', 1, 'de'),
-(10933, 9, 'neu', 1, 'de'),
-(10932, 9, 'download', 2, 'de'),
-(10931, 9, 'hier', 4, 'de'),
-(10930, 9, 'oder', 14, 'de'),
-(10929, 9, 'homepage', 1, 'de'),
-(10928, 9, 'auf', 11, 'de'),
-(10927, 9, 'sie', 1, 'de'),
-(10926, 9, 'finden', 3, 'de'),
-(10925, 9, 'dazu', 4, 'de'),
-(10924, 9, 'informationen', 1, 'de'),
-(10923, 9, 'mehr', 2, 'de'),
-(10922, 9, 'gespielt', 7, 'de'),
-(10921, 9, 'fivb', 2, 'de'),
-(10920, 9, 'der', 36, 'de'),
-(10919, 9, 'beachvolleyball-regeln', 1, 'de'),
-(10918, 9, 'internationalen', 1, 'de'),
-(10917, 9, 'den', 13, 'de'),
-(10916, 9, 'nach', 9, 'de'),
-(10915, 9, 'wird', 16, 'de'),
-(10914, 9, 'beachcup', 11, 'de'),
-(10913, 9, 'raiffeisen', 8, 'de'),
-(10912, 9, 'beim', 4, 'de'),
-(10911, 9, 'spielregeln', 1, 'de'),
-(10910, 9, '2015', 5, 'de'),
-(10909, 9, 'reglement', 2, 'de'),
-(11465, 10, 'open-etappe', 1, 'de'),
-(11464, 10, 'zweite', 1, 'de'),
-(11463, 10, 'partschins', 2, 'de'),
-(11462, 10, 'nach', 2, 'de'),
-(11461, 10, 'auf', 2, 'de'),
-(11460, 10, 'news', 1, 'de'),
-(11459, 10, 'beachcup', 1, 'de'),
-(11458, 10, '2', 1, 'de'),
-(11457, 10, '3', 1, 'de'),
-(11456, 10, '7', 1, 'de'),
-(11455, 10, '11', 1, 'de'),
-(11454, 10, '12', 1, 'de'),
-(11453, 10, 'wagner', 3, 'de'),
-(11452, 10, 'isolde', 3, 'de'),
-(11451, 10, 'noname', 3, 'de'),
-(11450, 10, 'peter', 3, 'de'),
-(11449, 10, 'damen', 1, 'de'),
-(11448, 10, 'bruneck', 1, 'de'),
-(11447, 10, '1', 2, 'de'),
-(11446, 10, '4', 1, 'de'),
-(11445, 10, 'herren', 1, 'de'),
-(11444, 10, 'open', 2, 'de'),
-(11443, 10, '8', 2, 'de'),
-(11442, 10, 'punkte', 10, 'de'),
-(11441, 10, 'greta', 7, 'de'),
-(11440, 10, 'und', 10, 'de'),
-(11439, 10, 'pallhuber', 14, 'de'),
-(11438, 10, 'jakob', 7, 'de'),
-(11437, 10, 'männlich', 1, 'de'),
-(11436, 10, 'u15', 1, 'de'),
-(11435, 10, 'tirol', 1, 'de'),
-(11434, 10, 'dorf', 1, 'de'),
-(11433, 10, 'spielergebnisse', 1, 'de');
+(13020, 9, 'mittwoch', 2, 'de'),
+(13019, 9, 'innerhalb', 3, 'de'),
+(13018, 9, 'bis', 3, 'de'),
+(13017, 9, 'www.beachcup.it', 2, 'de'),
+(13016, 9, 'ausschlieÃŸlich', 1, 'de'),
+(13015, 9, 'anmeldungen', 1, 'de'),
+(13014, 9, 'einschreibungen', 1, 'de'),
+(13013, 9, '01.01.2002', 1, 'de'),
+(13012, 9, 'u14', 3, 'de'),
+(13011, 9, '01.01.2000', 1, 'de'),
+(13712, 17, 'kontaktformular', 1, 'de'),
+(13010, 9, 'u16', 2, 'de'),
+(13009, 9, '01.01.1998', 1, 'de'),
+(13008, 9, 'dem', 5, 'de'),
+(13007, 9, 'geboren', 3, 'de'),
+(13006, 9, 'u18', 4, 'de'),
+(13005, 9, 'altersbeschrÃ¤nkungen', 1, 'de'),
+(13004, 9, 'folgende', 1, 'de'),
+(13003, 9, 'gelten', 2, 'de'),
+(13948, 15, 'google', 1, 'de'),
+(13947, 15, 'drittanbieter', 2, 'de'),
+(13946, 15, 'einen', 1, 'de'),
+(13945, 15, 'teil', 1, 'de'),
+(13944, 15, 'erfolgt', 1, 'de'),
+(13943, 15, 'dies', 2, 'de'),
+(13942, 15, 'bekommen', 1, 'de'),
+(13941, 15, 'seite', 2, 'de'),
+(13940, 15, 'auffindbarkeit', 1, 'de'),
+(13939, 15, 'auswertungen', 1, 'de'),
+(13938, 15, 'helfen', 1, 'de'),
+(13937, 15, 'Ã¼ber', 3, 'de'),
+(13936, 15, 'sammeln', 1, 'de'),
+(13935, 15, 'zwecke', 1, 'de'),
+(13934, 15, 'analytische', 1, 'de'),
+(13933, 15, 'technische', 1, 'de'),
+(13932, 15, 'folgende', 1, 'de'),
+(13931, 15, 'arten', 1, 'de'),
+(13930, 15, 'drittanbietern', 1, 'de'),
+(13929, 15, 'ausgewÃ¤hlten', 1, 'de'),
+(13928, 15, 'sorgfÃ¤ltig', 1, 'de'),
+(13927, 15, 'Ã¤hnliche', 1, 'de'),
+(13926, 15, 'auch', 1, 'de'),
+(13925, 15, 'plattform', 1, 'de'),
+(13924, 15, 'erhalten', 1, 'de'),
+(13923, 15, 'angebot', 1, 'de'),
+(13922, 15, 'bestmÃ¶gliche', 1, 'de'),
+(13921, 15, 'besucher', 1, 'de'),
+(13920, 15, 'damit', 1, 'de'),
+(13919, 15, 'verbessern', 1, 'de'),
+(13918, 15, 'unsere', 3, 'de'),
+(13917, 15, 'warum', 1, 'de'),
+(13916, 15, 'frustrierend', 1, 'de'),
+(13915, 15, 'oft', 1, 'de'),
+(13914, 15, 'web', 1, 'de'),
+(13913, 15, 'im', 1, 'de'),
+(13912, 15, 'surfen', 1, 'de'),
+(13911, 15, 'wÃ¤re', 1, 'de'),
+(13910, 15, 'rolle', 1, 'de'),
+(13909, 15, 'wichtige', 1, 'de'),
+(13908, 15, 'eine', 1, 'de'),
+(13907, 15, 'spielen', 1, 'de'),
+(13906, 15, 'aufrufen', 1, 'de'),
+(13905, 15, 'mal', 1, 'de'),
+(13904, 15, 'nÃ¤chste', 1, 'de'),
+(13903, 15, 'wenn', 1, 'de'),
+(13902, 15, 'effektiver', 1, 'de'),
+(13901, 15, 'nutzen', 3, 'de'),
+(13900, 15, 'zurecht', 1, 'de'),
+(13899, 15, 'schneller', 1, 'de'),
+(13898, 15, 'sich', 1, 'de'),
+(13897, 15, 'sie', 10, 'de'),
+(13896, 15, 'finden', 1, 'de'),
+(13895, 15, 'so', 2, 'de'),
+(13894, 15, 'einstellungen', 2, 'de'),
+(13893, 15, 'andere', 1, 'de'),
+(13892, 15, 'sprache', 1, 'de'),
+(13891, 15, 'bevorzugte', 1, 'de'),
+(13890, 15, 'ihre', 1, 'de'),
+(13889, 15, 'wie', 2, 'de'),
+(13888, 15, 'besuch', 2, 'de'),
+(13887, 15, 'letzten', 1, 'de'),
+(13886, 15, 'ihrem', 2, 'de'),
+(13885, 15, 'informationen', 5, 'de'),
+(13884, 15, 'speichert', 1, 'de'),
+(13883, 15, 'es', 3, 'de'),
+(13882, 15, 'wird', 4, 'de'),
+(13881, 15, 'gesendet', 1, 'de'),
+(13880, 15, 'browser', 2, 'de'),
+(13879, 15, 'ihren', 1, 'de'),
+(13878, 15, 'an', 1, 'de'),
+(13877, 15, 'besuchten', 1, 'de'),
+(13876, 15, 'ihnen', 1, 'de'),
+(13875, 15, 'einer', 2, 'de'),
+(13874, 15, 'text-snippet', 1, 'de'),
+(13873, 15, 'kurzes', 1, 'de'),
+(13872, 15, 'cookie', 1, 'de'),
+(13871, 15, 'ein', 2, 'de'),
+(13870, 15, 'was', 1, 'de'),
+(13869, 15, 'erleichtern', 2, 'de'),
+(13868, 15, 'dienste', 1, 'de'),
+(13867, 15, 'angebotenen', 1, 'de'),
+(13866, 15, 'ermÃ¶glichen', 2, 'de'),
+(13865, 15, 'zu', 7, 'de'),
+(13864, 15, 'funktionieren', 1, 'de'),
+(13863, 15, 'korrekte', 1, 'de'),
+(13862, 15, 'das', 6, 'de'),
+(13861, 15, 'um', 2, 'de'),
+(13860, 15, 'technologien', 2, 'de'),
+(13859, 15, 'verwandte', 1, 'de'),
+(13858, 15, 'verwendet', 3, 'de'),
+(13857, 15, 'cookies', 16, 'de'),
+(13856, 15, 'nutzung', 3, 'de'),
+(13855, 15, 'amateuersportverein', 1, 'de'),
+(13854, 15, 'copyright', 1, 'de'),
+(13853, 15, 'kann', 1, 'de'),
+(13852, 15, 'entsprechen', 1, 'de'),
+(13851, 15, 'unserer', 2, 'de'),
+(13850, 15, 'immer', 1, 'de'),
+(13849, 15, 'nicht', 2, 'de'),
+(13848, 15, 'diese', 6, 'de'),
+(13847, 15, 'da', 1, 'de'),
+(13846, 15, 'meinung', 2, 'de'),
+(13845, 15, 'gebrachten', 1, 'de'),
+(13844, 15, 'ausdruck', 1, 'de'),
+(13843, 15, 'zum', 2, 'de'),
+(13842, 15, 'diesen', 1, 'de'),
+(13841, 15, 'der', 7, 'de'),
+(13840, 15, 'klar', 1, 'de'),
+(13839, 15, 'uns', 2, 'de'),
+(13838, 15, 'distanzieren', 1, 'de'),
+(13837, 15, 'inhalt', 1, 'de'),
+(13836, 15, 'den', 3, 'de'),
+(13835, 15, 'fÃ¼r', 3, 'de'),
+(13834, 15, 'garantie', 1, 'de'),
+(13833, 15, 'oder', 4, 'de'),
+(13832, 15, 'haftung', 1, 'de'),
+(13831, 15, 'Ã¼bernehmen', 1, 'de'),
+(13830, 15, 'somit', 1, 'de'),
+(13829, 15, 'verlinkt', 1, 'de'),
+(13828, 15, 'aus', 1, 'de'),
+(13827, 15, 'haben', 1, 'de'),
+(13826, 15, 'seiten', 3, 'de'),
+(13825, 15, 'von', 11, 'de'),
+(13824, 15, 'inhalte', 1, 'de'),
+(13823, 15, 'gestaltung', 1, 'de'),
+(13822, 15, 'die', 9, 'de'),
+(13821, 15, 'auf', 7, 'de'),
+(13820, 15, 'einfluss', 1, 'de'),
+(13819, 15, 'keinerlei', 2, 'de'),
+(13818, 15, 'dass', 2, 'de'),
+(13817, 15, 'hin', 1, 'de'),
+(13816, 15, 'darauf', 1, 'de'),
+(13815, 15, 'ausdrÃ¼cklich', 1, 'de'),
+(13814, 15, 'weisen', 1, 'de'),
+(13813, 15, 'wir', 6, 'de'),
+(13812, 15, 'untersagt', 1, 'de'),
+(13811, 15, 'ist', 3, 'de'),
+(13810, 15, 'genehmigung', 1, 'de'),
+(13809, 15, 'schriftliche', 1, 'de'),
+(13808, 15, 'ohne', 2, 'de'),
+(13807, 15, 'verwendung', 1, 'de'),
+(13806, 15, 'jegliche', 1, 'de'),
+(13805, 15, 'geschÃ¼tzt', 1, 'de'),
+(13804, 15, 'urheberrechtlich', 1, 'de'),
+(13803, 15, 'sind', 6, 'de'),
+(13802, 15, 'website', 8, 'de'),
+(13801, 15, 'dieser', 3, 'de'),
+(13800, 15, 'texte', 1, 'de'),
+(13799, 15, 'und', 12, 'de'),
+(13798, 15, 'bilder', 1, 'de'),
+(13797, 15, 'sÃ¤mtliche', 1, 'de'),
+(13796, 15, '92015230219', 1, 'de'),
+(13795, 15, 'steuernr', 1, 'de'),
+(13794, 15, 'mwst.nr', 1, 'de'),
+(13793, 15, 'bz', 1, 'de'),
+(13792, 15, 'i-39031', 1, 'de'),
+(13791, 15, '26', 1, 'de'),
+(13790, 15, 'ferraristr', 1, 'de'),
+(13789, 15, 'volleyball', 1, 'de'),
+(13788, 15, 'sektion', 1, 'de'),
+(13787, 15, 'amateursportverein', 1, 'de'),
+(13786, 15, 'bruneck', 3, 'de'),
+(13785, 15, 'ssv', 2, 'de'),
+(13784, 15, 'impressum', 2, 'de'),
+(13002, 9, 'jugend', 6, 'de'),
+(13001, 9, 'c', 1, 'de'),
+(13000, 9, 'division', 1, 'de'),
+(12999, 9, '1', 3, 'de'),
+(12998, 9, 'sportlerinnen', 2, 'de'),
+(12997, 9, 'damen', 7, 'de'),
+(12996, 9, 'verwehren', 2, 'de'),
+(12995, 9, 'erlauben', 2, 'de'),
+(12994, 9, 'spielstÃ¤rke', 2, 'de'),
+(12993, 9, 'ihrer', 2, 'de'),
+(12992, 9, 'aufgrund', 2, 'de'),
+(12991, 9, 'mannschaften', 5, 'de'),
+(12990, 9, 'spieler', 6, 'de'),
+(12989, 9, 'einzelne', 3, 'de'),
+(12988, 9, 'vor', 6, 'de'),
+(12987, 9, 'recht', 2, 'de'),
+(12986, 9, 'sich', 6, 'de'),
+(12985, 9, 'behÃ¤lt', 3, 'de'),
+(12984, 9, 'beachcups', 2, 'de'),
+(12983, 9, 'spielniveaus', 1, 'de'),
+(12982, 9, 'ihres', 1, 'de'),
+(12981, 9, 'bezÃ¼glich', 1, 'de'),
+(12980, 9, 'begrenzung', 1, 'de'),
+(12979, 9, 'wertung', 1, 'de'),
+(12978, 9, 'getrennte', 1, 'de'),
+(12977, 9, 'keine', 3, 'de'),
+(12976, 9, 'gibt', 2, 'de'),
+(12975, 9, 'mixed-teams', 1, 'de'),
+(12974, 9, 'frauen', 1, 'de'),
+(12973, 9, 'spielberechtigt', 2, 'de'),
+(12972, 9, 'jahre', 2, 'de'),
+(12971, 9, 'beiden', 2, 'de'),
+(12970, 9, 'letzten', 3, 'de'),
+(12969, 9, 'etappen', 7, 'de'),
+(12968, 9, 'halbfinalisten', 2, 'de'),
+(12967, 9, 'zudem', 2, 'de'),
+(12966, 9, 'angewendet', 2, 'de'),
+(12965, 9, 'ausland', 2, 'de'),
+(12964, 9, 'ligen', 2, 'de'),
+(12963, 9, 'andere', 2, 'de'),
+(12962, 9, 'einschrÃ¤nkung', 2, 'de'),
+(12961, 9, 'selbe', 2, 'de'),
+(12960, 9, 'haben', 2, 'de'),
+(12959, 9, 'hÃ¶her', 2, 'de'),
+(12958, 9, 'b2', 1, 'de'),
+(12957, 9, 'nie', 2, 'de'),
+(12956, 9, 'noch', 4, 'de'),
+(12955, 9, 'd', 1, 'de'),
+(12954, 9, 'serie', 3, 'de'),
+(12953, 9, 'italienischen', 4, 'de'),
+(12952, 9, 'maximal', 2, 'de'),
+(13410, 10, 'gebaggert', 2, 'de'),
+(13409, 10, 'wieder', 2, 'de'),
+(13408, 10, 'wird', 2, 'de'),
+(13407, 10, 'es', 2, 'de'),
+(13406, 10, 'news', 1, 'de'),
+(13405, 10, 'beachcup', 1, 'de'),
+(13404, 10, '2', 1, 'de'),
+(13403, 10, '3', 1, 'de'),
+(13402, 10, '7', 1, 'de'),
+(13401, 10, '11', 1, 'de'),
+(13400, 10, '12', 1, 'de'),
+(13399, 10, 'wagner', 3, 'de'),
+(13398, 10, 'isolde', 3, 'de'),
+(13397, 10, 'noname', 3, 'de'),
+(13396, 10, 'peter', 3, 'de'),
+(13395, 10, 'damen', 1, 'de'),
+(13394, 10, 'bruneck', 1, 'de'),
+(13393, 10, '1', 2, 'de'),
+(13392, 10, '4', 1, 'de'),
+(13391, 10, 'herren', 1, 'de'),
+(13390, 10, 'open', 2, 'de'),
+(13389, 10, '8', 2, 'de'),
+(13388, 10, 'punkte', 10, 'de'),
+(13387, 10, 'greta', 7, 'de'),
+(13386, 10, 'und', 10, 'de'),
+(13385, 10, 'pallhuber', 14, 'de'),
+(13384, 10, 'jakob', 7, 'de'),
+(13383, 10, 'mÃ¤nnlich', 1, 'de'),
+(13382, 10, 'u15', 1, 'de'),
+(13381, 10, 'tirol', 1, 'de'),
+(13380, 10, 'dorf', 1, 'de'),
+(13379, 10, 'spielergebnisse', 1, 'de'),
+(12951, 9, 'hallen-saison', 2, 'de'),
+(12950, 9, 'abgelaufenen', 2, 'de'),
+(12949, 9, 'vorweisen', 3, 'de'),
+(12948, 9, 'hausarzt', 3, 'de'),
+(12947, 9, 'zeugnis', 3, 'de'),
+(12946, 9, 'Ã¤rztliches', 3, 'de'),
+(12945, 9, 'gÃ¼ltiges', 3, 'de'),
+(12944, 9, 'ein', 7, 'de'),
+(12943, 9, 'es', 9, 'de'),
+(12942, 9, 'herren', 7, 'de'),
+(12941, 9, 'freizeit', 7, 'de'),
+(12940, 9, 'bescheinigt', 1, 'de'),
+(12939, 9, 'sportart', 1, 'de'),
+(12938, 9, 'dieser', 5, 'de'),
+(12937, 9, 'ausÃ¼bung', 1, 'de'),
+(12936, 9, 'eignung', 1, 'de'),
+(12935, 9, 'uneingeschrÃ¤nkte', 1, 'de'),
+(12934, 9, 'welches', 1, 'de'),
+(12933, 9, 'gewÃ¤hrt', 1, 'de'),
+(12932, 9, 'sportarzt', 4, 'de'),
+(12931, 9, 'attestes', 1, 'de'),
+(12930, 9, 'sportÃ¤rztlichen', 1, 'de'),
+(12929, 9, 'gÃ¼ltigen', 1, 'de'),
+(12928, 9, 'eines', 1, 'de'),
+(12927, 9, 'vorlage', 1, 'de'),
+(12926, 9, 'nur', 4, 'de'),
+(12925, 9, 'turnier', 2, 'de'),
+(12924, 9, 'f', 4, 'de'),
+(12923, 9, 'm', 7, 'de'),
+(12922, 9, 'open', 8, 'de'),
+(12921, 9, 'kategorie', 11, 'de'),
+(12920, 9, 'berechtigt', 1, 'de'),
+(12919, 9, 'turnieren', 2, 'de'),
+(12918, 9, 'an', 6, 'de'),
+(12917, 9, 'teilnahme', 5, 'de'),
+(12916, 9, 'zur', 2, 'de'),
+(12915, 9, 'annahme', 1, 'de'),
+(12914, 9, 'dessen', 1, 'de'),
+(12913, 9, 'vorbehaltlich', 1, 'de'),
+(12912, 9, 'beantragen', 2, 'de'),
+(12911, 9, 'evento', 2, 'de'),
+(12910, 9, 'per', 3, 'de'),
+(12909, 9, 'tesseramento', 2, 'de'),
+(12908, 9, 'tagestesserierung', 2, 'de'),
+(12907, 9, 'sogenannte', 1, 'de'),
+(12906, 9, 'anmeldeformular', 1, 'de'),
+(12905, 9, 'einschreibung', 2, 'de'),
+(12904, 9, 'bei', 8, 'de'),
+(12903, 9, 'verfÃ¼gen', 1, 'de'),
+(12902, 9, 'tesserierung', 1, 'de'),
+(12901, 9, 'eine', 6, 'de'),
+(12900, 9, 'jene', 1, 'de'),
+(12899, 9, 'teilnehmen', 1, 'de'),
+(12898, 9, 'gesperrt', 1, 'de'),
+(12897, 9, 'portal', 1, 'de'),
+(12896, 9, 'online', 2, 'de'),
+(12895, 9, 'Ã¼ber', 3, 'de'),
+(11966, 21, 'media', 1, 'de'),
+(11967, 21, 'beachcup', 1, 'de'),
+(11968, 21, 'news', 1, 'de'),
+(11969, 21, 'auf', 2, 'de'),
+(11970, 21, 'nach', 2, 'de'),
+(11971, 21, 'partschins', 2, 'de'),
+(11972, 21, 'zweite', 1, 'de'),
+(11973, 21, 'open-etappe', 1, 'de'),
+(11974, 21, 'den', 1, 'de'),
+(11975, 21, 'artikel', 1, 'de'),
+(11976, 21, 'lesen', 1, 'de'),
+(11977, 21, 'banner', 1, 'de'),
+(12894, 9, 'aktivitÃ¤t', 1, 'de'),
+(12893, 9, 'nicht', 9, 'de'),
+(12892, 9, 'verein', 1, 'de'),
+(12891, 9, 'ihrem', 1, 'de'),
+(12890, 9, 'von', 7, 'de'),
+(12889, 9, 'und', 16, 'de'),
+(12888, 9, 'sind', 10, 'de'),
+(12887, 9, 'tesseriert', 1, 'de'),
+(12886, 9, 'fachsportverband', 3, 'de'),
+(12885, 9, 'welche', 6, 'de'),
+(12884, 9, 'innen', 1, 'de'),
+(12883, 9, 'sportler', 2, 'de'),
+(12882, 9, 'alle', 6, 'de'),
+(12881, 9, 'kÃ¶nnen', 6, 'de'),
+(12880, 9, 'am', 3, 'de'),
+(12879, 9, 'teilnahmeberechtigt', 4, 'de'),
+(12878, 9, 'zum', 1, 'de'),
+(12877, 9, 'ihr', 1, 'de'),
+(12876, 9, 'findet', 4, 'de'),
+(12875, 9, 'werden', 13, 'de'),
+(12874, 9, 'zu', 9, 'de'),
+(12873, 9, 'gerecht', 1, 'de'),
+(12872, 9, 'sÃ¼dtirol', 1, 'de'),
+(12871, 9, 'im', 4, 'de'),
+(12870, 9, 'jugendfÃ¶rderung', 1, 'de'),
+(12869, 9, 'um', 2, 'de'),
+(12868, 9, 'schaffen', 1, 'de'),
+(12867, 9, 'grundsÃ¤tze', 1, 'de'),
+(12866, 9, 'einige', 1, 'de'),
+(12865, 9, 'beachvolleyball', 3, 'de'),
+(12864, 9, 'abteilung', 1, 'de'),
+(12863, 9, 'bozen', 1, 'de'),
+(12862, 9, 'fipav', 5, 'de'),
+(12861, 9, 'mit', 5, 'de'),
+(12860, 9, 'zusammenarbeit', 1, 'de'),
+(12859, 9, 'in', 19, 'de'),
+(12858, 9, 'mÃ¶chte', 1, 'de'),
+(12857, 9, 'des', 8, 'de'),
+(12856, 9, 'ok', 4, 'de'),
+(12855, 9, 'das', 13, 'de'),
+(12854, 9, 'jugend-etappen', 1, 'de'),
+(12853, 9, 'austragung', 1, 'de'),
+(12852, 9, 'die', 51, 'de'),
+(12851, 9, 'fÃ¼r', 16, 'de'),
+(12850, 9, 'richtlinien', 2, 'de'),
+(12849, 9, 'technische', 1, 'de'),
+(12848, 9, 'neu', 1, 'de'),
+(12847, 9, 'download', 2, 'de'),
+(12846, 9, 'hier', 4, 'de'),
+(12845, 9, 'oder', 14, 'de'),
+(12844, 9, 'homepage', 1, 'de'),
+(12843, 9, 'auf', 9, 'de'),
+(12842, 9, 'sie', 1, 'de'),
+(12841, 9, 'finden', 3, 'de'),
+(12840, 9, 'dazu', 4, 'de'),
+(12839, 9, 'informationen', 1, 'de'),
+(12838, 9, 'mehr', 2, 'de'),
+(12837, 9, 'gespielt', 7, 'de'),
+(12836, 9, 'fivb', 2, 'de'),
+(12835, 9, 'der', 36, 'de'),
+(12834, 9, 'beachvolleyball-regeln', 1, 'de'),
+(12833, 9, 'internationalen', 1, 'de'),
+(12832, 9, 'den', 13, 'de'),
+(12831, 9, 'nach', 7, 'de'),
+(12830, 9, 'wird', 18, 'de'),
+(12829, 9, 'beachcup', 11, 'de'),
+(12828, 9, 'raiffeisen', 8, 'de'),
+(12827, 9, 'beim', 4, 'de'),
+(12826, 9, 'spielregeln', 1, 'de'),
+(12825, 9, '2015', 5, 'de'),
+(12824, 9, 'reglement', 2, 'de'),
+(12594, 7, 'news', 1, 'de'),
+(12593, 7, 'beachcup', 1, 'de'),
+(12592, 7, 'home', 1, 'de'),
+(12639, 7, 'cillum', 1, 'de'),
+(12638, 7, 'esse', 1, 'de'),
+(12637, 7, 'velit', 1, 'de'),
+(12636, 7, 'voluptate', 1, 'de'),
+(12635, 7, 'in', 2, 'de'),
+(12634, 7, 'reprehenderit', 1, 'de'),
+(12633, 7, 'iure', 1, 'de'),
+(12632, 7, 'aute', 1, 'de'),
+(12631, 7, 'consequat', 1, 'de'),
+(12630, 7, 'commodi', 1, 'de'),
+(12629, 7, 'ea', 1, 'de'),
+(12628, 7, 'ex', 1, 'de'),
+(12627, 7, 'aliquid', 1, 'de'),
+(12626, 7, 'nisi', 1, 'de'),
+(12625, 7, 'laboris', 1, 'de'),
+(12624, 7, 'ullamco', 1, 'de'),
+(12623, 7, 'exercitation', 1, 'de'),
+(12622, 7, 'nostrud', 1, 'de'),
+(12621, 7, 'quis', 2, 'de'),
+(12620, 7, 'veniam', 1, 'de'),
+(12619, 7, 'minim', 1, 'de'),
+(12618, 7, 'ad', 1, 'de'),
+(12617, 7, 'enim', 1, 'de'),
+(12616, 7, 'aliqua', 1, 'de'),
+(12615, 7, 'magna', 1, 'de'),
+(12614, 7, 'dolore', 2, 'de'),
+(12613, 7, 'et', 1, 'de'),
+(12612, 7, 'labore', 1, 'de'),
+(12611, 7, 'ut', 3, 'de'),
+(12610, 7, 'incidunt', 1, 'de'),
+(12609, 7, 'tempor', 1, 'de'),
+(12608, 7, 'eiusmod', 1, 'de'),
+(12607, 7, 'sed', 1, 'de'),
+(12606, 7, 'elit', 1, 'de'),
+(12605, 7, 'adipisici', 1, 'de'),
+(12604, 7, 'consectetur', 1, 'de'),
+(12603, 7, 'amet', 1, 'de'),
+(12591, 14, 'banner', 1, 'de'),
+(12590, 14, 'lesen', 1, 'de'),
+(12589, 14, 'artikel', 1, 'de'),
+(12588, 14, 'den', 1, 'de'),
+(12587, 14, 'news', 1, 'de'),
+(12586, 14, 'beachcup', 1, 'de'),
+(12585, 14, 'pallhuber', 1, 'de'),
+(12584, 14, 'jakob', 1, 'de'),
+(12583, 14, 'von', 1, 'de'),
+(12582, 14, '15:52', 1, 'de'),
+(12581, 14, '2016-03-08', 1, 'de'),
+(12580, 14, 'open-etappe', 3, 'de'),
+(12579, 14, 'zweite', 3, 'de'),
+(12578, 14, 'partschins', 4, 'de'),
+(12577, 14, 'nach', 4, 'de'),
+(12576, 14, 'auf', 4, 'de'),
+(12652, 7, 'qui', 1, 'de'),
+(12653, 7, 'officia', 1, 'de'),
+(12654, 7, 'deserunt', 1, 'de'),
+(12655, 7, 'mollit', 1, 'de'),
+(12656, 7, 'anim', 1, 'de'),
+(12657, 7, 'id', 1, 'de'),
+(12658, 7, 'est', 1, 'de'),
+(12659, 7, 'laborum', 1, 'de'),
+(12660, 7, 'den', 1, 'de'),
+(12661, 7, 'artikel', 1, 'de'),
+(12662, 7, 'lesen', 1, 'de'),
+(12663, 7, 'banner', 1, 'de'),
+(12760, 8, 'freizeit', 2, 'de'),
+(12761, 8, 'sankt', 1, 'de'),
+(12762, 8, 'kassian', 1, 'de'),
+(12763, 8, '9', 1, 'de'),
+(12764, 8, '10', 1, 'de'),
+(12765, 8, 'tramin', 1, 'de'),
+(12766, 8, '16', 1, 'de'),
+(12767, 8, '17', 1, 'de'),
+(12768, 8, 'sterzing', 1, 'de'),
+(12769, 8, '23', 1, 'de'),
+(12770, 8, '24', 1, 'de'),
+(12771, 8, 'bruneck', 1, 'de'),
+(12772, 8, '6', 1, 'de'),
+(12773, 8, 'august', 1, 'de'),
+(12774, 8, 'beachcup', 1, 'de'),
+(12775, 8, 'news', 1, 'de'),
+(12776, 8, 'es', 2, 'de'),
+(12777, 8, 'wird', 2, 'de'),
+(12778, 8, 'wieder', 2, 'de'),
+(12779, 8, 'gebaggert', 2, 'de'),
+(12780, 8, 'consectetur', 1, 'de'),
+(12781, 8, 'adipisici', 1, 'de'),
+(12782, 8, 'elit', 1, 'de'),
+(12783, 8, 'eiusmod', 1, 'de'),
+(12784, 8, 'incidunt', 1, 'de'),
+(12785, 8, 'aliqua', 1, 'de'),
+(12786, 8, 'enim', 1, 'de'),
+(12787, 8, 'ad', 1, 'de'),
+(12788, 8, 'minim', 1, 'de'),
+(12789, 8, 'veniam', 1, 'de'),
+(12790, 8, 'quis', 2, 'de'),
+(12791, 8, 'nostrud', 1, 'de'),
+(12792, 8, 'exercitation', 1, 'de'),
+(12793, 8, 'ullamco', 1, 'de'),
+(12794, 8, 'laboris', 1, 'de'),
+(12795, 8, 'nisi', 1, 'de'),
+(12796, 8, 'aliquid', 1, 'de'),
+(12797, 8, 'ex', 1, 'de'),
+(12798, 8, 'commodi', 1, 'de'),
+(12799, 8, 'aute', 1, 'de'),
+(12800, 8, 'iure', 1, 'de'),
+(12801, 8, 'reprehenderit', 1, 'de'),
+(12802, 8, 'voluptate', 1, 'de'),
+(12803, 8, 'cillum', 1, 'de'),
+(12804, 8, 'fugiat', 1, 'de'),
+(12805, 8, 'pariatur', 1, 'de'),
+(12806, 8, 'excepteur', 1, 'de'),
+(12807, 8, 'sint', 1, 'de'),
+(12808, 8, 'obcaecat', 1, 'de'),
+(12809, 8, 'cupiditat', 1, 'de'),
+(12810, 8, 'non', 1, 'de'),
+(12811, 8, 'proident', 1, 'de'),
+(12812, 8, 'sunt', 1, 'de'),
+(12813, 8, 'culpa', 1, 'de'),
+(12814, 8, 'officia', 1, 'de'),
+(12815, 8, 'deserunt', 1, 'de'),
+(12816, 8, 'mollit', 1, 'de'),
+(12817, 8, 'anim', 1, 'de'),
+(12818, 8, 'id', 1, 'de'),
+(12819, 8, 'laborum', 1, 'de'),
+(12820, 8, 'den', 1, 'de'),
+(12821, 8, 'artikel', 1, 'de'),
+(12822, 8, 'lesen', 1, 'de'),
+(12823, 8, 'banner', 1, 'de'),
+(13237, 9, 'mikasa', 1, 'de'),
+(13238, 9, 'vls300', 1, 'de'),
+(13239, 9, 'spiele', 1, 'de'),
+(13240, 9, 'verfÃ¼gung', 1, 'de'),
+(13241, 9, 'gestellt', 1, 'de'),
+(13242, 9, 'preisgeld', 2, 'de'),
+(13243, 9, 'folgendes', 1, 'de'),
+(13244, 9, 'erstplatzierte', 2, 'de'),
+(13245, 9, '160,00', 1, 'de'),
+(13246, 9, '120,00', 2, 'de'),
+(13247, 9, 'drittplatzierte', 2, 'de'),
+(13248, 9, '80,00', 2, 'de'),
+(13249, 9, '40,00', 1, 'de'),
+(13250, 9, 'sachpreise', 2, 'de'),
+(13251, 9, 'ersten', 2, 'de'),
+(13252, 9, 'dieselben', 1, 'de'),
+(13253, 9, 'preisgelder', 1, 'de'),
+(13254, 9, 'ausbezahlt', 1, 'de'),
+(13255, 9, 'einzelnen', 3, 'de'),
+(13256, 9, 'preisverteilung', 2, 'de'),
+(13257, 9, 'stets', 1, 'de'),
+(13258, 9, 'beendigung', 1, 'de'),
+(13259, 9, 'turniers', 1, 'de'),
+(13260, 9, 'prÃ¤miert', 1, 'de'),
+(13261, 9, 'rahmenprogramm', 1, 'de'),
+(13262, 9, 'verschiedene', 1, 'de'),
+(13263, 9, 'rahmenprogramme', 1, 'de'),
+(13264, 9, 'geboten', 1, 'de'),
+(13265, 9, 'man', 2, 'de'),
+(13266, 9, 'link', 2, 'de'),
+(13267, 9, 'veranstaltungsortes', 2, 'de'),
+(13268, 9, 'organisation', 1, 'de'),
+(13269, 9, 'ssv', 1, 'de'),
+(13270, 9, 'bruneck', 1, 'de'),
+(13271, 9, 'asv', 1, 'de'),
+(13272, 9, 'sektion', 1, 'de'),
+(13273, 9, 'volleyball', 1, 'de'),
+(13274, 9, 'koordiniert', 1, 'de'),
+(13275, 9, 'lokalen', 3, 'de'),
+(13276, 9, 'veranstaltern', 1, 'de'),
+(13277, 9, 'organisiert', 1, 'de'),
+(13278, 9, 'organisationskomitee', 1, 'de'),
+(13279, 9, 'fungiert', 1, 'de'),
+(13280, 9, 'lediglich', 1, 'de'),
+(13281, 9, 'koordinator', 1, 'de'),
+(13282, 9, 'selbststÃ¤ndig', 1, 'de'),
+(13283, 9, 'organisatoren', 1, 'de'),
+(13284, 9, 'durchgefÃ¼hrt', 1, 'de'),
+(13285, 9, 'erfolgt', 1, 'de'),
+(13286, 9, 'eigenes', 1, 'de'),
+(13287, 9, 'risiko', 1, 'de'),
+(13288, 9, 'korrdinator', 1, 'de'),
+(13289, 9, 'Ã¼bernehmen', 1, 'de'),
+(13290, 9, 'keinerlei', 1, 'de'),
+(13291, 9, 'haftung', 1, 'de'),
+(13292, 9, 'unfÃ¤lle', 1, 'de'),
+(13293, 9, 'wÃ¤hrend', 1, 'de'),
+(13294, 9, 'auch', 1, 'de'),
+(13295, 9, 'dritten', 1, 'de'),
+(13296, 9, 'gegenÃ¼ber', 1, 'de'),
+(13297, 9, 'trÃ¤gt', 1, 'de'),
+(13298, 9, 'volle', 1, 'de'),
+(13299, 9, 'persÃ¶nliche', 1, 'de'),
+(13300, 9, 'verantwortung', 1, 'de'),
+(13301, 9, 'seinen', 1, 'de'),
+(13302, 9, 'gesundheitszustand', 1, 'de'),
+(13303, 9, 'Ã¤nderungen', 1, 'de'),
+(13304, 9, 'mÃ¶glichkeit', 1, 'de'),
+(13305, 9, 'programmÃ¤nderungen', 1, 'de'),
+(13306, 9, 'durchzufÃ¼hren', 1, 'de'),
+(13307, 9, 'internetseite', 1, 'de'),
+(13308, 9, 'informationsquelle', 1, 'de'),
+(13309, 9, 'diesem', 1, 'de'),
+(13310, 9, 'grund', 1, 'de'),
+(13311, 9, 'mitteilungen', 1, 'de'),
+(13312, 9, 'seite', 1, 'de'),
+(13313, 9, 'news', 1, 'de'),
+(13314, 9, 'wieder', 2, 'de'),
+(13315, 9, 'gebaggert', 2, 'de'),
+(13316, 9, 'lorem', 1, 'de'),
+(13317, 9, 'ipsum', 1, 'de'),
+(13318, 9, 'dolor', 1, 'de'),
+(13319, 9, 'sit', 1, 'de'),
+(13320, 9, 'amet', 1, 'de'),
+(13321, 9, 'consectetur', 1, 'de'),
+(13322, 9, 'adipisici', 1, 'de'),
+(13323, 9, 'elit', 1, 'de'),
+(13324, 9, 'sed', 1, 'de'),
+(13325, 9, 'eiusmod', 1, 'de'),
+(13326, 9, 'tempor', 1, 'de'),
+(13327, 9, 'incidunt', 1, 'de'),
+(13328, 9, 'ut', 3, 'de'),
+(13329, 9, 'labore', 1, 'de'),
+(13330, 9, 'et', 1, 'de'),
+(13331, 9, 'dolore', 2, 'de'),
+(13332, 9, 'magna', 1, 'de'),
+(13333, 9, 'aliqua', 1, 'de'),
+(13334, 9, 'enim', 1, 'de'),
+(13335, 9, 'ad', 1, 'de'),
+(13336, 9, 'minim', 1, 'de'),
+(13337, 9, 'veniam', 1, 'de'),
+(13338, 9, 'quis', 2, 'de'),
+(13339, 9, 'nostrud', 1, 'de'),
+(13340, 9, 'exercitation', 1, 'de'),
+(13341, 9, 'ullamco', 1, 'de'),
+(13342, 9, 'laboris', 1, 'de'),
+(13343, 9, 'nisi', 1, 'de'),
+(13344, 9, 'aliquid', 1, 'de'),
+(13345, 9, 'ex', 1, 'de'),
+(13346, 9, 'ea', 1, 'de'),
+(13347, 9, 'commodi', 1, 'de'),
+(13348, 9, 'consequat', 1, 'de'),
+(13349, 9, 'aute', 1, 'de'),
+(13350, 9, 'iure', 1, 'de'),
+(13351, 9, 'reprehenderit', 1, 'de'),
+(13352, 9, 'voluptate', 1, 'de'),
+(13353, 9, 'velit', 1, 'de'),
+(13354, 9, 'esse', 1, 'de'),
+(13355, 9, 'cillum', 1, 'de'),
+(13356, 9, 'eu', 1, 'de'),
+(13357, 9, 'fugiat', 1, 'de'),
+(13358, 9, 'nulla', 1, 'de'),
+(13359, 9, 'pariatur', 1, 'de'),
+(13360, 9, 'excepteur', 1, 'de'),
+(13361, 9, 'sint', 1, 'de'),
+(13362, 9, 'obcaecat', 1, 'de'),
+(13363, 9, 'cupiditat', 1, 'de'),
+(13364, 9, 'non', 1, 'de'),
+(13365, 9, 'proident', 1, 'de'),
+(13366, 9, 'sunt', 1, 'de'),
+(13367, 9, 'culpa', 1, 'de'),
+(13368, 9, 'qui', 1, 'de'),
+(13369, 9, 'officia', 1, 'de'),
+(13370, 9, 'deserunt', 1, 'de'),
+(13371, 9, 'mollit', 1, 'de'),
+(13372, 9, 'anim', 1, 'de'),
+(13373, 9, 'id', 1, 'de'),
+(13374, 9, 'est', 1, 'de'),
+(13375, 9, 'laborum', 1, 'de'),
+(13376, 9, 'artikel', 1, 'de'),
+(13377, 9, 'lesen', 1, 'de'),
+(13378, 9, 'banner', 1, 'de'),
+(13415, 10, 'amet', 1, 'de'),
+(13416, 10, 'consectetur', 1, 'de'),
+(13417, 10, 'adipisici', 1, 'de'),
+(13418, 10, 'elit', 1, 'de'),
+(13419, 10, 'sed', 1, 'de'),
+(13420, 10, 'eiusmod', 1, 'de'),
+(13421, 10, 'tempor', 1, 'de'),
+(13422, 10, 'incidunt', 1, 'de'),
+(13423, 10, 'ut', 3, 'de'),
+(13424, 10, 'labore', 1, 'de'),
+(13425, 10, 'et', 1, 'de'),
+(13426, 10, 'dolore', 2, 'de'),
+(13427, 10, 'magna', 1, 'de'),
+(13428, 10, 'aliqua', 1, 'de'),
+(13429, 10, 'enim', 1, 'de'),
+(13430, 10, 'ad', 1, 'de'),
+(13431, 10, 'minim', 1, 'de'),
+(13432, 10, 'veniam', 1, 'de'),
+(13433, 10, 'quis', 2, 'de'),
+(13434, 10, 'nostrud', 1, 'de'),
+(13435, 10, 'exercitation', 1, 'de'),
+(13436, 10, 'ullamco', 1, 'de'),
+(13437, 10, 'laboris', 1, 'de'),
+(13438, 10, 'nisi', 1, 'de'),
+(13439, 10, 'aliquid', 1, 'de'),
+(13440, 10, 'ex', 1, 'de'),
+(13441, 10, 'ea', 1, 'de'),
+(13442, 10, 'commodi', 1, 'de'),
+(13443, 10, 'consequat', 1, 'de'),
+(13444, 10, 'aute', 1, 'de'),
+(13445, 10, 'iure', 1, 'de'),
+(13446, 10, 'reprehenderit', 1, 'de'),
+(13447, 10, 'in', 2, 'de'),
+(13448, 10, 'voluptate', 1, 'de'),
+(13449, 10, 'velit', 1, 'de'),
+(13450, 10, 'esse', 1, 'de'),
+(13451, 10, 'cillum', 1, 'de'),
+(13452, 10, 'eu', 1, 'de'),
+(13453, 10, 'fugiat', 1, 'de'),
+(13454, 10, 'nulla', 1, 'de'),
+(13455, 10, 'pariatur', 1, 'de'),
+(13456, 10, 'excepteur', 1, 'de'),
+(13457, 10, 'sint', 1, 'de'),
+(13458, 10, 'obcaecat', 1, 'de'),
+(13459, 10, 'cupiditat', 1, 'de'),
+(13460, 10, 'non', 1, 'de'),
+(13461, 10, 'proident', 1, 'de'),
+(13462, 10, 'sunt', 1, 'de'),
+(13463, 10, 'culpa', 1, 'de'),
+(13464, 10, 'qui', 1, 'de'),
+(13465, 10, 'officia', 1, 'de'),
+(13466, 10, 'deserunt', 1, 'de'),
+(13467, 10, 'mollit', 1, 'de'),
+(13468, 10, 'anim', 1, 'de'),
+(13469, 10, 'id', 1, 'de'),
+(13470, 10, 'est', 1, 'de'),
+(13471, 10, 'laborum', 1, 'de'),
+(13472, 10, 'den', 1, 'de'),
+(13473, 10, 'artikel', 1, 'de'),
+(13474, 10, 'lesen', 1, 'de'),
+(13475, 10, 'banner', 1, 'de'),
+(13476, 22, 'ranking', 1, 'de'),
+(13477, 22, 'open', 2, 'de'),
+(13478, 22, 'damen', 1, 'de'),
+(13479, 22, 'jakob', 4, 'de'),
+(13480, 22, 'pallhuber', 8, 'de'),
+(13481, 22, 'und', 6, 'de'),
+(13482, 22, 'greta', 4, 'de'),
+(13483, 22, 'punkte', 6, 'de'),
+(13484, 22, '16', 1, 'de'),
+(13485, 22, 'peter', 2, 'de'),
+(13486, 22, 'noname', 2, 'de'),
+(13487, 22, 'isolde', 2, 'de'),
+(13488, 22, 'wagner', 2, 'de'),
+(13489, 22, '13', 1, 'de'),
+(13490, 22, '8', 2, 'de'),
+(13491, 22, '7', 1, 'de'),
+(13492, 22, 'herren', 1, 'de'),
+(13493, 22, '5', 1, 'de'),
+(13494, 22, 'u15', 1, 'de'),
+(13495, 22, 'mÃ¤nnlich', 1, 'de'),
+(13496, 22, 'beachcup', 1, 'de'),
+(13497, 22, 'news', 1, 'de'),
+(13498, 22, 'es', 2, 'de'),
+(13499, 22, 'wird', 2, 'de'),
+(13500, 22, 'wieder', 2, 'de'),
+(13501, 22, 'gebaggert', 2, 'de'),
+(13502, 22, 'lorem', 1, 'de'),
+(13503, 22, 'ipsum', 1, 'de'),
+(13504, 22, 'dolor', 1, 'de'),
+(13505, 22, 'sit', 1, 'de'),
+(13506, 22, 'amet', 1, 'de'),
+(13507, 22, 'consectetur', 1, 'de'),
+(13508, 22, 'adipisici', 1, 'de'),
+(13509, 22, 'elit', 1, 'de'),
+(13510, 22, 'sed', 1, 'de'),
+(13511, 22, 'eiusmod', 1, 'de'),
+(13512, 22, 'tempor', 1, 'de'),
+(13513, 22, 'incidunt', 1, 'de'),
+(13514, 22, 'ut', 3, 'de'),
+(13515, 22, 'labore', 1, 'de'),
+(13516, 22, 'et', 1, 'de'),
+(13517, 22, 'dolore', 2, 'de'),
+(13518, 22, 'magna', 1, 'de'),
+(13519, 22, 'aliqua', 1, 'de'),
+(13520, 22, 'enim', 1, 'de'),
+(13521, 22, 'ad', 1, 'de'),
+(13522, 22, 'minim', 1, 'de'),
+(13523, 22, 'veniam', 1, 'de'),
+(13524, 22, 'quis', 2, 'de'),
+(13525, 22, 'nostrud', 1, 'de'),
+(13526, 22, 'exercitation', 1, 'de'),
+(13527, 22, 'ullamco', 1, 'de'),
+(13528, 22, 'laboris', 1, 'de'),
+(13529, 22, 'nisi', 1, 'de'),
+(13530, 22, 'aliquid', 1, 'de'),
+(13531, 22, 'ex', 1, 'de'),
+(13532, 22, 'ea', 1, 'de'),
+(13533, 22, 'commodi', 1, 'de'),
+(13534, 22, 'consequat', 1, 'de'),
+(13535, 22, 'aute', 1, 'de'),
+(13536, 22, 'iure', 1, 'de'),
+(13537, 22, 'reprehenderit', 1, 'de'),
+(13538, 22, 'in', 2, 'de'),
+(13539, 22, 'voluptate', 1, 'de'),
+(13540, 22, 'velit', 1, 'de'),
+(13541, 22, 'esse', 1, 'de'),
+(13542, 22, 'cillum', 1, 'de'),
+(13543, 22, 'eu', 1, 'de'),
+(13544, 22, 'fugiat', 1, 'de'),
+(13545, 22, 'nulla', 1, 'de'),
+(13546, 22, 'pariatur', 1, 'de'),
+(13547, 22, 'excepteur', 1, 'de'),
+(13548, 22, 'sint', 1, 'de'),
+(13549, 22, 'obcaecat', 1, 'de'),
+(13550, 22, 'cupiditat', 1, 'de'),
+(13551, 22, 'non', 1, 'de'),
+(13552, 22, 'proident', 1, 'de'),
+(13553, 22, 'sunt', 1, 'de'),
+(13554, 22, 'culpa', 1, 'de'),
+(13555, 22, 'qui', 1, 'de'),
+(13556, 22, 'officia', 1, 'de'),
+(13557, 22, 'deserunt', 1, 'de'),
+(13558, 22, 'mollit', 1, 'de'),
+(13559, 22, 'anim', 1, 'de'),
+(13560, 22, 'id', 1, 'de'),
+(13561, 22, 'est', 1, 'de'),
+(13562, 22, 'laborum', 1, 'de'),
+(13563, 22, 'den', 1, 'de'),
+(13564, 22, 'artikel', 1, 'de'),
+(13565, 22, 'lesen', 1, 'de'),
+(13566, 22, 'banner', 1, 'de'),
+(13577, 19, 'sit', 1, 'de'),
+(13578, 19, 'amet', 1, 'de'),
+(13579, 19, 'consectetur', 1, 'de'),
+(13580, 19, 'adipisici', 1, 'de'),
+(13581, 19, 'elit', 1, 'de'),
+(13582, 19, 'sed', 1, 'de'),
+(13583, 19, 'eiusmod', 1, 'de'),
+(13584, 19, 'tempor', 1, 'de'),
+(13585, 19, 'incidunt', 1, 'de'),
+(13586, 19, 'ut', 3, 'de'),
+(13587, 19, 'labore', 1, 'de'),
+(13588, 19, 'et', 1, 'de'),
+(13589, 19, 'dolore', 2, 'de'),
+(13590, 19, 'magna', 1, 'de'),
+(13591, 19, 'aliqua', 1, 'de'),
+(13592, 19, 'enim', 1, 'de'),
+(13593, 19, 'ad', 1, 'de'),
+(13594, 19, 'minim', 1, 'de'),
+(13595, 19, 'veniam', 1, 'de'),
+(13596, 19, 'quis', 2, 'de'),
+(13597, 19, 'nostrud', 1, 'de'),
+(13598, 19, 'exercitation', 1, 'de'),
+(13599, 19, 'ullamco', 1, 'de'),
+(13600, 19, 'laboris', 1, 'de'),
+(13601, 19, 'nisi', 1, 'de'),
+(13602, 19, 'aliquid', 1, 'de'),
+(13603, 19, 'ex', 1, 'de'),
+(13604, 19, 'ea', 1, 'de'),
+(13605, 19, 'commodi', 1, 'de'),
+(13606, 19, 'consequat', 1, 'de'),
+(13607, 19, 'aute', 1, 'de'),
+(13608, 19, 'iure', 1, 'de'),
+(13609, 19, 'reprehenderit', 1, 'de'),
+(13610, 19, 'in', 2, 'de'),
+(13611, 19, 'voluptate', 1, 'de'),
+(13612, 19, 'velit', 1, 'de'),
+(13613, 19, 'esse', 1, 'de'),
+(13614, 19, 'cillum', 1, 'de'),
+(13615, 19, 'eu', 1, 'de'),
+(13616, 19, 'fugiat', 1, 'de'),
+(13617, 19, 'nulla', 1, 'de'),
+(13618, 19, 'pariatur', 1, 'de'),
+(13619, 19, 'excepteur', 1, 'de'),
+(13620, 19, 'sint', 1, 'de'),
+(13621, 19, 'obcaecat', 1, 'de'),
+(13622, 19, 'cupiditat', 1, 'de'),
+(13623, 19, 'non', 1, 'de'),
+(13624, 19, 'proident', 1, 'de'),
+(13625, 19, 'sunt', 1, 'de'),
+(13626, 19, 'culpa', 1, 'de'),
+(13627, 19, 'qui', 1, 'de'),
+(13628, 19, 'officia', 1, 'de'),
+(13629, 19, 'deserunt', 1, 'de'),
+(13630, 19, 'mollit', 1, 'de'),
+(13631, 19, 'anim', 1, 'de'),
+(13632, 19, 'id', 1, 'de'),
+(13633, 19, 'est', 1, 'de'),
+(13634, 19, 'laborum', 1, 'de'),
+(13635, 19, 'olang.jpg', 1, 'de'),
+(13636, 19, 'den', 1, 'de'),
+(13637, 19, 'artikel', 1, 'de'),
+(13638, 19, 'lesen', 1, 'de'),
+(13639, 19, 'banner', 1, 'de'),
+(13650, 20, 'sit', 1, 'de'),
+(13651, 20, 'amet', 1, 'de'),
+(13652, 20, 'consectetur', 1, 'de'),
+(13653, 20, 'adipisici', 1, 'de'),
+(13654, 20, 'elit', 1, 'de'),
+(13655, 20, 'sed', 1, 'de'),
+(13656, 20, 'eiusmod', 1, 'de'),
+(13657, 20, 'tempor', 1, 'de'),
+(13658, 20, 'incidunt', 1, 'de'),
+(13659, 20, 'ut', 3, 'de'),
+(13660, 20, 'labore', 1, 'de'),
+(13661, 20, 'et', 1, 'de'),
+(13662, 20, 'dolore', 2, 'de'),
+(13663, 20, 'magna', 1, 'de'),
+(13664, 20, 'aliqua', 1, 'de'),
+(13665, 20, 'enim', 1, 'de'),
+(13666, 20, 'ad', 1, 'de'),
+(13667, 20, 'minim', 1, 'de'),
+(13668, 20, 'veniam', 1, 'de'),
+(13669, 20, 'quis', 2, 'de'),
+(13670, 20, 'nostrud', 1, 'de'),
+(13671, 20, 'exercitation', 1, 'de'),
+(13672, 20, 'ullamco', 1, 'de'),
+(13673, 20, 'laboris', 1, 'de'),
+(13674, 20, 'nisi', 1, 'de'),
+(13675, 20, 'aliquid', 1, 'de'),
+(13676, 20, 'ex', 1, 'de'),
+(13677, 20, 'ea', 1, 'de'),
+(13678, 20, 'commodi', 1, 'de'),
+(13679, 20, 'consequat', 1, 'de'),
+(13680, 20, 'aute', 1, 'de'),
+(13681, 20, 'iure', 1, 'de'),
+(13682, 20, 'reprehenderit', 1, 'de'),
+(13683, 20, 'in', 2, 'de'),
+(13684, 20, 'voluptate', 1, 'de'),
+(13685, 20, 'velit', 1, 'de'),
+(13686, 20, 'esse', 1, 'de'),
+(13687, 20, 'cillum', 1, 'de'),
+(13688, 20, 'eu', 1, 'de'),
+(13689, 20, 'fugiat', 1, 'de'),
+(13690, 20, 'nulla', 1, 'de'),
+(13691, 20, 'pariatur', 1, 'de'),
+(13692, 20, 'excepteur', 1, 'de'),
+(13693, 20, 'sint', 1, 'de'),
+(13694, 20, 'obcaecat', 1, 'de'),
+(13695, 20, 'cupiditat', 1, 'de'),
+(13696, 20, 'non', 1, 'de'),
+(13697, 20, 'proident', 1, 'de'),
+(13698, 20, 'sunt', 1, 'de'),
+(13699, 20, 'culpa', 1, 'de'),
+(13700, 20, 'qui', 1, 'de'),
+(13701, 20, 'officia', 1, 'de'),
+(13702, 20, 'deserunt', 1, 'de'),
+(13703, 20, 'mollit', 1, 'de'),
+(13704, 20, 'anim', 1, 'de'),
+(13705, 20, 'id', 1, 'de'),
+(13706, 20, 'est', 1, 'de'),
+(13707, 20, 'laborum', 1, 'de'),
+(13708, 20, 'den', 1, 'de'),
+(13709, 20, 'artikel', 1, 'de'),
+(13710, 20, 'lesen', 1, 'de'),
+(13711, 20, 'banner', 1, 'de'),
+(13723, 17, 'amet', 1, 'de'),
+(13724, 17, 'consectetur', 1, 'de'),
+(13725, 17, 'adipisici', 1, 'de'),
+(13726, 17, 'elit', 1, 'de'),
+(13727, 17, 'sed', 1, 'de'),
+(13728, 17, 'eiusmod', 1, 'de'),
+(13729, 17, 'tempor', 1, 'de'),
+(13730, 17, 'incidunt', 1, 'de'),
+(13731, 17, 'ut', 3, 'de'),
+(13732, 17, 'labore', 1, 'de'),
+(13733, 17, 'et', 1, 'de'),
+(13734, 17, 'dolore', 2, 'de'),
+(13735, 17, 'magna', 1, 'de'),
+(13736, 17, 'aliqua', 1, 'de'),
+(13737, 17, 'enim', 1, 'de'),
+(13738, 17, 'ad', 1, 'de'),
+(13739, 17, 'minim', 1, 'de'),
+(13740, 17, 'veniam', 1, 'de'),
+(13741, 17, 'quis', 2, 'de'),
+(13742, 17, 'nostrud', 1, 'de'),
+(13743, 17, 'exercitation', 1, 'de'),
+(13744, 17, 'ullamco', 1, 'de'),
+(13745, 17, 'laboris', 1, 'de'),
+(13746, 17, 'nisi', 1, 'de'),
+(13747, 17, 'aliquid', 1, 'de'),
+(13748, 17, 'ex', 1, 'de'),
+(13749, 17, 'ea', 1, 'de'),
+(13750, 17, 'commodi', 1, 'de'),
+(13751, 17, 'consequat', 1, 'de'),
+(13752, 17, 'aute', 1, 'de'),
+(13753, 17, 'iure', 1, 'de'),
+(13754, 17, 'reprehenderit', 1, 'de'),
+(13755, 17, 'in', 2, 'de'),
+(13756, 17, 'voluptate', 1, 'de'),
+(13757, 17, 'velit', 1, 'de'),
+(13758, 17, 'esse', 1, 'de'),
+(13759, 17, 'cillum', 1, 'de'),
+(13760, 17, 'eu', 1, 'de'),
+(13761, 17, 'fugiat', 1, 'de'),
+(13762, 17, 'nulla', 1, 'de'),
+(13763, 17, 'pariatur', 1, 'de'),
+(13764, 17, 'excepteur', 1, 'de'),
+(13765, 17, 'sint', 1, 'de'),
+(13766, 17, 'obcaecat', 1, 'de'),
+(13767, 17, 'cupiditat', 1, 'de'),
+(13768, 17, 'non', 1, 'de'),
+(13769, 17, 'proident', 1, 'de'),
+(13770, 17, 'sunt', 1, 'de'),
+(13771, 17, 'culpa', 1, 'de'),
+(13772, 17, 'qui', 1, 'de'),
+(13773, 17, 'officia', 1, 'de'),
+(13774, 17, 'deserunt', 1, 'de'),
+(13775, 17, 'mollit', 1, 'de'),
+(13776, 17, 'anim', 1, 'de'),
+(13777, 17, 'id', 1, 'de'),
+(13778, 17, 'est', 1, 'de'),
+(13779, 17, 'laborum', 1, 'de'),
+(13780, 17, 'den', 1, 'de'),
+(13781, 17, 'artikel', 1, 'de'),
+(13782, 17, 'lesen', 1, 'de'),
+(13783, 17, 'banner', 1, 'de'),
+(13955, 15, 'social', 2, 'de'),
+(13956, 15, 'plugins', 1, 'de'),
+(13957, 15, 'facebook', 1, 'de'),
+(13958, 15, 'twitter', 1, 'de'),
+(13959, 15, 'google+', 1, 'de'),
+(13960, 15, 'sinn', 1, 'de'),
+(13961, 15, 'davon', 1, 'de'),
+(13962, 15, 'z.b', 1, 'de'),
+(13963, 15, 'teilen', 1, 'de'),
+(13964, 15, 'inhalten', 1, 'de'),
+(13965, 15, 'dne', 1, 'de'),
+(13966, 15, 'network', 1, 'de'),
+(13967, 15, 'plattformen', 1, 'de'),
+(13968, 15, 'genaueres', 1, 'de'),
+(13969, 15, 'erfahren', 2, 'de'),
+(13970, 15, 'informations-seiten', 1, 'de'),
+(13971, 15, 'verwalten', 1, 'de'),
+(13972, 15, 'kÃ¶nnen', 2, 'de'),
+(13973, 15, 'nach', 1, 'de'),
+(13974, 15, 'belieben', 1, 'de'),
+(13975, 15, 'steuern', 1, 'de'),
+(13976, 15, 'lÃ¶schen', 2, 'de'),
+(13977, 15, 'hier', 1, 'de'),
+(13978, 15, 'alle', 1, 'de'),
+(13979, 15, 'rechner', 1, 'de'),
+(13980, 15, 'abgelegten', 1, 'de'),
+(13981, 15, 'meisten', 1, 'de'),
+(13982, 15, 'einstellen', 1, 'de'),
+(13983, 15, 'ablage', 1, 'de'),
+(13984, 15, 'verhindert', 1, 'de'),
+(13985, 15, 'dann', 1, 'de'),
+(13986, 15, 'mÃ¼ssen', 1, 'de'),
+(13987, 15, 'aber', 1, 'de'),
+(13988, 15, 'mÃ¶glicherweise', 1, 'de'),
+(13989, 15, 'einige', 1, 'de'),
+(13990, 15, 'bei', 1, 'de'),
+(13991, 15, 'jedem', 1, 'de'),
+(13992, 15, 'manuell', 1, 'de'),
+(13993, 15, 'vornehmen', 1, 'de'),
+(13994, 15, 'beeintrÃ¤chtigung', 1, 'de'),
+(13995, 15, 'mancher', 1, 'de'),
+(13996, 15, 'funktionen', 1, 'de'),
+(13997, 15, 'in', 3, 'de'),
+(13998, 15, 'kauf', 1, 'de'),
+(13999, 15, 'nehmen', 1, 'de'),
+(14000, 15, 'beachcup', 1, 'de'),
+(14001, 15, 'news', 1, 'de'),
+(14002, 15, 'wieder', 2, 'de'),
+(14003, 15, 'gebaggert', 2, 'de'),
+(14004, 15, 'lorem', 1, 'de'),
+(14005, 15, 'ipsum', 1, 'de'),
+(14006, 15, 'dolor', 1, 'de'),
+(14007, 15, 'sit', 1, 'de'),
+(14008, 15, 'amet', 1, 'de'),
+(14009, 15, 'consectetur', 1, 'de'),
+(14010, 15, 'adipisici', 1, 'de'),
+(14011, 15, 'elit', 1, 'de'),
+(14012, 15, 'sed', 1, 'de'),
+(14013, 15, 'eiusmod', 1, 'de'),
+(14014, 15, 'tempor', 1, 'de'),
+(14015, 15, 'incidunt', 1, 'de'),
+(14016, 15, 'ut', 3, 'de'),
+(14017, 15, 'labore', 1, 'de'),
+(14018, 15, 'et', 1, 'de'),
+(14019, 15, 'dolore', 2, 'de'),
+(14020, 15, 'magna', 1, 'de'),
+(14021, 15, 'aliqua', 1, 'de'),
+(14022, 15, 'enim', 1, 'de'),
+(14023, 15, 'ad', 1, 'de'),
+(14024, 15, 'minim', 1, 'de'),
+(14025, 15, 'veniam', 1, 'de'),
+(14026, 15, 'quis', 2, 'de'),
+(14027, 15, 'nostrud', 1, 'de'),
+(14028, 15, 'exercitation', 1, 'de'),
+(14029, 15, 'ullamco', 1, 'de'),
+(14030, 15, 'laboris', 1, 'de'),
+(14031, 15, 'nisi', 1, 'de'),
+(14032, 15, 'aliquid', 1, 'de'),
+(14033, 15, 'ex', 1, 'de'),
+(14034, 15, 'ea', 1, 'de'),
+(14035, 15, 'commodi', 1, 'de'),
+(14036, 15, 'consequat', 1, 'de'),
+(14037, 15, 'aute', 1, 'de'),
+(14038, 15, 'iure', 1, 'de'),
+(14039, 15, 'reprehenderit', 1, 'de'),
+(14040, 15, 'voluptate', 1, 'de'),
+(14041, 15, 'velit', 1, 'de'),
+(14042, 15, 'esse', 1, 'de'),
+(14043, 15, 'cillum', 1, 'de'),
+(14044, 15, 'eu', 1, 'de'),
+(14045, 15, 'fugiat', 1, 'de'),
+(14046, 15, 'nulla', 1, 'de'),
+(14047, 15, 'pariatur', 1, 'de'),
+(14048, 15, 'excepteur', 1, 'de'),
+(14049, 15, 'sint', 1, 'de'),
+(14050, 15, 'obcaecat', 1, 'de'),
+(14051, 15, 'cupiditat', 1, 'de'),
+(14052, 15, 'non', 1, 'de'),
+(14053, 15, 'proident', 1, 'de'),
+(14054, 15, 'sunt', 1, 'de'),
+(14055, 15, 'culpa', 1, 'de'),
+(14056, 15, 'qui', 1, 'de'),
+(14057, 15, 'officia', 1, 'de'),
+(14058, 15, 'deserunt', 1, 'de'),
+(14059, 15, 'mollit', 1, 'de'),
+(14060, 15, 'anim', 1, 'de'),
+(14061, 15, 'id', 1, 'de'),
+(14062, 15, 'est', 1, 'de'),
+(14063, 15, 'laborum', 1, 'de'),
+(14064, 15, 'artikel', 1, 'de'),
+(14065, 15, 'lesen', 1, 'de'),
+(14066, 15, 'banner', 1, 'de');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_session`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_session`
 --
 
 CREATE TABLE `tl_session` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `sessionID` varchar(128) NOT NULL DEFAULT '',
   `hash` varchar(40) DEFAULT NULL,
   `ip` varchar(64) NOT NULL DEFAULT '',
-  `su` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `su` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `hash` (`hash`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=58 ;
 
 --
--- Daten für Tabelle `tl_session`
+-- Daten fÃ¼r Tabelle `tl_session`
 --
 
-INSERT INTO `tl_session` (`id`, `pid`, `tstamp`, `name`, `sessionID`, `hash`, `ip`, `su`) VALUES
-(52, 1, 1460199349, 'BE_USER_AUTH', 'dul2atbato9llmr42415n48623', 'd2645670d68db28c40dab6b0b4f7c024a83dbabb', '::1', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_style`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_style`
 --
 
 CREATE TABLE `tl_style` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `sorting` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `sorting` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `selector` varchar(1022) NOT NULL DEFAULT '',
   `category` varchar(32) NOT NULL DEFAULT '',
   `comment` varchar(255) NOT NULL DEFAULT '',
@@ -3278,47 +4117,62 @@ CREATE TABLE `tl_style` (
   `liststyletype` varchar(32) NOT NULL DEFAULT '',
   `liststyleimage` varchar(255) NOT NULL DEFAULT '',
   `own` text,
-  `invisible` char(1) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `invisible` char(1) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=383 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_style`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_style_sheet`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_style_sheet`
 --
 
 CREATE TABLE `tl_style_sheet` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(64) DEFAULT NULL,
   `disablePie` char(1) NOT NULL DEFAULT '',
-  `embedImages` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `embedImages` int(10) unsigned NOT NULL DEFAULT '0',
   `cc` varchar(32) NOT NULL DEFAULT '',
   `media` varchar(255) NOT NULL DEFAULT '',
   `mediaQuery` text,
-  `vars` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `vars` text,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `name` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_style_sheet`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_theme`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_theme`
 --
 
 CREATE TABLE `tl_theme` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(128) NOT NULL DEFAULT '',
   `author` varchar(128) NOT NULL DEFAULT '',
   `folders` blob,
   `screenshot` binary(16) DEFAULT NULL,
   `templates` varchar(255) NOT NULL DEFAULT '',
-  `vars` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `vars` text,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
--- Daten für Tabelle `tl_theme`
+-- Daten fÃ¼r Tabelle `tl_theme`
 --
 
 INSERT INTO `tl_theme` (`id`, `tstamp`, `name`, `author`, `folders`, `screenshot`, `templates`, `vars`) VALUES
@@ -3327,21 +4181,22 @@ INSERT INTO `tl_theme` (`id`, `tstamp`, `name`, `author`, `folders`, `screenshot
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_undo`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_undo`
 --
 
 CREATE TABLE `tl_undo` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `fromTable` varchar(255) NOT NULL DEFAULT '',
   `query` text,
-  `affectedRows` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
-  `data` mediumblob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `affectedRows` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `data` mediumblob,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=45 ;
 
 --
--- Daten für Tabelle `tl_undo`
+-- Daten fÃ¼r Tabelle `tl_undo`
 --
 
 INSERT INTO `tl_undo` (`id`, `pid`, `tstamp`, `fromTable`, `query`, `affectedRows`, `data`) VALUES
@@ -3357,17 +4212,18 @@ INSERT INTO `tl_undo` (`id`, `pid`, `tstamp`, `fromTable`, `query`, `affectedRow
 (40, 1, 1458672228, 'tl_beachcup_organizer', 'DELETE FROM tl_beachcup_organizer WHERE id=5', 1, 0x613a313a7b733a32313a22746c5f62656163686375705f6f7267616e697a6572223b613a313a7b693a303b613a31313a7b733a323a226964223b733a313a2235223b733a363a22747374616d70223b733a313a2230223b733a31343a22636f6e746163745f706572736f6e223b733a303a22223b733a353a22656d61696c223b4e3b733a353a2270686f6e65223b4e3b733a333a22666178223b4e3b733a31323a226d6f62696c655f70686f6e65223b4e3b733a373a226e616d655f6465223b733a33353a224153204d6572616e2026205354532053706f7274205465616d2053c3bc647469726f6c223b733a373a226e616d655f6974223b733a33363a224153204d6572616e6f2026205354532053706f7274205465616d2053c3bc647469726f6c223b733a31343a226465736372697074696f6e5f6465223b733a303a22223b733a31343a226465736372697074696f6e5f6974223b733a303a22223b7d7d7d),
 (41, 1, 1460096104, 'tl_content', 'DELETE FROM tl_content WHERE id=14', 1, 0x613a313a7b733a31303a22746c5f636f6e74656e74223b613a313a7b693a303b613a38313a7b733a323a226964223b733a323a223134223b733a333a22706964223b733a323a223133223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630303936303531223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a38323a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a33363a224265616368766f6c6c6579204c616e6465736d6569737465727363686166742032303135223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d7d7d),
 (42, 1, 1460096123, 'tl_content', 'DELETE FROM tl_content WHERE id=15', 1, 0x613a313a7b733a31303a22746c5f636f6e74656e74223b613a313a7b693a303b613a38313a7b733a323a226964223b733a323a223135223b733a333a22706964223b733a323a223132223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a323a223332223b733a363a22747374616d70223b733a31303a2231343630303935353633223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a36303a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a31343a225265676c656d656e742032303135223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d7d7d),
-(43, 1, 1460096754, 'tl_content', 'DELETE FROM tl_content WHERE id=11', 1, 0x613a313a7b733a31303a22746c5f636f6e74656e74223b613a313a7b693a303b613a38313a7b733a323a226964223b733a323a223131223b733a333a22706964223b733a323a223231223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373339393234223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a36313a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a31353a224b6f6e74616b74666f726d756c6172223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d7d7d);
+(43, 1, 1460096754, 'tl_content', 'DELETE FROM tl_content WHERE id=11', 1, 0x613a313a7b733a31303a22746c5f636f6e74656e74223b613a313a7b693a303b613a38313a7b733a323a226964223b733a323a223131223b733a333a22706964223b733a323a223231223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373339393234223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a36313a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a31353a224b6f6e74616b74666f726d756c6172223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d7d7d),
+(44, 1, 1460401118, 'tl_content', 'DELETE FROM tl_content WHERE id=23', 1, 0x613a313a7b733a31303a22746c5f636f6e74656e74223b613a313a7b693a303b613a38313a7b733a323a226964223b733a323a223233223b733a333a22706964223b733a313a2231223b733a363a22707461626c65223b733a373a22746c5f6e657773223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630343030393334223b733a343a2274797065223b733a343a2274657874223b733a383a22686561646c696e65223b733a37303a22613a323a7b733a343a22756e6974223b733a323a226833223b733a353a2276616c7565223b733a32343a22457320776972642077696564657220676562616767657274223b7d223b733a343a2274657874223b733a3433363a223c703e4c6f72656d20697073756d20646f6c6f722073697420616d65742c20636f6e73656374657475722061646970697369636920656c69742c2073656420656975736d6f642074656d706f7220696e636964756e74207574206c61626f726520657420646f6c6f7265206d61676e6120616c697175612e20557420656e696d206164206d696e696d2076656e69616d2c2071756973206e6f737472756420657865726369746174696f6e20756c6c616d636f206c61626f726973206e69736920757420616c697175696420657820656120636f6d6d6f646920636f6e7365717561742e20517569732061757465206975726520726570726568656e646572697420696e20766f6c7570746174652076656c697420657373652063696c6c756d20646f6c6f726520657520667567696174206e756c6c612070617269617475722e204578636570746575722073696e74206f6263616563617420637570696469746174206e6f6e2070726f6964656e742c2073756e7420696e2063756c706120717569206f666669636961206465736572756e74206d6f6c6c697420616e696d20696420657374206c61626f72756d2e3c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22bbc0b04f001611e69da600163e006592223b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d7d7d);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_user`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_user`
 --
 
 CREATE TABLE `tl_user` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(64) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
@@ -3395,11 +4251,11 @@ CREATE TABLE `tl_user` (
   `start` varchar(10) NOT NULL DEFAULT '',
   `stop` varchar(10) NOT NULL DEFAULT '',
   `session` blob,
-  `dateAdded` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `lastLogin` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `currentLogin` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `loginCount` smallint(5) UNSIGNED NOT NULL DEFAULT '3',
-  `locked` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `dateAdded` int(10) unsigned NOT NULL DEFAULT '0',
+  `lastLogin` int(10) unsigned NOT NULL DEFAULT '0',
+  `currentLogin` int(10) unsigned NOT NULL DEFAULT '0',
+  `loginCount` smallint(5) unsigned NOT NULL DEFAULT '3',
+  `locked` int(10) unsigned NOT NULL DEFAULT '0',
   `calendars` blob,
   `calendarp` blob,
   `calendarfeeds` blob,
@@ -3411,25 +4267,28 @@ CREATE TABLE `tl_user` (
   `newsfeeds` blob,
   `newsfeedp` blob,
   `newsletters` blob,
-  `newsletterp` blob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `newsletterp` blob,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  KEY `email` (`email`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
--- Daten für Tabelle `tl_user`
+-- Daten fÃ¼r Tabelle `tl_user`
 --
 
 INSERT INTO `tl_user` (`id`, `tstamp`, `username`, `name`, `email`, `language`, `backendTheme`, `uploader`, `showHelp`, `thumbnails`, `useRTE`, `useCE`, `password`, `pwChange`, `admin`, `groups`, `inherit`, `modules`, `themes`, `pagemounts`, `alpty`, `filemounts`, `fop`, `forms`, `formp`, `disable`, `start`, `stop`, `session`, `dateAdded`, `lastLogin`, `currentLogin`, `loginCount`, `locked`, `calendars`, `calendarp`, `calendarfeeds`, `calendarfeedp`, `faqs`, `faqp`, `news`, `newp`, `newsfeeds`, `newsfeedp`, `newsletters`, `newsletterp`) VALUES
-(1, 1447169790, 'beach-admin', 'Jakob Pallhuber', 'joge@application-studios.com', 'de', 'flexible', 'DropZone', '1', '1', '1', '1', '$2y$10$RG78.lGM1rT/FBVBCFUal.06hFA/X8nycJsjP/oT/qfGvGrgKFLtW', '', '1', NULL, '', NULL, NULL, 0x613a303a7b7d, NULL, 0x613a303a7b7d, NULL, NULL, NULL, '', '', '', 0x613a32363a7b733a373a2272656665726572223b613a32343a7b733a383a223330343337616439223b613a333a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a343a226c617374223b733a34323a22636f6e74616f2f6d61696e2e7068703f646f3d746f75726e616d656e74267265663d6236643239343639223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b7d733a383a223038336261383135223b613a343a7b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a343a226c617374223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b7d733a383a223933653562626165223b613a343a7b733a343a226c617374223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a39353a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267461626c653d746c5f6d6f64756c652669643d322672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3038336261383135223b7d733a383a223035396436343464223b613a343a7b733a343a226c617374223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a39353a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267461626c653d746c5f6d6f64756c652669643d322672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3038336261383135223b7d733a383a223238626362303366223b613a353a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a343a226c617374223b733a39353a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267461626c653d746c5f6d6f64756c652669643d322672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3038336261383135223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b7d733a383a223738646531363234223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a39383a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267461626c653d746c5f636f6e74656e742669643d31362672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3238626362303366223b7d733a383a223335396665336235223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a39383a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267461626c653d746c5f636f6e74656e742669643d31362672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3238626362303366223b7d733a383a223439643935343162223b613a353a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a343a226c617374223b733a39353a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267461626c653d746c5f6d6f64756c652669643d322672743d6631616230316630316131366361373863636336353162636163613635376465267265663d3038336261383135223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b7d733a383a223465346166366164223b613a353a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3439643935343162223b7d733a383a223263666238326362223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3439643935343162223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34303a22636f6e74616f2f6d61696e2e7068703f646f3d6175746f6c6f6164267265663d3465346166366164223b7d693a303b613a313a7b733a343a226c617374223b733a303a22223b7d693a313b613a353a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3439643935343162223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34303a22636f6e74616f2f6d61696e2e7068703f646f3d6175746f6c6f6164267265663d3465346166366164223b7d733a383a223662336664643932223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3439643935343162223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34303a22636f6e74616f2f6d61696e2e7068703f646f3d6175746f6c6f6164267265663d3465346166366164223b7d733a383a226635613133643231223b613a353a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a343a226c617374223b733a34303a22636f6e74616f2f6d61696e2e7068703f646f3d6175746f6c6f6164267265663d3465346166366164223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3662336664643932223b7d733a383a223139656262356662223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3662336664643932223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b7d733a383a226539366462666433223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3662336664643932223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b7d733a383a223839653431383838223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3662336664643932223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b7d733a383a223765616333336332223b613a353a7b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3662336664643932223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b7d733a383a223736653266376165223b613a353a7b733a343a226c617374223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b7d733a383a226634616565373833223b613a353a7b733a343a226c617374223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b7d733a383a223137656563346539223b613a353a7b733a343a226c617374223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d6635613133643231223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b7d733a383a226135356464636135223b613a353a7b733a343a226c617374223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d3137656563346539223b7d733a383a223566633762316661223b613a353a7b733a343a226c617374223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d3137656563346539223b7d733a383a223264656365383831223b613a353a7b733a343a226c617374223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d7465616d267265663d3765616333336332223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d3035396436343464223b733a383a22746c5f7468656d65223b733a33383a22636f6e74616f2f6d61696e2e7068703f646f3d7468656d6573267265663d3330343337616439223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3435386265626133223b733a373a2263757272656e74223b733a34343a22636f6e74616f2f6d61696e2e7068703f646f3d726567697374726174696f6e267265663d3137656563346539223b7d7d733a373a2243555252454e54223b613a333a7b733a333a22494453223b613a31303a7b693a303b733a323a223236223b693a313b733a323a223234223b693a323b733a323a223235223b693a333b733a323a223232223b693a343b733a323a223330223b693a353b733a323a223239223b693a363b733a323a223238223b693a373b733a323a223237223b693a383b733a323a223233223b693a393b733a323a223331223b7d733a31383a22746c5f62656163686375705f706c61796572223b613a313a7b693a303b733a31313a226861735f70726976616379223b7d733a373a22746c5f70616765223b613a313a7b693a303b733a393a227075626c6973686564223b7d7d733a32323a227374796c655f73686565745f7570646174655f616c6c223b4e3b733a393a22434c4950424f415244223b613a363a7b733a31303a22746c5f636f6e74656e74223b613a303a7b7d733a373a22746c5f666f726d223b613a303a7b7d733a31333a22746c5f666f726d5f6669656c64223b613a303a7b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a303a7b7d733a393a22746c5f6d6f64756c65223b613a303a7b7d733a31363a22746c5f62656163686375705f7465616d223b613a303a7b7d7d733a31313a226e65775f7265636f726473223b613a32343a7b733a383a22746c5f7468656d65223b613a323a7b693a303b693a313b693a313b693a323b7d733a393a22746c5f6d6f64756c65223b613a32303a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b7d733a393a22746c5f6c61796f7574223b613a323a7b693a303b693a313b693a313b693a323b7d733a373a22746c5f70616765223b613a32333a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b7d733a31303a22746c5f61727469636c65223b613a333a7b693a303b693a363b693a313b693a373b693a323b693a383b7d733a31303a22746c5f636f6e74656e74223b613a32313a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b7d733a31323a22746c5f657874656e73696f6e223b613a323a7b693a303b693a313b693a313b693a323b7d733a373a22746c5f666f726d223b613a323a7b693a303b693a313b693a313b693a323b7d733a32343a22746c5f62656163686375705f706c617965725f6c6576656c223b613a31323a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b7d733a31383a22746c5f62656163686375705f706c61796572223b613a32343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b693a32333b693a32343b7d733a31353a22746c5f6e6577735f61726368697665223b613a323a7b693a303b693a313b693a313b693a323b7d733a31363a22746c5f62656163686375705f7465616d223b613a31383a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b7d733a33303a22746c5f62656163686375705f726567697374726174696f6e5f7374617465223b613a373a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a33313a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b693a32333b693a32343b693a32343b693a32353b693a32353b693a32363b693a32363b693a32373b693a32373b693a32383b693a32383b693a32393b693a32393b693a33303b693a33303b693a33313b7d733a32373a22746c5f62656163686375705f746f75726e616d656e745f74797065223b613a363a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b7d733a32323a22746c5f62656163686375705f746f75726e616d656e74223b613a383a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b7d733a31373a22746c5f62656163686375705f7374616765223b613a31333a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b7d733a32313a22746c5f62656163686375705f6f7267616e697a6572223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a363b7d733a31373a22746c5f62656163686375705f76656e7565223b613a363a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b7d733a31383a22746c5f62656163686375705f736561736f6e223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b7d733a393a22746c5f6d656d626572223b613a323a7b693a303b693a313b693a313b693a323b7d733a31343a22746c5f7374796c655f7368656574223b613a313a7b693a303b693a333b7d733a373a22746c5f6e657773223b613a313a7b693a303b693a313b7d733a31333a22746c5f666f726d5f6669656c64223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b7d7d733a31303a2243555252454e545f4944223b733a323a223136223b733a31353a226669656c647365745f737461746573223b613a31353a7b733a393a22746c5f6d6f64756c65223b613a363a7b733a31353a2274656d706c6174655f6c6567656e64223b693a313b733a31323a22656d61696c5f6c6567656e64223b693a303b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b733a31363a227265666572656e63655f6c6567656e64223b693a303b733a31323a22696d6167655f6c6567656e64223b693a303b7d733a393a22746c5f6c61796f7574223b613a333a7b733a31333a226578706572745f6c6567656e64223b693a313b733a31333a227363726970745f6c6567656e64223b693a313b733a31353a22776562666f6e74735f6c6567656e64223b693a313b7d733a373a22746c5f666f726d223b613a323a7b733a31323a2273746f72655f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b7d733a373a22746c5f75736572223b613a333a7b733a31343a226261636b656e645f6c6567656e64223b693a303b733a31323a227468656d655f6c6567656e64223b693a303b733a31353a2270617373776f72645f6c6567656e64223b693a313b7d733a31313a22746c5f73657474696e6773223b613a383a7b733a31333a22676c6f62616c5f6c6567656e64223b693a313b733a31363a22626f6f7473747261705f6c6567656e64223b693a303b733a31353a22636f6d706f7365725f6c6567656e64223b693a303b733a31333a227570646174655f6c6567656e64223b693a303b733a31323a2263686d6f645f6c6567656e64223b693a303b733a31333a227365617263685f6c6567656e64223b693a303b733a31343a2275706c6f6164735f6c6567656e64223b693a303b733a31323a2266696c65735f6c6567656e64223b693a303b7d733a31383a22746c5f62656163686375705f706c61796572223b613a393a7b733a32343a22757365725f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a33303a226164646974696f6e616c5f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a32373a2267656e6572616c5f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a31313a22757365725f6c6567656e64223b693a313b733a32313a2261646d696e697374726174696f6e5f6c6567656e64223b693a313b733a31313a22626f64795f6c6567656e64223b693a313b733a31343a22636f6e746163745f6c6567656e64223b693a313b733a31343a22616464726573735f6c6567656e64223b693a313b733a31343a2267656e6572616c5f6c6567656e64223b693a313b7d733a31353a22746c5f6e6577735f61726368697665223b613a323a7b733a31363a2270726f7465637465645f6c6567656e64223b693a313b733a31353a22636f6d6d656e74735f6c6567656e64223b693a313b7d733a393a22746c5f6d656d626572223b613a333a7b733a31343a22686f6d656469725f6c6567656e64223b693a303b733a31373a226e6577736c65747465725f6c6567656e64223b693a303b733a31343a22616464726573735f6c6567656e64223b693a303b7d733a31383a22746c5f62656163686375705f736561736f6e223b613a313a7b733a32313a2261646d696e697374726174696f6e5f6c6567656e64223b693a313b7d733a383a22746c5f7374796c65223b613a313a7b733a31333a22637573746f6d5f6c6567656e64223b693a303b7d733a31343a22746c5f7374796c655f7368656574223b613a313a7b733a31333a226578706572745f6c6567656e64223b693a303b7d733a373a22746c5f70616765223b613a363a7b733a31333a226578706572745f6c6567656e64223b693a313b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226c61796f75745f6c6567656e64223b693a303b733a31323a2263616368655f6c6567656e64223b693a303b733a31323a2263686d6f645f6c6567656e64223b693a303b733a31333a227365617263685f6c6567656e64223b693a313b7d733a31303a22746c5f61727469636c65223b613a353a7b733a31353a2274656d706c6174655f6c6567656e64223b693a303b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b733a31343a227075626c6973685f6c6567656e64223b693a313b733a31333a227465617365725f6c6567656e64223b693a303b7d733a31333a22746c5f666f726d5f6669656c64223b613a333a7b733a31333a226578706572745f6c6567656e64223b693a303b733a31353a2274656d706c6174655f6c6567656e64223b693a303b733a31333a227375626d69745f6c6567656e64223b693a313b7d733a31303a22746c5f636f6e74656e74223b613a313a7b733a31363a22696e76697369626c655f6c6567656e64223b693a303b7d7d733a31323a22746c5f706167655f74726565223b613a32333a7b693a313b693a313b693a323b693a303b693a333b693a303b693a343b693a303b693a353b693a313b693a363b693a303b693a373b693a313b693a383b693a303b693a393b693a313b693a31303b693a303b693a31313b693a303b693a31323b693a303b693a31333b693a313b693a31343b693a303b693a31353b693a303b693a31363b693a313b693a31373b693a313b693a31383b693a303b693a31393b693a313b693a32303b693a303b693a32313b693a303b693a32323b693a303b693a32333b693a303b7d733a32333a22746c5f61727469636c655f746c5f706167655f74726565223b613a31313a7b693a313b693a313b693a353b693a313b693a323b693a303b693a333b693a303b693a343b693a303b693a363b693a303b693a373b693a313b693a393b693a313b693a31393b693a313b693a31363b693a313b693a31333b693a313b7d733a32363a22746c5f61727469636c655f746c5f61727469636c655f74726565223b613a32333a7b693a313b693a303b693a323b693a303b693a333b693a303b693a343b693a303b693a363b693a303b693a373b693a303b693a383b693a303b693a353b693a303b693a393b693a303b693a31303b693a303b693a31343b693a303b693a31373b693a303b693a32303b693a303b693a32343b693a303b693a31313b693a303b693a31323b693a303b693a31333b693a303b693a32313b693a303b693a32323b693a303b693a31383b693a303b693a31393b693a303b693a31353b693a303b693a31363b693a303b7d733a31323a22746c5f706167655f6e6f6465223b693a303b733a31353a226261636b656e645f6d6f64756c6573223b613a323a7b733a383a226265616368637570223b693a313b733a373a22636f6e74656e74223b693a313b7d733a363a2266696c746572223b613a343a7b733a32343a22746c5f62656163686375705f706c617965725f6c6576656c223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d733a31383a22746c5f62656163686375705f706c61796572223b613a303a7b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d733a31373a22746c5f62656163686375705f7374616765223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d7d733a373a22736f7274696e67223b613a333a7b733a31383a22746c5f62656163686375705f706c61796572223b733a343a226e616d65223b733a32343a22746c5f62656163686375705f726567697374726174696f6e223b733a31333a22746f75726e616d656e745f6964223b733a31373a22746c5f62656163686375705f7374616765223b733a393a22736561736f6e5f6964223b7d733a363a22736561726368223b613a333a7b733a31383a22746c5f62656163686375705f706c61796572223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a373a2261646472657373223b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a363a22706f696e7473223b7d733a31373a22746c5f62656163686375705f7374616765223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a31303a2269735f656e61626c6564223b7d7d733a31373a22494e56414c49445f544f4b454e5f55524c223b733a38373a22636f6e74616f2f6d61696e2e7068703f646f3d76656e75652672743d6665616239393634336136343230633065623333373361313631306365613538267265663d6338396336353034266163743d656469742669643d32223b733a383a2266696c6574726565223b613a343a7b733a383a226332646431643535223b693a303b733a383a223837333664356131223b693a303b733a383a223238613561356461223b693a313b733a383a223164646364646133223b693a313b7d733a31333a2266696c655069636b6572526566223b733a3131363a22636f6e74616f2f66696c652e7068703f646f3d61727469636c65267461626c653d746c5f636f6e74656e74266669656c643d6d756c7469535243266163743d73686f772669643d31322676616c75653d2672743d3133626562623562633932666336323836626337666139346534633662663730223b733a32353a22747265655f746c5f636f6e74656e745f73696e676c65535243223b613a313a7b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b7d733a33303a22747265655f746c5f62656163686375705f76656e75655f70696374757265223b613a323a7b733a33323a223837333664356131646633366264346430326435333163356130663561636635223b693a303b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b7d733a31353a22746c5f66696c65735f7069636b6572223b733a303a22223b733a32333a22747265655f746c5f6c61796f75745f65787465726e616c223b613a353a7b733a33323a223837333664356131646633366264346430326435333163356130663561636635223b693a313b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b733a33323a223164646364646133613034363331613936303331316538643731366330633964223b693a313b733a33323a223561386533623131373339383530343262396663353531666261333132623663223b693a313b733a33323a223735356165353862613435366432313238663333393761303963326134363962223b693a313b7d733a32373a22747265655f746c5f6e6577735f617263686976655f6a756d70546f223b613a313a7b693a373b693a313b7d733a31373a226e6577735f666565645f75706461746572223b4e3b733a32323a22747265655f746c5f6e6577735f73696e676c65535243223b613a313a7b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b7d733a32343a22747265655f746c5f636f6e74656e745f6d756c7469535243223b613a333a7b733a33323a223164646364646133613034363331613936303331316538643731366330633964223b693a303b733a33323a223733393134643064333430313439333063656563333032623132656162363237223b693a303b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a303b7d7d, 1445967560, 1460187713, 1460195493, 3, 1448711057, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 1447169790, 'beach-admin', 'Jakob Pallhuber', 'joge@application-studios.com', 'de', 'flexible', 'DropZone', '1', '1', '1', '1', '$2y$10$RG78.lGM1rT/FBVBCFUal.06hFA/X8nycJsjP/oT/qfGvGrgKFLtW', '', '1', NULL, '', NULL, NULL, 0x613a303a7b7d, NULL, 0x613a303a7b7d, NULL, NULL, NULL, '', '', '', 0x613a32373a7b733a373a2272656665726572223b613a32343a7b733a383a223834333666313362223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223735326138383234223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223335333862353766223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223137306232363536223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223362646630626163223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223733393537613966223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223632396634373133223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223135646661653837223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226662613139356435223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226535633965313763223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223833626362613035223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226434666533646133223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223937666161393133223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226564656461386665223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223035313138323161223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226635643666386135223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226634316232616531223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223939313263343937223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a223535353466326232223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226339613165613339223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3235303564366430223b7d733a383a226339383864383230223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3462666131666130223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3462666131666130223b7d733a383a223332646463666630223b613a343a7b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d6339383864383230223b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3462666131666130223b733a373a2263757272656e74223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d6339383864383230223b733a343a226c617374223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3462666131666130223b7d733a383a223739306135643431223b613a343a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3462666131666130223b733a31303a22746c5f61727469636c65223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d6339383864383230223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3332646463666630223b733a343a226c617374223b733a33393a22636f6e74616f2f6d61696e2e7068703f646f3d61727469636c65267265663d6339383864383230223b7d733a383a223232373138653930223b613a323a7b733a373a22746c5f70616765223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3234306437336530223b733a373a2263757272656e74223b733a33363a22636f6e74616f2f6d61696e2e7068703f646f3d70616765267265663d3234306437336530223b7d7d733a373a2243555252454e54223b613a333a7b733a333a22494453223b613a33313a7b693a303b733a323a223234223b693a313b733a323a223235223b693a323b733a323a223236223b693a333b733a323a223237223b693a343b733a323a223238223b693a353b733a323a223239223b693a363b733a323a223330223b693a373b733a323a223331223b693a383b733a323a223332223b693a393b733a323a223333223b693a31303b733a323a223334223b693a31313b733a323a223335223b693a31323b733a323a223336223b693a31333b733a323a223337223b693a31343b733a323a223338223b693a31353b733a313a2237223b693a31363b733a323a223233223b693a31373b733a313a2238223b693a31383b733a313a2239223b693a31393b733a323a223130223b693a32303b733a323a223131223b693a32313b733a323a223132223b693a32323b733a323a223133223b693a32333b733a323a223134223b693a32343b733a323a223135223b693a32353b733a323a223136223b693a32363b733a323a223137223b693a32373b733a323a223138223b693a32383b733a323a223139223b693a32393b733a323a223230223b693a33303b733a323a223231223b7d733a31383a22746c5f62656163686375705f706c61796572223b613a313a7b693a303b733a31313a226861735f70726976616379223b7d733a373a22746c5f70616765223b613a313a7b693a303b733a393a227075626c6973686564223b7d7d733a32323a227374796c655f73686565745f7570646174655f616c6c223b4e3b733a393a22434c4950424f415244223b613a383a7b733a31303a22746c5f636f6e74656e74223b613a303a7b7d733a373a22746c5f666f726d223b613a303a7b7d733a31333a22746c5f666f726d5f6669656c64223b613a303a7b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a303a7b7d733a393a22746c5f6d6f64756c65223b613a303a7b7d733a31363a22746c5f62656163686375705f7465616d223b613a303a7b7d733a383a22746c5f66696c6573223b613a303a7b7d733a373a22746c5f70616765223b613a303a7b7d7d733a31313a226e65775f7265636f726473223b613a32343a7b733a383a22746c5f7468656d65223b613a323a7b693a303b693a313b693a313b693a323b7d733a393a22746c5f6d6f64756c65223b613a32303a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b7d733a393a22746c5f6c61796f7574223b613a323a7b693a303b693a313b693a313b693a323b7d733a373a22746c5f70616765223b613a33383a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b693a32333b693a32343b693a32343b693a32353b693a32353b693a32363b693a32363b693a32373b693a32373b693a32383b693a32383b693a32393b693a32393b693a33303b693a33303b693a33313b693a33313b693a33323b693a33323b693a33333b693a33333b693a33343b693a33343b693a33353b693a33353b693a33363b693a33363b693a33373b693a33373b693a33383b7d733a31303a22746c5f61727469636c65223b613a333a7b693a303b693a363b693a313b693a373b693a323b693a383b7d733a31303a22746c5f636f6e74656e74223b613a32333a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b7d733a31323a22746c5f657874656e73696f6e223b613a323a7b693a303b693a313b693a313b693a323b7d733a373a22746c5f666f726d223b613a323a7b693a303b693a313b693a313b693a323b7d733a32343a22746c5f62656163686375705f706c617965725f6c6576656c223b613a31323a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b7d733a31383a22746c5f62656163686375705f706c61796572223b613a32343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b693a32333b693a32343b7d733a31353a22746c5f6e6577735f61726368697665223b613a323a7b693a303b693a313b693a313b693a323b7d733a31363a22746c5f62656163686375705f7465616d223b613a31383a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b7d733a33303a22746c5f62656163686375705f726567697374726174696f6e5f7374617465223b613a373a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a33313a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b693a31333b693a31343b693a31343b693a31353b693a31353b693a31363b693a31363b693a31373b693a31373b693a31383b693a31383b693a31393b693a31393b693a32303b693a32303b693a32313b693a32313b693a32323b693a32323b693a32333b693a32333b693a32343b693a32343b693a32353b693a32353b693a32363b693a32363b693a32373b693a32373b693a32383b693a32383b693a32393b693a32393b693a33303b693a33303b693a33313b7d733a32373a22746c5f62656163686375705f746f75726e616d656e745f74797065223b613a363a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b7d733a32323a22746c5f62656163686375705f746f75726e616d656e74223b613a383a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b7d733a31373a22746c5f62656163686375705f7374616765223b613a31333a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b693a363b693a373b693a373b693a383b693a383b693a393b693a393b693a31303b693a31303b693a31313b693a31313b693a31323b693a31323b693a31333b7d733a32313a22746c5f62656163686375705f6f7267616e697a6572223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a363b7d733a31373a22746c5f62656163686375705f76656e7565223b613a363a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b693a343b693a353b693a353b693a363b7d733a31383a22746c5f62656163686375705f736561736f6e223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b7d733a393a22746c5f6d656d626572223b613a323a7b693a303b693a313b693a313b693a323b7d733a31343a22746c5f7374796c655f7368656574223b613a313a7b693a303b693a333b7d733a373a22746c5f6e657773223b613a313a7b693a303b693a313b7d733a31333a22746c5f666f726d5f6669656c64223b613a343a7b693a303b693a313b693a313b693a323b693a323b693a333b693a333b693a343b7d7d733a31303a2243555252454e545f4944223b733a313a2231223b733a31353a226669656c647365745f737461746573223b613a31353a7b733a393a22746c5f6d6f64756c65223b613a363a7b733a31353a2274656d706c6174655f6c6567656e64223b693a313b733a31323a22656d61696c5f6c6567656e64223b693a303b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b733a31363a227265666572656e63655f6c6567656e64223b693a303b733a31323a22696d6167655f6c6567656e64223b693a303b7d733a393a22746c5f6c61796f7574223b613a333a7b733a31333a226578706572745f6c6567656e64223b693a313b733a31333a227363726970745f6c6567656e64223b693a313b733a31353a22776562666f6e74735f6c6567656e64223b693a313b7d733a373a22746c5f666f726d223b613a323a7b733a31323a2273746f72655f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b7d733a373a22746c5f75736572223b613a333a7b733a31343a226261636b656e645f6c6567656e64223b693a303b733a31323a227468656d655f6c6567656e64223b693a303b733a31353a2270617373776f72645f6c6567656e64223b693a313b7d733a31313a22746c5f73657474696e6773223b613a383a7b733a31333a22676c6f62616c5f6c6567656e64223b693a313b733a31363a22626f6f7473747261705f6c6567656e64223b693a303b733a31353a22636f6d706f7365725f6c6567656e64223b693a303b733a31333a227570646174655f6c6567656e64223b693a303b733a31323a2263686d6f645f6c6567656e64223b693a303b733a31333a227365617263685f6c6567656e64223b693a303b733a31343a2275706c6f6164735f6c6567656e64223b693a303b733a31323a2266696c65735f6c6567656e64223b693a303b7d733a31383a22746c5f62656163686375705f706c61796572223b613a393a7b733a32343a22757365725f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a33303a226164646974696f6e616c5f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a32373a2267656e6572616c5f696e666f726d6174696f6e735f6c6567656e64223b693a303b733a31313a22757365725f6c6567656e64223b693a313b733a32313a2261646d696e697374726174696f6e5f6c6567656e64223b693a313b733a31313a22626f64795f6c6567656e64223b693a313b733a31343a22636f6e746163745f6c6567656e64223b693a313b733a31343a22616464726573735f6c6567656e64223b693a313b733a31343a2267656e6572616c5f6c6567656e64223b693a313b7d733a31353a22746c5f6e6577735f61726368697665223b613a323a7b733a31363a2270726f7465637465645f6c6567656e64223b693a313b733a31353a22636f6d6d656e74735f6c6567656e64223b693a313b7d733a393a22746c5f6d656d626572223b613a333a7b733a31343a22686f6d656469725f6c6567656e64223b693a303b733a31373a226e6577736c65747465725f6c6567656e64223b693a303b733a31343a22616464726573735f6c6567656e64223b693a303b7d733a31383a22746c5f62656163686375705f736561736f6e223b613a313a7b733a32313a2261646d696e697374726174696f6e5f6c6567656e64223b693a313b7d733a383a22746c5f7374796c65223b613a313a7b733a31333a22637573746f6d5f6c6567656e64223b693a303b7d733a31343a22746c5f7374796c655f7368656574223b613a313a7b733a31333a226578706572745f6c6567656e64223b693a303b7d733a373a22746c5f70616765223b613a373a7b733a31333a226578706572745f6c6567656e64223b693a313b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226c61796f75745f6c6567656e64223b693a303b733a31323a2263616368655f6c6567656e64223b693a303b733a31323a2263686d6f645f6c6567656e64223b693a303b733a31333a227365617263685f6c6567656e64223b693a313b733a31333a22676c6f62616c5f6c6567656e64223b693a303b7d733a31303a22746c5f61727469636c65223b613a353a7b733a31353a2274656d706c6174655f6c6567656e64223b693a303b733a31363a2270726f7465637465645f6c6567656e64223b693a303b733a31333a226578706572745f6c6567656e64223b693a303b733a31343a227075626c6973685f6c6567656e64223b693a313b733a31333a227465617365725f6c6567656e64223b693a303b7d733a31333a22746c5f666f726d5f6669656c64223b613a333a7b733a31333a226578706572745f6c6567656e64223b693a303b733a31353a2274656d706c6174655f6c6567656e64223b693a303b733a31333a227375626d69745f6c6567656e64223b693a313b7d733a31303a22746c5f636f6e74656e74223b613a313a7b733a31363a22696e76697369626c655f6c6567656e64223b693a303b7d7d733a31323a22746c5f706167655f74726565223b613a33383a7b693a313b693a313b693a323b693a303b693a333b693a303b693a343b693a303b693a353b693a313b693a363b693a303b693a373b693a313b693a383b693a303b693a393b693a313b693a31303b693a303b693a31313b693a303b693a31323b693a303b693a31333b693a313b693a31343b693a303b693a31353b693a303b693a31363b693a313b693a31373b693a313b693a31383b693a303b693a31393b693a313b693a32303b693a303b693a32313b693a303b693a32323b693a303b693a32333b693a303b693a32343b693a313b693a32353b693a303b693a32363b693a303b693a32373b693a313b693a32383b693a303b693a32393b693a303b693a33303b693a313b693a33313b693a303b693a33323b693a303b693a33333b693a313b693a33343b693a303b693a33353b693a303b693a33363b693a313b693a33373b693a303b693a33383b693a303b7d733a32333a22746c5f61727469636c655f746c5f706167655f74726565223b613a31323a7b693a313b693a313b693a353b693a313b693a323b693a303b693a333b693a303b693a343b693a303b693a363b693a303b693a373b693a313b693a393b693a313b693a31393b693a313b693a31363b693a313b693a31333b693a313b693a32343b693a303b7d733a32363a22746c5f61727469636c655f746c5f61727469636c655f74726565223b613a32393a7b693a313b693a303b693a323b693a303b693a333b693a303b693a343b693a303b693a363b693a303b693a373b693a303b693a383b693a303b693a353b693a303b693a393b693a303b693a31303b693a303b693a31343b693a303b693a31373b693a303b693a32303b693a303b693a32343b693a303b693a31313b693a303b693a31323b693a303b693a31333b693a303b693a32313b693a303b693a32323b693a303b693a31383b693a303b693a31393b693a303b693a31353b693a303b693a31363b693a303b693a32353b693a303b693a32363b693a303b693a32373b693a303b693a33303b693a303b693a33333b693a303b693a33363b693a303b7d733a31323a22746c5f706167655f6e6f6465223b693a303b733a31353a226261636b656e645f6d6f64756c6573223b613a323a7b733a383a226265616368637570223b693a313b733a373a22636f6e74656e74223b693a313b7d733a363a2266696c746572223b613a343a7b733a32343a22746c5f62656163686375705f706c617965725f6c6576656c223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d733a31383a22746c5f62656163686375705f706c61796572223b613a303a7b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d733a31373a22746c5f62656163686375705f7374616765223b613a313a7b733a353a226c696d6974223b733a343a22302c3330223b7d7d733a373a22736f7274696e67223b613a333a7b733a31383a22746c5f62656163686375705f706c61796572223b733a343a226e616d65223b733a32343a22746c5f62656163686375705f726567697374726174696f6e223b733a31333a22746f75726e616d656e745f6964223b733a31373a22746c5f62656163686375705f7374616765223b733a393a22736561736f6e5f6964223b7d733a363a22736561726368223b613a333a7b733a31383a22746c5f62656163686375705f706c61796572223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a373a2261646472657373223b7d733a32343a22746c5f62656163686375705f726567697374726174696f6e223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a363a22706f696e7473223b7d733a31373a22746c5f62656163686375705f7374616765223b613a323a7b733a353a2276616c7565223b733a303a22223b733a353a226669656c64223b733a31303a2269735f656e61626c6564223b7d7d733a31373a22494e56414c49445f544f4b454e5f55524c223b733a38373a22636f6e74616f2f6d61696e2e7068703f646f3d76656e75652672743d6665616239393634336136343230633065623333373361313631306365613538267265663d6338396336353034266163743d656469742669643d32223b733a383a2266696c6574726565223b613a373a7b733a383a226332646431643535223b693a303b733a383a223837333664356131223b693a303b733a383a223238613561356461223b693a313b733a383a223164646364646133223b693a313b733a383a226539653263623762223b693a313b733a383a226564363061343263223b693a303b733a383a223166666133353937223b693a303b7d733a31333a2266696c655069636b6572526566223b733a3130383a22636f6e74616f2f706167652e7068703f646f3d70616765267461626c653d746c5f70616765266669656c643d6a756d70546f266163743d73686f772669643d33362676616c75653d2672743d6661313234643635393263373532666136653433306666326132306234326334223b733a32353a22747265655f746c5f636f6e74656e745f73696e676c65535243223b613a323a7b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b733a33323a226666313638613231663962663433633631656334636533653262383966316662223b693a313b7d733a33303a22747265655f746c5f62656163686375705f76656e75655f70696374757265223b613a323a7b733a33323a223837333664356131646633366264346430326435333163356130663561636635223b693a303b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b7d733a31353a22746c5f66696c65735f7069636b6572223b733a303a22223b733a32333a22747265655f746c5f6c61796f75745f65787465726e616c223b613a353a7b733a33323a223837333664356131646633366264346430326435333163356130663561636635223b693a313b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b733a33323a223164646364646133613034363331613936303331316538643731366330633964223b693a313b733a33323a223561386533623131373339383530343262396663353531666261333132623663223b693a313b733a33323a223735356165353862613435366432313238663333393761303963326134363962223b693a313b7d733a32373a22747265655f746c5f6e6577735f617263686976655f6a756d70546f223b613a313a7b693a373b693a313b7d733a31373a226e6577735f666565645f75706461746572223b4e3b733a32323a22747265655f746c5f6e6577735f73696e676c65535243223b613a323a7b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a313b733a33323a226666313638613231663962663433633631656334636533653262383966316662223b693a313b7d733a32343a22747265655f746c5f636f6e74656e745f6d756c7469535243223b613a333a7b733a33323a223164646364646133613034363331613936303331316538643731366330633964223b693a303b733a33323a223733393134643064333430313439333063656563333032623132656162363237223b693a303b733a33323a226332646431643535623133663336333035636638613161363365386132326663223b693a303b7d733a31393a22747265655f746c5f706167655f6a756d70546f223b613a31303a7b693a373b693a313b693a393b693a303b693a31333b693a303b693a31363b693a313b693a31393b693a313b693a32343b693a313b693a32373b693a313b693a33303b693a313b693a33333b693a313b693a33363b693a313b7d7d, 1445967560, 1460385877, 1460395424, 3, 1448711057, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_user_group`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_user_group`
 --
 
 CREATE TABLE `tl_user_group` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL DEFAULT '',
   `modules` blob,
   `themes` blob,
@@ -3454,31 +4313,40 @@ CREATE TABLE `tl_user_group` (
   `newsfeeds` blob,
   `newsfeedp` blob,
   `newsletters` blob,
-  `newsletterp` blob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `newsletterp` blob,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+--
+-- Daten fÃ¼r Tabelle `tl_user_group`
+--
+
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `tl_version`
+-- Tabellenstruktur fÃ¼r Tabelle `tl_version`
 --
 
 CREATE TABLE `tl_version` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `pid` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `tstamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `version` smallint(5) UNSIGNED NOT NULL DEFAULT '1',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `tstamp` int(10) unsigned NOT NULL DEFAULT '0',
+  `version` smallint(5) unsigned NOT NULL DEFAULT '1',
   `fromTable` varchar(255) NOT NULL DEFAULT '',
-  `userid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `userid` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(64) DEFAULT NULL,
   `description` varchar(255) NOT NULL DEFAULT '',
   `editUrl` varchar(255) NOT NULL DEFAULT '',
   `active` char(1) NOT NULL DEFAULT '',
-  `data` mediumblob
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `data` mediumblob,
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`),
+  KEY `fromTable` (`fromTable`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=355 ;
 
 --
--- Daten für Tabelle `tl_version`
+-- Daten fÃ¼r Tabelle `tl_version`
 --
 
 INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid`, `username`, `description`, `editUrl`, `active`, `data`) VALUES
@@ -3509,7 +4377,7 @@ INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid
 (138, 2, 1457019554, 3, 'tl_theme', 1, 'beach-admin', 'Beachcup Theme', 'contao/main.php?do=themes&act=edit&id=2&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=7cb3b3be', '1', 0x613a383a7b733a323a226964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343537303139353137223b733a343a226e616d65223b733a31343a224265616368637570205468656d65223b733a363a22617574686f72223b733a31353a224a616b6f622050616c6c6875626572223b733a373a22666f6c64657273223b733a33343a22613a313a7b693a303b733a31363a22a8841b6be15511e58982448a5b243f5c223b7d223b733a31303a2273637265656e73686f74223b4e3b733a393a2274656d706c61746573223b733a31383a2274656d706c617465732f6265616368637570223b733a343a2276617273223b733a363a22613a303a7b7d223b7d),
 (139, 2, 1457019681, 1, 'tl_layout', 1, 'beach-admin', 'Beachcup Seitenlayout', 'contao/main.php?do=themes&mode=2&pid=2&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=b28a7269&table=tl_layout&act=edit&id=2', '', 0x613a34303a7b733a323a226964223b733a313a2232223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343537303139363831223b733a343a226e616d65223b733a32313a2242656163686375702053656974656e6c61796f7574223b733a343a22726f7773223b733a333a22337277223b733a31323a22686561646572486569676874223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31323a22666f6f746572486569676874223b733a303a22223b733a343a22636f6c73223b733a343a2232636c6c223b733a393a2277696474684c656674223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31303a2277696474685269676874223b733a303a22223b733a383a2273656374696f6e73223b733a303a22223b733a393a2273506f736974696f6e223b733a343a226d61696e223b733a393a226672616d65776f726b223b733a35343a22613a323a7b693a303b733a31303a226c61796f75742e637373223b693a313b733a31343a22726573706f6e736976652e637373223b7d223b733a31303a227374796c657368656574223b4e3b733a383a2265787465726e616c223b4e3b733a383a226f72646572457874223b733a31373a22613a313a7b693a303b733a303a22223b7d223b733a31323a226c6f6164696e674f72646572223b733a31343a2265787465726e616c5f6669727374223b733a393a226e6577736665656473223b4e3b733a31333a2263616c656e6461726665656473223b4e3b733a373a226d6f64756c6573223b733a37363a22613a313a7b693a303b613a333a7b733a333a226d6f64223b733a313a2230223b733a333a22636f6c223b733a343a226d61696e223b733a363a22656e61626c65223b733a313a2231223b7d7d223b733a383a2274656d706c617465223b733a373a2266655f70616765223b733a373a22646f6374797065223b733a353a2268746d6c35223b733a383a22776562666f6e7473223b733a303a22223b733a31313a227069637475726566696c6c223b733a303a22223b733a383a2276696577706f7274223b733a303a22223b733a383a227469746c65546167223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a363a226f6e6c6f6164223b733a303a22223b733a343a2268656164223b733a303a22223b733a393a226164644a5175657279223b733a303a22223b733a373a226a536f75726365223b733a303a22223b733a363a226a7175657279223b4e3b733a31313a226164644d6f6f546f6f6c73223b733a303a22223b733a393a226d6f6f536f75726365223b733a393a226d6f6f5f6c6f63616c223b733a383a226d6f6f746f6f6c73223b4e3b733a393a22616e616c7974696373223b733a303a22223b733a363a22736372697074223b733a303a22223b733a363a22737461746963223b733a303a22223b733a353a227769647468223b733a303a22223b733a353a22616c69676e223b733a363a2263656e746572223b7d),
 (132, 18, 1457018950, 1, 'tl_page', 1, 'beach-admin', 'Videos', 'contao/main.php?do=page&act=edit&id=18&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223138223b733a333a22706964223b733a323a223136223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138393530223b733a353a227469746c65223b733a363a22566964656f73223b733a353a22616c696173223b733a363a22766964656f73223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(133, 19, 1457018971, 1, 'tl_page', 1, 'beach-admin', 'Kontakt', 'contao/main.php?do=page&act=edit&id=19&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223139223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343537303138393731223b733a353a227469746c65223b733a373a224b6f6e74616b74223b733a353a22616c696173223b733a373a226b6f6e74616b74223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(133, 19, 1457018971, 1, 'tl_page', 1, 'beach-admin', 'Kontakt', 'contao/main.php?do=page&act=edit&id=19&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a323a223139223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343537303138393731223b733a353a227469746c65223b733a373a224b6f6e74616b74223b733a353a22616c696173223b733a373a226b6f6e74616b74223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (134, 20, 1457018980, 1, 'tl_page', 1, 'beach-admin', 'Kontaktformular', 'contao/main.php?do=page&act=edit&id=20&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223230223b733a333a22706964223b733a323a223139223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138393830223b733a353a227469746c65223b733a31353a224b6f6e74616b74666f726d756c6172223b733a353a22616c696173223b733a31353a226b6f6e74616b74666f726d756c6172223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (112, 3, 1457015882, 3, 'tl_beachcup_venue', 1, 'beach-admin', '', 'contao/main.php?do=venue&act=edit&id=3&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=0f6b858a', '', 0x613a31313a7b733a323a226964223b733a313a2233223b733a363a22747374616d70223b733a31303a2231343530303133353435223b733a31313a226465736372697074696f6e223b733a303a22223b733a373a2270696374757265223b733a31363a22f7cd9751a19611e58304448a5b243f5c223b733a373a2261646472657373223b733a393a2253706f72747a6f6e65223b733a383a227a69705f636f6465223b733a353a223339303330223b733a343a2263697479223b733a353a224f6c616e67223b733a393a226c6f6e676974756465223b733a393a2231322e303234373532223b733a383a226c61746974756465223b733a393a2234362e373638353232223b733a373a226e616d655f6465223b733a353a224f6c616e67223b733a373a226e616d655f6974223b733a383a2256616c64616f7261223b7d),
 (113, 3, 1457016440, 4, 'tl_beachcup_venue', 1, 'beach-admin', '', 'contao/main.php?do=venue&act=edit&id=3&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=a8c9b44b', '', 0x613a31353a7b733a323a226964223b733a313a2233223b733a363a22747374616d70223b733a31303a2231343537303135383832223b733a31313a226465736372697074696f6e223b733a303a22223b733a373a2270696374757265223b733a31363a22f7cd9751a19611e58304448a5b243f5c223b733a373a2261646472657373223b733a393a2253706f72747a6f6e65223b733a383a227a69705f636f6465223b733a353a223339303330223b733a343a2263697479223b733a353a224f6c616e67223b733a393a226c6f6e676974756465223b733a393a2231322e303234373532223b733a383a226c61746974756465223b733a393a2234362e373638353232223b733a373a226e616d655f6465223b733a353a224f6c616e67223b733a373a226e616d655f6974223b733a383a2256616c64616f7261223b733a31343a226465736372697074696f6e5f6465223b733a303a22223b733a31343a226465736372697074696f6e5f6974223b733a303a22223b733a31303a22616464726573735f6465223b733a393a2253706f72747a6f6e65223b733a31303a22616464726573735f6974223b733a31333a225669612053706f72747a6f6e65223b7d),
@@ -3518,17 +4386,17 @@ INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid
 (116, 5, 1457017282, 2, 'tl_beachcup_tournament', 1, 'beach-admin', '', 'contao/main.php?do=tournament&act=edit&id=5&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=68999c88', '', 0x613a373a7b733a323a226964223b733a313a2235223b733a363a22747374616d70223b733a31303a2231343439323531383932223b733a373a22747970655f6964223b733a313a2232223b733a383a2273746167655f6964223b733a313a2234223b733a393a226d61785f7465616d73223b733a313a2238223b733a373a226e616d655f6465223b733a31343a224f6c616e67657220457461707065223b733a373a226e616d655f6974223b733a32343a2250616c636f7363656e69636f2064692056616c64616f7261223b7d),
 (117, 5, 1457017318, 3, 'tl_beachcup_tournament', 1, 'beach-admin', '', 'contao/main.php?do=tournament&act=edit&id=5&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=9d0a348b', '1', 0x613a373a7b733a323a226964223b733a313a2235223b733a363a22747374616d70223b733a31303a2231343537303137323832223b733a373a22747970655f6964223b733a313a2232223b733a383a2273746167655f6964223b733a313a2234223b733a393a226d61785f7465616d73223b733a313a2238223b733a373a226e616d655f6465223b733a31343a224a7567656e64205475726e696572223b733a373a226e616d655f6974223b733a31363a22546f726e656f2067696f76616e696c65223b7d),
 (118, 6, 1457017366, 2, 'tl_beachcup_tournament', 1, 'beach-admin', '', 'contao/main.php?do=tournament&act=edit&id=6&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=10334162', '1', 0x613a373a7b733a323a226964223b733a313a2236223b733a363a22747374616d70223b733a31303a2231343439323531393131223b733a373a22747970655f6964223b733a313a2233223b733a383a2273746167655f6964223b733a313a2234223b733a393a226d61785f7465616d73223b733a323a223332223b733a373a226e616d655f6465223b733a31353a22416d6174657572205475726e696572223b733a373a226e616d655f6974223b733a31373a22546f726e656f20616d61746f7269616c65223b7d),
-(121, 8, 1457018778, 1, 'tl_page', 1, 'beach-admin', 'Home', 'contao/main.php?do=page&act=edit&id=8&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=74b08aef', '1', 0x613a34383a7b733a323a226964223b733a313a2238223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138373738223b733a353a227469746c65223b733a343a22486f6d65223b733a353a22616c696173223b733a343a22686f6d65223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(121, 8, 1457018778, 1, 'tl_page', 1, 'beach-admin', 'Home', 'contao/main.php?do=page&act=edit&id=8&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=74b08aef', '', 0x613a34383a7b733a323a226964223b733a313a2238223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138373738223b733a353a227469746c65223b733a343a22486f6d65223b733a353a22616c696173223b733a343a22686f6d65223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (122, 7, 1457018678, 1, 'tl_page', 1, 'beach-admin', 'Beachcup Deutsch', 'contao/main.php?do=page&act=edit&id=7&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a313a2237223b733a333a22706964223b733a313a2230223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138363738223b733a353a227469746c65223b733a31363a2242656163686375702044657574736368223b733a353a22616c696173223b733a31363a2262656163686375702d64657574736368223b733a343a2274797065223b733a343a22726f6f74223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a323a226465223b733a363a22726f626f7473223b733a303a22223b733a31313a226465736372697074696f6e223b4e3b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a313a2231223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a303a22223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d);
 INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid`, `username`, `description`, `editUrl`, `active`, `data`) VALUES
-(123, 9, 1457018816, 1, 'tl_page', 1, 'beach-admin', 'Turnier', 'contao/main.php?do=page&act=edit&id=9&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a313a2239223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138383136223b733a353a227469746c65223b733a373a225475726e696572223b733a353a22616c696173223b733a373a227475726e696572223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(123, 9, 1457018816, 1, 'tl_page', 1, 'beach-admin', 'Turnier', 'contao/main.php?do=page&act=edit&id=9&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a313a2239223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138383136223b733a353a227469746c65223b733a373a225475726e696572223b733a353a22616c696173223b733a373a227475726e696572223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (124, 10, 1457018827, 1, 'tl_page', 1, 'beach-admin', 'Etappen', 'contao/main.php?do=page&act=edit&id=10&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223130223b733a333a22706964223b733a313a2239223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138383237223b733a353a227469746c65223b733a373a224574617070656e223b733a353a22616c696173223b733a373a226574617070656e223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (125, 11, 1457018837, 1, 'tl_page', 1, 'beach-admin', 'Reglement', 'contao/main.php?do=page&act=edit&id=11&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223131223b733a333a22706964223b733a313a2239223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138383337223b733a353a227469746c65223b733a393a225265676c656d656e74223b733a353a22616c696173223b733a393a227265676c656d656e74223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(126, 12, 1457018850, 1, 'tl_page', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=page&act=edit&id=12&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223132223b733a333a22706964223b733a313a2239223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343537303138383530223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(127, 13, 1457018870, 1, 'tl_page', 1, 'beach-admin', 'Ranking', 'contao/main.php?do=page&act=edit&id=13&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343537303138383730223b733a353a227469746c65223b733a373a2252616e6b696e67223b733a353a22616c696173223b733a373a2272616e6b696e67223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(126, 12, 1457018850, 1, 'tl_page', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=page&act=edit&id=12&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a323a223132223b733a333a22706964223b733a313a2239223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343537303138383530223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(127, 13, 1457018870, 1, 'tl_page', 1, 'beach-admin', 'Ranking', 'contao/main.php?do=page&act=edit&id=13&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343537303138383730223b733a353a227469746c65223b733a373a2252616e6b696e67223b733a353a22616c696173223b733a373a2272616e6b696e67223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (128, 14, 1457018887, 1, 'tl_page', 1, 'beach-admin', 'Spielergebnisse', 'contao/main.php?do=page&act=edit&id=14&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223134223b733a333a22706964223b733a323a223133223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138383837223b733a353a227469746c65223b733a31353a22537069656c65726765626e69737365223b733a353a22616c696173223b733a31353a22737069656c65726765626e69737365223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(129, 15, 1457018902, 1, 'tl_page', 1, 'beach-admin', 'Gesamtstände', 'contao/main.php?do=page&act=edit&id=15&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223135223b733a333a22706964223b733a323a223133223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138393032223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(130, 16, 1457018923, 1, 'tl_page', 1, 'beach-admin', 'Media', 'contao/main.php?do=page&act=edit&id=16&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343537303138393233223b733a353a227469746c65223b733a353a224d65646961223b733a353a22616c696173223b733a353a226d65646961223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(129, 15, 1457018902, 1, 'tl_page', 1, 'beach-admin', 'GesamtstÃ¤nde', 'contao/main.php?do=page&act=edit&id=15&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a323a223135223b733a333a22706964223b733a323a223133223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303138393032223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(130, 16, 1457018923, 1, 'tl_page', 1, 'beach-admin', 'Media', 'contao/main.php?do=page&act=edit&id=16&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '', 0x613a34383a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343537303138393233223b733a353a227469746c65223b733a353a224d65646961223b733a353a22616c696173223b733a353a226d65646961223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (131, 17, 1457018931, 1, 'tl_page', 1, 'beach-admin', 'Fotos', 'contao/main.php?do=page&act=edit&id=17&rt=9fcfc435f3a962c9765b3cfca2e6921e&ref=ffcb20d5&fields=1', '1', 0x613a34383a7b733a323a226964223b733a323a223137223b733a333a22706964223b733a323a223136223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138393331223b733a353a227469746c65223b733a353a22466f746f73223b733a353a22616c696173223b733a353a22666f746f73223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (155, 2, 1457114513, 6, 'tl_layout', 1, 'beach-admin', 'Beachcup Seitenlayout', 'contao/main.php?do=themes&table=tl_layout&act=edit&id=2&rt=3b61215dad757e25fae69fffc3e9d921&ref=a160fc2e', '', 0x613a34303a7b733a323a226964223b733a313a2232223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343537313133373235223b733a343a226e616d65223b733a32313a2242656163686375702053656974656e6c61796f7574223b733a343a22726f7773223b733a333a22337277223b733a31323a22686561646572486569676874223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31323a22666f6f746572486569676874223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a343a22636f6c73223b733a333a2231636c223b733a393a2277696474684c656674223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31303a2277696474685269676874223b733a303a22223b733a383a2273656374696f6e73223b733a303a22223b733a393a2273506f736974696f6e223b733a343a226d61696e223b733a393a226672616d65776f726b223b733a35343a22613a323a7b693a303b733a31303a226c61796f75742e637373223b693a313b733a31343a22726573706f6e736976652e637373223b7d223b733a31303a227374796c657368656574223b4e3b733a383a2265787465726e616c223b733a3233303a22613a383a7b693a303b733a31363a225138368de23111e5b9f0448a5b243f5c223b693a313b733a31363a2251383687e23111e5b9f0448a5b243f5c223b693a323b733a31363a2251383681e23111e5b9f0448a5b243f5c223b693a333b733a31363a225138367be23111e5b9f0448a5b243f5c223b693a343b733a31363a2251383672e23111e5b9f0448a5b243f5c223b693a353b733a31363a225138366de23111e5b9f0448a5b243f5c223b693a363b733a31363a2251383667e23111e5b9f0448a5b243f5c223b693a373b733a31363a225138365be23111e5b9f0448a5b243f5c223b7d223b733a383a226f72646572457874223b733a3233303a22613a383a7b693a303b733a31363a225138368de23111e5b9f0448a5b243f5c223b693a313b733a31363a2251383687e23111e5b9f0448a5b243f5c223b693a323b733a31363a2251383681e23111e5b9f0448a5b243f5c223b693a333b733a31363a225138367be23111e5b9f0448a5b243f5c223b693a343b733a31363a2251383672e23111e5b9f0448a5b243f5c223b693a353b733a31363a225138366de23111e5b9f0448a5b243f5c223b693a363b733a31363a2251383667e23111e5b9f0448a5b243f5c223b693a373b733a31363a225138365be23111e5b9f0448a5b243f5c223b7d223b733a31323a226c6f6164696e674f72646572223b733a31343a2265787465726e616c5f6669727374223b733a393a226e6577736665656473223b4e3b733a31333a2263616c656e6461726665656473223b4e3b733a373a226d6f64756c6573223b733a3232303a22613a333a7b693a303b613a333a7b733a333a226d6f64223b733a313a2235223b733a333a22636f6c223b733a363a22686561646572223b733a363a22656e61626c65223b733a313a2231223b7d693a313b613a333a7b733a333a226d6f64223b733a313a2230223b733a333a22636f6c223b733a343a226d61696e223b733a363a22656e61626c65223b733a313a2231223b7d693a323b613a333a7b733a333a226d6f64223b733a313a2236223b733a333a22636f6c223b733a363a22666f6f746572223b733a363a22656e61626c65223b733a313a2231223b7d7d223b733a383a2274656d706c617465223b733a373a2266655f70616765223b733a373a22646f6374797065223b733a353a2268746d6c35223b733a383a22776562666f6e7473223b733a3130393a224f70656e2b53616e733a3330306974616c69632c3730306974616c69632c3830306974616c69632c3430302c3330302c3730302c383030267375627365743d6c6174696e2c6c6174696e2d6578747c4c6f6273746572267375627365743d6c6174696e2c6c6174696e2d657874223b733a31313a227069637475726566696c6c223b733a303a22223b733a383a2276696577706f7274223b733a303a22223b733a383a227469746c65546167223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a363a226f6e6c6f6164223b733a303a22223b733a343a2268656164223b733a303a22223b733a393a226164644a5175657279223b733a303a22223b733a373a226a536f75726365223b733a303a22223b733a363a226a7175657279223b4e3b733a31313a226164644d6f6f546f6f6c73223b733a303a22223b733a393a226d6f6f536f75726365223b733a393a226d6f6f5f6c6f63616c223b733a383a226d6f6f746f6f6c73223b4e3b733a393a22616e616c7974696373223b733a303a22223b733a363a22736372697074223b733a303a22223b733a363a22737461746963223b733a303a22223b733a353a227769647468223b733a303a22223b733a353a22616c69676e223b733a363a2263656e746572223b7d),
 (154, 2, 1457113725, 5, 'tl_layout', 1, 'beach-admin', 'Beachcup Seitenlayout', 'contao/main.php?do=themes&table=tl_layout&act=edit&id=2&rt=3b61215dad757e25fae69fffc3e9d921&ref=70f82ff7', '', 0x613a34303a7b733a323a226964223b733a313a2232223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343537313133373235223b733a343a226e616d65223b733a32313a2242656163686375702053656974656e6c61796f7574223b733a343a22726f7773223b733a333a22337277223b733a31323a22686561646572486569676874223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31323a22666f6f746572486569676874223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a343a22636f6c73223b733a333a2231636c223b733a393a2277696474684c656674223b733a34333a22613a323a7b733a343a22756e6974223b733a303a22223b733a353a2276616c7565223b733a303a22223b7d223b733a31303a2277696474685269676874223b733a303a22223b733a383a2273656374696f6e73223b733a303a22223b733a393a2273506f736974696f6e223b733a343a226d61696e223b733a393a226672616d65776f726b223b733a35343a22613a323a7b693a303b733a31303a226c61796f75742e637373223b693a313b733a31343a22726573706f6e736976652e637373223b7d223b733a31303a227374796c657368656574223b4e3b733a383a2265787465726e616c223b733a3233303a22613a383a7b693a303b733a31363a225138368de23111e5b9f0448a5b243f5c223b693a313b733a31363a2251383687e23111e5b9f0448a5b243f5c223b693a323b733a31363a2251383681e23111e5b9f0448a5b243f5c223b693a333b733a31363a225138367be23111e5b9f0448a5b243f5c223b693a343b733a31363a2251383672e23111e5b9f0448a5b243f5c223b693a353b733a31363a225138366de23111e5b9f0448a5b243f5c223b693a363b733a31363a2251383667e23111e5b9f0448a5b243f5c223b693a373b733a31363a225138365be23111e5b9f0448a5b243f5c223b7d223b733a383a226f72646572457874223b733a3233303a22613a383a7b693a303b733a31363a225138368de23111e5b9f0448a5b243f5c223b693a313b733a31363a2251383687e23111e5b9f0448a5b243f5c223b693a323b733a31363a2251383681e23111e5b9f0448a5b243f5c223b693a333b733a31363a225138367be23111e5b9f0448a5b243f5c223b693a343b733a31363a2251383672e23111e5b9f0448a5b243f5c223b693a353b733a31363a225138366de23111e5b9f0448a5b243f5c223b693a363b733a31363a2251383667e23111e5b9f0448a5b243f5c223b693a373b733a31363a225138365be23111e5b9f0448a5b243f5c223b7d223b733a31323a226c6f6164696e674f72646572223b733a31343a2265787465726e616c5f6669727374223b733a393a226e6577736665656473223b4e3b733a31333a2263616c656e6461726665656473223b4e3b733a373a226d6f64756c6573223b733a3232303a22613a333a7b693a303b613a333a7b733a333a226d6f64223b733a313a2235223b733a333a22636f6c223b733a363a22686561646572223b733a363a22656e61626c65223b733a313a2231223b7d693a313b613a333a7b733a333a226d6f64223b733a313a2230223b733a333a22636f6c223b733a343a226d61696e223b733a363a22656e61626c65223b733a313a2231223b7d693a323b613a333a7b733a333a226d6f64223b733a313a2236223b733a333a22636f6c223b733a363a22666f6f746572223b733a363a22656e61626c65223b733a313a2231223b7d7d223b733a383a2274656d706c617465223b733a373a2266655f70616765223b733a373a22646f6374797065223b733a353a2268746d6c35223b733a383a22776562666f6e7473223b733a303a22223b733a31313a227069637475726566696c6c223b733a303a22223b733a383a2276696577706f7274223b733a303a22223b733a383a227469746c65546167223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a363a226f6e6c6f6164223b733a303a22223b733a343a2268656164223b733a303a22223b733a393a226164644a5175657279223b733a303a22223b733a373a226a536f75726365223b733a303a22223b733a363a226a7175657279223b4e3b733a31313a226164644d6f6f546f6f6c73223b733a303a22223b733a393a226d6f6f536f75726365223b733a393a226d6f6f5f6c6f63616c223b733a383a226d6f6f746f6f6c73223b4e3b733a393a22616e616c7974696373223b733a303a22223b733a363a22736372697074223b733a303a22223b733a363a22737461746963223b733a303a22223b733a353a227769647468223b733a303a22223b733a353a22616c69676e223b733a363a2263656e746572223b7d),
@@ -3619,7 +4487,7 @@ INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid
 (240, 13, 1458739987, 1, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=19&rt=7bebcbd4fa6d21e543e330940abde68c&ref=af7ebb80&table=tl_content&act=edit&id=13', '', 0x613a38313a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223139223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373339393837223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a34353a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a303a22223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
 (241, 13, 1458739992, 2, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=19&rt=7bebcbd4fa6d21e543e330940abde68c&ref=af7ebb80&table=tl_content&act=edit&id=13', '1', 0x613a38313a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223139223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373339393837223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a35313a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a363a22566964656f73223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
 (242, 13, 1457018850, 1, 'tl_article', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=article&ref=897e36fd&id=13&act=edit&rt=7bebcbd4fa6d21e543e330940abde68c', '', 0x613a32323a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223132223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138383530223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(243, 13, 1458740008, 2, 'tl_article', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=article&ref=897e36fd&id=13&act=edit&rt=7bebcbd4fa6d21e543e330940abde68c', '1', 0x613a32323a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223132223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373430303038223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(243, 13, 1458740008, 2, 'tl_article', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=article&ref=897e36fd&id=13&act=edit&rt=7bebcbd4fa6d21e543e330940abde68c', '', 0x613a32323a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223132223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373430303038223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
 (244, 14, 1458740016, 1, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=13&rt=7bebcbd4fa6d21e543e330940abde68c&ref=b392a4fb&table=tl_content&act=edit&id=14', '', 0x613a38313a7b733a323a226964223b733a323a223134223b733a333a22706964223b733a323a223133223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373430303136223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a34353a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a303a22223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
 (245, 14, 1458740024, 2, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=13&rt=7bebcbd4fa6d21e543e330940abde68c&ref=b392a4fb&table=tl_content&act=edit&id=14', '', 0x613a38313a7b733a323a226964223b733a323a223134223b733a333a22706964223b733a323a223133223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343538373430303136223b733a343a2274797065223b733a383a22686561646c696e65223b733a383a22686561646c696e65223b733a36353a22613a323a7b733a343a22756e6974223b733a323a226831223b733a353a2276616c7565223b733a31393a224c616e6465736d656973746572736368616674223b7d223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
 (246, 12, 1457018837, 1, 'tl_article', 1, 'beach-admin', 'Reglement', 'contao/main.php?do=article&ref=897e36fd&id=12&act=edit&rt=7bebcbd4fa6d21e543e330940abde68c', '', 0x613a32323a7b733a323a226964223b733a323a223132223b733a333a22706964223b733a323a223131223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138383337223b733a353a227469746c65223b733a393a225265676c656d656e74223b733a353a22616c696173223b733a393a227265676c656d656e74223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
@@ -3692,634 +4560,46 @@ INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid
 (311, 23, 1460104586, 1, 'tl_beachcup_registration', 1, 'beach-admin', '', 'contao/main.php?do=registration&rt=13bebb5bc92fc6286bc7fa94e4c6bf70&ref=99137a93&act=edit&id=23', '1', 0x613a353a7b733a323a226964223b733a323a223233223b733a363a22747374616d70223b733a31303a2231343630313034353836223b733a31333a22746f75726e616d656e745f6964223b733a323a223332223b733a373a227465616d5f6964223b733a323a223133223b733a363a22706f696e7473223b733a313a2231223b7d),
 (312, 22, 1460104592, 2, 'tl_beachcup_registration', 1, 'beach-admin', '', 'contao/main.php?do=registration&act=edit&id=22&rt=13bebb5bc92fc6286bc7fa94e4c6bf70&ref=a00f7195', '1', 0x613a353a7b733a323a226964223b733a323a223232223b733a363a22747374616d70223b733a31303a2231343630313034343833223b733a31333a22746f75726e616d656e745f6964223b733a323a223332223b733a373a227465616d5f6964223b733a313a2237223b733a363a22706f696e7473223b733a313a2233223b7d),
 (313, 20, 1460195536, 1, 'tl_module', 1, 'beach-admin', '', 'contao/main.php?do=themes&mode=2&pid=2&rt=f1ab01f01a16ca78ccc651bcaca657de&ref=93e5bbae&table=tl_module&act=edit&id=20', '', 0x613a3131363a7b733a323a226964223b733a323a223230223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630313935353336223b733a343a226e616d65223b733a303a22223b733a383a22686561646c696e65223b733a303a22223b733a343a2274797065223b733a31333a22746f74616c5f726573756c7473223b733a31313a226c6576656c4f6666736574223b733a313a2230223b733a393a2273686f774c6576656c223b733a313a2230223b733a393a22686172644c696d6974223b733a303a22223b733a31333a2273686f7750726f746563746564223b733a303a22223b733a31303a22646566696e65526f6f74223b733a303a22223b733a383a22726f6f7450616765223b733a313a2230223b733a31333a226e617669676174696f6e54706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a353a227061676573223b4e3b733a31303a226f726465725061676573223b4e3b733a31303a2273686f7748696464656e223b733a303a22223b733a31313a22637573746f6d4c6162656c223b733a303a22223b733a393a226175746f6c6f67696e223b733a303a22223b733a363a226a756d70546f223b733a313a2230223b733a31323a2272656469726563744261636b223b733a303a22223b733a343a22636f6c73223b733a333a2232636c223b733a383a226564697461626c65223b4e3b733a393a226d656d62657254706c223b733a303a22223b733a393a227461626c656c657373223b733a303a22223b733a343a22666f726d223b733a313a2230223b733a393a22717565727954797065223b733a333a22616e64223b733a353a2266757a7a79223b733a303a22223b733a31333a22636f6e746578744c656e677468223b733a323a223438223b733a31313a22746f74616c4c656e677468223b733a343a2231303030223b733a373a2270657250616765223b733a313a2230223b733a31303a2273656172636854797065223b733a363a2273696d706c65223b733a393a2273656172636854706c223b733a303a22223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a393a22736b69704669727374223b733a313a2230223b733a393a226c6f61644669727374223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a227472616e73706172656e74223b733a303a22223b733a393a22666c61736876617273223b733a303a22223b733a31303a22616c74436f6e74656e74223b4e3b733a363a22736f75726365223b733a383a22696e7465726e616c223b733a393a2273696e676c65535243223b4e3b733a333a2275726c223b733a303a22223b733a31313a22696e746572616374697665223b733a303a22223b733a373a22666c6173684944223b733a303a22223b733a373a22666c6173684a53223b4e3b733a373a22696d6753697a65223b733a303a22223b733a31303a2275736543617074696f6e223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a343a2268746d6c223b4e3b733a393a227273735f6361636865223b733a343a2233363030223b733a383a227273735f66656564223b4e3b733a31323a227273735f74656d706c617465223b733a31313a227273735f64656661756c74223b733a31333a226e756d6265724f664974656d73223b733a313a2233223b733a31343a2264697361626c6543617074636861223b733a303a22223b733a31303a227265675f67726f757073223b4e3b733a31343a227265675f616c6c6f774c6f67696e223b733a303a22223b733a31323a227265675f736b69704e616d65223b733a303a22223b733a393a227265675f636c6f7365223b733a303a22223b733a31333a227265675f61737369676e446972223b733a303a22223b733a31313a227265675f686f6d65446972223b4e3b733a31323a227265675f6163746976617465223b733a303a22223b733a31303a227265675f6a756d70546f223b733a313a2230223b733a383a227265675f74657874223b4e3b733a31323a227265675f70617373776f7264223b4e3b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a31323a2263616c5f63616c656e646172223b4e3b733a31303a2263616c5f6e6f5370616e223b733a303a22223b733a31323a2263616c5f7374617274446179223b733a313a2231223b733a31303a2263616c5f666f726d6174223b733a393a2263616c5f6d6f6e7468223b733a31373a2263616c5f69676e6f726544796e616d6963223b733a303a22223b733a393a2263616c5f6f72646572223b733a393a22617363656e64696e67223b733a31363a2263616c5f7265616465724d6f64756c65223b733a313a2230223b733a393a2263616c5f6c696d6974223b733a313a2230223b733a31323a2263616c5f74656d706c617465223b733a31303a226576656e745f66756c6c223b733a31333a2263616c5f6374656d706c617465223b733a31313a2263616c5f64656661756c74223b733a31363a2263616c5f73686f775175616e74697479223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b733a31343a226661715f63617465676f72696573223b4e3b733a31363a226661715f7265616465724d6f64756c65223b733a313a2230223b733a31303a226c6973745f7461626c65223b733a303a22223b733a31313a226c6973745f6669656c6473223b733a303a22223b733a31303a226c6973745f7768657265223b733a303a22223b733a31313a226c6973745f736561726368223b733a303a22223b733a393a226c6973745f736f7274223b733a303a22223b733a393a226c6973745f696e666f223b733a303a22223b733a31353a226c6973745f696e666f5f7768657265223b733a303a22223b733a31313a226c6973745f6c61796f7574223b733a31323a226c6973745f64656661756c74223b733a31363a226c6973745f696e666f5f6c61796f7574223b733a31323a22696e666f5f64656661756c74223b733a31333a226e6577735f6172636869766573223b4e3b733a31333a226e6577735f6665617475726564223b733a393a22616c6c5f6974656d73223b733a31383a226e6577735f6a756d70546f43757272656e74223b733a303a22223b733a31373a226e6577735f7265616465724d6f64756c65223b733a313a2230223b733a31353a226e6577735f6d6574614669656c6473223b733a33383a22613a323a7b693a303b733a343a2264617465223b693a313b733a363a22617574686f72223b7d223b733a31333a226e6577735f74656d706c617465223b733a31313a226e6577735f6c6174657374223b733a31313a226e6577735f666f726d6174223b733a31303a226e6577735f6d6f6e7468223b733a31333a226e6577735f7374617274446179223b733a313a2230223b733a31303a226e6577735f6f72646572223b733a31303a2264657363656e64696e67223b733a31373a226e6577735f73686f775175616e74697479223b733a303a22223b733a31313a226e6577736c657474657273223b4e3b733a31313a226e6c5f6368616e6e656c73223b4e3b733a31353a226e6c5f686964654368616e6e656c73223b733a303a22223b733a31323a226e6c5f737562736372696265223b4e3b733a31343a226e6c5f756e737562736372696265223b4e3b733a31313a226e6c5f74656d706c617465223b733a393a226e6c5f73696d706c65223b7d),
-(314, 20, 1460195548, 2, 'tl_module', 1, 'beach-admin', 'Gesamtstände', 'contao/main.php?do=themes&mode=2&pid=2&rt=f1ab01f01a16ca78ccc651bcaca657de&ref=93e5bbae&table=tl_module&act=edit&id=20', '1', 0x613a3131363a7b733a323a226964223b733a323a223230223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630313935353336223b733a343a226e616d65223b733a31333a22476573616d747374c3a46e6465223b733a383a22686561646c696e65223b733a303a22223b733a343a2274797065223b733a31333a22746f74616c5f726573756c7473223b733a31313a226c6576656c4f6666736574223b733a313a2230223b733a393a2273686f774c6576656c223b733a313a2230223b733a393a22686172644c696d6974223b733a303a22223b733a31333a2273686f7750726f746563746564223b733a303a22223b733a31303a22646566696e65526f6f74223b733a303a22223b733a383a22726f6f7450616765223b733a313a2230223b733a31333a226e617669676174696f6e54706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a353a227061676573223b4e3b733a31303a226f726465725061676573223b4e3b733a31303a2273686f7748696464656e223b733a303a22223b733a31313a22637573746f6d4c6162656c223b733a303a22223b733a393a226175746f6c6f67696e223b733a303a22223b733a363a226a756d70546f223b733a313a2230223b733a31323a2272656469726563744261636b223b733a303a22223b733a343a22636f6c73223b733a333a2232636c223b733a383a226564697461626c65223b4e3b733a393a226d656d62657254706c223b733a303a22223b733a393a227461626c656c657373223b733a303a22223b733a343a22666f726d223b733a313a2230223b733a393a22717565727954797065223b733a333a22616e64223b733a353a2266757a7a79223b733a303a22223b733a31333a22636f6e746578744c656e677468223b733a323a223438223b733a31313a22746f74616c4c656e677468223b733a343a2231303030223b733a373a2270657250616765223b733a313a2230223b733a31303a2273656172636854797065223b733a363a2273696d706c65223b733a393a2273656172636854706c223b733a303a22223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a393a22736b69704669727374223b733a313a2230223b733a393a226c6f61644669727374223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a227472616e73706172656e74223b733a303a22223b733a393a22666c61736876617273223b733a303a22223b733a31303a22616c74436f6e74656e74223b4e3b733a363a22736f75726365223b733a383a22696e7465726e616c223b733a393a2273696e676c65535243223b4e3b733a333a2275726c223b733a303a22223b733a31313a22696e746572616374697665223b733a303a22223b733a373a22666c6173684944223b733a303a22223b733a373a22666c6173684a53223b4e3b733a373a22696d6753697a65223b733a303a22223b733a31303a2275736543617074696f6e223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a343a2268746d6c223b4e3b733a393a227273735f6361636865223b733a343a2233363030223b733a383a227273735f66656564223b4e3b733a31323a227273735f74656d706c617465223b733a31313a227273735f64656661756c74223b733a31333a226e756d6265724f664974656d73223b733a313a2233223b733a31343a2264697361626c6543617074636861223b733a303a22223b733a31303a227265675f67726f757073223b4e3b733a31343a227265675f616c6c6f774c6f67696e223b733a303a22223b733a31323a227265675f736b69704e616d65223b733a303a22223b733a393a227265675f636c6f7365223b733a303a22223b733a31333a227265675f61737369676e446972223b733a303a22223b733a31313a227265675f686f6d65446972223b4e3b733a31323a227265675f6163746976617465223b733a303a22223b733a31303a227265675f6a756d70546f223b733a313a2230223b733a383a227265675f74657874223b4e3b733a31323a227265675f70617373776f7264223b4e3b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a31323a2263616c5f63616c656e646172223b4e3b733a31303a2263616c5f6e6f5370616e223b733a303a22223b733a31323a2263616c5f7374617274446179223b733a313a2231223b733a31303a2263616c5f666f726d6174223b733a393a2263616c5f6d6f6e7468223b733a31373a2263616c5f69676e6f726544796e616d6963223b733a303a22223b733a393a2263616c5f6f72646572223b733a393a22617363656e64696e67223b733a31363a2263616c5f7265616465724d6f64756c65223b733a313a2230223b733a393a2263616c5f6c696d6974223b733a313a2230223b733a31323a2263616c5f74656d706c617465223b733a31303a226576656e745f66756c6c223b733a31333a2263616c5f6374656d706c617465223b733a31313a2263616c5f64656661756c74223b733a31363a2263616c5f73686f775175616e74697479223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b733a31343a226661715f63617465676f72696573223b4e3b733a31363a226661715f7265616465724d6f64756c65223b733a313a2230223b733a31303a226c6973745f7461626c65223b733a303a22223b733a31313a226c6973745f6669656c6473223b733a303a22223b733a31303a226c6973745f7768657265223b733a303a22223b733a31313a226c6973745f736561726368223b733a303a22223b733a393a226c6973745f736f7274223b733a303a22223b733a393a226c6973745f696e666f223b733a303a22223b733a31353a226c6973745f696e666f5f7768657265223b733a303a22223b733a31313a226c6973745f6c61796f7574223b733a31323a226c6973745f64656661756c74223b733a31363a226c6973745f696e666f5f6c61796f7574223b733a31323a22696e666f5f64656661756c74223b733a31333a226e6577735f6172636869766573223b4e3b733a31333a226e6577735f6665617475726564223b733a393a22616c6c5f6974656d73223b733a31383a226e6577735f6a756d70546f43757272656e74223b733a303a22223b733a31373a226e6577735f7265616465724d6f64756c65223b733a313a2230223b733a31353a226e6577735f6d6574614669656c6473223b733a33383a22613a323a7b693a303b733a343a2264617465223b693a313b733a363a22617574686f72223b7d223b733a31333a226e6577735f74656d706c617465223b733a31313a226e6577735f6c6174657374223b733a31313a226e6577735f666f726d6174223b733a31303a226e6577735f6d6f6e7468223b733a31333a226e6577735f7374617274446179223b733a313a2230223b733a31303a226e6577735f6f72646572223b733a31303a2264657363656e64696e67223b733a31373a226e6577735f73686f775175616e74697479223b733a303a22223b733a31313a226e6577736c657474657273223b4e3b733a31313a226e6c5f6368616e6e656c73223b4e3b733a31353a226e6c5f686964654368616e6e656c73223b733a303a22223b733a31323a226e6c5f737562736372696265223b4e3b733a31343a226e6c5f756e737562736372696265223b4e3b733a31313a226e6c5f74656d706c617465223b733a393a226e6c5f73696d706c65223b7d),
+(314, 20, 1460195548, 2, 'tl_module', 1, 'beach-admin', 'GesamtstÃ¤nde', 'contao/main.php?do=themes&mode=2&pid=2&rt=f1ab01f01a16ca78ccc651bcaca657de&ref=93e5bbae&table=tl_module&act=edit&id=20', '1', 0x613a3131363a7b733a323a226964223b733a323a223230223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630313935353336223b733a343a226e616d65223b733a31333a22476573616d747374c3a46e6465223b733a383a22686561646c696e65223b733a303a22223b733a343a2274797065223b733a31333a22746f74616c5f726573756c7473223b733a31313a226c6576656c4f6666736574223b733a313a2230223b733a393a2273686f774c6576656c223b733a313a2230223b733a393a22686172644c696d6974223b733a303a22223b733a31333a2273686f7750726f746563746564223b733a303a22223b733a31303a22646566696e65526f6f74223b733a303a22223b733a383a22726f6f7450616765223b733a313a2230223b733a31333a226e617669676174696f6e54706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a353a227061676573223b4e3b733a31303a226f726465725061676573223b4e3b733a31303a2273686f7748696464656e223b733a303a22223b733a31313a22637573746f6d4c6162656c223b733a303a22223b733a393a226175746f6c6f67696e223b733a303a22223b733a363a226a756d70546f223b733a313a2230223b733a31323a2272656469726563744261636b223b733a303a22223b733a343a22636f6c73223b733a333a2232636c223b733a383a226564697461626c65223b4e3b733a393a226d656d62657254706c223b733a303a22223b733a393a227461626c656c657373223b733a303a22223b733a343a22666f726d223b733a313a2230223b733a393a22717565727954797065223b733a333a22616e64223b733a353a2266757a7a79223b733a303a22223b733a31333a22636f6e746578744c656e677468223b733a323a223438223b733a31313a22746f74616c4c656e677468223b733a343a2231303030223b733a373a2270657250616765223b733a313a2230223b733a31303a2273656172636854797065223b733a363a2273696d706c65223b733a393a2273656172636854706c223b733a303a22223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a393a22736b69704669727374223b733a313a2230223b733a393a226c6f61644669727374223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a227472616e73706172656e74223b733a303a22223b733a393a22666c61736876617273223b733a303a22223b733a31303a22616c74436f6e74656e74223b4e3b733a363a22736f75726365223b733a383a22696e7465726e616c223b733a393a2273696e676c65535243223b4e3b733a333a2275726c223b733a303a22223b733a31313a22696e746572616374697665223b733a303a22223b733a373a22666c6173684944223b733a303a22223b733a373a22666c6173684a53223b4e3b733a373a22696d6753697a65223b733a303a22223b733a31303a2275736543617074696f6e223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a343a2268746d6c223b4e3b733a393a227273735f6361636865223b733a343a2233363030223b733a383a227273735f66656564223b4e3b733a31323a227273735f74656d706c617465223b733a31313a227273735f64656661756c74223b733a31333a226e756d6265724f664974656d73223b733a313a2233223b733a31343a2264697361626c6543617074636861223b733a303a22223b733a31303a227265675f67726f757073223b4e3b733a31343a227265675f616c6c6f774c6f67696e223b733a303a22223b733a31323a227265675f736b69704e616d65223b733a303a22223b733a393a227265675f636c6f7365223b733a303a22223b733a31333a227265675f61737369676e446972223b733a303a22223b733a31313a227265675f686f6d65446972223b4e3b733a31323a227265675f6163746976617465223b733a303a22223b733a31303a227265675f6a756d70546f223b733a313a2230223b733a383a227265675f74657874223b4e3b733a31323a227265675f70617373776f7264223b4e3b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a31323a2263616c5f63616c656e646172223b4e3b733a31303a2263616c5f6e6f5370616e223b733a303a22223b733a31323a2263616c5f7374617274446179223b733a313a2231223b733a31303a2263616c5f666f726d6174223b733a393a2263616c5f6d6f6e7468223b733a31373a2263616c5f69676e6f726544796e616d6963223b733a303a22223b733a393a2263616c5f6f72646572223b733a393a22617363656e64696e67223b733a31363a2263616c5f7265616465724d6f64756c65223b733a313a2230223b733a393a2263616c5f6c696d6974223b733a313a2230223b733a31323a2263616c5f74656d706c617465223b733a31303a226576656e745f66756c6c223b733a31333a2263616c5f6374656d706c617465223b733a31313a2263616c5f64656661756c74223b733a31363a2263616c5f73686f775175616e74697479223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b733a31343a226661715f63617465676f72696573223b4e3b733a31363a226661715f7265616465724d6f64756c65223b733a313a2230223b733a31303a226c6973745f7461626c65223b733a303a22223b733a31313a226c6973745f6669656c6473223b733a303a22223b733a31303a226c6973745f7768657265223b733a303a22223b733a31313a226c6973745f736561726368223b733a303a22223b733a393a226c6973745f736f7274223b733a303a22223b733a393a226c6973745f696e666f223b733a303a22223b733a31353a226c6973745f696e666f5f7768657265223b733a303a22223b733a31313a226c6973745f6c61796f7574223b733a31323a226c6973745f64656661756c74223b733a31363a226c6973745f696e666f5f6c61796f7574223b733a31323a22696e666f5f64656661756c74223b733a31333a226e6577735f6172636869766573223b4e3b733a31333a226e6577735f6665617475726564223b733a393a22616c6c5f6974656d73223b733a31383a226e6577735f6a756d70546f43757272656e74223b733a303a22223b733a31373a226e6577735f7265616465724d6f64756c65223b733a313a2230223b733a31353a226e6577735f6d6574614669656c6473223b733a33383a22613a323a7b693a303b733a343a2264617465223b693a313b733a363a22617574686f72223b7d223b733a31333a226e6577735f74656d706c617465223b733a31313a226e6577735f6c6174657374223b733a31313a226e6577735f666f726d6174223b733a31303a226e6577735f6d6f6e7468223b733a31333a226e6577735f7374617274446179223b733a313a2230223b733a31303a226e6577735f6f72646572223b733a31303a2264657363656e64696e67223b733a31373a226e6577735f73686f775175616e74697479223b733a303a22223b733a31313a226e6577736c657474657273223b4e3b733a31313a226e6c5f6368616e6e656c73223b4e3b733a31353a226e6c5f686964654368616e6e656c73223b733a303a22223b733a31323a226e6c5f737562736372696265223b4e3b733a31343a226e6c5f756e737562736372696265223b4e3b733a31313a226e6c5f74656d706c617465223b733a393a226e6c5f73696d706c65223b7d),
 (315, 21, 1460195567, 1, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=16&rt=f1ab01f01a16ca78ccc651bcaca657de&ref=630aa5c5&table=tl_content&act=edit&id=21', '', 0x613a38313a7b733a323a226964223b733a323a223231223b733a333a22706964223b733a323a223136223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630313935353637223b733a343a2274797065223b733a363a226d6f64756c65223b733a383a22686561646c696e65223b733a303a22223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
 (316, 21, 1460195571, 2, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=article&mode=2&pid=16&rt=f1ab01f01a16ca78ccc651bcaca657de&ref=630aa5c5&table=tl_content&act=edit&id=21', '1', 0x613a38313a7b733a323a226964223b733a323a223231223b733a333a22706964223b733a323a223136223b733a363a22707461626c65223b733a31303a22746c5f61727469636c65223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630313935353637223b733a343a2274797065223b733a363a226d6f64756c65223b733a383a22686561646c696e65223b733a303a22223b733a343a2274657874223b4e3b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a323a223230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
-(317, 16, 1457018902, 1, 'tl_article', 1, 'beach-admin', 'Gesamtstände', 'contao/main.php?do=article&ref=059d644d&id=16&act=edit&rt=f1ab01f01a16ca78ccc651bcaca657de', '', 0x613a32323a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a323a223135223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138393032223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
-(318, 16, 1460195580, 2, 'tl_article', 1, 'beach-admin', 'Gesamtstände', 'contao/main.php?do=article&ref=059d644d&id=16&act=edit&rt=f1ab01f01a16ca78ccc651bcaca657de', '1', 0x613a32323a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a323a223135223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630313935353830223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d);
-
---
--- Indizes der exportierten Tabellen
---
-
---
--- Indizes für die Tabelle `tl_article`
---
-ALTER TABLE `tl_article`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`),
-  ADD KEY `pid_start_stop_published_sorting` (`pid`,`start`,`stop`,`published`,`sorting`);
-
---
--- Indizes für die Tabelle `tl_beachcup_organizer`
---
-ALTER TABLE `tl_beachcup_organizer`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_player`
---
-ALTER TABLE `tl_beachcup_player`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `phone_number` (`phone_number`),
-  ADD UNIQUE KEY `tax_number` (`tax_number`),
-  ADD UNIQUE KEY `username` (`username`);
-
---
--- Indizes für die Tabelle `tl_beachcup_player_level`
---
-ALTER TABLE `tl_beachcup_player_level`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indizes für die Tabelle `tl_beachcup_registration`
---
-ALTER TABLE `tl_beachcup_registration`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_registration_state`
---
-ALTER TABLE `tl_beachcup_registration_state`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indizes für die Tabelle `tl_beachcup_season`
---
-ALTER TABLE `tl_beachcup_season`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_stage`
---
-ALTER TABLE `tl_beachcup_stage`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_team`
---
-ALTER TABLE `tl_beachcup_team`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_tournament`
---
-ALTER TABLE `tl_beachcup_tournament`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_beachcup_tournament_type`
---
-ALTER TABLE `tl_beachcup_tournament_type`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `code` (`code`);
-
---
--- Indizes für die Tabelle `tl_beachcup_venue`
---
-ALTER TABLE `tl_beachcup_venue`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_calendar`
---
-ALTER TABLE `tl_calendar`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_calendar_events`
---
-ALTER TABLE `tl_calendar_events`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`),
-  ADD KEY `pid_start_stop_published` (`pid`,`start`,`stop`,`published`);
-
---
--- Indizes für die Tabelle `tl_calendar_feed`
---
-ALTER TABLE `tl_calendar_feed`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`);
-
---
--- Indizes für die Tabelle `tl_comments`
---
-ALTER TABLE `tl_comments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `published` (`published`),
-  ADD KEY `source_parent_published` (`source`,`parent`,`published`);
-
---
--- Indizes für die Tabelle `tl_comments_notify`
---
-ALTER TABLE `tl_comments_notify`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tokenRemove` (`tokenRemove`),
-  ADD KEY `source_parent_tokenConfirm` (`source`,`parent`,`tokenConfirm`);
-
---
--- Indizes für die Tabelle `tl_content`
---
-ALTER TABLE `tl_content`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid_ptable_invisible_sorting` (`pid`,`ptable`,`invisible`,`sorting`);
-
---
--- Indizes für die Tabelle `tl_cron`
---
-ALTER TABLE `tl_cron`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indizes für die Tabelle `tl_extension`
---
-ALTER TABLE `tl_extension`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_faq`
---
-ALTER TABLE `tl_faq`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid_published_sorting` (`pid`,`published`,`sorting`);
-
---
--- Indizes für die Tabelle `tl_faq_category`
---
-ALTER TABLE `tl_faq_category`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_files`
---
-ALTER TABLE `tl_files`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uuid` (`uuid`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `path` (`path`(333)),
-  ADD KEY `extension` (`extension`);
-
---
--- Indizes für die Tabelle `tl_form`
---
-ALTER TABLE `tl_form`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`);
-
---
--- Indizes für die Tabelle `tl_form_field`
---
-ALTER TABLE `tl_form_field`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_image_size`
---
-ALTER TABLE `tl_image_size`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_image_size_item`
---
-ALTER TABLE `tl_image_size_item`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_layout`
---
-ALTER TABLE `tl_layout`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_log`
---
-ALTER TABLE `tl_log`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_member`
---
-ALTER TABLE `tl_member`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `autologin` (`autologin`),
-  ADD KEY `email` (`email`),
-  ADD KEY `activation` (`activation`);
-
---
--- Indizes für die Tabelle `tl_member_group`
---
-ALTER TABLE `tl_member_group`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_module`
---
-ALTER TABLE `tl_module`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_news`
---
-ALTER TABLE `tl_news`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`),
-  ADD KEY `pid_start_stop_published` (`pid`,`start`,`stop`,`published`);
-
---
--- Indizes für die Tabelle `tl_newsletter`
---
-ALTER TABLE `tl_newsletter`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_newsletter_channel`
---
-ALTER TABLE `tl_newsletter_channel`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_newsletter_recipients`
---
-ALTER TABLE `tl_newsletter_recipients`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `email` (`email`);
-
---
--- Indizes für die Tabelle `tl_news_archive`
---
-ALTER TABLE `tl_news_archive`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_news_feed`
---
-ALTER TABLE `tl_news_feed`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`);
-
---
--- Indizes für die Tabelle `tl_page`
---
-ALTER TABLE `tl_page`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `alias` (`alias`),
-  ADD KEY `pid_type_start_stop_published` (`pid`,`type`,`start`,`stop`,`published`);
-
---
--- Indizes für die Tabelle `tl_repository_installs`
---
-ALTER TABLE `tl_repository_installs`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_repository_instfiles`
---
-ALTER TABLE `tl_repository_instfiles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_search`
---
-ALTER TABLE `tl_search`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `url` (`url`);
-ALTER TABLE `tl_search` ADD FULLTEXT KEY `text` (`text`);
-
---
--- Indizes für die Tabelle `tl_search_index`
---
-ALTER TABLE `tl_search_index`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `word` (`word`);
-
---
--- Indizes für die Tabelle `tl_session`
---
-ALTER TABLE `tl_session`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `hash` (`hash`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_style`
---
-ALTER TABLE `tl_style`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`);
-
---
--- Indizes für die Tabelle `tl_style_sheet`
---
-ALTER TABLE `tl_style_sheet`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `name` (`name`);
-
---
--- Indizes für die Tabelle `tl_theme`
---
-ALTER TABLE `tl_theme`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_undo`
---
-ALTER TABLE `tl_undo`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_user`
---
-ALTER TABLE `tl_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `email` (`email`);
-
---
--- Indizes für die Tabelle `tl_user_group`
---
-ALTER TABLE `tl_user_group`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indizes für die Tabelle `tl_version`
---
-ALTER TABLE `tl_version`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `fromTable` (`fromTable`);
-
---
--- AUTO_INCREMENT für exportierte Tabellen
---
-
---
--- AUTO_INCREMENT für Tabelle `tl_article`
---
-ALTER TABLE `tl_article`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_organizer`
---
-ALTER TABLE `tl_beachcup_organizer`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_player`
---
-ALTER TABLE `tl_beachcup_player`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_player_level`
---
-ALTER TABLE `tl_beachcup_player_level`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_registration`
---
-ALTER TABLE `tl_beachcup_registration`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_registration_state`
---
-ALTER TABLE `tl_beachcup_registration_state`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_season`
---
-ALTER TABLE `tl_beachcup_season`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_stage`
---
-ALTER TABLE `tl_beachcup_stage`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_team`
---
-ALTER TABLE `tl_beachcup_team`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_tournament`
---
-ALTER TABLE `tl_beachcup_tournament`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_tournament_type`
---
-ALTER TABLE `tl_beachcup_tournament_type`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `tl_beachcup_venue`
---
-ALTER TABLE `tl_beachcup_venue`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
---
--- AUTO_INCREMENT für Tabelle `tl_calendar`
---
-ALTER TABLE `tl_calendar`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_calendar_events`
---
-ALTER TABLE `tl_calendar_events`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_calendar_feed`
---
-ALTER TABLE `tl_calendar_feed`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_comments`
---
-ALTER TABLE `tl_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_comments_notify`
---
-ALTER TABLE `tl_comments_notify`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_content`
---
-ALTER TABLE `tl_content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
---
--- AUTO_INCREMENT für Tabelle `tl_cron`
---
-ALTER TABLE `tl_cron`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT für Tabelle `tl_extension`
---
-ALTER TABLE `tl_extension`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_faq`
---
-ALTER TABLE `tl_faq`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_faq_category`
---
-ALTER TABLE `tl_faq_category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_files`
---
-ALTER TABLE `tl_files`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT für Tabelle `tl_form`
---
-ALTER TABLE `tl_form`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_form_field`
---
-ALTER TABLE `tl_form_field`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT für Tabelle `tl_image_size`
---
-ALTER TABLE `tl_image_size`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_image_size_item`
---
-ALTER TABLE `tl_image_size_item`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_layout`
---
-ALTER TABLE `tl_layout`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_log`
---
-ALTER TABLE `tl_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=828;
---
--- AUTO_INCREMENT für Tabelle `tl_member`
---
-ALTER TABLE `tl_member`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_member_group`
---
-ALTER TABLE `tl_member_group`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_module`
---
-ALTER TABLE `tl_module`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT für Tabelle `tl_news`
---
-ALTER TABLE `tl_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT für Tabelle `tl_newsletter`
---
-ALTER TABLE `tl_newsletter`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_newsletter_channel`
---
-ALTER TABLE `tl_newsletter_channel`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_newsletter_recipients`
---
-ALTER TABLE `tl_newsletter_recipients`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_news_archive`
---
-ALTER TABLE `tl_news_archive`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_news_feed`
---
-ALTER TABLE `tl_news_feed`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_page`
---
-ALTER TABLE `tl_page`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
---
--- AUTO_INCREMENT für Tabelle `tl_repository_installs`
---
-ALTER TABLE `tl_repository_installs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT für Tabelle `tl_repository_instfiles`
---
-ALTER TABLE `tl_repository_instfiles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
---
--- AUTO_INCREMENT für Tabelle `tl_search`
---
-ALTER TABLE `tl_search`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT für Tabelle `tl_search_index`
---
-ALTER TABLE `tl_search_index`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11470;
---
--- AUTO_INCREMENT für Tabelle `tl_session`
---
-ALTER TABLE `tl_session`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
---
--- AUTO_INCREMENT für Tabelle `tl_style`
---
-ALTER TABLE `tl_style`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=383;
---
--- AUTO_INCREMENT für Tabelle `tl_style_sheet`
---
-ALTER TABLE `tl_style_sheet`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT für Tabelle `tl_theme`
---
-ALTER TABLE `tl_theme`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT für Tabelle `tl_undo`
---
-ALTER TABLE `tl_undo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
---
--- AUTO_INCREMENT für Tabelle `tl_user`
---
-ALTER TABLE `tl_user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT für Tabelle `tl_user_group`
---
-ALTER TABLE `tl_user_group`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT für Tabelle `tl_version`
---
-ALTER TABLE `tl_version`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=319;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+(317, 16, 1457018902, 1, 'tl_article', 1, 'beach-admin', 'GesamtstÃ¤nde', 'contao/main.php?do=article&ref=059d644d&id=16&act=edit&rt=f1ab01f01a16ca78ccc651bcaca657de', '', 0x613a32323a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a323a223135223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303138393032223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(318, 16, 1460195580, 2, 'tl_article', 1, 'beach-admin', 'GesamtstÃ¤nde', 'contao/main.php?do=article&ref=059d644d&id=16&act=edit&rt=f1ab01f01a16ca78ccc651bcaca657de', '1', 0x613a32323a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a323a223135223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630313935353830223b733a353a227469746c65223b733a31333a22476573616d747374c3a46e6465223b733a353a22616c696173223b733a31333a22676573616d74737461656e6465223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d);
+INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid`, `username`, `description`, `editUrl`, `active`, `data`) VALUES
+(319, 9, 1460395531, 2, 'tl_page', 1, 'beach-admin', 'Turnier', 'contao/main.php?do=page&act=edit&id=9&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=57f0aff0', '', 0x613a34383a7b733a323a226964223b733a313a2239223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a373a225475726e696572223b733a353a22616c696173223b733a373a227475726e696572223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(320, 9, 1460395565, 3, 'tl_page', 1, 'beach-admin', 'Turnier', 'contao/main.php?do=page&act=edit&id=9&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=57f0aff0', '1', 0x613a34383a7b733a323a226964223b733a313a2239223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343630333935353331223b733a353a227469746c65223b733a373a225475726e696572223b733a353a22616c696173223b733a373a227475726e696572223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223130223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(321, 13, 1460395612, 2, 'tl_page', 1, 'beach-admin', 'Ranking', 'contao/main.php?do=page&act=edit&id=13&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=973687bd', '', 0x613a34383a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a373a2252616e6b696e67223b733a353a22616c696173223b733a373a2272616e6b696e67223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(322, 13, 1460395626, 3, 'tl_page', 1, 'beach-admin', 'Ranking', 'contao/main.php?do=page&act=edit&id=13&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=973687bd', '', 0x613a34383a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630333935363132223b733a353a227469746c65223b733a373a2252616e6b696e67223b733a353a22616c696173223b733a373a2272616e6b696e67223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223134223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(323, 16, 1460395664, 2, 'tl_page', 1, 'beach-admin', 'Media', 'contao/main.php?do=page&act=edit&id=16&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=2315f115', '', 0x613a34383a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a353a224d65646961223b733a353a22616c696173223b733a353a226d65646961223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(324, 16, 1460395675, 3, 'tl_page', 1, 'beach-admin', 'Media', 'contao/main.php?do=page&act=edit&id=16&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=2315f115', '1', 0x613a34383a7b733a323a226964223b733a323a223136223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343630333935363634223b733a353a227469746c65223b733a353a224d65646961223b733a353a22616c696173223b733a353a226d65646961223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223137223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(325, 19, 1460395696, 2, 'tl_page', 1, 'beach-admin', 'Kontakt', 'contao/main.php?do=page&act=edit&id=19&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=c717f4f2', '', 0x613a34383a7b733a323a226964223b733a323a223139223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a373a224b6f6e74616b74223b733a353a22616c696173223b733a373a226b6f6e74616b74223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(326, 19, 1460395707, 3, 'tl_page', 1, 'beach-admin', 'Kontakt', 'contao/main.php?do=page&act=edit&id=19&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=c717f4f2', '1', 0x613a34383a7b733a323a226964223b733a323a223139223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343630333935363936223b733a353a227469746c65223b733a373a224b6f6e74616b74223b733a353a22616c696173223b733a373a226b6f6e74616b74223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(327, 1, 1457448843, 1, 'tl_news', 1, 'beach-admin', 'Auf nach Partschins', 'contao/main.php?do=news&table=tl_news&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=70d31891&id=1&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4', '', 0x613a33323a7b733a323a226964223b733a313a2231223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343537343438383433223b733a383a22686561646c696e65223b733a31393a22417566206e6163682050617274736368696e73223b733a353a22616c696173223b733a31393a226175662d6e6163682d70617274736368696e73223b733a363a22617574686f72223b733a313a2231223b733a343a2264617465223b733a31303a2231343537343438373230223b733a343a2274696d65223b733a31303a2231343537343438373230223b733a31313a22737562686561646c696e65223b733a303a22223b733a363a22746561736572223b733a32353a223c703e5a7765697465204f70656e2d4574617070653c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22f7cd9751a19611e58304448a5b243f5c223b733a333a22616c74223b733a343a2274657374223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a31323a22616464456e636c6f73757265223b733a303a22223b733a393a22656e636c6f73757265223b4e3b733a363a22736f75726365223b733a373a2264656661756c74223b733a363a226a756d70546f223b733a313a2230223b733a393a2261727469636c654964223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a31303a226e6f436f6d6d656e7473223b733a303a22223b733a383a226665617475726564223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(328, 1, 1460400176, 2, 'tl_news', 1, 'beach-admin', 'Auf nach Partschins', 'contao/main.php?do=news&table=tl_news&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=70d31891&id=1&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4', '', 0x613a33323a7b733a323a226964223b733a313a2231223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630343030313736223b733a383a22686561646c696e65223b733a31393a22417566206e6163682050617274736368696e73223b733a353a22616c696173223b733a31393a226175662d6e6163682d70617274736368696e73223b733a363a22617574686f72223b733a313a2231223b733a343a2264617465223b733a31303a2231343537343438373230223b733a343a2274696d65223b733a31303a2231343537343438373230223b733a31313a22737562686561646c696e65223b733a303a22223b733a363a22746561736572223b733a32353a223c703e5a7765697465204f70656e2d4574617070653c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22f7cd9751a19611e58304448a5b243f5c223b733a333a22616c74223b733a343a2274657374223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a31323a22616464456e636c6f73757265223b733a303a22223b733a393a22656e636c6f73757265223b4e3b733a363a22736f75726365223b733a373a2264656661756c74223b733a363a226a756d70546f223b733a313a2230223b733a393a2261727469636c654964223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a31303a226e6f436f6d6d656e7473223b733a303a22223b733a383a226665617475726564223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(329, 1, 1460400190, 3, 'tl_news', 1, 'beach-admin', 'Auf nach Partschins', 'contao/main.php?do=news&table=tl_news&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=70d31891&id=1&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4', '', 0x613a33323a7b733a323a226964223b733a313a2231223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630343030313930223b733a383a22686561646c696e65223b733a31393a22417566206e6163682050617274736368696e73223b733a353a22616c696173223b733a31393a226175662d6e6163682d70617274736368696e73223b733a363a22617574686f72223b733a313a2231223b733a343a2264617465223b733a31303a2231343537343438373230223b733a343a2274696d65223b733a31303a2231343537343438373230223b733a31313a22737562686561646c696e65223b733a303a22223b733a363a22746561736572223b733a32353a223c703e5a7765697465204f70656e2d4574617070653c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22f7cd9751a19611e58304448a5b243f5c223b733a333a22616c74223b733a343a2274657374223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a31323a22616464456e636c6f73757265223b733a303a22223b733a393a22656e636c6f73757265223b4e3b733a363a22736f75726365223b733a373a2264656661756c74223b733a363a226a756d70546f223b733a313a2230223b733a393a2261727469636c654964223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a31303a226e6f436f6d6d656e7473223b733a303a22223b733a383a226665617475726564223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(330, 23, 1460400630, 1, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=news&mode=2&pid=1&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=db0f5b4c&table=tl_content&act=edit&id=23', '', 0x613a38313a7b733a323a226964223b733a323a223233223b733a333a22706964223b733a313a2231223b733a363a22707461626c65223b733a373a22746c5f6e657773223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630343030363330223b733a343a2274797065223b733a343a2274657874223b733a383a22686561646c696e65223b733a37303a22613a323a7b733a343a22756e6974223b733a323a226833223b733a353a2276616c7565223b733a32343a22457320776972642077696564657220676562616767657274223b7d223b733a343a2274657874223b733a3433363a223c703e4c6f72656d20697073756d20646f6c6f722073697420616d65742c20636f6e73656374657475722061646970697369636920656c69742c2073656420656975736d6f642074656d706f7220696e636964756e74207574206c61626f726520657420646f6c6f7265206d61676e6120616c697175612e20557420656e696d206164206d696e696d2076656e69616d2c2071756973206e6f737472756420657865726369746174696f6e20756c6c616d636f206c61626f726973206e69736920757420616c697175696420657820656120636f6d6d6f646920636f6e7365717561742e20517569732061757465206975726520726570726568656e646572697420696e20766f6c7570746174652076656c697420657373652063696c6c756d20646f6c6f726520657520667567696174206e756c6c612070617269617475722e204578636570746575722073696e74206f6263616563617420637570696469746174206e6f6e2070726f6964656e742c2073756e7420696e2063756c706120717569206f666669636961206465736572756e74206d6f6c6c697420616e696d20696420657374206c61626f72756d2e3c2f703e223b733a383a22616464496d616765223b733a303a22223b733a393a2273696e676c65535243223b4e3b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a303a22223b733a31313a22696d6167656d617267696e223b733a303a22223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
+(331, 23, 1460400934, 2, 'tl_content', 1, 'beach-admin', '', 'contao/main.php?do=news&table=tl_content&act=edit&id=23&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=7d6c59b0', '1', 0x613a38313a7b733a323a226964223b733a323a223233223b733a333a22706964223b733a313a2231223b733a363a22707461626c65223b733a373a22746c5f6e657773223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630343030363330223b733a343a2274797065223b733a343a2274657874223b733a383a22686561646c696e65223b733a37303a22613a323a7b733a343a22756e6974223b733a323a226833223b733a353a2276616c7565223b733a32343a22457320776972642077696564657220676562616767657274223b7d223b733a343a2274657874223b733a3433363a223c703e4c6f72656d20697073756d20646f6c6f722073697420616d65742c20636f6e73656374657475722061646970697369636920656c69742c2073656420656975736d6f642074656d706f7220696e636964756e74207574206c61626f726520657420646f6c6f7265206d61676e6120616c697175612e20557420656e696d206164206d696e696d2076656e69616d2c2071756973206e6f737472756420657865726369746174696f6e20756c6c616d636f206c61626f726973206e69736920757420616c697175696420657820656120636f6d6d6f646920636f6e7365717561742e20517569732061757465206975726520726570726568656e646572697420696e20766f6c7570746174652076656c697420657373652063696c6c756d20646f6c6f726520657520667567696174206e756c6c612070617269617475722e204578636570746575722073696e74206f6263616563617420637570696469746174206e6f6e2070726f6964656e742c2073756e7420696e2063756c706120717569206f666669636961206465736572756e74206d6f6c6c697420616e696d20696420657374206c61626f72756d2e3c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22bbc0b04f001611e69da600163e006592223b733a333a22616c74223b733a303a22223b733a353a227469746c65223b733a303a22223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a343a2268746d6c223b4e3b733a383a226c69737474797065223b733a303a22223b733a393a226c6973746974656d73223b4e3b733a31303a227461626c656974656d73223b4e3b733a373a2273756d6d617279223b733a303a22223b733a353a227468656164223b733a303a22223b733a353a2274666f6f74223b733a303a22223b733a353a22746c656674223b733a303a22223b733a383a22736f727461626c65223b733a303a22223b733a393a22736f7274496e646578223b733a313a2230223b733a393a22736f72744f72646572223b733a393a22617363656e64696e67223b733a31313a226d6f6f486561646c696e65223b733a303a22223b733a383a226d6f6f5374796c65223b733a303a22223b733a31303a226d6f6f436c6173736573223b733a303a22223b733a393a22686967686c69676874223b733a303a22223b733a373a227368436c617373223b733a303a22223b733a343a22636f6465223b4e3b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a393a227469746c6554657874223b733a303a22223b733a393a226c696e6b5469746c65223b733a303a22223b733a353a22656d626564223b733a303a22223b733a333a2272656c223b733a303a22223b733a383a22757365496d616765223b733a303a22223b733a383a226d756c7469535243223b4e3b733a383a226f72646572535243223b4e3b733a31303a22757365486f6d65446972223b733a303a22223b733a363a22706572526f77223b733a313a2234223b733a373a2270657250616765223b733a313a2230223b733a31333a226e756d6265724f664974656d73223b733a313a2230223b733a363a22736f72744279223b733a303a22223b733a31303a226d65746149676e6f7265223b733a303a22223b733a31303a2267616c6c65727954706c223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a22706c61796572535243223b4e3b733a373a22796f7574756265223b733a303a22223b733a393a22706f73746572535243223b4e3b733a31303a22706c6179657253697a65223b733a303a22223b733a383a226175746f706c6179223b733a303a22223b733a31313a22736c6964657244656c6179223b733a313a2230223b733a31313a22736c696465725370656564223b733a333a22333030223b733a31363a22736c696465725374617274536c696465223b733a313a2230223b733a31363a22736c69646572436f6e74696e756f7573223b733a303a22223b733a383a22637465416c696173223b733a313a2230223b733a31323a2261727469636c65416c696173223b733a313a2230223b733a373a2261727469636c65223b733a313a2230223b733a343a22666f726d223b733a313a2230223b733a363a226d6f64756c65223b733a313a2230223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a353a227370616365223b733a32383a22613a323a7b693a303b733a303a22223b693a313b733a303a22223b7d223b733a393a22696e76697369626c65223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b733a393a22636f6d5f6f72646572223b733a393a22617363656e64696e67223b733a31313a22636f6d5f70657250616765223b733a313a2230223b733a31323a22636f6d5f6d6f646572617465223b733a303a22223b733a31303a22636f6d5f6262636f6465223b733a303a22223b733a31383a22636f6d5f64697361626c6543617074636861223b733a303a22223b733a31363a22636f6d5f726571756972654c6f67696e223b733a303a22223b733a31323a22636f6d5f74656d706c617465223b733a31313a22636f6d5f64656661756c74223b7d),
+(332, 1, 1460401237, 4, 'tl_news', 1, 'beach-admin', 'Es wird wieder gebaggert!', 'contao/main.php?do=news&table=tl_news&id=1&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=4ada5088', '1', 0x613a33323a7b733a323a226964223b733a313a2231223b733a333a22706964223b733a313a2232223b733a363a22747374616d70223b733a31303a2231343630343030313930223b733a383a22686561646c696e65223b733a32353a2245732077697264207769656465722067656261676765727421223b733a353a22616c696173223b733a32343a2265732d776972642d7769656465722d676562616767657274223b733a363a22617574686f72223b733a313a2231223b733a343a2264617465223b733a31303a2231343537343438373230223b733a343a2274696d65223b733a31303a2231343537343438373230223b733a31313a22737562686561646c696e65223b733a303a22223b733a363a22746561736572223b733a3433363a223c703e4c6f72656d20697073756d20646f6c6f722073697420616d65742c20636f6e73656374657475722061646970697369636920656c69742c2073656420656975736d6f642074656d706f7220696e636964756e74207574206c61626f726520657420646f6c6f7265206d61676e6120616c697175612e20557420656e696d206164206d696e696d2076656e69616d2c2071756973206e6f737472756420657865726369746174696f6e20756c6c616d636f206c61626f726973206e69736920757420616c697175696420657820656120636f6d6d6f646920636f6e7365717561742e20517569732061757465206975726520726570726568656e646572697420696e20766f6c7570746174652076656c697420657373652063696c6c756d20646f6c6f726520657520667567696174206e756c6c612070617269617475722e204578636570746575722073696e74206f6263616563617420637570696469746174206e6f6e2070726f6964656e742c2073756e7420696e2063756c706120717569206f666669636961206465736572756e74206d6f6c6c697420616e696d20696420657374206c61626f72756d2e3c2f703e223b733a383a22616464496d616765223b733a313a2231223b733a393a2273696e676c65535243223b733a31363a22bbc0b04f001611e69da600163e006592223b733a333a22616c74223b733a303a22223b733a343a2273697a65223b733a33393a22613a333a7b693a303b733a303a22223b693a313b733a303a22223b693a323b733a303a22223b7d223b733a31313a22696d6167656d617267696e223b733a39383a22613a353a7b733a363a22626f74746f6d223b733a303a22223b733a343a226c656674223b733a303a22223b733a353a227269676874223b733a303a22223b733a333a22746f70223b733a303a22223b733a343a22756e6974223b733a303a22223b7d223b733a383a22696d61676555726c223b733a303a22223b733a383a2266756c6c73697a65223b733a303a22223b733a373a2263617074696f6e223b733a303a22223b733a383a22666c6f6174696e67223b733a353a2261626f7665223b733a31323a22616464456e636c6f73757265223b733a303a22223b733a393a22656e636c6f73757265223b4e3b733a363a22736f75726365223b733a373a2264656661756c74223b733a363a226a756d70546f223b733a313a2230223b733a393a2261727469636c654964223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a31303a226e6f436f6d6d656e7473223b733a303a22223b733a383a226665617475726564223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(333, 24, 1460401837, 1, 'tl_page', 1, 'beach-admin', 'Beachcup Italienisch', 'contao/main.php?do=page&mode=2&pid=0&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=fdca0996&act=edit&id=24', '1', 0x613a34383a7b733a323a226964223b733a323a223234223b733a333a22706964223b733a313a2230223b733a373a22736f7274696e67223b733a323a223634223b733a363a22747374616d70223b733a31303a2231343630343031383337223b733a353a227469746c65223b733a32303a224265616368637570204974616c69656e69736368223b733a353a22616c696173223b733a31373a2262656163686375702d6974616c69616e6f223b733a343a2274797065223b733a343a22726f6f74223b733a393a22706167655469746c65223b733a31393a225261696666656973656e204265616368637570223b733a383a226c616e6775616765223b733a323a226974223b733a363a22726f626f7473223b733a303a22223b733a31313a226465736372697074696f6e223b4e3b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a303a22223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(334, 8, 1460402054, 2, 'tl_page', 1, 'beach-admin', 'Home', 'contao/main.php?do=page&act=edit&id=8&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=c622efca', '1', 0x613a34383a7b733a323a226964223b733a313a2238223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a343a22486f6d65223b733a353a22616c696173223b733a373a22686f6d652d6465223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(335, 27, 1460402167, 1, 'tl_page', 1, 'beach-admin', 'Torneo', 'contao/main.php?do=page&act=edit&id=27&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=d0277958', '', 0x613a34383a7b733a323a226964223b733a323a223237223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630343032313637223b733a353a227469746c65223b733a363a22546f726e656f223b733a353a22616c696173223b733a363a22746f726e656f223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d);
+INSERT INTO `tl_version` (`id`, `pid`, `tstamp`, `version`, `fromTable`, `userid`, `username`, `description`, `editUrl`, `active`, `data`) VALUES
+(336, 27, 1460402235, 2, 'tl_page', 1, 'beach-admin', 'Torneo', 'contao/main.php?do=page&act=edit&id=27&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=d0277958', '', 0x613a34383a7b733a323a226964223b733a323a223237223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630343032313637223b733a353a227469746c65223b733a363a22546f726e656f223b733a353a22616c696173223b733a363a22746f726e656f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(337, 27, 1460402253, 3, 'tl_page', 1, 'beach-admin', 'Torneo', 'contao/main.php?do=page&act=edit&id=27&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=d0277958', '1', 0x613a34383a7b733a323a226964223b733a323a223237223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630343032323335223b733a353a227469746c65223b733a363a22546f726e656f223b733a353a22616c696173223b733a363a22746f726e656f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223238223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(338, 12, 1460402415, 2, 'tl_page', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=page&ref=2505d6d0&id=12&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4', '1', 0x613a34383a7b733a323a226964223b733a323a223132223b733a333a22706964223b733a313a2239223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630343032343135223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(339, 13, 1460402629, 4, 'tl_page', 1, 'beach-admin', 'Resultate', 'contao/main.php?do=page&act=edit&id=13&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=8436f13b', '1', 0x613a34383a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a313a2237223b733a373a22736f7274696e67223b733a333a22333834223b733a363a22747374616d70223b733a31303a2231343630333935363236223b733a353a227469746c65223b733a393a22526573756c74617465223b733a353a22616c696173223b733a393a22726573756c74617465223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223134223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(340, 15, 1460402647, 2, 'tl_page', 1, 'beach-admin', 'Ranking', 'contao/main.php?do=page&act=edit&id=15&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=752a8824', '1', 0x613a34383a7b733a323a226964223b733a323a223135223b733a333a22706964223b733a323a223133223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343537303139303634223b733a353a227469746c65223b733a373a2252616e6b696e67223b733a353a22616c696173223b733a373a2272616e6b696e67223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(341, 30, 1460402702, 1, 'tl_page', 1, 'beach-admin', 'Risultati', 'contao/main.php?do=page&act=edit&id=30&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=3bdf0bac', '', 0x613a34383a7b733a323a226964223b733a323a223330223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343630343032373032223b733a353a227469746c65223b733a393a22526973756c74617469223b733a353a22616c696173223b733a393a22726973756c74617469223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(342, 30, 1460403400, 2, 'tl_page', 1, 'beach-admin', 'Risultati', 'contao/main.php?do=page&act=edit&id=30&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=3bdf0bac', '', 0x613a34383a7b733a323a226964223b733a323a223330223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343630343032373032223b733a353a227469746c65223b733a393a22526973756c74617469223b733a353a22616c696173223b733a393a22726973756c74617469223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(343, 30, 1460403413, 3, 'tl_page', 1, 'beach-admin', 'Risultati', 'contao/main.php?do=page&act=edit&id=30&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=3bdf0bac', '1', 0x613a34383a7b733a323a226964223b733a323a223330223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22353132223b733a363a22747374616d70223b733a31303a2231343630343033343030223b733a353a227469746c65223b733a393a22526973756c74617469223b733a353a22616c696173223b733a393a22726973756c74617469223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223331223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(344, 33, 1460403662, 1, 'tl_page', 1, 'beach-admin', 'Foto e Video', 'contao/main.php?do=page&act=edit&id=33&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=fba195d5', '', 0x613a34383a7b733a323a226964223b733a323a223333223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343630343033363632223b733a353a227469746c65223b733a31323a22466f746f206520566964656f223b733a353a22616c696173223b733a31323a22666f746f2d652d766964656f223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(345, 33, 1460403701, 2, 'tl_page', 1, 'beach-admin', 'Foto e Video', 'contao/main.php?do=page&act=edit&id=33&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=fba195d5', '', 0x613a34383a7b733a323a226964223b733a323a223333223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343630343033363632223b733a353a227469746c65223b733a31323a22466f746f206520566964656f223b733a353a22616c696173223b733a31323a22666f746f2d652d766964656f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(346, 33, 1460403710, 3, 'tl_page', 1, 'beach-admin', 'Foto e Video', 'contao/main.php?do=page&act=edit&id=33&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=fba195d5', '1', 0x613a34383a7b733a323a226964223b733a323a223333223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22363430223b733a363a22747374616d70223b733a31303a2231343630343033373031223b733a353a227469746c65223b733a31323a22466f746f206520566964656f223b733a353a22616c696173223b733a31323a22666f746f2d652d766964656f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223334223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(347, 35, 1460403743, 1, 'tl_page', 1, 'beach-admin', 'Video', 'contao/main.php?do=page&act=edit&id=35&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=83bcba05', '', 0x613a34383a7b733a323a226964223b733a323a223335223b733a333a22706964223b733a323a223333223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343630343033373433223b733a353a227469746c65223b733a353a22566964656f223b733a353a22616c696173223b733a383a22766964656f2d6974223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(348, 35, 1460403757, 2, 'tl_page', 1, 'beach-admin', 'Video', 'contao/main.php?do=page&act=edit&id=35&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=83bcba05', '1', 0x613a34383a7b733a323a226964223b733a323a223335223b733a333a22706964223b733a323a223333223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343630343033373433223b733a353a227469746c65223b733a353a22566964656f223b733a353a22616c696173223b733a353a22766964656f223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(349, 36, 1460403881, 1, 'tl_page', 1, 'beach-admin', 'Contatto', 'contao/main.php?do=page&act=edit&id=36&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=f41b2ae1', '', 0x613a34383a7b733a323a226964223b733a323a223336223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22373638223b733a363a22747374616d70223b733a31303a2231343630343033383831223b733a353a227469746c65223b733a383a22436f6e746174746f223b733a353a22616c696173223b733a383a22636f6e746174746f223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(350, 36, 1460404019, 2, 'tl_page', 1, 'beach-admin', 'Contatto', 'contao/main.php?do=page&act=edit&id=36&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=f41b2ae1', '', 0x613a34383a7b733a323a226964223b733a323a223336223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22373638223b733a363a22747374616d70223b733a31303a2231343630343033383831223b733a353a227469746c65223b733a383a22436f6e746174746f223b733a353a22616c696173223b733a383a22636f6e746174746f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(351, 36, 1460404036, 3, 'tl_page', 1, 'beach-admin', 'Contatto', 'contao/main.php?do=page&act=edit&id=36&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=f41b2ae1', '1', 0x613a34383a7b733a323a226964223b733a323a223336223b733a333a22706964223b733a323a223234223b733a373a22736f7274696e67223b733a333a22373638223b733a363a22747374616d70223b733a31303a2231343630343034303139223b733a353a227469746c65223b733a383a22436f6e746174746f223b733a353a22616c696173223b733a383a22636f6e746174746f223b733a343a2274797065223b733a373a22666f7277617264223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a323a223337223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(352, 38, 1460404188, 1, 'tl_page', 1, 'beach-admin', 'Note Legali', 'contao/main.php?do=page&act=edit&id=38&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=5554f2b2', '', 0x613a34383a7b733a323a226964223b733a323a223338223b733a333a22706964223b733a323a223336223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343630343034313838223b733a353a227469746c65223b733a31313a224e6f7465204c6567616c69223b733a353a22616c696173223b733a31313a226e6f74652d6c6567616c69223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(353, 38, 1460404209, 2, 'tl_page', 1, 'beach-admin', 'Note legali', 'contao/main.php?do=page&act=edit&id=38&rt=fa124d6592c752fa6e430ff2a20b42c4&ref=5554f2b2', '1', 0x613a34383a7b733a323a226964223b733a323a223338223b733a333a22706964223b733a323a223336223b733a373a22736f7274696e67223b733a333a22323536223b733a363a22747374616d70223b733a31303a2231343630343034313838223b733a353a227469746c65223b733a31313a224e6f7465206c6567616c69223b733a353a22616c696173223b733a31313a226e6f74652d6c6567616c69223b733a343a2274797065223b733a373a22726567756c6172223b733a393a22706167655469746c65223b733a303a22223b733a383a226c616e6775616765223b733a303a22223b733a363a22726f626f7473223b733a31323a22696e6465782c666f6c6c6f77223b733a31313a226465736372697074696f6e223b733a303a22223b733a383a227265646972656374223b733a393a227065726d616e656e74223b733a363a226a756d70546f223b733a313a2230223b733a333a2275726c223b733a303a22223b733a363a22746172676574223b733a303a22223b733a333a22646e73223b733a303a22223b733a31313a2273746174696346696c6573223b733a303a22223b733a31333a22737461746963506c7567696e73223b733a303a22223b733a383a2266616c6c6261636b223b733a303a22223b733a31303a2261646d696e456d61696c223b733a303a22223b733a31303a2264617465466f726d6174223b733a303a22223b733a31303a2274696d65466f726d6174223b733a303a22223b733a31313a22646174696d466f726d6174223b733a303a22223b733a31333a22637265617465536974656d6170223b733a303a22223b733a31313a22736974656d61704e616d65223b733a303a22223b733a363a2275736553534c223b733a303a22223b733a31313a226175746f666f7277617264223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a31333a22696e636c7564654c61796f7574223b733a303a22223b733a363a226c61796f7574223b733a313a2230223b733a31323a226d6f62696c654c61796f7574223b733a313a2230223b733a31323a22696e636c7564654361636865223b733a303a22223b733a353a226361636865223b733a313a2230223b733a31323a22696e636c75646543686d6f64223b733a303a22223b733a353a226375736572223b733a313a2230223b733a363a226367726f7570223b733a313a2230223b733a353a2263686d6f64223b733a3132333a22613a393a7b693a303b733a323a227531223b693a313b733a323a227532223b693a323b733a323a227533223b693a333b733a323a227534223b693a343b733a323a227535223b693a353b733a323a227536223b693a363b733a323a226734223b693a373b733a323a226735223b693a383b733a323a226736223b7d223b733a383a226e6f536561726368223b733a303a22223b733a383a22637373436c617373223b733a303a22223b733a373a22736974656d6170223b733a31313a226d61705f64656661756c74223b733a343a2268696465223b733a303a22223b733a363a22677565737473223b733a303a22223b733a383a22746162696e646578223b733a313a2230223b733a393a226163636573736b6579223b733a303a22223b733a393a227075626c6973686564223b733a313a2231223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d),
+(354, 13, 1460404274, 3, 'tl_article', 1, 'beach-admin', 'Landesmeisterschaft', 'contao/main.php?do=article&ref=c988d820&id=13&act=edit&rt=fa124d6592c752fa6e430ff2a20b42c4', '1', 0x613a32323a7b733a323a226964223b733a323a223133223b733a333a22706964223b733a323a223132223b733a373a22736f7274696e67223b733a333a22313238223b733a363a22747374616d70223b733a31303a2231343630343034323734223b733a353a227469746c65223b733a31393a224c616e6465736d656973746572736368616674223b733a353a22616c696173223b733a31393a226c616e6465736d656973746572736368616674223b733a363a22617574686f72223b733a313a2231223b733a383a22696e436f6c756d6e223b733a343a226d61696e223b733a383a226b6579776f726473223b4e3b733a31303a2273686f77546561736572223b733a303a22223b733a31313a227465617365724373734944223b733a303a22223b733a363a22746561736572223b4e3b733a393a227072696e7461626c65223b733a303a22223b733a393a22637573746f6d54706c223b733a303a22223b733a393a2270726f746563746564223b733a303a22223b733a363a2267726f757073223b4e3b733a363a22677565737473223b733a303a22223b733a353a226373734944223b733a303a22223b733a353a227370616365223b733a303a22223b733a393a227075626c6973686564223b733a303a22223b733a353a227374617274223b733a303a22223b733a343a2273746f70223b733a303a22223b7d);
