@@ -1,0 +1,7 @@
+<?php foreach ($this->items as $item): ?>
+    <?php if ($item['isActive']): ?>
+    	<a><?= $item['link'] ?></a>
+    <?php else: ?>
+    	<a href="<?= $item['href'] ?: './' ?>" title="<?= $item['pageTitle'] ?: $item['title'] ?>"><?= $item['link'] ?></a>
+	<?php endif; ?>
+<?php endforeach; ?>

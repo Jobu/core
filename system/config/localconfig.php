@@ -21,4 +21,6 @@ $GLOBALS['TL_CONFIG']['displayErrors'] = true;
 $GLOBALS['TL_CONFIG']['bootstrapIconSet'] = 'glyphicons';
 $GLOBALS['TL_CONFIG']['adminEmail'] = 'joge@application-studios.com';
 $GLOBALS['TL_CONFIG']['websiteTitle'] = 'Beachcup';
+$GLOBALS['TL_CONFIG']['rewriteURL'] = true;
+$GLOBALS['TL_CONFIG']['addLanguageToUrl'] = true;
 ### INSTALL SCRIPT STOP ###

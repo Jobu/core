@@ -1,12 +1,17 @@
-
 <!-- indexer::stop -->
 <header id="main-header">
+	<div class="logo"><img src="./files/themes/images/logo.png"></div>
+	<div class="brand"><h1>Beachcup</h1></div>
 	<div class="container clearfix">
 		<div id="top-navigation">
 			<nav>
 				<?= $this->items ?>
 			</nav>
 		</div>
+	</div>
+	<div id="login">
+		<div class="link-text"><span>My</span>Beachcup</div>
+		<div><img src="./files/themes/css/images/login.png" /></div>
 	</div>
 	<div id="et_mobile_nav_menu">
 		<a href="#" class="mobile_nav closed">Navigation Menu</a>

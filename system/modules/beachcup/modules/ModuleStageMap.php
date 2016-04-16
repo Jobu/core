@@ -33,7 +33,12 @@ class ModuleStageMap extends \Module
 	 * @var string
 	 */
     protected $strTemplate = "mod_stage_map";
-
+    
+    /**
+     * Details key
+     * @var string
+     */
+    private $detailsKey = "stage";
 
 	/**
 	 * Generate the module
@@ -41,76 +46,49 @@ class ModuleStageMap extends \Module
 	protected function compile()
 	{
         global $objPage;
-        
         $database = \Database::getInstance();
-        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_de, tl_beachcup_stage.name_it, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id WHERE tl_beachcup_season.active = true")->fetchAllAssoc();
+        $language = "de";
+        $conjunction = " bis ";
+        $stagesAlias = "etappen";
+        $translations = array("details" => "Details", "register" => "Anmeldung");
+        
+        if($objPage->language == "it")
+        {
+            $language = "it";
+            $conjunction = " a ";
+            $stagesAlias = "tappe";
+            $translations = array("details" => "Dettagli", "register" => "Registrazione");
+        }
+        
+        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id WHERE tl_beachcup_season.active = true")->fetchAllAssoc();
+        
         
         foreach($stages as &$stage)
         {
-            //Name
-            if($objPage->language == "it")
-            {
-                $stage["name"] = $stage["name_it"];
-            }
-            else
-            {
-                $stage["name"] = $stage["name_de"];
-            }
-            
-            //Picture
             $src = deserialize($stage["picture"]);
             $file = \FilesModel::findByUuid($src);
             $path = $file->path;
             $stage["src"] = $path;
             
-            //Date
             if($stage["start_date"] == $stage["end_date"])
             {
                 $stage["date"] = \Date::parse("j. F Y", $stage["start_date"]);
             }
             else
             {
-                if($objPage->language == "it")
-                {
-                    $stage["date"] = \Date::parse("j.", $stage["start_date"]) . " a " . \Date::parse("j. F Y", $stage["end_date"]);
-                }
-                else
-                {
-                    $stage["date"] = \Date::parse("j.", $stage["start_date"]) . " bis " . \Date::parse("j. F Y", $stage["end_date"]);
-                }
+                $stage["date"] = \Date::parse("j.", $stage["start_date"]) . $conjunction . \Date::parse("j. F Y", $stage["end_date"]);
             }
             
-            //Trounaments
-            $tournaments = $database->query("SELECT DISTINCT tl_beachcup_tournament_type.description_de, tl_beachcup_tournament_type.description_it FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id WHERE tl_beachcup_tournament.stage_id = " . $stage["id"])->fetchAllAssoc();
-            
-            foreach($tournaments as &$tournament)
+            if(($alias = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($objPage->alias)->fetchAssoc()) != null)
             {
-                if($objPage->language == "it")
-                {
-                    $tournament["description"] = $tournament["description_it"];
-                }
-                else
-                {
-                    $tournament["description"] = $tournament["description_de"];
-                }
+                $stage["link"] = $this->generateFrontendUrl($alias, "/../$stagesAlias/$this->detailsKey/" . $stage["id"]);
             }
             
-            $stage["tournaments"] = $tournaments;
+            $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament_type.description_$language AS description FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id WHERE tl_beachcup_tournament.stage_id = ?")->execute($stage["id"])->fetchAllAssoc();
             
-            //Details
-            if($objPage->language == "it")
-            {
-                $stage["details"] = "Details";
-            }
-            else
-            {
-                $stage["details"] = "Dettagli";
-            }
-            
-            //Link
-            $stage["href"] = "";
         }
         
+        $this->Template->translations = $translations;
         $this->Template->stages = $stages;
 	}
 }

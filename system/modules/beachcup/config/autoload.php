@@ -37,6 +37,7 @@ ClassLoader::addClasses(array
 TemplateLoader::addFiles(array
 (
 	'mod_game_results'  => 'system/modules/beachcup/templates',
+	'mod_news_slider'   => 'system/modules/beachcup/templates',
 	'mod_stage_list'    => 'system/modules/beachcup/templates',
 	'mod_stage_map'     => 'system/modules/beachcup/templates',
 	'mod_total_results' => 'system/modules/beachcup/templates',

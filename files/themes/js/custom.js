@@ -45,13 +45,13 @@
 				$et_slider_next 	= $et_slider_arrows.find( settings.next_arrow );
 
 				$et_slider_next.click( function(){
-					et_slider_move_to( 'next' );
+					et_slider_move_to( 'previous' );
 
 					return false;
 				} );
 
 				$et_slider_prev.click( function(){
-					et_slider_move_to( 'previous' );
+					et_slider_move_to( 'next' );
 
 					return false;
 				} );
@@ -180,8 +180,9 @@
 
 			//$("#marker_pin_" + $this_li.index()).click();
 			//triggerCustomClick("#marker_pin_" + $this_li.index());
+			$.fn.et_simple_slider.external_move_to( $this_li.index() );
 			
-			$et_list_view.find( '.date' ).click();
+			$et_list_view.find( '.et-date' ).click();
 		} );
 
 		if ( $('#et-list-view.et-normal-listings').length ){
@@ -313,7 +314,7 @@
 		var $et_main_map = $( '#main_map' ),
 			new_listing_height;
 
-		if ( $et_main_map.length ) {
+		//if ( $et_main_map.length ) {
 			if ( et_window_width < 960 )
 				new_listing_height = $('.et-normal-listings #et-listings .overview ul').height();
 			else
@@ -324,7 +325,7 @@
 			if($('.et-normal-listings #et-listings').length) {
 				$('.et-normal-listings #et-listings').tinyscrollbar_update();
 			}
-		}
+		//}
 	}
 
 	$(window).load( function(){

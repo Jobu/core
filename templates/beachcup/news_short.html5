@@ -1,0 +1,36 @@
+<?php
+	$date = DateTime::createFromFormat("Y-m-d H:i", $this->date);
+	$imageSource = "./files/themes/images/no_image_found.png";
+	$first = "";
+	
+	if($this->addImage)
+	{
+		$imageSource = $this->singleSRC;
+	}
+	
+	if(strpos($this->class, "first") != false)
+	{
+		$first = " et-active-map-slide";
+	}
+?>
+<div class="et-map-slide<?= $first ?>">
+    <div class="thumbnail">
+        <img src="<?= $imageSource ?>" alt='Beautiful Stairs' width='480' height='240' />
+        <div class="et-description">
+            <h1><a href=""><?= $this->linkHeadline ?></a></h1>
+            <p><?= $this->subHeadline ?></p>
+        </div>
+        <div class="et-date-wrapper"><span class="et-date"><?= $date->format("d.m.Y") ?></span></div>
+    </div>
+    <div class="et-place-content">
+        <div class="et-place-text-wrapper">
+            <div class="et-place-main-text">
+                <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                <div class="viewport">
+                    <div class="overview"><?= $this->teaser ?></div>
+                </div>
+            </div>
+        </div>
+        <a class="more" href="<?= $this->link ?>"><span>&raquo;</span></a>
+    </div>
+</div>

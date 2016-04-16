@@ -1,0 +1,10 @@
+<div id="et-slider-wrapper" class="et-map-post">
+    <div id="et-map-slides">
+        <?php if (empty($this->articles)): ?>
+            <p class="empty"><?= $this->empty ?></p>
+        <?php else: ?>
+            <?= implode('', $this->articles) ?>
+            <?= $this->pagination ?>
+        <?php endif; ?>
+    </div>
+</div>

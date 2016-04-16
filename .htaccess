@@ -205,7 +205,7 @@ FileETag None
   #
   # Depending on your server, you might have to remove the line entirely.
   ##
-  RewriteBase /
+  #RewriteBase /
 
   ##
   # Uncomment the following lines to add "www." to the domain:
