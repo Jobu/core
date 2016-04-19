@@ -91,7 +91,6 @@ class ModuleStageList extends \Module
             if(($alias = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($objPage->alias)->fetchAssoc()) != null)
             {
                 $stage["link"] = $this->generateFrontendUrl($alias, "/$this->detailsKey/" . $stage["id"]);
-                echo $stage["id"];
             }
             
             $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament.name_$language AS name FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id WHERE tl_beachcup_tournament.stage_id = ?")->execute($stage["id"])->fetchAllAssoc();
