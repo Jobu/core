@@ -12,10 +12,11 @@ if($this->list)
             echo "<li class='horizontal-list-item'>" . $tournament["name"] . "</li>";
         }
 
-        if($stage["is_enabled"] == 1)
+        // if($stage["is_enabled"] == 1 && $stage["is_open_for_registration"] == 1)
+        /*if($stage["is_enabled"] == 1)
         {
             echo "<li class='horizontal-list-item horizontal-list-item-button'><b>Register!</b></li>";
-        }
+        }*/
 
         echo "</ul></li></a><div class='clearfix'></div><div class='divider'></div>";
     }
@@ -24,13 +25,48 @@ if($this->list)
 }
 else if($this->details)
 {
-echo "<div class='teaser'><img width='256px' src='" . $this->stage["picture_source"] . "'><h2>" . $this->stage["name"] . "</h2><i class='date-tag'>" . $this->stage["date"] . "</i><p>" . $this->stage["description"] . "</p></div><div class='clearfix'><h3 class='section-lead'>" . $this->translations["tournaments"]["title"] . "</h3><table class='responsive-table'><tr><th>" . $this->translations["tournaments"]["name"] . "</th><th>" . $this->translations["tournaments"]["date"] . "</th></tr>";
+echo "<div class='teaser clearfix'>
+        <img width='256px' src='" . $this->stage["picture_source"] . "'>
+        <h1>" . $this->stage["name"] . "</h1>
+        <i class='date-tag'>" . $this->stage["date"] . "</i>
+        <p>" . $this->stage["description"] . "</p>
+    </div>
+    <hr/>
+    <h2 class='section-lead'>" . $this->translations["tournaments"]["title"] . "</h2>
+    <p><table class='responsive-table'><tr><th>" . $this->translations["tournaments"]["name"] . "</th><th>" . $this->translations["tournaments"]["date"] . "</th></tr>";
     
     foreach($this->stage["tournaments"] as $tournament)
     {
-        echo "<tr><td>" . $tournament["name"] . "</td><td>" . $tournament["date"] . "</td></tr>";
+        echo "<tr><td>" . $tournament["name"] . "</td><td>" . \Date::parse("j. F Y", $tournament["date"]) . "</td></tr>";
     }
     
-    echo "</table></div><h3 class='section-lead'>" . $this->translations["venue"]["title"] . "</h3><h4>" . $this->stage["venue_name"] . "</h4><p>" . $this->stage["venue_description"] . "</p><p><strong>" . $this->stage["venue_address"] . "</br>" . $this->stage["venue_zip_code"] . " " . $this->stage["venue_city"] . "</strong></p><h3 class='section-lead'>" . $this->translations["organizer"]["title"] . "</h3><h4>" . $this->stage["organizer_name"] . "</h4><p>" . $this->stage["organizer_description"] . "</p>";
+    echo "</table></p>
+        <hr/>
+        <h2 class='section-lead'>" . $this->translations["venue"]["title"] . "</h2>
+            <h4>" . $this->stage["venue_name"] . "</h4>
+            <p>" . $this->stage["venue_description"] . "</p>
+            <p>" . $this->translations["venue"]["address"] . ":</p>
+            <p>" . $this->stage["venue_address"] . "</br>" . $this->stage["venue_zip_code"] . " " . $this->stage["venue_city"] . "</p>
+        <hr/>
+        <h2 class='section-lead'>" . $this->translations["organizer"]["title"] . "</h2>
+            <h4>" . $this->stage["organizer_name"] . "</h4>";
+            if($this->stage["organizer_description"]) {
+                echo "<p>" . $this->stage["organizer_description"] . "</p>";
+            }
+            if($this->stage["contact_person"]) {
+                echo "<p>" . $this->stage["contact_person"] . "</p>";
+            }
+            if($this->stage["email"]) {
+                echo "<p>" . $this->stage["email"] . "</p>";
+            }
+            if($this->stage["phone"]) {
+                echo "<p>" . $this->stage["phone"] . "</p>";
+            }
+            if($this->stage["fax"]) {
+                echo "<p>" . $this->stage["fax"] . "</p>";
+            }
+            if($this->stage["mobile_phone"]) {
+                echo "<p>" . $this->stage["mobile_phone"] . "</p>";
+            }
 }
 ?>

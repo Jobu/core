@@ -352,7 +352,7 @@
 				if ( $et_main_map.length ) {
 					var m = $et_main_map.gmap3("get");
 					m.panTo( et_active_marker.position );
-					m.panBy(0, -50);
+					m.panBy(100, -50);
 
 					if ( $('#slider-wrapper').is(":visible") ) $('.et-place-main-text:visible').tinyscrollbar_update();
 
@@ -362,7 +362,7 @@
 				if ( $et_single_map.length ) {
 					var m = $et_single_map.gmap3("get");
 					m.panTo( et_active_marker.position );
-					m.panBy(0, -50);
+					m.panBy(100, -50);
 				}
 			}
 

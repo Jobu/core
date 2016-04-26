@@ -2,6 +2,16 @@
 	$date = DateTime::createFromFormat("Y-m-d H:i", $this->date);
 	$imageSource = "./files/themes/images/no_image_found.png";
 	$first = "";
+
+    global $objPage;    
+    $language = "de";    
+    $translations = array("toArticle" => "zum Beitrag");
+    
+    if($objPage->language == "it")
+    {
+        $language = "it";        
+        $translations = array("toArticle" => "mostra articolo");
+    }
 	
 	if($this->addImage)
 	{
@@ -15,7 +25,7 @@
 ?>
 <div class="et-map-slide<?= $first ?>">
     <div class="thumbnail">
-        <img src="<?= $imageSource ?>" alt='Beautiful Stairs' width='480' height='240' />
+        <img src="<?= $imageSource ?>" width='480' height='240' />
         <div class="et-description">
             <h1><a href=""><?= $this->linkHeadline ?></a></h1>
             <p><?= $this->subHeadline ?></p>
@@ -31,6 +41,6 @@
                 </div>
             </div>
         </div>
-        <a class="more" href="<?= $this->link ?>"><span>&raquo;</span></a>
+        <a class="more" href="<?= $this->link ?>"><span><?= $translations["toArticle"] ?> &raquo;</span></a>
     </div>
 </div>

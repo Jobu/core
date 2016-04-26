@@ -1,14 +1,26 @@
+<?php
+	global $objPage;    
+    $language = "de";    
+    $translations = array("toArticle" => "zum Beitrag");
+    
+    if($objPage->language == "it")
+    {
+        $language = "it";        
+        $translations = array("toArticle" => "mostra articolo");
+    }
+?>
 <li class="clearfix">
 	<div class="listing-image">
 		<?php
 		if($this->addImage)
 		{
-			//echo "<img src='" . $this->picture["img"]["src"] . "' alt='" . $this->picture["alt"] . "' width='60' height='60' />";
+			echo "<img src='" . $this->picture["img"]["src"] . "' alt='" . $this->picture["alt"] . "' width='60' height='60' />";
 		}
 		?>
 	</div>
 	<div class="listing-text">
 		<h3><?= $this->linkHeadline ?></h3>
-		<p><?= $this->teaser ?></p>
+		<p><?= $this->subHeadline ?></p>
+		<a class="article-text-link" href="<?= $this->link ?>"><span><?= $translations["toArticle"] ?> &raquo;</span></a>
 	</div>
 </li>

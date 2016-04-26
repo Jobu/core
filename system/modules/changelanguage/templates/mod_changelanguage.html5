@@ -1,12 +1,18 @@
 
 <!-- indexer::stop -->
-<nav class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
-<?php if ($this->headline): ?>
+<div id="login-and-lang">
+	<div id="login">
+		<div class="link-text"><span>My</span>Beachcup</div>
+		<div><img src="./files/themes/css/images/login.png" /></div>
+	</div>
+	<nav class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+	<?php if ($this->headline): ?>
 
-<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
-<?php endif; ?>
+	<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+	<?php endif; ?>
 
-<?php echo $this->items; ?>
+	<?php echo $this->items; ?>
 
-</nav>
+	</nav>
+</div>
 <!-- indexer::continue -->

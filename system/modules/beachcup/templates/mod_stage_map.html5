@@ -83,7 +83,7 @@
                     markerHtml.find('.et-marker').addClass('current');
                     marker.setContent(markerHtml.html());
                     map.panTo( marker.position );
-                    map.panBy(0, -50);
+                    map.panBy(100, -50);
                     // set the current marker info window and add event listeners for the non-active markers
                     $("#marker_" + marker_order).addClass('current');
                     google.maps.event.addListenerOnce(map, 'dragstart', function() {
@@ -124,13 +124,15 @@
             {
                 $stage = $this->stages[$i];
                 
-                if($stage["is_enabled"] == 0)
+                // if($stage["is_enabled"] == 1 && $stage["is_open_for_registration"])
+                if($stage["is_enabled"] == 1)
                 {
+                    //$html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="ribbon red"><span>' . $this->translations["register"] . '</span></div><div class="location-title"><div class="tournament-list">';
                     $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="location-title"><div class="tournament-list">';
                 }
                 else
                 {
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="ribbon red"><span>' . $this->translations["register"] . '</span></div><div class="location-title"><div class="tournament-list">';
+                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="location-title"><div class="tournament-list">';
                 }
                 
                 foreach($stage["tournaments"] as $tournament)

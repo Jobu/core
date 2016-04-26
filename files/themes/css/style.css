@@ -114,11 +114,11 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 	#main-header .container, #filter-bar .container { text-align: left; margin: 0 auto; width: 750px; position: relative; }
 	.container { text-align: left; margin: 0 auto; width: 960px; position: relative; }
 		#logo, #top-navigation { float: left; }
-		#login { color: white; position: absolute; right: 20px; top: 10px; margin-top: 15px; }
+		#login { color: white; }
 		#login .link-text { font-weight: 800; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
 		#login .link-text span { font-weight: 300; }
 		#login img { height: 30px; }
-		#login div { display: inline-block; }
+		#login div { display: inline-block; vertical-align: middle; }
 		#login:hover { cursor: pointer; }
 		/*#top-navigation { padding-right: 145px; }*/
 			#top-navigation nav { float: left; padding: 11px 0 0 11px; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
@@ -230,7 +230,7 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 		.location-rating { border: 1px solid #7a8800; background: rgb(198, 212, 75); /* Old browsers */ background: -moz-linear-gradient(top,  rgba(198, 212, 75,1) 0%, rgba(173, 187, 50,1) 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(198, 212, 75,1)), color-stop(100%,rgba(173, 187, 50,1))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* IE10+ */ background: linear-gradient(to bottom,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42aded', endColorstr='#3ca4e1',GradientType=0 ); /* IE6-9 */ min-height: 32px; -webkit-box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); -moz-box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); position: relative; }
 		.location-rating .et-date { border: none; background: none; box-shadow: none; }
 			.location-rating:before { content: ''; position: absolute; bottom: -20px; left: 50%; border: 10px solid transparent; margin-left: -8px; border-top-color: #ADBB32; }
-		.et-map-post { width: 480px; -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); position: absolute; top: 160px; right: 60px; }
+		.et-map-post { width: 480px; -webkit-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); -moz-box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); box-shadow: 0 3px 20px rgba(0, 0, 0, 0.1); position: absolute; top: 120px; right: 60px; }
 		#et-slider-wrapper { -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 40px rgba(48, 73, 102, 0.1); -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 40px rgba(48, 73, 102, 0.1); box-shadow: 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 40px rgba(48, 73, 102, 0.1); background: #fff url(images/et-list-view-bg.png); }
 			.thumbnail, .post-thumbnail { position: relative; }
 			.thumbnail, .et-map-postmeta, .post-thumbnail { text-align: center; }
@@ -432,6 +432,7 @@ div.marker_info { opacity: 0; background: #fff; bottom: 50px; position: absolute
 				.listing-text { float: left; padding-top: 5px; text-shadow: 1px 1px 0 #fff; padding-left: 20px; }
 					.listing-text h3 { font-weight: 800; font-size: 14px; color: #2a2a2a; margin-bottom: -4px; }
 					.listing-text p { font-weight: 300; padding-bottom: 0; }
+					.listing-text a.article-text-link { display: block; margin-top: 5px; color: #000000; }
 
 .thumbnail img { display: block; }
 
@@ -770,6 +771,9 @@ img.alignright { display:inline; float:right; margin-left:15px; }
 		#et_pt_portfolio_gallery.et_portfolio_large .et_portfolio_more_icon, #et_pt_portfolio_gallery.et_portfolio_large .et_portfolio_zoom_icon { top: 109px !important; }
 		#et_pt_portfolio_gallery.et_portfolio_large .et_portfolio_more_icon { left: 155px !important; }
 		#et_pt_portfolio_gallery.et_portfolio_large .et_portfolio_zoom_icon { left: 195px !important; }
+	#main_map img.location-image {
+		display: none;
+	}
 }
 
 @media only screen and ( max-width: 479px ) {
