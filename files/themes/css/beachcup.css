@@ -21,13 +21,6 @@ summary
     z-index: 1;
 }
 
-#login-and-lang {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    margin-top: 10px;
-}
-
 #login {
     /*display: none;*/
     display: inline-block;
@@ -39,6 +32,11 @@ summary
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+#main-header .mobile-logo
+{
+    display: none;
 }
 
 #main .inside {
@@ -358,17 +356,14 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
         display: none;
     }
     
-    #main-header .brand
+    #main-header .mobile-logo
     {
+        display: block;
         position: absolute;
         width: 100%;
-        top: 5px;
+        top: 0;
         left: 0;
         text-align: center;
-        font-weight: 800;
-        font-family: 'Lobster', Arial, sans-serif;
-        color: #2a2a2a;
-        text-shadow: 1px 1px 0 #fff;
     }
         
     #login .link-text

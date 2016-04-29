@@ -1,7 +1,7 @@
 <!-- indexer::stop -->
 <header id="main-header">
 	<div class="logo"><img src="./files/themes/images/logo.png"></div>
-	<div class="brand"><h1>Beachcup</h1></div>
+	<div class="mobile-logo"><img src="./files/themes/images/mobile_logo.png"></div>
 	<div class="container clearfix">
 		<div id="top-navigation">
 			<nav>
