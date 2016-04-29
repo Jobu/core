@@ -115,7 +115,7 @@ class ModuleStageList extends \Module
         {
             $language = "it";
             $conjunction = " a ";
-            $translations = array("tournaments" => array("title" => "Tornei", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo designato", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"));
+            $translations = array("tournaments" => array("title" => "Tornei", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"));
         }
         
         $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, 
