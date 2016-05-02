@@ -83,7 +83,11 @@
                     markerHtml.find('.et-marker').addClass('current');
                     marker.setContent(markerHtml.html());
                     map.panTo( marker.position );
-                    map.panBy(100, -50);
+                    if ( $('#et-slider-wrapper').is(":visible") ) {
+                        map.panBy(100, -50);
+                    } else {
+                        map.panBy(0, -50);
+                    }
                     // set the current marker info window and add event listeners for the non-active markers
                     $("#marker_" + marker_order).addClass('current');
                     google.maps.event.addListenerOnce(map, 'dragstart', function() {
