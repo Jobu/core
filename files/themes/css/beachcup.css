@@ -34,6 +34,13 @@ summary
     box-sizing: border-box;
 }
 
+#main-header .logo
+{
+    position: absolute;
+    left: 5%;
+    top: 0;
+}
+
 #main-header .mobile-logo
 {
     display: none;
@@ -343,6 +350,13 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
     color: #c6d44b;
 }
 
+@media only screen and ( max-width: 1440px ) {
+    #main-header .logo
+    {        
+        left: 2%;
+    }
+}
+
 /* Small */
 @media (max-width: 960px)
 {
@@ -413,14 +427,7 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
     {
         width: 50%;
         margin-left: 25%;
-    }
-    
-    #main-header .logo
-    {
-        position: absolute;
-        left: 5%;
-        top: 0;
-    }
+    }    
     
     #main-header .brand
     {
