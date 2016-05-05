@@ -40,6 +40,58 @@
 
 
             var map = $main_map.gmap3("get");
+            var oms = new OverlappingMarkerSpiderfier(map);
+            oms.addListener('click', function(marker, event) {
+                if ( et_active_marker ){
+                    var activeMarkerHtml = $("<div>" + et_active_marker.getContent() + "</div>");
+                    activeMarkerHtml.find('.et-marker').removeClass('current');
+                    et_active_marker.setContent(activeMarkerHtml.html());
+                    // reset the marker info windwos
+                    $(".marker_info").removeClass('current');
+                    // hide last active marker info window
+                    $('#' + et_active_marker.id).stop(true,true).animate( { bottom : '50px', opacity : 0 }, 500, function() {
+                        $(this).css( { 'display' : 'none' } );
+                    } );
+                    // add the event listeners
+                    var lastActiveMarkerId = et_active_marker.id;
+                    /*google.maps.event.addDomListener(et_active_marker, 'mouseover', function() {
+                                            $( '#' + lastActiveMarkerId ).css( { 'display' : 'block', 'opacity' : 0 } ).stop(true,true).animate( { bottom : '15px', opacity : 1 }, 500 );
+                                        });
+                                        google.maps.event.addDomListener(et_active_marker, 'mouseout', function() {
+                                            $( '#' + lastActiveMarkerId ).stop(true,true).animate( { bottom : '50px', opacity : 0 }, 500, function() {
+                                                $(this).css( { 'display' : 'none' } );
+                                            } );
+                                        });*/
+                }
+                et_active_marker = marker;
+
+                var markerHtml = $("<div>" + marker.getContent() + "</div>");                               
+                markerHtml.find('.et-marker').addClass('current');
+                marker.setContent(markerHtml.html());
+                map.panTo( marker.position );
+                if ( $('#et-slider-wrapper').is(":visible") ) {
+                    map.panBy(100, -50);
+                } else {
+                    map.panBy(0, -50);
+                }
+                // set the current marker info window and add event listeners for the non-active markers
+                $('#' + marker.id).addClass('current');
+                google.maps.event.addListenerOnce(map, 'dragstart', function() {
+                    $('#' + marker.id).removeClass('current');
+                });
+                google.maps.event.addListenerOnce(map, 'zoom_changed', function() {
+                    $('#' + marker.id).removeClass('current');
+                });
+                // show current marker info window
+                $('#' + marker.id).css( { 'display' : 'block', 'opacity' : 0 } ).stop(true,true).animate( { bottom : '15px', opacity : 1 }, 500 );
+                // hack to let the tooltip disappear
+                // google.maps.event.trigger(marker, 'mouseout');
+                // clear the event listeners for the current marker
+                google.maps.event.clearListeners(marker, 'mouseover');
+                google.maps.event.clearListeners(marker, 'mouseout');
+
+                //$.fn.et_simple_slider.external_move_to( marker_order );
+            });
             var markerPointList = new Array();
             var markerList = new Array();
 
@@ -53,59 +105,12 @@
                     map: map,
                     flat: true,
                     content: "<div id='" + marker_pin_id + "' class='et-marker'><div class='marker-icon'></div><span class='marker-number'>" + marker_number + "</span></div>"
-                });							
-
-                google.maps.event.addDomListener(marker, 'click', function() {
-                    if ( et_active_marker ){
-                        var activeMarkerHtml = $("<div>" + et_active_marker.getContent() + "</div>");
-                        activeMarkerHtml.find('.et-marker').removeClass('current');
-                        et_active_marker.setContent(activeMarkerHtml.html());
-                        // reset the marker info windwos
-                        $(".marker_info").removeClass('current');
-                        // hide last active marker info window
-                        $('#' + et_active_marker.id).stop(true,true).animate( { bottom : '50px', opacity : 0 }, 500, function() {
-                            $(this).css( { 'display' : 'none' } );
-                        } );
-                        // add the event listeners
-                        var lastActiveMarkerId = et_active_marker.id;
-                        /*google.maps.event.addDomListener(et_active_marker, 'mouseover', function() {
-												$( '#' + lastActiveMarkerId ).css( { 'display' : 'block', 'opacity' : 0 } ).stop(true,true).animate( { bottom : '15px', opacity : 1 }, 500 );
-											});
-											google.maps.event.addDomListener(et_active_marker, 'mouseout', function() {
-												$( '#' + lastActiveMarkerId ).stop(true,true).animate( { bottom : '50px', opacity : 0 }, 500, function() {
-													$(this).css( { 'display' : 'none' } );
-												} );
-											});*/
-                    }
-                    et_active_marker = marker;
-
-                    var markerHtml = $("<div>" + marker.getContent() + "</div>");								
-                    markerHtml.find('.et-marker').addClass('current');
-                    marker.setContent(markerHtml.html());
-                    map.panTo( marker.position );
-                    if ( $('#et-slider-wrapper').is(":visible") ) {
-                        map.panBy(100, -50);
-                    } else {
-                        map.panBy(0, -50);
-                    }
-                    // set the current marker info window and add event listeners for the non-active markers
-                    $("#marker_" + marker_order).addClass('current');
-                    google.maps.event.addListenerOnce(map, 'dragstart', function() {
-                        $("#marker_" + marker_order).removeClass('current');
-                    });
-                    google.maps.event.addListenerOnce(map, 'zoom_changed', function() {
-                        $("#marker_" + marker_order).removeClass('current');
-                    });
-                    // show current marker info window
-                    $('#' + marker.id).css( { 'display' : 'block', 'opacity' : 0 } ).stop(true,true).animate( { bottom : '15px', opacity : 1 }, 500 );
-                    // hack to let the tooltip disappear
-                    // google.maps.event.trigger(marker, 'mouseout');
-                    // clear the event listeners for the current marker
-                    google.maps.event.clearListeners(marker, 'mouseover');
-                    google.maps.event.clearListeners(marker, 'mouseout');
-
-                    //$.fn.et_simple_slider.external_move_to( marker_order );
                 });
+                oms.addMarker(marker);
+            
+                /*google.maps.event.addDomListener(marker, 'click', function() {
+                    
+                });*/
 
                 markerList.push(marker);
 
