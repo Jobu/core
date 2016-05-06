@@ -172,7 +172,7 @@
 		$et_listings_item.click( function(){
 			var $this_li = $(this);
 
-			if ( $this_li.hasClass( 'et-active-listing' ) ) return false;
+			//if ( $this_li.hasClass( 'et-active-listing' ) ) return false;
 
 			$this_li.siblings( '.et-active-listing' ).removeClass( 'et-active-listing' );
 
@@ -180,7 +180,9 @@
 
 			//$("#marker_pin_" + $this_li.index()).click();
 			//triggerCustomClick("#marker_pin_" + $this_li.index());
-			$.fn.et_simple_slider.external_move_to( $this_li.index() );
+			if (typeof $.fn.et_simple_slider.external_move_to === 'function') {
+				$.fn.et_simple_slider.external_move_to( $this_li.index() );
+			}
 			
 			$et_list_view.find( '.et-date' ).click();
 		} );
@@ -348,7 +350,7 @@
 
 			et_window_width = $(window).width();
 
-			if(et_active_marker) {
+			if(typeof et_active_marker !== "undefined") {
 				if ( $et_main_map.length ) {
 					var m = $et_main_map.gmap3("get");
 					m.panTo( et_active_marker.position );

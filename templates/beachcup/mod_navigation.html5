@@ -1,7 +1,7 @@
 <!-- indexer::stop -->
 <header id="main-header">
-	<div class="logo"><img src="./files/themes/images/logo.png"></div>
-	<div class="mobile-logo"><img src="./files/themes/images/mobile_logo.png"></div>
+	<div class="logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}"><img src="./files/themes/images/logo.png"></a></div>
+	<div class="mobile-logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}"><img src="./files/themes/images/mobile_logo.png"></a></div>
 	<div class="container clearfix">
 		<div id="top-navigation">
 			<nav>

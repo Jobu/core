@@ -8,6 +8,7 @@
         $language = "it";        
         $translations = array("toArticle" => "mostra articolo");
     }
+    $date = DateTime::createFromFormat("Y-m-d H:i", $this->date);
 ?>
 <li class="clearfix">
 	<div class="listing-image">
@@ -20,6 +21,7 @@
 	</div>
 	<div class="listing-text">
 		<h3><?= $this->linkHeadline ?></h3>
+		<p><?= $date->format("d.m.Y") ?></p>
 		<p><?= $this->subHeadline ?></p>
 		<a class="article-text-link" href="<?= $this->link ?>"><span><?= $translations["toArticle"] ?> &raquo;</span></a>
 	</div>

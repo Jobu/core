@@ -149,7 +149,7 @@
                     $html .= '<div class="et-date">' . $tournament["description"] . '</div>';
                 }
 
-                $html .= '</div><h2>' . $stage["name"] . '</h2><a href="' . $stage["link"] . '" class="more"><span>&gt;&gt;</span>' . $this->translations["details"] . '<span>&lt;&lt;</span></a></div><img class="location-image" src="' . $stage["src"] . '"><div class="location-rating"><span class="et-date">' . $stage["date"] . '</span></div></div></div>';
+                $html .= '</div><a href="' . $stage["link"] . '"><h2>' . $stage["name"] . '</h2></a></div><img class="location-image" src="' . $stage["src"] . '"><div class="location-rating"><span class="et-date">' . $stage["date"] . '</span></div></div></div>';
             
                 echo 'et_add_marker(' . $i . ', ' . $stage["latitude"] . ', ' . $stage["longitude"] . ', \'' . $html . '\');markerPointList.push(new google.maps.LatLng (' . $stage["latitude"] . ', ' . $stage["longitude"] . '));';
             }

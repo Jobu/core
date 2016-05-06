@@ -22,8 +22,8 @@ summary
 }
 
 #login {
-    /*display: none;*/
-    display: inline-block;
+    display: none;
+    /*display: inline-block;*/
     vertical-align: middle;
 }
 
@@ -44,6 +44,11 @@ summary
 #main-header .mobile-logo
 {
     display: none;
+    z-index: 100;
+}
+
+#main-header .logo a, #main-header .mobile-logo a {
+    display: block;
 }
 
 #main .inside {
@@ -374,10 +379,11 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
     {
         display: block;
         position: absolute;
-        width: 100%;
         top: 0;
-        left: 0;
+        left: 50%;
         text-align: center;
+        width: 192px;
+        margin-left: -96px;
     }
         
     #login .link-text
@@ -404,9 +410,14 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
         width: 100%;
     }
     
-    #footer
+    #footer {
+        padding-top: 5px;
+        padding-bottom: 2px;
+    }
+
+    #sponsors img
     {
-        height: auto;
+        height: 30px;
     }
     
     .responsive-language-switch

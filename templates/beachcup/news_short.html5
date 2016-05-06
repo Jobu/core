@@ -27,7 +27,7 @@
     <div class="thumbnail">
         <img src="<?= $imageSource ?>" width='480' height='240' />
         <div class="et-description">
-            <h1><a href=""><?= $this->linkHeadline ?></a></h1>
+            <h1><?= $this->linkHeadline ?></h1>
             <p><?= $this->subHeadline ?></p>
         </div>
         <div class="et-date-wrapper"><span class="et-date"><?= $date->format("d.m.Y") ?></span></div>

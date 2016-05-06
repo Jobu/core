@@ -47,7 +47,7 @@ article, aside, footer, header, hgroup, nav, section { display: block; }
 
 body { font-family: 'Open Sans', Arial, sans-serif; font-size: 14px; color: #2a2a2a; }
 
-a { text-decoration: none; color: #4bb6f5; }
+a { text-decoration: none; color: #adbb32; }
 a:hover { text-decoration: underline; }
 .clear { clear: both; }
 .ui-tabs-hide { display: none; }
@@ -225,6 +225,7 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
     padding: 5px;     
      text-align: center; }
 		.location-title { -webkit-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1); -moz-box-shadow: inset 0 3px 7px rgba(0, 0, 0, 0.1); box-shadow: inset 0 3px 20px rgba(0, 0, 0, 0.1); border: 1px solid rgba(0, 0, 0, 0.3); border-bottom: none; }
+		.location-title > a { color: #000000; }
 		.location-description .tournament-list { padding-bottom: 5px; padding-top: 5px; }
 		.location-description .location-title .et-date { border-radius: 17px; margin-left: 2px; margin-right: 2px; padding: 5px 10px; }
 			.location-title h2 { font-size: 22px; color: #2a2a2a; text-shadow: 1px 1px 0 #fff; padding: 10px 35px 10px; }
@@ -246,7 +247,7 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 				.post-description.no_thumb h2 a { color: #6e6e6e; text-shadow: none; }
 				.post-description.no_thumb .meta-info,.post-description.no_thumb .meta-info a { text-shadow: none; color: #6e6e6e; }
 					.et-description h1, .post-description h2, .post-description h1 { font-size: 36px; color: #fff; }
-						.et-description h1 a, .post-description h2 a { text-decoration: none; color: inherit; }
+						.et-description h1 a, .post-description h2 a { color: inherit; }
 					.et-description p { color: #fff; font-size: 18px; padding-bottom: 3px; }
 			.et-date-wrapper { position: absolute; top: 0; left: 0; width: 100%; text-align: center; }
 				.et-date { border: 1px solid #7a8800; background: rgb(198, 212, 75); /* Old browsers */ background: -moz-linear-gradient(top,  rgba(198, 212, 75,1) 0%, rgba(173, 187, 50,1) 100%); /* FF3.6+ */ background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(198, 212, 75,1)), color-stop(100%,rgba(173, 187, 50,1))); /* Chrome,Safari4+ */ background: -webkit-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* Chrome10+,Safari5.1+ */ background: -o-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* Opera 11.10+ */ background: -ms-linear-gradient(top,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* IE10+ */ background: linear-gradient(to bottom,  rgba(198, 212, 75,1) 0%,rgba(173, 187, 50,1) 100%); /* W3C */ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#42aded', endColorstr='#3aa1de',GradientType=0 ); /* IE6-9 */ padding: 9px 14px; font-weight: 800; color: #fff; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); -webkit-box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); -moz-box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); box-shadow: inset 0 1px 0 #c6d44b, 0 2px 4px rgba(0,0,0,0.3); display: inline-block; }
@@ -400,7 +401,6 @@ div.marker_info { opacity: 0; background: #fff; bottom: 50px; position: absolute
 			.viewport .overview > p:nth-of-type(1):first-letter { display: block; float: left; font-size: 60px; margin-right: 14px; margin-top: 10px; }
 			.et-place-main-text p { line-height: 30px; }
 	.more { float: right; margin-right: 25px; margin-top: 14px; color: #b8b8b8; text-shadow: 1px 1px 0 #fff; }
-	.more:hover { text-decoration: none; color: #555; }
 		.more span { font-weight: 300px; font-size: 18px; color: #adbb32; padding-left: 10px; }
 
 .et-map-post .viewport { width: 350px; height: 234px; overflow: hidden; position: relative; }
