@@ -63,11 +63,13 @@ class ModuleStageList extends \Module
         $database = \Database::getInstance();
         $language = "de";
         $conjunction = " bis ";
+        $translations = array("register" => "Anmeldung");
         
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
+            $translations = array("register" => "Iscrizione");
         }
         
         $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture 
@@ -100,6 +102,7 @@ class ModuleStageList extends \Module
                                                         WHERE tl_beachcup_tournament.stage_id = ?")->execute($stage["id"])->fetchAllAssoc();
         }
         
+        $this->Template->translations = $translations;
         $this->Template->stages = $stages;
     }
     

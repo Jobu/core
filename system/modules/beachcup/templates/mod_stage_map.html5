@@ -136,18 +136,19 @@
                 
                 $today = new DateTime("now");
                 $today->setTime(0, 0, 0);
-                //$stageEndDate = new DateTime("tomorrow");
                 $stageEndDate = new DateTime();
                 $stageEndDate->setTimestamp($stage["end_date"]);
                 $stageEndDate->setTime(0, 0, 0);                
-
-                // if($stage["is_enabled"] == 1 && $stage["is_open_for_registration"])
-                //if($stage["is_enabled"] == 1)
+                
                 if($activeStageFound === false && $today <= $stageEndDate)
                 {
                     $activeStageFound = true;
-                    //$html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="ribbon red"><span>' . $this->translations["register"] . '</span></div><div class="location-title"><div class="tournament-list">';
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
+                    if($stage["is_enabled"] == 1) {
+                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="ribbon red"><span>' . $this->translations["register"] . '</span></div><div class="location-title"><div class="tournament-list">';
+                    }
+                    else {
+                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
+                    }                    
                 }
                 else
                 {
@@ -192,14 +193,11 @@
                 $stage = $this->stages[$i];
                 
                 $today = new DateTime("now");
-                $today->setTime(0, 0, 0);
-                //$stageEndDate = new DateTime("tomorrow");
+                $today->setTime(0, 0, 0);                
                 $stageEndDate = new DateTime();
                 $stageEndDate->setTimestamp($stage["end_date"]);
                 $stageEndDate->setTime(0, 0, 0);
-
-                // if($stage["is_enabled"] == 1 && $stage["is_open_for_registration"])
-                //if($this->stages[$i]["is_enabled"] == 1)
+                
                 if($activeStageFound === false && $today <= $stageEndDate)
                 {
                     $activeStageFound = true;

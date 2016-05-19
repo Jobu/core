@@ -12,11 +12,10 @@ if($this->list)
             echo "<li class='horizontal-list-item'>" . $tournament["name"] . "</li>";
         }
 
-        // if($stage["is_enabled"] == 1 && $stage["is_open_for_registration"] == 1)
-        /*if($stage["is_enabled"] == 1)
+        if($stage["is_enabled"] == 1)
         {
-            echo "<li class='horizontal-list-item horizontal-list-item-button'><b>Register!</b></li>";
-        }*/
+            echo "<li class='horizontal-list-item horizontal-list-item-button'><b>" . $this->translations["register"] . "</b></li>";
+        }
 
         echo "</ul></li></a><div class='clearfix'></div><div class='divider'></div>";
     }
