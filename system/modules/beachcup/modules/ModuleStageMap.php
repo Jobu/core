@@ -60,7 +60,7 @@ class ModuleStageMap extends \Module
             $translations = array("details" => "Dettagli", "register" => "Registrazione");
         }
         
-        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude, tl_beachcup_venue.address_$language AS address FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id WHERE tl_beachcup_season.active = true")->fetchAllAssoc();
+        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude, tl_beachcup_venue.address_$language AS address FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id WHERE tl_beachcup_season.active = true ORDER BY tl_beachcup_stage.start_date")->fetchAllAssoc();
         
         
         foreach($stages as &$stage)
