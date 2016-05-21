@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE contaopackage>
+<extension name="efg" date="20150723">
+    <author user="tom" name="Thomas Kuhn" />
+    <copyright>(c) 2014 Thomas Kuhn</copyright>
+    <license>GNU LGPL V3</license>
+    <classification type="free" category="application" />
+    <release version="20020019" build="5" date="20140213" />
+    <contao minversion="30020039" maxversion="30020079" />
+    <requiredextension name="xls_export" minversion="30000009" maxversion="30000009" />
+    <language code="pl">
+        <translator user="qrczak" name="Marcin Lachowski" website="http://www.typolight.pl" />
+        <searchtags>Magazyn danych</searchtags>
+        <title>EFG - Magazyn danych</title>
+        <teaser>Zarządzaj danymi z formularzy: maile potwierdzające, przechowywanie danych, wyświetlanie i ich edycja w panelu admina oraz na st</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Wysyła spersonalizowane maile potwierdzające po otrzymaniu danych z formularzy na stronach serwisu&lt;/li&gt;
+&lt;li&gt;magazynuje dane z formularzy w panelu admina&lt;/li&gt;
+&lt;li&gt;listy, edycja i export danych z formularzy na stronie serwisu&lt;/li&gt;
+&lt;li&gt;wartości p&amp;oacute;l formularza takich jak lista rozwijana, pole jednokrotnego wyboru i pole wielokrotnego wyboru mogą być pobierane z bazy danych&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <releasenotes>&lt;p&gt;&lt;em&gt;2012-05-20&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modifications for Contao 2.11&lt;/li&gt;
+&lt;li&gt;Added: New options in frontend module &#039;listing form data&#039; to deactivate mail delivery on frontend editing&lt;/li&gt;
+&lt;/ul&gt;</releasenotes>
+        <manual link="http://dev.typolight.org/wiki/ExtensionsEfg" />
+        <forum link="http://www.typolight.org/forum/topic/2489.html" />
+    </language>
+    <language code="nl">
+        <translator user="justs" name="Just Schimmelpenninck" />
+        <searchtags>Formulier,e-mail,Gegevensopslag</searchtags>
+        <title>EFG - Extended Form Generator</title>
+        <teaser>Behandel formuliergegevens: bevestigingsmail, gegevensopslag, lijsten en formulierbewerking in backend en frontend.</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Verstuur gepersonaliseerde bevestigingsmails vanuit een frontend formulier&lt;/li&gt;
+&lt;li&gt;Sla gegevens van formulieren op in backend modules en/of gebruik de formuliergenerator om backend modules te maken&lt;/li&gt;
+&lt;li&gt;Orden, wijzig en exporteer formuliergegevens in het frontend&lt;/li&gt;
+&lt;li&gt;Formuliervelden als select/radio/checkbox halen de waarde uit een database tabel.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <releasenotes>&lt;p&gt;&lt;em&gt;2012-05-20&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modifications for Contao 2.11&lt;/li&gt;
+&lt;li&gt;Added: New options in frontend module &#039;listing form data&#039; to deactivate mail delivery on frontend editing&lt;/li&gt;
+&lt;/ul&gt;</releasenotes>
+        <manual link="http://dev.typolight.org/wiki/ExtensionsEfg" />
+        <forum link="http://www.contao-community.de/forumdisplay.php?13-efg" />
+    </language>
+    <language code="en">
+        <translator user="tom" name="Thomas Kuhn" />
+        <searchtags>Form,e-Mail,Data storage</searchtags>
+        <title>EFG - Extended Form Generator</title>
+        <teaser>Manage form data: confirmation email, data storage, list and edit in backend and frontend</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Sending personalized conformation mails after receiving data from frontend forms&lt;/li&gt;
+&lt;li&gt;Multi page forms&lt;/li&gt;
+&lt;li&gt;Store data from forms in backend modules and/or use form generator to create backend modules&lt;/li&gt;
+&lt;li&gt;List, edit and export formdata in frontend&lt;/li&gt;
+&lt;li&gt;Form fields of types select/radio/checkbox taking values from database table&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tickets / Bugs&lt;/h3&gt;
+https://bitbucket.org/thk/efg/issues</description>
+        <releasenotes>Version 2.2.1 (2014-02-13)&lt;br&gt;
+---------------------------&lt;br&gt;
+
+Changelog:&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Support using closures as DCA callbacks&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Do not pass POST data to the &#039;deserialize()&#039; function&lt;br&gt;&lt;br&gt;
+Fixed&lt;br&gt;
+Installing or updating EFG when running Contao in &#039;coreOnlyMode&#039; did throw a fatal error &#039;Class Formdata not found&#039;&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Changed .htaccess in ./assets for Apache 2.4 (see #49)&lt;br&gt;&lt;br&gt;
+Fixed&lt;br&gt;
+Generating alias in mode &#039;edit all&#039; did not use the configured field</releasenotes>
+        <manual link="http://de.contaowiki.org/EFG" />
+        <forum link="http://www.contao-community.org/viewforum.php?f=29" />
+        <shop link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=E98ARKZTBS8WG" />
+    </language>
+    <language code="de">
+        <translator user="tom" name="Thomas Kuhn" />
+        <searchtags>Formular,E-Mail,Datenverwaltung</searchtags>
+        <title>EFG - Extended Form Generator</title>
+        <teaser>Formular-Daten: Bestätigungs-Mail, Auflistung und Bearbeitung im Backend und Frontend</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Versand von personalisierten Bestätigungs-Mails bei Eingang von Daten aus Frontend-Formularen&lt;/li&gt;
+&lt;li&gt;Mehrseitige Formulare&lt;/li&gt;
+&lt;li&gt;Speichern der Daten aus Formularen in Backend-Modulen/-Tabellen und/oder Formular-Generator nutzen, um Backend-Module zu erstellen&lt;/li&gt;
+&lt;li&gt;Auflistung, Bearbeitung und Export der Daten im Frontend&lt;/li&gt;
+&lt;li&gt;Formular-Felder des Typs select/radio/checkbox mit Werten aus Datenbank-Tabelle&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Tickets / Bugs&lt;/h3&gt;
+https://bitbucket.org/thk/efg/issues</description>
+        <releasenotes>Version 2.2.1 (2014-02-13)&lt;br&gt;
+---------------------------&lt;br&gt;
+
+Changelog:&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Support using closures as DCA callbacks&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Do not pass POST data to the &#039;deserialize()&#039; function&lt;br&gt;&lt;br&gt;
+Fixed&lt;br&gt;
+Installing or updating EFG when running Contao in &#039;coreOnlyMode&#039; did throw a fatal error &#039;Class Formdata not found&#039;&lt;br&gt;&lt;br&gt;
+Changed&lt;br&gt;
+Changed .htaccess in ./assets for Apache 2.4 (see #49)&lt;br&gt;&lt;br&gt;
+Fixed&lt;br&gt;
+Generating alias in mode &#039;edit all&#039; did not use the configured field</releasenotes>
+        <manual link="http://de.contaowiki.org/EFG" />
+        <forum link="http://www.contao-community.de/forumdisplay.php?13-efg" />
+        <shop link="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=E98ARKZTBS8WG" />
+    </language>
+    <language code="it">
+        <translator user="PaoloB" name="Paolo Brunelli" website="http://www.contaocms.it" />
+        <searchtags>Form,e-Mail,Data storage</searchtags>
+        <title>EFG - Extended Form Generator</title>
+        <teaser>Gestione avanzata dei form: e-mail di conferma,  memorizzazione dei dati</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Sending personalized conformation mails after receiving data from frontend forms&lt;/li&gt;
+&lt;li&gt;store data from forms in backend modules and/or use form generator to create backend modules&lt;/li&gt;
+&lt;li&gt;list, edit and export formdata in frontend&lt;/li&gt;
+&lt;li&gt;form fields of types select/radio/checkbox taking values from database table&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <releasenotes>&lt;p&gt;&lt;em&gt;2012-05-20&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modifications for Contao 2.11&lt;/li&gt;
+&lt;li&gt;Added: New options in frontend module &#039;listing form data&#039; to deactivate mail delivery on frontend editing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;2010-10-11&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added: Comments on form data can be activated in frontend module &#039;Listing form data&#039;&lt;/li&gt;
+&lt;li&gt;Added: CSV import for form data entries in backend&lt;/li&gt;
+&lt;li&gt;Fixed: Parse error in conditional tags&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note: to activate import feature you have to edit and save the form(s) (header data) after installation&lt;/p&gt;</releasenotes>
+        <manual link="http://dev.contao.org/wiki/ExtensionsEfg" />
+        <forum link="http://www.contao-community.org/viewforum.php?f=29" />
+    </language>
+    <language code="cs">
+        <translator user="jenda" name="Jan Kout" website="http://www.jankout.eu" />
+        <searchtags>Formulář,E-Mail,Sběr a ukádání dat</searchtags>
+        <title>EFG - Rozšířený generátor formulářů</title>
+        <teaser>Spravuje data z formulářů: pomocí potvrzovacího mailu, ukládání, zobrazování a upravování dat v backendu a na webové stránce</teaser>
+        <description>&lt;ul&gt;
+&lt;li&gt;Umožňuje zas&amp;iacute;l&amp;aacute;t osobn&amp;iacute; potvrzovac&amp;iacute; maily po odesl&amp;aacute;n&amp;iacute; dat z formul&amp;aacute;ře z webov&amp;eacute; str&amp;aacute;nky&lt;/li&gt;
+&lt;li&gt;Umožňuje ukl&amp;aacute;dat a zobrazovat data z formul&amp;aacute;řů v backendu nebo/a použ&amp;iacute;t gener&amp;aacute;tor formul&amp;aacute;řů k vytvořen&amp;iacute; backendov&amp;yacute;ch modulů&lt;/li&gt;
+&lt;li&gt;Umožňuje zobrazit, upravovat a exportovat data z formul&amp;aacute;řů na webov&amp;eacute; str&amp;aacute;nce&lt;/li&gt;
+&lt;li&gt;Druhy pol&amp;iacute; formul&amp;aacute;řů jako za&amp;scaron;krt&amp;aacute;vac&amp;iacute; tlač&amp;iacute;tka/v&amp;yacute;běrov&amp;aacute; tlač&amp;iacute;tka a rozbalovac&amp;iacute; v&amp;yacute;běr mohou převz&amp;iacute;t hodnoty z tabulky datab&amp;aacute;ze.&lt;/li&gt;
+&lt;/ul&gt;</description>
+        <releasenotes>&lt;p&gt;&lt;em&gt;2012-05-20&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modifications for Contao 2.11&lt;/li&gt;
+&lt;li&gt;Added: New options in frontend module &#039;listing form data&#039; to deactivate mail delivery on frontend editing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;[nbsp]&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;2010-10-11&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Přid&amp;aacute;no: Komentov&amp;aacute;n&amp;iacute; formul&amp;aacute;řov&amp;yacute;ch dat se může aktivovat ve frontendov&amp;eacute;m modulu &#039;Vytvořen&amp;iacute; seznamu dat z formul&amp;aacute;ře (EFG)&#039;&lt;/li&gt;
+&lt;li&gt;Přid&amp;aacute;no: import CSV formul&amp;aacute;řov&amp;yacute;ch dat v backendu&lt;/li&gt;
+&lt;li&gt;Opraveno: Chyba v conditional tags&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Pozn&amp;aacute;mka: pro aktivaci funkce importu je třeba po instalov&amp;aacute;n&amp;iacute; upravit a uložit formul&amp;aacute;ř(e) (header data)&lt;/p&gt;</releasenotes>
+        <manual link="http://dev.typolight.org/wiki/ExtensionsEfg" />
+        <forum link="http://www.contao-community.org/viewforum.php?f=29" />
+    </language>
+</extension>

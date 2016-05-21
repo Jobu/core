@@ -1,0 +1,33 @@
+{
+    "name": "contao-legacy/xls_export",
+    "type": "legacy-contao-module",
+    "description": "PHP library to generate Microsoft Excel 95 files",
+    "keywords": [
+        "Excel",
+        "writer",
+        "export",
+        "library"
+    ],
+    "homepage": "http://www.aurealis.de",
+    "version": "3.0.0.9020",
+    "time": "2010-02-02T00:00:00+01:00",
+    "license": [
+        "GPL"
+    ],
+    "authors": [
+        {
+            "name": "aurealis",
+            "homepage": "http://www.aurealis.de",
+            "role": "lead"
+        }
+    ],
+    "dist": {
+        "type": "zip",
+        "url": "https://legacy-packages-via.contao-community-alliance.org/er2-proxy/xls_export/30000009/20",
+        "reference": "3.0.0.9020"
+    },
+    "require": {
+        "contao/core": ">=3.0.0-RC,<4.0.0-dev",
+        "contao-community-alliance/composer-plugin": "~2.0"
+    }
+}

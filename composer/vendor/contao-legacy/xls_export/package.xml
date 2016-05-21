@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE contaopackage>
+<extension name="xls_export" date="20160325">
+    <author user="hschottm" name="Helmut Schottmüller" website="http://www.aurealis.de" />
+    <copyright>&amp;copy; Helmut Schottmüller, xls-exportclass library &amp;copy; Olah Leslie</copyright>
+    <license>GPL</license>
+    <classification type="free" category="plugin" />
+    <release version="30000009" build="20" date="20100202" />
+    <contao minversion="30000006" maxversion="30050099" />
+    <language code="en">
+        <translator user="hschottm" name="Helmut Schottmüller" website="http://www.aurealis.de" />
+        <searchtags>Excel,writer,export,library</searchtags>
+        <title>Excel 95 writer</title>
+        <teaser>PHP library to generate Microsoft Excel 95 files</teaser>
+        <description>&lt;p&gt;PHP library to generate Microsoft Excel 95 files&lt;/p&gt;
+&lt;p&gt;Original files from http://sourceforge.net/projects/xls-exportclass/&lt;/p&gt;
+&lt;p&gt;Copyright &amp;copy; Olah Leslie&lt;/p&gt;
+&lt;p&gt;GNU General Public License (GPL)&lt;/p&gt;</description>
+        <releasenotes>&lt;h3&gt;3.0.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Compatibility with Contao 3&lt;/li&gt;
+&lt;li&gt;Moved plugin directory to system/modules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Bugfix of the &quot;merge cells&quot; feature (thanks to Georg Rehfeld)&lt;/li&gt;
+&lt;li&gt;Additional &quot;getter&quot; for the xlsexport class:
+&lt;ul&gt;
+&lt;li&gt;public function getcolwidth($sheetname, $acolidx)&lt;/li&gt;
+&lt;li&gt;public function getrowheight($sheetname, $arowidx)&lt;/li&gt;
+&lt;/ul&gt;
+(thanks to Georg Rehfeld)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.0 build 8&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Modified sendFile method for Excel file output to create the temporary Excel files in the TYPOlight tmp directory.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initial version 1.0.0 stable, unmodified library release 080531&lt;/li&gt;
+&lt;/ul&gt;</releasenotes>
+        <shop link="http://aurealis.de/donate.html" />
+    </language>
+    <language code="de">
+        <translator user="hschottm" name="Helmut Schottmüller" website="http://www.aurealis.de" />
+        <searchtags>Excel,Export,Programmierbibliothek</searchtags>
+        <title>Excel 95 Erzeuger</title>
+        <teaser>PHP Bibliothek zum Erzeugen von Microsoft Excel 95 Dateien</teaser>
+        <description>&lt;p&gt;PHP Bibliothek zum Erzeugen von Microsoft Excel 95 Dateien&lt;/p&gt;
+&lt;p&gt;Originaldateien von http://sourceforge.net/projects/xls-exportclass/&lt;/p&gt;
+&lt;p&gt;Copyright &amp;copy; Olah Leslie&lt;/p&gt;
+&lt;p&gt;GNU General Public License (GPL)&lt;/p&gt;</description>
+        <releasenotes>&lt;h3&gt;3.0.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Kompatibilit&amp;auml;t mit Contao 3&lt;/li&gt;
+&lt;li&gt;Verzeichnis des Plugins nach system/modules verschoben&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.1&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Bugfix des &quot;merge cells&quot; feature (herzlichen Dank an Georg Rehfeld)&lt;/li&gt;
+&lt;li&gt;Zus&amp;auml;tzliche &quot;getter&quot; in der Klasse xlsexport:
+&lt;ul&gt;
+&lt;li&gt;public function getcolwidth($sheetname, $acolidx)&lt;/li&gt;
+&lt;li&gt;public function getrowheight($sheetname, $arowidx)&lt;/li&gt;
+&lt;/ul&gt;
+(herzlichen Dank an Georg Rehfeld)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.0 build 8&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Ausgabefunktion f&amp;uuml;r Excel-Dateien modifiziert, damit die tempor&amp;auml;ren Excel-Dateien im TYPOlight tmp-Verzeichnis erzeugt werden.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;1.0.0&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Initiale Version 1.0.0 stable, Unmodifizierte Originalversion 080531&lt;/li&gt;
+&lt;/ul&gt;</releasenotes>
+        <forum link="http://www.typolight-community.de/showthread.php?p=526" />
+        <shop link="http://aurealis.de/spenden.html" />
+    </language>
+</extension>

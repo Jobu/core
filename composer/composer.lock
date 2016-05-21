@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dd69120cfb248f4ec03dac2be4437cb5",
-    "content-hash": "ad6583297c86e92a66c5e57b92f6ad57",
+    "hash": "05a7747a897145ce4313a6246fce2431",
+    "content-hash": "1f2116dcac47346dd797a97d8cb94abd",
     "packages": [
         {
             "name": "contao-community-alliance/composer-client",
-            "version": "0.16.3",
+            "version": "0.16.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao-community-alliance/composer-client.git",
-                "reference": "4b89c21b1493ba37b5e3c0ab861bd5494367a992"
+                "reference": "a2754e34c49cfdf5bda69b18e090ce7ad0423478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/contao-community-alliance/composer-client/zipball/4b89c21b1493ba37b5e3c0ab861bd5494367a992",
-                "reference": "4b89c21b1493ba37b5e3c0ab861bd5494367a992",
+                "url": "https://api.github.com/repos/contao-community-alliance/composer-client/zipball/a2754e34c49cfdf5bda69b18e090ce7ad0423478",
+                "reference": "a2754e34c49cfdf5bda69b18e090ce7ad0423478",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
                 "composer",
                 "contao"
             ],
-            "time": "2016-02-09 12:00:12"
+            "time": "2016-04-27 13:37:31"
         },
         {
             "name": "contao-community-alliance/composer-plugin",
@@ -124,17 +124,95 @@
             "time": "2016-02-16 04:41:46"
         },
         {
+            "name": "contao-legacy/efg",
+            "version": "2.2.1.9005",
+            "dist": {
+                "type": "zip",
+                "url": "https://legacy-packages-via.contao-community-alliance.org/er2-proxy/efg/20020019/5",
+                "reference": "2.2.1.9005",
+                "shasum": null
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao-legacy/xls_export": ">=3.0.0,<4.0.0-dev",
+                "contao/core": ">=3.2.3,<4.0.0-dev"
+            },
+            "type": "legacy-contao-module",
+            "extra": {
+                "contao": {
+                    "userfiles": []
+                }
+            },
+            "notification-url": "https://legacy-packages-via.contao-community-alliance.org/downloads/",
+            "license": [
+                "GNU LGPL V3"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Kuhn",
+                    "role": "lead"
+                }
+            ],
+            "description": "Manage form data: confirmation email, data storage, list and edit in backend and frontend",
+            "keywords": [
+                "Data storage",
+                "Form",
+                "e-mail"
+            ],
+            "time": "2014-02-12 23:00:00"
+        },
+        {
+            "name": "contao-legacy/xls_export",
+            "version": "3.0.0.9020",
+            "dist": {
+                "type": "zip",
+                "url": "https://legacy-packages-via.contao-community-alliance.org/er2-proxy/xls_export/30000009/20",
+                "reference": "3.0.0.9020",
+                "shasum": null
+            },
+            "require": {
+                "contao-community-alliance/composer-plugin": "~2.0",
+                "contao/core": ">=3.0.0-RC,<4.0.0-dev"
+            },
+            "type": "legacy-contao-module",
+            "extra": {
+                "contao": {
+                    "userfiles": []
+                }
+            },
+            "notification-url": "https://legacy-packages-via.contao-community-alliance.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "aurealis",
+                    "homepage": "http://www.aurealis.de",
+                    "role": "lead"
+                }
+            ],
+            "description": "PHP library to generate Microsoft Excel 95 files",
+            "homepage": "http://www.aurealis.de",
+            "keywords": [
+                "Export",
+                "excel",
+                "library",
+                "writer"
+            ],
+            "time": "2010-02-01 23:00:00"
+        },
+        {
             "name": "contao/core",
             "version": "3.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/contao-community-alliance/composerized-contao-core.git",
-                "reference": "277566b8d97f33ec63b2464641c23bd1e3bdf80d"
+                "reference": "5e97ea9ca84a3e4906910c392e8dce1a61350446"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/contao-community-alliance/composerized-contao-core/zipball/5e97ea9ca84a3e4906910c392e8dce1a61350446",
-                "reference": "3.5.4",
+                "reference": "5e97ea9ca84a3e4906910c392e8dce1a61350446",
                 "shasum": "3.5.4"
             },
             "require": {
@@ -146,7 +224,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "contao-legacy/efg": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

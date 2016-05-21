@@ -18,10 +18,13 @@
 $GLOBALS['TL_LANG']['MSC']['male'] = 'Männlich';
 $GLOBALS['TL_LANG']['MSC']['female'] = 'Weiblich';
 $GLOBALS['TL_LANG']['MSC']['other'] = 'Sonstiges';
+$GLOBALS['TL_LANG']['MSC']['XXS'] = 'XXS';
+$GLOBALS['TL_LANG']['MSC']['XS'] = 'XS';
 $GLOBALS['TL_LANG']['MSC']['S'] = 'S';
 $GLOBALS['TL_LANG']['MSC']['M'] = 'M';
 $GLOBALS['TL_LANG']['MSC']['L'] = 'L';
 $GLOBALS['TL_LANG']['MSC']['XL'] = 'XL';
+$GLOBALS['TL_LANG']['MSC']['XXL'] = 'XXL';
 
 /**
  * Errors

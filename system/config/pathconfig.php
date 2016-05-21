@@ -1,4 +1,4 @@
 <?php
 
 // Relative path to the installation
-return '';
+return '/beachcup';

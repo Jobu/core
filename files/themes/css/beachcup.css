@@ -1,4 +1,5 @@
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6
+{
     padding-bottom: 10px;
 }
 
@@ -21,11 +22,14 @@ summary
     z-index: 1;
 }
 
-#login {
+/*
+#login
+{
     display: none;
-    /*display: inline-block;*/
+    display: inline-block;
     vertical-align: middle;
 }
+*/
 
 #main
 {
@@ -47,15 +51,18 @@ summary
     z-index: 100;
 }
 
-#main-header .logo a, #main-header .mobile-logo a {
+#main-header .logo a, #main-header .mobile-logo a
+{
     display: block;
 }
 
-#main .inside {
+#main .inside
+{
     min-height: 0;
 }
 
-#home-de, #home-it {
+#home-de, #home-it
+{
     padding: 0;
 }
 
@@ -77,11 +84,13 @@ summary
     box-sizing: border-box;
 }
 
-#footer .inside {
+#footer .inside
+{
     display: inline-block;
 }
 
-#footer a {
+#footer a
+{
     display: inline-block;
 }
 
@@ -114,9 +123,16 @@ summary
     width: 100%;
     padding: 3px;
     margin: 0;
+    color: black;
 }
 
-.responsive-form .widget input, textarea
+.responsive-form .widget a
+{
+    font-weight: 600;
+    color: #555;
+}
+
+.responsive-form .widget input, textarea, select
 {
     width: 100%;
     padding: 3px;
@@ -154,7 +170,8 @@ summary
     display: inline;
 }
 
-.responsive-language-switch {
+.responsive-language-switch
+{
     display: inline-block;
     vertical-align: middle;
 }
@@ -172,7 +189,8 @@ summary
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
 }
 
-.responsive-language-switch a.active {
+.responsive-language-switch a.active
+{
     font-weight: 800;
 }
 
@@ -351,11 +369,13 @@ h3.section-lead
     padding-bottom: 20px;
 }
 
-details.details_shim_closed > summary::before, details.details_shim_open > summary::before {
+details.details_shim_closed > summary::before, details.details_shim_open > summary::before
+{
     color: #c6d44b;
 }
 
-@media only screen and ( max-width: 1440px ) {
+@media only screen and ( max-width: 1440px )
+{
     #main-header .logo
     {        
         left: 2%;
@@ -385,11 +405,13 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
         width: 192px;
         margin-left: -96px;
     }
-        
+    
+    /*
     #login .link-text
     {
         display: none;
     }
+    */
     
     /* #main */
     .mod_article
@@ -405,12 +427,8 @@ details.details_shim_closed > summary::before, details.details_shim_open > summa
         z-index: 0;
     }
     
-    #kontaktformular form
+    #footer
     {
-        width: 100%;
-    }
-    
-    #footer {
         padding-top: 5px;
         padding-bottom: 2px;
     }

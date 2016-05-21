@@ -69,11 +69,8 @@ $GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][1] = 'Bestätigen, dass d
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['user_legend'] = 'Benutzer Informationen';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['username'][0] = 'Benutzername';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['username'][1] = 'Geben Sie hier den Benutzername ein.';
-
-$GLOBALS['TL_LANG']['tl_beachcup_player']['password'][0] = 'Passwort';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['password'][1] = 'Geben Sie hier das Passwort ein.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][0] = 'Benutzer';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][1] = 'Wählen Sie hier den Benutzer aus, welcher den Spieler gemeldet hat.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][0] = "Neuer Spieler";
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][1] = "Einen neuen Spieler anlegen";

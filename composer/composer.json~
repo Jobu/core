@@ -4,7 +4,6 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "components/bootstrap": ">=3.3.5.0,<3.4-dev",
         "contao-community-alliance/composer-client": "~0.12"
     },
     "prefer-stable": true,
@@ -25,12 +24,13 @@
         },
         {
             "type": "composer",
-            "url": "http://legacy-packages-via.contao-community-alliance.org/"
+            "url": "https://legacy-packages-via.contao-community-alliance.org/"
         }
     ],
     "extra": {
         "contao": {
             "migrated": "done"
         }
-    }
+    },
+    "secure-http": false
 }

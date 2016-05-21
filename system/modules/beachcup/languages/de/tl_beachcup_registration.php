@@ -8,6 +8,9 @@ $GLOBALS['TL_LANG']['tl_beachcup_registration']['team_id'][1] = 'Wählen Sie hie
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['tournament_id'][0] = 'Turnier';
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['tournament_id'][1] = 'Wählen Sie hier das Turnier aus.';
 
+$GLOBALS['TL_LANG']['tl_beachcup_registration']['state_id'][0] = 'Anmlede-Status';
+$GLOBALS['TL_LANG']['tl_beachcup_registration']['state_id'][1] = 'Wählen Sie hier den Anmelde-Status aus.';
+
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['points'][0] = 'Punkte';
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['points'][1] = 'Geben Sie hier die Punkte ein.';
 

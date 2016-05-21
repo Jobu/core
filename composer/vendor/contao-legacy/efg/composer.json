@@ -1,0 +1,31 @@
+{
+    "name": "contao-legacy/efg",
+    "type": "legacy-contao-module",
+    "description": "Manage form data: confirmation email, data storage, list and edit in backend and frontend",
+    "keywords": [
+        "Form",
+        "e-Mail",
+        "Data storage"
+    ],
+    "version": "2.2.1.9005",
+    "time": "2014-02-13T00:00:00+01:00",
+    "license": [
+        "GNU LGPL V3"
+    ],
+    "authors": [
+        {
+            "name": "Thomas Kuhn",
+            "role": "lead"
+        }
+    ],
+    "dist": {
+        "type": "zip",
+        "url": "http://legacy-packages-via.contao-community-alliance.org/er2-proxy/efg/20020019/5",
+        "reference": "2.2.1.9005"
+    },
+    "require": {
+        "contao/core": ">=3.2.3,<4.0.0-dev",
+        "contao-community-alliance/composer-plugin": "~2.0",
+        "contao-legacy/xls_export": ">=3.0.0,<4.0.0-dev"
+    }
+}

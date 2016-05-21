@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;{user_legend},username,password,created_on,updated_on;'
+        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;{user_legend},user;'
 	),
 
 	// Subpalettes
@@ -218,7 +218,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'email', 'unique'=>true),
-            'sql'                     => "varchar(255) NOT NULL UNIQUE default ''"
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'phone_number' => array
         (
@@ -227,8 +227,8 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone', 'unique'=>true),
-            'sql'                     => "varchar(255) NOT NULL UNIQUE default ''"
+            'eval'                    => array('maxlength'=>255, 'tl_class'=>'w50', 'rgxp'=>'phone'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'tax_number' => array
         (
@@ -238,7 +238,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'minlength'=>16, 'maxlength'=>16, 'tl_class'=>'w50', 'unique'=>true),
-            'sql'                     => "varchar(16) NOT NULL UNIQUE default ''"
+            'sql'                     => "varchar(16) NOT NULL default ''"
         ),
         'shirt_size' => array
         (
@@ -247,7 +247,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
-            'options'                 => array('S', 'M', 'L', 'XL'),
+            'options'                 => array('XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL'),
             'reference'               => &$GLOBALS['TL_LANG']['MSC'],
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -313,25 +313,16 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "boolean NOT NULL default false"
         ),
-        'username' => array
+        'user' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player']['username'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player']['user'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50', 'unique'=>true),
-            'sql'                     => "varchar(255) NOT NULL UNIQUE default ''"
-        ),
-        'password' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player']['password'],
-            'exclude'                 => true,
-            'sorting'                 => true,
-            'search'                  => true,
-            'inputType'               => 'password',
-            'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'clr'),
-            'sql'                     => "varchar(255) NOT NULL default ''"
+            'inputType'               => 'select',
+            'foreignKey'              => 'tl_member.CONCAT(username, " (", firstname, " ", lastname, ")")',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "int(10) unsigned NOT NULL"
         )
 	)
 );

@@ -105,7 +105,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-		'default'                     => '{general_legend},name_de,name_it,type_id,stage_id,date;{administration_legend},max_teams;'
+        'default'                     => '{general_legend},name_de,name_it,type_id,stage_id,date;{administration_legend},max_age,max_teams;'
 	),
 
 	// Subpalettes
@@ -177,6 +177,16 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 wizard', 'datepicker'=>true, 'rgxp'=>'date'),
             'sql'                     => "varchar(11) NOT NULL default ''"
+        ),
+        'max_age' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_age'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'digit'),
+            'sql'                     => "int(10) unsigned NOT NULL default 0"
         ),
         'max_teams' => array
         (

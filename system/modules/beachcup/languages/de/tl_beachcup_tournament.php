@@ -19,6 +19,9 @@ $GLOBALS['TL_LANG']['tl_beachcup_tournament']['date'][1] = 'Geben Sie hier das D
 
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['administration_legend'] = 'Administration';
 
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_age'][0] = 'Maximale Teilnahme-Alter';
+$GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_age'][1] = 'Geben Sie hier das maximale Teilnahme-Alter ein.';
+
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_teams'][0] = 'Maximale Team-Anzahl';
 $GLOBALS['TL_LANG']['tl_beachcup_tournament']['max_teams'][1] = 'Geben Sie hier die maximale Team-Anzahl ein.';
 
