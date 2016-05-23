@@ -37,4 +37,6 @@ $GLOBALS['TL_LANG']['FMD']['stage_map'] = array('Etappenlandkarte', 'Erzeugt ein
 $GLOBALS['TL_LANG']['FMD']['stage_list'] = array('Etappenliste', 'Erzeugt eine Liste der Etappen');
 $GLOBALS['TL_LANG']['FMD']['game_results'] = array('Spielergebnisse', 'Erzeugt eine Liste der Spielergebnisse');
 $GLOBALS['TL_LANG']['FMD']['total_results'] = array('Gesamtstände', 'Erzeugt eine Liste der Gesamtstände');
-$GLOBALS['TL_LANG']['FMD']['registration_list'] = array('Registrationsliste', 'Erzeugt eine Liste der Registrationen');
+$GLOBALS['TL_LANG']['FMD']['player_list'] = array('Spielerliste', 'Erzeugt eine Liste der Spieler');
+$GLOBALS['TL_LANG']['FMD']['team_list'] = array('Teamliste', 'Erzeugt eine Liste der Teams');
+$GLOBALS['TL_LANG']['FMD']['registration_list'] = array('Anmeldungsliste', 'Erzeugt eine Liste der Anmeldungen');

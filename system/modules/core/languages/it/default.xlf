@@ -1857,7 +1857,7 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       </trans-unit>
       <trans-unit id="MSC.emailSubject">
         <source>Your registration on %s</source>
-        <target>Registrazione a %s</target>
+        <target>Registrazione su %s</target>
       </trans-unit>
       <trans-unit id="MSC.adminSubject">
         <source>New registration on %s</source>

@@ -663,7 +663,7 @@
       </trans-unit>
       <trans-unit id="tl_module.emailText.0">
         <source>Your registration on %s</source>
-        <target>Registrazione a %s</target>
+        <target>Registrazione su %s</target>
       </trans-unit>
       <trans-unit id="tl_module.emailText.1">
         <source>Thank you for your registration on ##domain##.

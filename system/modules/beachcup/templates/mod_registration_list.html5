@@ -1,10 +1,12 @@
 <?php
-echo "<table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th><th>" . $this->translations["tournament"] . "</th><th>" . $this->translations["state"] . "</th></tr>";
+if(count($this->registrations) > 0) {
+	echo "<table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th><th>" . $this->translations["tournament"] . "</th><th>" . $this->translations["state"] . "</th></tr>";
 
-foreach($this->registrations as $registration)
-{
-    echo "<tr><td>" . $registration["team"] . "</td><td>" . $registration["tournament"] . "</td><td>" . $registration["state"] . "</td></tr>";
+	foreach($this->registrations as $registration)
+	{
+	    echo "<tr><td>" . $registration["team"] . "</td><td>" . $registration["tournament"] . "</td><td>" . $registration["state"] . "</td></tr>";
+	}
+
+	echo "</table><br/><br/><br/>";
 }
-
-echo "</table><br/><br/><br/>";
 ?>

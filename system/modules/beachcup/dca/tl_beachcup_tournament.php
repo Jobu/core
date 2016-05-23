@@ -185,7 +185,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'digit'),
+            'eval'                    => array('tl_class'=>'w50', 'rgxp'=>'digit'),
             'sql'                     => "int(10) unsigned NOT NULL default 0"
         ),
         'max_teams' => array

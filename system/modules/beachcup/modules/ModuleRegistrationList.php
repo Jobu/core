@@ -50,7 +50,7 @@ class ModuleRegistrationList extends \Module
         {
             $language = "it";
             $conjunction = " e ";
-            $translations = array("team" => "Squdra", "tournament" => "Torneo",  "state" => "Stato");
+            $translations = array("team" => "Squadra", "tournament" => "Torneo",  "state" => "Stato");
         }
         
         $registrations = $database->prepare("SELECT team.team, tl_beachcup_tournament.name_$language as `tournament`, tl_beachcup_registration_state.description_$language as `state`

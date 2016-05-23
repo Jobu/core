@@ -45,6 +45,9 @@ class ModuleStageList extends \Module
 	 */
     protected function compile()
     {
+        global $objPage;
+        $database = \Database::getInstance();
+
         if(!empty($this->Input->get($this->detailsKey)))
         {
             $this->compileDetailsView($this->Input->get($this->detailsKey));
@@ -55,6 +58,15 @@ class ModuleStageList extends \Module
             $this->compileListView();
             $this->Template->list = true;
         }
+        $registerAlias = "meine-spieler";
+        if($objPage->language == "it") {
+            $registerAlias = "i-miei-giocatori";
+        }
+        if(($registerPage = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($registerAlias)->fetchAssoc()) != null)
+        {
+            $registerLink = $this->generateFrontendUrl($registerPage);
+        }
+        $this->Template->registerLink = $registerLink;
     }
     
     private function compileListView()
@@ -112,16 +124,16 @@ class ModuleStageList extends \Module
         $database = \Database::getInstance();
         $language = "de";
         $conjunction = " bis ";
-        $translations = array("tournaments" => array("title" => "Turniere", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"));
+        $translations = array("tournaments" => array("title" => "Turniere", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung");
 
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
-            $translations = array("tournaments" => array("title" => "Tornei", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"));
+            $translations = array("tournaments" => array("title" => "Tornei", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione");
         }
         
-        $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, 
+        $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_venue.picture, 
             tl_beachcup_venue.name_$language AS venue_name, tl_beachcup_venue.description_$language AS venue_description, tl_beachcup_venue.address_$language AS venue_address, tl_beachcup_venue.zip_code AS venue_zip_code, 
             tl_beachcup_venue.city_$language AS venue_city, tl_beachcup_organizer.name_$language AS organizer_name, tl_beachcup_organizer.description_$language AS organizer_description, tl_beachcup_organizer.contact_person, 
             tl_beachcup_organizer.email, tl_beachcup_organizer.phone, tl_beachcup_organizer.fax, tl_beachcup_organizer.mobile_phone 

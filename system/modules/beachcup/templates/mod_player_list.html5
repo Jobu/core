@@ -1,0 +1,11 @@
+<?php
+if(count($this->players) > 0) {
+	echo "<table class='responsive-table'><tr><th>" . $this->translations["player"] . "</th></tr>";
+	foreach($this->players as $player)
+	{
+	    echo "<tr><td>" . $player["name"] . "</td></tr>";
+	}
+
+	echo "</table><br/><br/><br/>";
+}
+?>

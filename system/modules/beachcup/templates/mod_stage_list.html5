@@ -27,8 +27,11 @@ else if($this->details)
 echo "<div class='teaser clearfix'>
         <img width='256px' src='" . $this->stage["picture_source"] . "'>
         <h1>" . $this->stage["name"] . "</h1>
-        <i class='date-tag'>" . $this->stage["date"] . "</i>
-        <p>" . $this->stage["description"] . "</p>
+        <p><i class='date-tag'>" . $this->stage["date"] . "</i></p>";
+    if($this->stage["is_enabled"] == 1) {
+        echo "<p><a class='register-button' href='" . $this->registerLink . "'><b>" . $this->translations["register"] . "</b></a></p>";
+    }       
+echo "<p>" . $this->stage["description"] . "</p>
     </div>
     <hr/>
     <h2 class='section-lead'>" . $this->translations["tournaments"]["title"] . "</h2>
