@@ -45,32 +45,32 @@ $GLOBALS['TL_LANG']['tl_beachcup_player']['phone_number'][1] = 'Geben Sie hier d
 $GLOBALS['TL_LANG']['tl_beachcup_player']['body_legend'] = 'Körper Informationen';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_size'][0] = 'Shirt Größe';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_size'][1] = 'Wählen Sie hier die Shirt Größe aus.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_size'][1] = 'Wählen Sie hier die Shirt-Größe aus.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['player_level'][0] = 'Spieler-Level';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['player_level'][1] = 'Wählen Sie hier das Spieler-Level aus.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['player_level'][1] = 'Wählen Sie hier den Spieler-Level aus.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['administration_legend'] = 'Administration';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][0] = 'Spieler bestätigen';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][1] = 'Den Spieler bestätigen.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][0] = 'Eigenerklärung';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][1] = 'Spieler hat Eigenerklärung übermittelt.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][0] = 'FIPAV zuweisen';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][1] = 'Dem Spieler FIPAV zuweisen.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][0] = 'FIPAV';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][1] = 'Der Spieler ist FIPAV-tesseriert.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][0] = 'Ärztliches Zeugnis bestätigen';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][1] = 'Das ärtzliche Zeugnis des Spielers bestätigen.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][0] = 'ärztliches Zeugnis';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][1] = 'Spieler hat ärtztliches Zeugnis übermittelt.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_privacy'][0] = 'Privacy bestätigen';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_privacy'][1] = 'Bestätigen, dass der Spieler der Privacy zugestimmt hat.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_privacy'][0] = 'Privacy';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_privacy'][1] = 'Spieler hat Privacy zugestimmt.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][0] = 'Shirt bekommen';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][1] = 'Bestätigen, dass der Spieler sein Shirt bereits bekommen hat.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][0] = 'Shirt';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][1] = 'Spieler hat sein Shirt bereits bekommen.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['user_legend'] = 'Benutzer Informationen';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['user'][0] = 'Benutzer';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][1] = 'Wählen Sie hier den Benutzer aus, welcher den Spieler gemeldet hat.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][1] = 'Benutzer, welcher den Spieler gemeldet hat.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][0] = "Neuer Spieler";
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][1] = "Einen neuen Spieler anlegen";

@@ -217,7 +217,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'email', 'unique'=>true),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'rgxp'=>'email'),
             'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'phone_number' => array
