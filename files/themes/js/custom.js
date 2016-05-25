@@ -281,7 +281,7 @@
 			append_to.click( function(){
 				if ( $(this).hasClass('closed') ){
 					$(this).removeClass( 'closed' ).addClass( 'opened' );
-					$cloned_nav.slideDown( 500 );
+					$cloned_nav.slideDown( 500 );					
 				} else {
 					$(this).removeClass( 'opened' ).addClass( 'closed' );
 					$cloned_nav.slideUp( 500 );

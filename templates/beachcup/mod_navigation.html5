@@ -11,11 +11,11 @@
 	</div>
 	<div id="et_mobile_nav_menu">
 		<!--<a href="#" class="mobile_nav closed">Navigation Menu</a>-->
-		<a class="mobile_nav closed" href="javascript:void(0);" class="">
+		<div class="mobile_nav closed" class="">
 			<span></span>
 			<span></span>
 			<span></span>
-		</a>
+		</div>
 	</div>
 </header>
 <!-- indexer::continue -->

@@ -635,12 +635,12 @@ img.alignright { display:inline; float:right; margin-left:15px; }
 .et-mobile-listings { display: none; }
 
 #et_mobile_nav_menu { display: none; text-align: center; -webkit-box-shadow: 0 -1px 0 #000; -moz-box-shadow: 0 -1px 0 #000; box-shadow: 0 -1px 0 #000; position: relative; }
-	.mobile_nav { height: 25px; width: 25px; padding: 15px; font-size: 14px; display: block; position: relative; text-shadow: 1px 1px 1px #000; }
+	.mobile_nav { -webkit-tap-highlight-color: rgba(255, 255, 255, 0); height: 25px; width: 25px; padding: 15px; font-size: 14px; display: block; position: relative; text-shadow: 1px 1px 1px #000; }
 	.mobile_nav > span { display: block; height: 3px; margin: 4px 0px; background-color: #fff; }
 		.mobile_nav:before {  }
-	.mobile_nav:hover { color: rgba(255,255,255,0.9); }
+	.mobile_nav:hover { color: rgba(255,255,255,0.9); cursor: pointer; }
 	#et_mobile_nav_menu a:hover { text-decoration: none; }
-	.et_mobile_menu { position: absolute; top: 55px; left: -15px; text-align: left; }
+	.et_mobile_menu { overflow: auto; height: 80%; min-height: 80%; position: fixed; top: 55px; left: -15px; text-align: left; }
 		.et_mobile_menu ul { display: block !important; visibility: visible !important; padding-left: 15px; }
 			.et_mobile_menu a { font-weight: normal; color: #fff; }
 

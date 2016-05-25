@@ -17,7 +17,7 @@ if($this->list)
             echo "<li class='horizontal-list-item horizontal-list-item-button'><b>" . $this->translations["register"] . "</b></li>";
         }
 
-        echo "</ul></li></a><div class='clearfix'></div><div class='divider'></div>";
+        echo "</ul><div class='clearfix'></div></li></a><div class='divider'></div>";
     }
 
     echo "</ul>";
