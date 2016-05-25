@@ -384,9 +384,40 @@ h3.section-lead
     padding-bottom: 20px;
 }
 
-details.details_shim_closed > summary::before, details.details_shim_open > summary::before
+details summary::-webkit-details-marker
 {
     color: #c6d44b;
+}
+
+details {
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+summary:hover {
+    cursor: pointer;
+    color: #adbb32;
+}
+
+.stage-list .stage-list-item {
+    position: relative;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.stage-list .stage-list-item:hover {
+    cursor: pointer;
+    background: rgba(198, 211, 74, 0.29);
+}
+
+.stage-list .stage-list-item a {
+    color: #2a2a2a;
+}
+
+.stage-list .stage-list-item a:hover {
+    text-decoration: none;
 }
 
 @media only screen and ( max-width: 1440px )

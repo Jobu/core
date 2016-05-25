@@ -1,23 +1,23 @@
 <?php
 if($this->list)
 {
-    echo "<ul class='thumbnail-list'>";
+    echo "<ul class='stage-list thumbnail-list'>";
 
     foreach($this->stages as $stage)
     {
-        echo "<a href='" . $stage["link"] . "' class=''><li class='teaser'><img width='128px' src='" . $stage["picture_source"] . "'><h2>" . $stage["name"] . "</h2><i class='date-tag'>" . $stage["date"] . "</i><ul class='horizontal-list'>";
+        echo "<div class='stage-list-item'>";
+        if($stage["is_enabled"] == 1)
+        {
+            echo "<a href='" . $this->registerLink . "' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
+        }
+        echo "<a href='" . $stage["link"] . "' class='teaser'><img width='128px' src='" . $stage["picture_source"] . "'><h2>" . $stage["name"] . "</h2><i class='date-tag'>" . $stage["date"] . "</i><ul class='horizontal-list'>";
 
         foreach($stage["tournaments"] as $tournament)
         {
             echo "<li class='horizontal-list-item'>" . $tournament["name"] . "</li>";
         }
 
-        if($stage["is_enabled"] == 1)
-        {
-            echo "<li class='horizontal-list-item horizontal-list-item-button'><b>" . $this->translations["register"] . "</b></li>";
-        }
-
-        echo "</ul><div class='clearfix'></div></li></a><div class='divider'></div>";
+        echo "</ul><div class='clearfix'></div></a></div>";
     }
 
     echo "</ul>";
