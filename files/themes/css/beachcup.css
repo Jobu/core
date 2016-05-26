@@ -375,7 +375,7 @@ table.responsive-table th, td
 
 table.responsive-table tr:nth-child(odd)
 {
-    background-color: #eee;
+    background-color: rgba(198, 211, 74, 0.29);
 }
 
 h3.section-lead

@@ -144,7 +144,6 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 	    text-align: right;
 	    top: -5px;
 	    width: 75px;
-	    z-index: 1;
 	}
 
 	.ribbon span {
