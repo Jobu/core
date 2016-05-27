@@ -34,16 +34,43 @@ echo "<div class='teaser clearfix'>
 echo "<p>" . $this->stage["description"] . "</p>
     </div>
     <hr/>
-    <h2 class='section-lead'>" . $this->translations["tournaments"]["title"] . "</h2>
-    <p><table class='responsive-table'><tr><th>" . $this->translations["tournaments"]["name"] . "</th><th>" . $this->translations["tournaments"]["date"] . "</th></tr>";
+    <h2 class='section-lead'>" . $this->translations["tournaments"]["title"] . "</h2>";
+
+    $count = 0;
+
+    while($count < count($this->stage["participanting_teams"]))
+    {
+        $stage_id = $this->stage["participanting_teams"][$count]["stage_id"];
+        
+        echo "<div class='box'>";
+        
+        while($stage_id == $this->stage["participanting_teams"][$count]["stage_id"])
+        {
+            $tournament_id = $this->stage["participanting_teams"][$count]["tournament_id"];
+            
+            echo "<details><summary>" . $this->stage["participanting_teams"][$count]["tournament_name"] . "</summary><dl class='ranking'>";
+            
+            while($tournament_id == $this->stage["participanting_teams"][$count]["tournament_id"])
+            {
+                echo "<dt></dt><dd>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                $count++;
+            }
+            
+            echo "</dl></details>";
+        }
+        
+        echo "</div>";
+    }
+
+    /*<p><table class='responsive-table'><tr><th>" . $this->translations["tournaments"]["name"] . "</th><th>" . $this->translations["tournaments"]["date"] . "</th></tr>";
     
-    foreach($this->stage["tournaments"] as $tournament)
+    /*foreach($this->stage["tournaments"] as $tournament)
     {
         echo "<tr><td>" . $tournament["name"] . "</td><td>" . \Date::parse("j. F Y", $tournament["date"]) . "</td></tr>";
     }
     
-    echo "</table></p>
-        <hr/>
+    echo "</table></p>*/
+    echo "<hr/>
         <h2 class='section-lead'>" . $this->translations["venue"]["title"] . "</h2>
             <h4>" . $this->stage["venue_name"] . "</h4>
             <p>" . $this->stage["venue_description"] . "</p>

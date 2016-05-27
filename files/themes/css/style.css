@@ -128,7 +128,7 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 		/*#top-navigation { padding-right: 145px; }*/
 			#top-navigation nav { float: left; padding: 21px 0 0 11px; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
 				#top-navigation li  { display: inline-block; }
-					#top-navigation a { font-size: 18px; color: #fff; text-decoration: none; /*text-shadow: 1px 1px 0 rgba(0,0,0,0.8);*/ padding: 0 11px 33px; display: block; font-weight: 400; position: relative; }
+					#top-navigation a { font-size: 17px; color: #fff; text-decoration: none; /*text-shadow: 1px 1px 0 rgba(0,0,0,0.8);*/ padding: 0 11px 33px; display: block; font-weight: 400; position: relative; }
 					#top-navigation a:hover { color: rgba( 255,255,255,0.9 ); }
 					#top-navigation li.current-menu-item > a, .et_mobile_menu li.current-menu-item > a { font-weight: 800; /*color: #4bb6f5;*/ }
 					#top-navigation > nav > ul > li.current-menu-item > a:before { content: ''; position: absolute; bottom: -20px; left: 50%; border: 10px solid transparent; margin-left: -10px; border-top-color: #c6d44b; }

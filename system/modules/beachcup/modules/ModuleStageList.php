@@ -124,13 +124,15 @@ class ModuleStageList extends \Module
         $database = \Database::getInstance();
         $language = "de";
         $conjunction = " bis ";
-        $translations = array("tournaments" => array("title" => "Turniere", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung");
+        $separator = "' und '";
+        $translations = array("tournaments" => array("title" => "Turniere und angemeldete Teams", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung");
 
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
-            $translations = array("tournaments" => array("title" => "Tornei", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione");
+            $separator = "' e '";
+            $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione");
         }
         
         $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_venue.picture, 
@@ -161,6 +163,30 @@ class ModuleStageList extends \Module
                                                     WHERE tl_beachcup_tournament.stage_id = ? 
                                                     ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_$language")->execute($id)->fetchAllAssoc();
         
+        $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name 
+                                    FROM tl_beachcup_registration 
+                                    JOIN tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id 
+                                    JOIN tl_beachcup_tournament ON tl_beachcup_tournament.id = tl_beachcup_registration.tournament_id 
+                                    JOIN tl_beachcup_stage ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id 
+                                    JOIN (SELECT tl_beachcup_team.id AS id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR $separator) AS team_name FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id GROUP BY tl_beachcup_team.id) AS team ON team.id = tl_beachcup_registration.team_id 
+                                    WHERE tl_beachcup_tournament.stage_id = ? AND tl_beachcup_registration_state.code IN ('COMPLETE','INCOMPLETE','PROCESSING') 
+                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language)->execute($id)->fetchAllAssoc();
+
+        foreach($teams as &$team)
+        {
+            if($objPage->language == "it")
+            {
+                $team["tournament_name"] = $team["tournament_name_it"];
+                $team["points"] = "Punti: " . $team["points"];
+            }
+            else
+            {
+                $team["tournament_name"] = $team["tournament_name_de"];
+                $team["points"] = "Punkte: " . $team["points"];
+            }
+        }
+        $stage["participanting_teams"] = $teams;
+
         $this->Template->translations = $translations;
         $this->Template->stage = $stage;
     }
