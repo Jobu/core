@@ -404,7 +404,6 @@ summary:hover {
     border: 1px solid lightgray;
     border-radius: 10px;
     margin-bottom: 10px;
-    padding: 10px;
 }
 
 .stage-list .stage-list-item:hover {
@@ -414,6 +413,8 @@ summary:hover {
 
 .stage-list .stage-list-item a {
     color: #2a2a2a;
+    display: block;
+    padding: 10px;
 }
 
 .stage-list .stage-list-item a:hover {
