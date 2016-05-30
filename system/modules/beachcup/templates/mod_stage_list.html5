@@ -48,11 +48,13 @@ echo "<p>" . $this->stage["description"] . "</p>
         {
             $tournament_id = $this->stage["participanting_teams"][$count]["tournament_id"];
             
-            echo "<details><summary>" . $this->stage["participanting_teams"][$count]["tournament_name"] . "</summary><dl class='ranking'>";
+            echo "<details><summary>" . $this->stage["participanting_teams"][$count]["tournament_name"] . " (" . \Date::parse("j. F Y", $this->stage["participanting_teams"][$count]["tournament_date"]) . ")</summary><dl class='ranking'>";
             
             while($tournament_id == $this->stage["participanting_teams"][$count]["tournament_id"])
             {
-                echo "<dt></dt><dd>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                if($this->stage["participanting_teams"][$count]["team_name"] != null) {
+                    echo "<dt></dt><dd>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                }
                 $count++;
             }
             
