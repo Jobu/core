@@ -1,27 +1,36 @@
 <?php
 $count = 0;
 
-while($count < count($this->teams))
-{
-    $stage_id = $this->teams[$count]["stage_id"];
-    
-    echo "<div class='box'><h3>" . $this->teams[$count]["stage_name"] . "</h3>";
-    
-    while($stage_id == $this->teams[$count]["stage_id"])
+if(count($this->teams) > 0) {
+    while($count < count($this->teams))
     {
-        $tournament_id = $this->teams[$count]["tournament_id"];
+        $stage_id = $this->teams[$count]["stage_id"];
         
-        echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
+        echo "<div class='box'><h3>" . $this->teams[$count]["stage_name"] . "</h3>";
         
-        while($tournament_id == $this->teams[$count]["tournament_id"])
+        while($stage_id == $this->teams[$count]["stage_id"])
         {
-            echo "<dt></dt><dd>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["points"] . "</points></dd></br>";
-            $count++;
+            $tournament_id = $this->teams[$count]["tournament_id"];
+            
+            echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
+            
+            while($tournament_id == $this->teams[$count]["tournament_id"])
+            {
+                echo "<dt></dt><dd>" . $this->teams[$count]["team_name"];
+                if($this->teams[$count]["tournament_code"] != 'YOUTH') {
+                    echo " <span class='points'>" . $this->teams[$count]["points"] . "</span>";
+                }
+                echo "</dd></br>";
+                $count++;
+            }
+            
+            echo "</dl></details>";
         }
         
-        echo "</dl></details>";
+        echo "</div>";
     }
-    
-    echo "</div>";
+} else {
+    echo "<div class='box'><h3>" . $this->translations["noResults"] . "</h3>";
 }
+    
 ?>

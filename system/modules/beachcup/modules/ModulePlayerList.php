@@ -52,8 +52,8 @@ class ModulePlayerList extends \Module
         }
         
         $players = $database->prepare("SELECT CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) as `name`
-                                            FROM tl_beachcup_player
-                                            WHERE tl_beachcup_player.user = ?")->execute(array($user))->fetchAllAssoc();
+                                        FROM tl_beachcup_player
+                                        WHERE tl_beachcup_player.user = ?")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->players = $players;

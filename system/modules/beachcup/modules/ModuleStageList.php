@@ -85,7 +85,8 @@ class ModuleStageList extends \Module
         }
         
         $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture 
-                                    FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
+                                    FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id 
+                                    JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
                                     WHERE tl_beachcup_season.active = true")->fetchAllAssoc();
 
         foreach($stages as &$stage)
@@ -109,9 +110,11 @@ class ModuleStageList extends \Module
                 $stage["link"] = $this->generateFrontendUrl($alias, "/$this->detailsKey/" . $stage["id"]);
             }
             
-            $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament.name_$language AS name 
-                                                        FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id 
-                                                        WHERE tl_beachcup_tournament.stage_id = ?")->execute($stage["id"])->fetchAllAssoc();
+            $stage["tournaments"] = $database->prepare("SELECT tl_beachcup_tournament.name_$language AS name 
+                                                        FROM tl_beachcup_tournament 
+                                                        JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id 
+                                                        WHERE tl_beachcup_tournament.stage_id = ?
+                                                        ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_$language")->execute($stage["id"])->fetchAllAssoc();
         }
         
         $this->Template->translations = $translations;
@@ -139,9 +142,10 @@ class ModuleStageList extends \Module
             tl_beachcup_venue.name_$language AS venue_name, tl_beachcup_venue.description_$language AS venue_description, tl_beachcup_venue.address_$language AS venue_address, tl_beachcup_venue.zip_code AS venue_zip_code, 
             tl_beachcup_venue.city_$language AS venue_city, tl_beachcup_organizer.name_$language AS organizer_name, tl_beachcup_organizer.description_$language AS organizer_description, tl_beachcup_organizer.contact_person, 
             tl_beachcup_organizer.email, tl_beachcup_organizer.phone, tl_beachcup_organizer.fax, tl_beachcup_organizer.mobile_phone 
-            FROM tl_beachcup_stage 
-            JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id JOIN tl_beachcup_organizer ON tl_beachcup_stage.organizer_id = tl_beachcup_organizer.id JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
-            WHERE tl_beachcup_season.active = true AND tl_beachcup_stage.id = ?")->execute($id)->fetchAssoc();
+                                    FROM tl_beachcup_stage 
+                                    JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id 
+                                    JOIN tl_beachcup_organizer ON tl_beachcup_stage.organizer_id = tl_beachcup_organizer.id 
+                                    WHERE tl_beachcup_stage.id = ?")->execute($id)->fetchAssoc();
         
         $src = deserialize($stage["picture"]);
         $file = \FilesModel::findByUuid($src);
@@ -156,13 +160,7 @@ class ModuleStageList extends \Module
         {
             $stage["date"] = \Date::parse("j.", $stage["start_date"]) . $conjunction . \Date::parse("j. F Y", $stage["end_date"]);
         }
-        
-        
-        $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament.name_$language AS name, tl_beachcup_tournament.date 
-                                                    FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id 
-                                                    WHERE tl_beachcup_tournament.stage_id = ? 
-                                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_$language")->execute($id)->fetchAllAssoc();
-        
+                
         $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name 
                                     FROM tl_beachcup_tournament
                                     JOIN tl_beachcup_stage ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id
@@ -170,7 +168,7 @@ class ModuleStageList extends \Module
                                     LEFT OUTER JOIN tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id AND tl_beachcup_registration_state.code IN ('COMPLETE','INCOMPLETE','PROCESSING')
                                     LEFT OUTER JOIN (SELECT tl_beachcup_team.id AS id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR $separator) AS team_name FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id GROUP BY tl_beachcup_team.id) AS team ON team.id = tl_beachcup_registration.team_id 
                                     WHERE tl_beachcup_tournament.stage_id = ? 
-                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language)->execute($id)->fetchAllAssoc();
+                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language.", tl_beachcup_registration.tstamp")->execute($id)->fetchAllAssoc();
 
         foreach($teams as &$team)
         {

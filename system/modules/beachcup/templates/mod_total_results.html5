@@ -2,38 +2,42 @@
 $count = 0;
 $position = 0;
 
-while($count < count($this->teams))
-{
-    $tournament_name = $this->teams[$count]["tournament_name"];
-    $position = 0;
-        
-    echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
-
-    while($tournament_name == $this->teams[$count]["tournament_name"])
+if(count($this->teams) > 0) {
+    while($count < count($this->teams))
     {
-        switch($position)
-        {
-            case 0:
-                echo "<dt class='gold'>&#127942;</dt><dd class='gold'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
-                break;
-                
-            case 1:
-                echo "<dt class='silver'>&#127942;</dt><dd class='silver'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
-                break;
-                
-            case 2:
-                echo "<dt class='bronze'>&#127942;</dt><dd class='bronze'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
-                break;
-                
-            default:
-                echo "<dt></dt><dd>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
-                break;
-        }
-    
-        $count++;
-        $position++;
-    }
+        $tournament_name = $this->teams[$count]["tournament_name"];
+        $position = 0;
+            
+        echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
 
-    echo "</dl></details>";
-}
+        while($tournament_name == $this->teams[$count]["tournament_name"])
+        {
+            switch($position)
+            {
+                case 0:
+                    echo "<dt class='gold'>&#127942;</dt><dd class='gold'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    break;
+                    
+                case 1:
+                    echo "<dt class='silver'>&#127942;</dt><dd class='silver'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    break;
+                    
+                case 2:
+                    echo "<dt class='bronze'>&#127942;</dt><dd class='bronze'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    break;
+                    
+                default:
+                    echo "<dt></dt><dd>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    break;
+            }
+        
+            $count++;
+            $position++;
+        }
+
+        echo "</dl></details>";
+    }
+} else {
+    echo "<div class='box'><h3>" . $this->translations["noResults"] . "</h3>";
+}    
 ?>
