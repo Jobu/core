@@ -421,6 +421,23 @@ summary:hover {
     text-decoration: none;
 }
 
+.mod_article .ce_text {
+    margin-bottom: 20px;
+}
+
+.mod_article .ce_text ul, .mod_article .ce_text ol {
+    line-height: 24px;
+    padding-bottom: 10px;
+}
+
+.mod_article .ce_text ul li {
+    list-style: inside;
+}
+
+.mod_article .ce_text ol li {
+    list-style: inside decimal;
+}
+
 @media only screen and ( max-width: 1440px )
 {
     #main-header .logo
