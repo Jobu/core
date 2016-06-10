@@ -1,6 +1,17 @@
 <?php
 class EfgCallbacks extends Backend
-{
+{    
+    public function customStoreFormData($arrSet, $objForm)
+    {
+        if ($arrSet['birth_date'] != "")
+        {
+            $objDate = new \Date($arrSet['birth_date']);
+            $arrSet['birth_date'] = $objDate->tstamp;
+        }
+
+        return $arrSet;
+    }
+
     public function validateRegistrationFormFields($objWidget, $formId)
     {
         if($objWidget->hasErrors())
