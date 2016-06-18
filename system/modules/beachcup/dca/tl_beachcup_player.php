@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;{user_legend},user;'
+        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;'
 	),
 
 	// Subpalettes
@@ -312,17 +312,6 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "boolean NOT NULL default false"
-        ),
-        'user' => array
-        (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player']['user'],
-            'exclude'                 => true,
-            'sorting'                 => true,
-            'search'                  => true,
-            'inputType'               => 'select',
-            'foreignKey'              => 'tl_member.CONCAT(username, " (", firstname, " ", lastname, ")")',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
-            'sql'                     => "int(10) unsigned NOT NULL"
         )
 	)
 );

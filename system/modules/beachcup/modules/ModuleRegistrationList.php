@@ -53,15 +53,23 @@ class ModuleRegistrationList extends \Module
             $translations = array("team" => "Squadra", "tournament" => "Torneo",  "state" => "Stato");
         }
         
-        $registrations = $database->prepare("SELECT team.team, tl_beachcup_tournament.name_$language as `tournament`, tl_beachcup_registration_state.description_$language as `state`
-                                            FROM tl_beachcup_registration
-                                            JOIN tl_beachcup_registration_state ON tl_beachcup_registration.state_id = tl_beachcup_registration_state.id
-                                            JOIN tl_beachcup_tournament ON tl_beachcup_registration.tournament_id = tl_beachcup_tournament.id
-                                            JOIN tl_beachcup_stage ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id
-                                            JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id
-                                            JOIN (SELECT tl_beachcup_team.id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR ' $conjunction ') as `team` FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id WHERE tl_beachcup_player.user = ? GROUP BY tl_beachcup_team.id) as team ON tl_beachcup_registration.team_id = team.id
-                                            WHERE tl_beachcup_season.active = true and DATE(NOW()) <= DATE(from_unixtime(tl_beachcup_stage.end_date))
-                                            ORDER BY tl_beachcup_tournament.date, tl_beachcup_registration.tstamp")->execute(array($user))->fetchAllAssoc();
+        $registrations = $database->prepare("SELECT CONCAT(player_1.name, ' $conjunction ', player_2.name) AS team, tournament.name_$language AS tournament, state.description_$language AS state
+                                                FROM tl_beachcup_registration AS registration
+                                                JOIN tl_beachcup_registration_state AS state ON state.id = registration.state_id
+                                                JOIN tl_beachcup_tournament AS tournament ON tournament.id = registration.tournament_id
+                                                JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+                                                        FROM tl_beachcup_member_player AS map
+                                                        JOIN tl_beachcup_player AS player ON player.id = map.player_id
+                                                        JOIN tl_beachcup_team AS team ON team.player_1 = player.id)
+                                                      AS player_1 ON player_1.team_id = registration.team_id
+                                                JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+                                                        FROM tl_beachcup_member_player AS map
+                                                        JOIN tl_beachcup_player AS player ON player.id = map.player_id
+                                                        JOIN tl_beachcup_team AS team ON team.player_2 = player.id)
+                                                      AS player_2 ON player_1.team_id = player_2.team_id AND player_1.member_id = player_2.member_id
+                                                WHERE player_1.member_id = 17
+                                                GROUP BY player_1.team_id
+                                                ORDER BY tournament.date, registration.id;")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->registrations = $registrations;

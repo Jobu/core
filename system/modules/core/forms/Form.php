@@ -499,7 +499,8 @@ class Form extends \Hybrid
 			}
 
 			// Do not use Models here (backwards compatibility)
-			$this->Database->prepare("INSERT INTO " . $this->targetTable . " %s")->set($arrSet)->execute();
+			//Beachcup Custom if to prevent saving empty rows in the database
+			if(!empty($arrSet)) $this->Database->prepare("INSERT INTO " . $this->targetTable . " %s")->set($arrSet)->execute();
 		}
 
 		// Store all values in the session

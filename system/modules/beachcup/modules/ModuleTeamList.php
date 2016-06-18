@@ -41,23 +41,29 @@ class ModuleTeamList extends \Module
     {
         global $objPage;
         $database = \Database::getInstance();
-        //$language = "de";
         $conjunction = " und ";
         $translations = array("team" => "Team");
         $user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
         
         if($objPage->language == "it")
         {
-            //$language = "it";
             $conjunction = " e ";
             $translations = array("team" => "Squadra");
         }
         
-        $teams = $database->prepare("SELECT tl_beachcup_team.id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR ' $conjunction ') as `name`
-                                        FROM tl_beachcup_team
-                                        JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id
-                                        WHERE tl_beachcup_player.user = ?
-                                        GROUP BY tl_beachcup_team.id")->execute(array($user))->fetchAllAssoc();
+        $teams = $database->prepare("SELECT player_1.team_id, CONCAT(player_1.name, ' $conjunction ', player_2.name) AS name
+                                        FROM (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+                                                FROM tl_beachcup_member_player AS map
+                                                JOIN tl_beachcup_player AS player ON player.id = map.player_id
+                                                JOIN tl_beachcup_team AS team ON team.player_1 = player.id)
+                                              AS player_1
+                                        JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+                                                FROM tl_beachcup_member_player AS map
+                                                JOIN tl_beachcup_player AS player ON player.id = map.player_id
+                                                JOIN tl_beachcup_team AS team ON team.player_2 = player.id)
+                                              AS player_2 ON player_1.team_id = player_2.team_id AND player_1.member_id = player_2.member_id
+                                        WHERE player_1.member_id = ?
+                                        GROUP BY player_1.team_id;")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->teams = $teams;

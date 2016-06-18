@@ -3,12 +3,35 @@ class EfgCallbacks extends Backend
 {    
     public function customStoreFormData($arrSet, $objForm)
     {
-        if ($arrSet['birth_date'] != "")
+        $property = (new ReflectionClass($objForm))->getProperty("objModel");
+        $property->setAccessible(true);
+        $formId = $property->getValue($objForm)->id;
+        
+        //Check if form is german or italian player form
+        if($formId == 4 || $formId == 8)
         {
-            $objDate = new \Date($arrSet['birth_date']);
-            $arrSet['birth_date'] = $objDate->tstamp;
-        }
+            if($arrSet["birth_date"] != "")
+            {
+                $objDate = new \Date($arrSet["birth_date"]);
+                $arrSet["birth_date"] = $objDate->tstamp;
+            }
+            
+            $player = $this->Database->prepare("SELECT tl_beachcup_player.id FROM tl_beachcup_player WHERE LOWER(tl_beachcup_player.tax_number) = LOWER(?)")->execute($arrSet["tax_number"])->fetchAssoc();
 
+            if(!empty($player))
+            {
+                $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
+            }
+            else
+            {
+                $this->Database->prepare("INSERT INTO tl_beachcup_player (tl_beachcup_player.tstamp, tl_beachcup_player.name, tl_beachcup_player.surname, tl_beachcup_player.birth_date, tl_beachcup_player.birth_place, tl_beachcup_player.gender, tl_beachcup_player.address, tl_beachcup_player.zip_code, tl_beachcup_player.city, tl_beachcup_player.country, tl_beachcup_player.tax_number, tl_beachcup_player.email, tl_beachcup_player.phone_number, tl_beachcup_player.shirt_size, tl_beachcup_player.player_level, tl_beachcup_player.has_privacy) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute($arrSet);
+                $player = $this->Database->prepare("SELECT tl_beachcup_player.id FROM tl_beachcup_player WHERE LOWER(tl_beachcup_player.tax_number) = LOWER(?)")->execute($arrSet["tax_number"])->fetchAssoc();
+                $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
+            }
+            
+            return array();
+        }
+        
         return $arrSet;
     }
 

@@ -2,6 +2,15 @@
 
 $GLOBALS['BE_MOD']['beachcup'] = array
 (
+    'member_player' => array
+    (
+        'tables'       => array('tl_beachcup_member_player'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
+        'icon'         => 'system/modules/beachcup/assets/images/member_player.png',
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
+    ),
     'player' => array
     (
         'tables'       => array('tl_beachcup_player'),

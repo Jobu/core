@@ -16,6 +16,7 @@
  * Back end modules
  */
 $GLOBALS['TL_LANG']['MOD']['beachcup'] = array('Beachcup', 'Beachcup verwalten');
+$GLOBALS['TL_LANG']['MOD']['member_player'] = array('Mitglied-Spieler Verweise', 'Mitglied-Spieler Verweise verwalten');
 $GLOBALS['TL_LANG']['MOD']['player'] = array('Spieler', 'Spieler verwalten');
 $GLOBALS['TL_LANG']['MOD']['player_level'] = array('Spieler-Levels', 'Spieler-Levels verwalten');
 $GLOBALS['TL_LANG']['MOD']['team'] = array('Teams', 'Teams verwalten');

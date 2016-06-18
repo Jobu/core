@@ -399,6 +399,13 @@ summary:hover {
     color: #adbb32;
 }
 
+.waiting-list { color: #adbb32; }
+
+div.waiting-list { 
+    text-align: right; 
+    float: right;
+}
+
 .stage-list .stage-list-item {
     position: relative;
     border: 1px solid lightgray;

@@ -2116,12 +2116,46 @@ class Formdata extends \Frontend
 					if($sqlLookupOrder == "custom_sql_registration_de")
 					{
 						$user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
-						$sqlLookup = "SELECT tl_beachcup_team.id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR ' und ') as player_1 FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id WHERE tl_beachcup_player.user = $user GROUP BY tl_beachcup_team.id";
+						$sqlLookup = "SELECT player_1.team_id AS id, CONCAT(player_1.name, ' und ', player_2.name) AS name
+										FROM (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+												FROM tl_beachcup_member_player AS map
+												JOIN tl_beachcup_player AS player ON player.id = map.player_id
+												JOIN tl_beachcup_team AS team ON team.player_1 = player.id)
+											  AS player_1
+										JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+												FROM tl_beachcup_member_player AS map
+												JOIN tl_beachcup_player AS player ON player.id = map.player_id
+												JOIN tl_beachcup_team AS team ON team.player_2 = player.id)
+											  AS player_2 ON player_1.team_id = player_2.team_id AND player_1.member_id = player_2.member_id
+										WHERE player_1.member_id = $user
+										GROUP BY player_1.team_id";
 					}
 					else if($sqlLookupOrder == "custom_sql_registration_it")
 					{
 						$user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
-						$sqlLookup = "SELECT tl_beachcup_team.id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR ' e ') as player_1 FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id WHERE tl_beachcup_player.user = $user GROUP BY tl_beachcup_team.id";
+						$sqlLookup = "SELECT player_1.team_id AS id, CONCAT(player_1.name, ' e ', player_2.name) AS name
+										FROM (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+												FROM tl_beachcup_member_player AS map
+												JOIN tl_beachcup_player AS player ON player.id = map.player_id
+												JOIN tl_beachcup_team AS team ON team.player_1 = player.id)
+											  AS player_1
+										JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
+												FROM tl_beachcup_member_player AS map
+												JOIN tl_beachcup_player AS player ON player.id = map.player_id
+												JOIN tl_beachcup_team AS team ON team.player_2 = player.id)
+											  AS player_2 ON player_1.team_id = player_2.team_id AND player_1.member_id = player_2.member_id
+										WHERE player_1.member_id = $user
+										GROUP BY player_1.team_id;";
+					}
+					else if($sqlLookupOrder == "custom_sql_team")
+					{
+						$user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
+						$sqlLookup = "SELECT DISTINCT tl_beachcup_player.id, CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) as `player_name`
+										FROM tl_beachcup_member_player
+										JOIN tl_beachcup_player ON tl_beachcup_member_player.player_id = tl_beachcup_player.id
+										JOIN tl_member ON tl_beachcup_member_player.member_id = tl_member.id
+										WHERE tl_beachcup_member_player.member_id = $user
+										ORDER BY `player_name`";
 					}
 					
 					if (!empty($sqlLookupTable))

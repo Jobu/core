@@ -67,11 +67,6 @@ $GLOBALS['TL_LANG']['tl_beachcup_player']['has_privacy'][1] = 'Spieler hat Priva
 $GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][0] = 'Shirt';
 $GLOBALS['TL_LANG']['tl_beachcup_player']['has_shirt'][1] = 'Spieler hat sein Shirt bereits bekommen.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['user_legend'] = 'Benutzer Informationen';
-
-$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][0] = 'Benutzer';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['user'][1] = 'Benutzer, welcher den Spieler gemeldet hat.';
-
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][0] = "Neuer Spieler";
 $GLOBALS['TL_LANG']['tl_beachcup_player']['new'][1] = "Einen neuen Spieler anlegen";
 

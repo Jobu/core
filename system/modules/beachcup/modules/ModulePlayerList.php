@@ -41,19 +41,19 @@ class ModulePlayerList extends \Module
     {
         global $objPage;
         $database = \Database::getInstance();
-        //$language = "de";
         $translations = array("player" => "Spieler");
         $user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
         
         if($objPage->language == "it")
         {
-            //$language = "it";
             $translations = array("player" => "Giocatore");
         }
         
-        $players = $database->prepare("SELECT CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) as `name`
-                                        FROM tl_beachcup_player
-                                        WHERE tl_beachcup_player.user = ?")->execute(array($user))->fetchAllAssoc();
+        $players = $database->prepare("SELECT DISTINCT tl_beachcup_player.id, CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) as `name`
+                                        FROM tl_beachcup_member_player
+                                        JOIN tl_beachcup_player ON tl_beachcup_member_player.player_id = tl_beachcup_player.id
+                                        JOIN tl_member ON tl_beachcup_member_player.member_id = tl_member.id
+                                        WHERE tl_beachcup_member_player.member_id = ?;")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->players = $players;
