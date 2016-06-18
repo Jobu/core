@@ -2157,6 +2157,20 @@ class Formdata extends \Frontend
 										WHERE tl_beachcup_member_player.member_id = $user
 										ORDER BY `player_name`";
 					}
+					else if($sqlLookupOrder == "custom_sql_registration_tournament_de")
+					{
+						$sqlLookup = "SELECT tournament.id AS id, CONCAT(stage.name_de, ' - ', tournament.name_de) AS name_de
+										FROM tl_beachcup_tournament AS tournament
+										JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
+										WHERE stage.is_enabled = 1;";
+					}
+					else if($sqlLookupOrder == "custom_sql_registration_tournament_it")
+					{
+						$sqlLookup = "SELECT tournament.id AS id, CONCAT(stage.name_it, ' - ', tournament.name_it) AS name_it
+										FROM tl_beachcup_tournament AS tournament
+										JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
+										WHERE stage.is_enabled = 1;";
+					}
 					
 					if (!empty($sqlLookupTable))
 					{
