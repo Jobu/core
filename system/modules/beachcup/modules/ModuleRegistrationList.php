@@ -61,7 +61,7 @@ class ModuleRegistrationList extends \Module
                                             JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id
                                             JOIN (SELECT tl_beachcup_team.id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR ' $conjunction ') as `team` FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id WHERE tl_beachcup_player.user = ? GROUP BY tl_beachcup_team.id) as team ON tl_beachcup_registration.team_id = team.id
                                             WHERE tl_beachcup_season.active = true and DATE(NOW()) <= DATE(from_unixtime(tl_beachcup_stage.end_date))
-                                            ORDER BY tl_beachcup_tournament.date, tl_beachcup_registration.tstamp")->execute(array($user))->fetchAllAssoc();
+                                            ORDER BY tl_beachcup_tournament.date, tl_beachcup_registration.id")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->registrations = $registrations;

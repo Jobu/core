@@ -128,14 +128,14 @@ class ModuleStageList extends \Module
         $language = "de";
         $conjunction = " bis ";
         $separator = "' und '";
-        $translations = array("tournaments" => array("title" => "Turniere und angemeldete Teams", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung");
+        $translations = array("tournaments" => array("title" => "Turniere und angemeldete Teams", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung", "waitingList" => "Warteliste");
 
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
             $separator = "' e '";
-            $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione");
+            $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione", "waitingList" => "Lista d'attesa");
         }
         
         $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_venue.picture, 
@@ -161,14 +161,14 @@ class ModuleStageList extends \Module
             $stage["date"] = \Date::parse("j.", $stage["start_date"]) . $conjunction . \Date::parse("j. F Y", $stage["end_date"]);
         }
                 
-        $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name 
+        $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name, tl_beachcup_registration_state.code  registration_state
                                     FROM tl_beachcup_tournament
                                     JOIN tl_beachcup_stage ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id
                                     LEFT OUTER JOIN tl_beachcup_registration ON tl_beachcup_registration.tournament_id = tl_beachcup_tournament.id
-                                    LEFT OUTER JOIN tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id AND tl_beachcup_registration_state.code IN ('COMPLETE','INCOMPLETE','PROCESSING')
+                                    LEFT OUTER JOIN tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id AND tl_beachcup_registration_state.code != 'REJECTED'
                                     LEFT OUTER JOIN (SELECT tl_beachcup_team.id AS id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR $separator) AS team_name FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id GROUP BY tl_beachcup_team.id) AS team ON team.id = tl_beachcup_registration.team_id 
                                     WHERE tl_beachcup_tournament.stage_id = ? 
-                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language.", tl_beachcup_registration.tstamp")->execute($id)->fetchAllAssoc();
+                                    ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language.", tl_beachcup_registration.id")->execute($id)->fetchAllAssoc();
 
         foreach($teams as &$team)
         {

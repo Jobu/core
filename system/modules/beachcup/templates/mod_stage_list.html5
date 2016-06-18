@@ -50,10 +50,19 @@ echo "<p>" . $this->stage["description"] . "</p>
             
             echo "<details><summary>" . $this->stage["participanting_teams"][$count]["tournament_name"] . " (" . \Date::parse("j. F Y", $this->stage["participanting_teams"][$count]["tournament_date"]) . ")</summary><dl class='ranking'>";
             
+            $waitingListFound = false;
             while($tournament_id == $this->stage["participanting_teams"][$count]["tournament_id"])
             {
                 if($this->stage["participanting_teams"][$count]["team_name"] != null) {
-                    echo "<dt></dt><dd>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                    if($waitingListFound == false && $this->stage["participanting_teams"][$count]["registration_state"] == 'WAITING_LIST') {
+                        $waitingListFound = true;
+                        echo "<hr class='waiting-list' /><div class='waiting-list'>&darr;" . $this->translations["waitingList"] . "</div>";
+                    }
+                    if($waitingListFound == true) {
+                        echo "<dt class='waiting-list'></dt><dd class='waiting-list'>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                    } else {
+                        echo "<dt></dt><dd>" . $this->stage["participanting_teams"][$count]["team_name"] . "</dd></br>";
+                    }
                 }
                 $count++;
             }
