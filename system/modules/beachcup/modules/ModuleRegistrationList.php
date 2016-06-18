@@ -67,7 +67,7 @@ class ModuleRegistrationList extends \Module
                                                         JOIN tl_beachcup_player AS player ON player.id = map.player_id
                                                         JOIN tl_beachcup_team AS team ON team.player_2 = player.id)
                                                       AS player_2 ON player_1.team_id = player_2.team_id AND player_1.member_id = player_2.member_id
-                                                WHERE player_1.member_id = 17
+                                                WHERE player_1.member_id = ?
                                                 GROUP BY player_1.team_id
                                                 ORDER BY tournament.date, registration.id;")->execute(array($user))->fetchAllAssoc();
         
