@@ -53,10 +53,11 @@ class ModuleRegistrationList extends \Module
             $translations = array("team" => "Squadra", "tournament" => "Torneo",  "state" => "Stato");
         }
         
-        $registrations = $database->prepare("SELECT CONCAT(player_1.name, ' $conjunction ', player_2.name) AS team, tournament.name_$language AS tournament, state.description_$language AS state
+        $registrations = $database->prepare("SELECT CONCAT(player_1.name, ' $conjunction ', player_2.name) AS team, CONCAT(stage.name_$language, ' - ', tournament.name_$language) AS tournament, state.description_$language AS state
                                                 FROM tl_beachcup_registration AS registration
                                                 JOIN tl_beachcup_registration_state AS state ON state.id = registration.state_id
                                                 JOIN tl_beachcup_tournament AS tournament ON tournament.id = registration.tournament_id
+                                                JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
                                                 JOIN (SELECT map.member_id AS member_id, team.id AS team_id, CONCAT(player.name, ' ', player.surname) AS name
                                                         FROM tl_beachcup_member_player AS map
                                                         JOIN tl_beachcup_player AS player ON player.id = map.player_id
