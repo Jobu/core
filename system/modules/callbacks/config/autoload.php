@@ -14,5 +14,6 @@
  */
 ClassLoader::addClasses(array
 (
-	'EfgCallbacks' => 'system/modules/callbacks/EfgCallbacks.php',
+	'EfgCallbacks'   => 'system/modules/callbacks/EfgCallbacks.php',
+	'LoginCallbacks' => 'system/modules/callbacks/LoginCallbacks.php',
 ));
