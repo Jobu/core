@@ -45,7 +45,8 @@ $GLOBALS['BE_MOD']['beachcup'] = array
         //'key'          => array('Class', 'method'),
         'icon'         => 'system/modules/beachcup/assets/images/registration.png',
         //'stylesheet'   => 'path/to/stylesheet.css',
-        //'javascript'   => 'path/to/javascript.js'
+        //'javascript'   => 'path/to/javascript.js',
+        'export'       => array('RegistrationExport', 'export')
     ),
     'registration_state' => array
     (

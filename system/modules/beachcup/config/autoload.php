@@ -23,6 +23,9 @@ ClassLoader::addNamespaces(array
  */
 ClassLoader::addClasses(array
 (
+	// Classes
+	'beachcup\RegistrationExport'     => 'system/modules/beachcup/classes/RegistrationExport.php',
+
 	// Modules
 	'beachcup\ModuleGameResults'      => 'system/modules/beachcup/modules/ModuleGameResults.php',
 	'beachcup\ModulePlayerList'       => 'system/modules/beachcup/modules/ModulePlayerList.php',

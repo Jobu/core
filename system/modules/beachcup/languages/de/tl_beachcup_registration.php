@@ -25,3 +25,6 @@ $GLOBALS['TL_LANG']['tl_beachcup_registration']['delete'][1] = "Anmeldung ID %s 
 
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['show'][0] = "Anmeldung Details";
 $GLOBALS['TL_LANG']['tl_beachcup_registration']['show'][1] = "Details der Anmeldung ID %s anzeigen";
+
+$GLOBALS['TL_LANG']['tl_beachcup_registration']['export'][0] = "Anmeldungen exportieren";
+$GLOBALS['TL_LANG']['tl_beachcup_registration']['export'][1] = "Die aktuellen Anmeldungen für die aktuelle Etappe exportieren.";

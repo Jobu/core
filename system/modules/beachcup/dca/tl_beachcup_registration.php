@@ -56,7 +56,13 @@ $GLOBALS['TL_DCA']['tl_beachcup_registration'] = array
 				'href'                => 'act=select',
 				'class'               => 'header_edit_all',
 				'attributes'          => 'onclick="Backend.getScrollOffset();" accesskey="e"'
-			)
+			),
+            'export' => array
+            (
+                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_registration']['export'],
+                'href'                => 'key=export',
+                'icon'                => 'system/modules/beachcup/assets/images/export.png'
+            )
 		),
 		'operations' => array
 		(
