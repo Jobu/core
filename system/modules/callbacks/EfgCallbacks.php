@@ -42,12 +42,32 @@ class EfgCallbacks extends Backend
             return $objWidget;
         }
         
+        //Check player_1 or player_2 select
+        if($objWidget->id == 23 || $objWidget->id == 24)
+        {
+            //Check for double teams
+            $teams = $this->Database->prepare("SELECT * FROM tl_beachcup_team as team WHERE (team.player_1 = ? and team.player_2 = ?) or (team.player_2 = ? and team.player_1 = ?)")->execute(array($_REQUEST["player_1"], $_REQUEST["player_2"], $_REQUEST["player_1"], $_REQUEST["player_2"]));
+            
+            if($teams->numRows)
+            {
+                $objWidget->addError("{{ifnlng::it}}Ein Team mit den gleichen Spielern wurde bereits angelegt.{{ifnlng}}{{iflng::it}}Una squadra con gli stessi giocatori era già stato creato.{{iflng}}");
+            }
+            
+            //Check for same player
+            if($_REQUEST["player_1"] == $_REQUEST["player_2"])
+            {
+                $objWidget->addError("{{ifnlng::it}}Sie haben zweimal den gleichen Spieler gewählt.{{ifnlng}}{{iflng::it}}Hai scelto due volte lo stesso giocatore.{{iflng}}");
+            }
+        }
+        
         //Check team_id select
         if($objWidget->id == 27 || $objWidget->id == 30)
         {
             //Check age
             $max_age = $this->Database->prepare("select max_age from tl_beachcup_tournament where tl_beachcup_tournament.id = ?")->execute(array($_REQUEST["tournament_id"]))->max_age;
-            if($max_age > 0) {
+            
+            if($max_age > 0)
+            {
                 foreach($this->Database->prepare("SELECT YEAR(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND)) AS birthYear FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id or tl_beachcup_team.player_2 = tl_beachcup_player.id WHERE tl_beachcup_team.id = ?")->execute(array($_REQUEST["team_id"]))->fetchAllAssoc() as $row)
                 {
                     if($row["birthYear"] < $max_age)
