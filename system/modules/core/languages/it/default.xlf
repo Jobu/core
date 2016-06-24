@@ -1977,7 +1977,7 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       </trans-unit>
       <trans-unit id="MSC.username">
         <source>Username</source>
-        <target>Nome utente</target>
+        <target>Nome utente / e-mail</target>
       </trans-unit>
       <trans-unit id="MSC.login">
         <source>Login</source>

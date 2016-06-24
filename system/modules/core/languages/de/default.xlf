@@ -1977,7 +1977,7 @@ Diese E-Mail wurde von Contao generiert. Sie können nicht darauf antworten.
       </trans-unit>
       <trans-unit id="MSC.username">
         <source>Username</source>
-        <target>Benutzername</target>
+        <target>Benutzername / E-Mail</target>
       </trans-unit>
       <trans-unit id="MSC.login">
         <source>Login</source>
