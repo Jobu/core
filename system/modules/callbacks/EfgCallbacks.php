@@ -42,6 +42,18 @@ class EfgCallbacks extends Backend
             return $objWidget;
         }
         
+        //Check for tax_number
+        if($objWidget->id == 33 || $objWidget->id == 43)
+        {
+            //Check if member player link already exists
+            $links = $this->Database->prepare("SELECT * FROM tl_beachcup_member_player AS mp JOIN tl_beachcup_player AS p ON mp.player_id = p.id WHERE LOWER(p.tax_number) = LOWER(?) AND mp.member_id = ?;")->execute(array($_REQUEST["tax_number"], $_REQUEST["user"]));
+            
+            if($links->numRows)
+            {
+                $objWidget->addError("{{ifnlng::it}}Sie haben bereits diesen Spieler angelegt.{{ifnlng}}{{iflng::it}}Hai già creato questo giocatore.{{iflng}}");
+            }
+        }
+        
         //Check player_1 or player_2 select
         if($objWidget->id == 23 || $objWidget->id == 24)
         {
