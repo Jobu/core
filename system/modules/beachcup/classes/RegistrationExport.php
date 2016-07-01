@@ -65,8 +65,8 @@ class RegistrationExport
             }
             
             fseek($file, 0);
-            header('Content-Encoding: UTF-8');
-            header('Content-Type: application/csv; charset=UTF-8');
+            header('Content-Encoding: iso-8859-1');
+            header('Content-Type: application/csv; charset=iso-8859-1');
             header('Content-Disposition: attachement; filename="Anmeldungen.csv";');
             echo "\xEF\xBB\xBF";
             fpassthru($file);
