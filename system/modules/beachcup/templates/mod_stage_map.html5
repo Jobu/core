@@ -140,20 +140,12 @@
                 $stageEndDate->setTimestamp($stage["end_date"]);
                 $stageEndDate->setTime(0, 0, 0);                
                 
-                if($activeStageFound === false && $today <= $stageEndDate)
-                {
-                    $activeStageFound = true;
-                    if($stage["is_enabled"] == 1) {
-                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->registerLink . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
-                    }
-                    else {
-                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
-                    }                    
+                if($stage["is_enabled"] == 1 && $today <= $stageEndDate) {
+                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->registerLink . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
                 }
-                else
-                {
+                else {
                     $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
-                }
+                }                                    
                 
                 foreach($stage["tournaments"] as $tournament)
                 {
