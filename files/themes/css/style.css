@@ -193,7 +193,18 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 	    border-right-color: #8f0808;
 	    border-top-color: #8f0808;
 	}
-
+	.ribbon.blue span {
+	    background: rgba(0, 0, 0, 0) linear-gradient(#2989d8 0%, #1e5799 100%) repeat scroll 0 0;
+	}
+	.ribbon.blue span::before {
+	    border-left-color: #1e5799;
+	    border-top-color: #1e5799;
+	}
+	.ribbon.blue span::after {
+	    border-right-color: #1e5799;
+	    border-top-color: #1e5799;
+	}
+	
 		.location-description .banner { color: white;
     
     position: relative;

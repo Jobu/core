@@ -51,7 +51,8 @@ class ModuleStageMap extends \Module
         $conjunction = " bis ";
         $stagesAlias = "etappen";
         $registerAlias = "meine-spieler";
-        $translations = array("details" => "Details", "register" => "Anmeldung");
+        $resultsAlias = "etappenstaende";
+        $translations = array("details" => "Details", "register" => "Anmeldung", "results" => "Ergebnisse");
         
         if($objPage->language == "it")
         {
@@ -59,12 +60,17 @@ class ModuleStageMap extends \Module
             $conjunction = " a ";
             $stagesAlias = "tappe";
             $registerAlias = "i-miei-giocatori";
-            $translations = array("details" => "Dettagli", "register" => "Iscrizione");
+            $resultsAlias = "risultati-tappe";
+            $translations = array("details" => "Dettagli", "register" => "Iscrizione", "results" => "Risultati");
         }
         
         if(($registerPage = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($registerAlias)->fetchAssoc()) != null)
         {
             $registerLink = $this->generateFrontendUrl($registerPage);
+        }
+        if(($resultsPage = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($resultsAlias)->fetchAssoc()) != null)
+        {
+            $resultsLink = $this->generateFrontendUrl($resultsPage);
         }
 
         $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude, tl_beachcup_venue.address_$language AS address 
@@ -106,5 +112,6 @@ class ModuleStageMap extends \Module
         $this->Template->translations = $translations;
         $this->Template->stages = $stages;
         $this->Template->registerLink = $registerLink;
+        $this->Template->resultsLink = $resultsLink;
 	}
 }

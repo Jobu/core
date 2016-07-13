@@ -130,12 +130,12 @@
             
             <?php
             $activeStageFound = false;
+            $today = new DateTime("now");
+            $today->setTime(0, 0, 0);
             for($i=0; $i<count($this->stages); $i++)
             {
                 $stage = $this->stages[$i];
                 
-                $today = new DateTime("now");
-                $today->setTime(0, 0, 0);
                 $stageEndDate = new DateTime();
                 $stageEndDate->setTimestamp($stage["end_date"]);
                 $stageEndDate->setTime(0, 0, 0);                
@@ -144,7 +144,7 @@
                     $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->registerLink . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
                 }
                 else {
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
+                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><a href="' . $this->resultsLink . '" class="ribbon blue"><span>' . $this->translations["results"] . '</span></a><div class="location-title"><div class="tournament-list">';
                 }                                    
                 
                 foreach($stage["tournaments"] as $tournament)

@@ -114,6 +114,17 @@ summary
     color: white;
 }
 
+.results-button {
+    display: inline-block;
+    padding: 8px;
+    margin: 3px;
+    border-radius: 10px;    
+    text-align: center;
+    border: 1px solid #1e5799;
+    background-color: #2989d8;
+    color: white;
+}
+
 .responsive-form .widget, .submit_container
 {
     width: 99%;

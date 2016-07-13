@@ -3,12 +3,19 @@ if($this->list)
 {
     echo "<ul class='stage-list thumbnail-list'>";
 
+    $today = new DateTime("now");
+    $today->setTime(0, 0, 0);
     foreach($this->stages as $stage)
-    {
+    {        
+        $stageEndDate = new DateTime();
+        $stageEndDate->setTimestamp($stage["end_date"]);
+        $stageEndDate->setTime(0, 0, 0);
         echo "<div class='stage-list-item'>";
-        if($stage["is_enabled"] == 1)
+        if($stage["is_enabled"] == 1 && $today <= $stageEndDate)
         {
             echo "<a href='" . $this->registerLink . "' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
+        } else {
+            echo "<a href='" . $this->resultsLink . "' class='ribbon blue'><span>" . $this->translations["results"] . "</span></a>";
         }
         echo "<a href='" . $stage["link"] . "' class='teaser'><img width='128px' src='" . $stage["picture_source"] . "'><h2>" . $stage["name"] . "</h2><i class='date-tag'>" . $stage["date"] . "</i><ul class='horizontal-list'>";
 
@@ -23,13 +30,20 @@ if($this->list)
     echo "</ul>";
 }
 else if($this->details)
-{
+{    
+    $today = new DateTime("now");
+    $today->setTime(0, 0, 0);
+    $stageEndDate = new DateTime();
+    $stageEndDate->setTimestamp($this->stage["end_date"]);
+    $stageEndDate->setTime(0, 0, 0);
 echo "<div class='teaser clearfix'>
         <img width='256px' src='" . $this->stage["picture_source"] . "'>
         <h1>" . $this->stage["name"] . "</h1>
         <p><i class='date-tag'>" . $this->stage["date"] . "</i></p>";
-    if($this->stage["is_enabled"] == 1) {
+    if($this->stage["is_enabled"] == 1 && $today <= $stageEndDate) {
         echo "<p><a class='register-button' href='" . $this->registerLink . "'><b>" . $this->translations["register"] . "</b></a></p>";
+    } else {
+        echo "<p><a class='results-button' href='" . $this->resultsLink . "'><b>" . $this->translations["results"] . "</b></a></p>";
     }       
 echo "<p>" . $this->stage["description"] . "</p>
     </div>

@@ -59,14 +59,21 @@ class ModuleStageList extends \Module
             $this->Template->list = true;
         }
         $registerAlias = "meine-spieler";
+        $resultsAlias = "etappenstaende";
         if($objPage->language == "it") {
             $registerAlias = "i-miei-giocatori";
+            $resultsAlias = "risultati-tappe";
         }
         if(($registerPage = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($registerAlias)->fetchAssoc()) != null)
         {
             $registerLink = $this->generateFrontendUrl($registerPage);
         }
+        if(($resultsPage = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($resultsAlias)->fetchAssoc()) != null)
+        {
+            $resultsLink = $this->generateFrontendUrl($resultsPage);
+        }
         $this->Template->registerLink = $registerLink;
+        $this->Template->resultsLink = $resultsLink;
     }
     
     private function compileListView()
@@ -75,13 +82,13 @@ class ModuleStageList extends \Module
         $database = \Database::getInstance();
         $language = "de";
         $conjunction = " bis ";
-        $translations = array("register" => "Anmeldung");
+        $translations = array("register" => "Anmeldung", "results" => "Ergebnisse");
         
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
-            $translations = array("register" => "Iscrizione");
+            $translations = array("register" => "Iscrizione", "results" => "Risultati");
         }
         
         $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture 
@@ -128,14 +135,14 @@ class ModuleStageList extends \Module
         $language = "de";
         $conjunction = " bis ";
         $separator = "' und '";
-        $translations = array("tournaments" => array("title" => "Turniere und angemeldete Teams", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung", "waitingList" => "Warteliste");
+        $translations = array("tournaments" => array("title" => "Turniere und angemeldete Teams", "name" => "Name", "date" => "Datum"), "venue" => array("title" => "Veranstaltungsort", "address" => "Adresse"), "organizer" => array("title" => "Organisator"), "register" => "Anmeldung", "results" => "Ergebnisse", "waitingList" => "Warteliste");
 
         if($objPage->language == "it")
         {
             $language = "it";
             $conjunction = " a ";
             $separator = "' e '";
-            $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione", "waitingList" => "Lista d'attesa");
+            $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione", "results" => "Risultati", "waitingList" => "Lista d'attesa");
         }
         
         $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_venue.picture, 
