@@ -14,9 +14,10 @@ if($this->list)
         if($stage["is_enabled"] == 1 && $today <= $stageEndDate)
         {
             echo "<a href='" . $this->registerLink . "' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
-        } else {
+        } 
+        else if($today > $stageEndDate) {
             echo "<a href='" . $this->resultsLink . "' class='ribbon blue'><span>" . $this->translations["results"] . "</span></a>";
-        }
+        }        
         echo "<a href='" . $stage["link"] . "' class='teaser'><img width='128px' src='" . $stage["picture_source"] . "'><h2>" . $stage["name"] . "</h2><i class='date-tag'>" . $stage["date"] . "</i><ul class='horizontal-list'>";
 
         foreach($stage["tournaments"] as $tournament)
@@ -42,7 +43,8 @@ echo "<div class='teaser clearfix'>
         <p><i class='date-tag'>" . $this->stage["date"] . "</i></p>";
     if($this->stage["is_enabled"] == 1 && $today <= $stageEndDate) {
         echo "<p><a class='register-button' href='" . $this->registerLink . "'><b>" . $this->translations["register"] . "</b></a></p>";
-    } else {
+    } 
+    else if($today > $stageEndDate) {
         echo "<p><a class='results-button' href='" . $this->resultsLink . "'><b>" . $this->translations["results"] . "</b></a></p>";
     }       
 echo "<p>" . $this->stage["description"] . "</p>
