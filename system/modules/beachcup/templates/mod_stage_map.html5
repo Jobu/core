@@ -196,7 +196,7 @@
                 if($activeStageFound === false && $today <= $stageEndDate)
                 {
                     $activeStageFound = true;
-                    echo "google.maps.event.addListenerOnce(map, 'idle', function(){triggerCustomClick('#marker_pin_" . $i . "');});";
+                    echo "google.maps.event.addListenerOnce(map, 'idle', function(){triggerCustomClick('#marker_pin_" . $i . "');if(jQuery('#marker_" . $i . "').is(':visible') !== true){triggerCustomClick('#marker_pin_" . $i . "');}});";
                 }
             }
             ?>
