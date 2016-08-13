@@ -69,7 +69,7 @@ class ModuleTotalResults extends \Module
                                         ) AS team ON team.id = tl_beachcup_registration.team_id 
                                         WHERE tl_beachcup_season.active = true 
                                             and tl_beachcup_tournament_type.code = 'OPEN' 
-                                            and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.start_date)) 
+                                            and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.end_date)) 
                                             and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE') 
                                         GROUP BY tl_beachcup_tournament.name_de, team.id
                                         UNION
@@ -112,7 +112,7 @@ class ModuleTotalResults extends \Module
                                                 ) AS team ON team.id = tl_beachcup_registration.team_id
                                                 WHERE tl_beachcup_season.active = true 
                                                     and (tl_beachcup_tournament_type.code = 'OPEN' and tl_beachcup_tournament.name_de = 'Open Herren' or tl_beachcup_tournament_type.code = 'AMATEUR') 
-                                                    and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.start_date)) 
+                                                    and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.end_date)) 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')
                                                 order by team_name, points desc
                                             ) sq,
