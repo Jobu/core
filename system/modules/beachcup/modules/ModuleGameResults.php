@@ -60,7 +60,7 @@ class ModuleGameResults extends \Module
                                     JOIN tl_beachcup_stage ON tl_beachcup_stage.id = tl_beachcup_tournament.stage_id
                                     JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
                                     JOIN (SELECT tl_beachcup_team.id AS id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR $separator) AS team_name FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id GROUP BY tl_beachcup_team.id) AS team ON team.id = tl_beachcup_registration.team_id 
-                                    WHERE tl_beachcup_season.active = true and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.end_date)) and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE') 
+                                    WHERE tl_beachcup_season.active = true and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.start_date)) and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE') 
                                     ORDER BY tl_beachcup_stage.start_date, tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$lang.", tl_beachcup_registration.points DESC")->fetchAllAssoc();
 
         foreach($teams as &$team)

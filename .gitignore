@@ -43,5 +43,5 @@ Temporary Items
 .apdisk
 
 # Ignore config files
-.\system\config\localconfig.php
-.\system\config\pathconfig.php
+system/config/pathconfig.php
+system/config/localconfig.php
