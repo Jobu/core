@@ -17,7 +17,7 @@ if(count($this->teams) > 0) {
             while($tournament_id == $this->teams[$count]["tournament_id"])
             {
                 echo "<dt></dt><dd>" . $this->teams[$count]["team_name"];
-                if($this->teams[$count]["tournament_code"] != 'YOUTH') {
+                if($this->teams[$count]["tournament_code"] != 'YOUTH' && $this->teams[$count]["tournament_code"] != 'CHAMPIONSHIP') {
                     echo " <span class='points'>" . $this->teams[$count]["points"] . "</span>";
                 }
                 echo "</dd></br>";
