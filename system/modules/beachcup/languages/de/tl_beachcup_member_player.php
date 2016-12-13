@@ -9,7 +9,7 @@ $GLOBALS['TL_LANG']['tl_beachcup_member_player']['member_id'][0] = 'Mitglied';
 $GLOBALS['TL_LANG']['tl_beachcup_member_player']['member_id'][1] = 'Wählen Sie hier das Mitglied aus.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_member_player']['new'][0] = "Neuer Mitglied-Spieler Verweis";
-$GLOBALS['TL_LANG']['tl_beachcup_member_player']['new'][1] = "Einen neuen Mitglied-Spieler anlegen";
+$GLOBALS['TL_LANG']['tl_beachcup_member_player']['new'][1] = "Einen neuen Mitglied-Spieler Verweis anlegen";
 
 $GLOBALS['TL_LANG']['tl_beachcup_member_player']['edit'][0] = "Mitglied-Spieler Verweis bearbeiten";
 $GLOBALS['TL_LANG']['tl_beachcup_member_player']['edit'][1] = "Mitglied-Spieler Verweis ID %s bearbeiten";
