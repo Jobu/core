@@ -7,7 +7,7 @@ class EfgCallbacks extends Backend
         $property->setAccessible(true);
         $formId = $property->getValue($objForm)->id;
         
-        //Check if form is german or italian player form
+        //Check if form is player form and save the player and/or member-player relation
         if($formId == 4 || $formId == 8)
         {
             if($arrSet["birth_date"] != "")
@@ -20,15 +20,44 @@ class EfgCallbacks extends Backend
 
             if(!empty($player))
             {
-                $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
-            }
-            else
-            {
                 $this->Database->prepare("INSERT INTO tl_beachcup_player (tl_beachcup_player.tstamp, tl_beachcup_player.name, tl_beachcup_player.surname, tl_beachcup_player.birth_date, tl_beachcup_player.birth_place, tl_beachcup_player.gender, tl_beachcup_player.address, tl_beachcup_player.zip_code, tl_beachcup_player.city, tl_beachcup_player.country, tl_beachcup_player.tax_number, tl_beachcup_player.email, tl_beachcup_player.phone_number, tl_beachcup_player.shirt_size, tl_beachcup_player.player_level, tl_beachcup_player.has_privacy) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute($arrSet);
                 $player = $this->Database->prepare("SELECT tl_beachcup_player.id FROM tl_beachcup_player WHERE LOWER(tl_beachcup_player.tax_number) = LOWER(?)")->execute($arrSet["tax_number"])->fetchAssoc();
-                $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
             }
+
+            $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
             
+            return array();
+        }
+
+        //Check if form is team form and save the team and/or member-team relation
+        if($formId == 5)
+        {
+            $team = $this->Database->prepare("SELECT team.id AS id FROM tl_beachcup_team AS team WHERE (team.player_1 = ? AND team.player_2 = ?) OR (team.player_2 = ? AND team.player_1 = ?)")->execute(array($arrSet["player_1"], $arrSet["player_2"], $arrSet["player_1"], $arrSet["player_2"]))->fetchAssoc();
+
+            if(empty($team))
+            {
+                $this->Database->prepare("INSERT INTO tl_beachcup_team (tl_beachcup_team.tstamp, tl_beachcup_team.player_1, tl_beachcup_team.player_2) VALUES (UNIX_TIMESTAMP(), ?, ?)")->execute(array($arrSet["player_1"], $arrSet["player_2"]));
+                $team = $this->Database->prepare("SELECT team.id AS id FROM tl_beachcup_team AS team WHERE (team.player_1 = ? AND team.player_2 = ?) OR (team.player_2 = ? AND team.player_1 = ?)")->execute(array($arrSet["player_1"], $arrSet["player_2"], $arrSet["player_1"], $arrSet["player_2"]))->fetchAssoc();
+            }
+
+            $this->Database->prepare("INSERT INTO tl_beachcup_member_team (tl_beachcup_member_team.tstamp, tl_beachcup_member_team.member_id, tl_beachcup_member_team.team_id) VALUES (UNIX_TIMESTAMP(), ?, ?)")->execute(array($arrSet["user"], $team["id"]));
+
+            return array();
+        }
+
+        //Check if form is registration form and save the registration and/or member-registration relation
+        if($formId == 6 || $formId == 7)
+        {
+            $registration = $this->Database->prepare("SELECT registration.id FROM tl_beachcup_registration AS registration WHERE registration.tournament_id = ? AND registration.team_id = ?")->execute(array($arrSet["tournament_id"], $arrSet["team_id"]))->fetchAssoc();
+
+            if(empty($registration))
+            {
+                $this->Database->prepare("INSERT INTO tl_beachcup_registration (tl_beachcup_registration.team_id, tl_beachcup_registration.tournament_id, tl_beachcup_registration.state_id) VALUES (?, ?, ?)")->execute(array($arrSet["team_id"], $arrSet["tournament_id"], $arrSet["state_id"]));
+                $registration = $this->Database->prepare("SELECT registration.id FROM tl_beachcup_registration AS registration WHERE registration.tournament_id = ? AND registration.team_id = ?")->execute(array($arrSet["tournament_id"], $arrSet["team_id"]))->fetchAssoc();
+            }
+
+            $this->Database->prepare("INSERT INTO tl_beachcup_member_registration (tl_beachcup_member_registration.tstamp, tl_beachcup_member_registration.member_id, tl_beachcup_member_registration.registration_id) VALUES (UNIX_TIMESTAMP(), ?, ?)")->execute(array($arrSet["user"], $registration["id"]));
+
             return array();
         }
         

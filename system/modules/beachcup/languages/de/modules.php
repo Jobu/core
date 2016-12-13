@@ -17,6 +17,8 @@
  */
 $GLOBALS['TL_LANG']['MOD']['beachcup'] = array('Beachcup', 'Beachcup verwalten');
 $GLOBALS['TL_LANG']['MOD']['member_player'] = array('Mitglied-Spieler Verweise', 'Mitglied-Spieler Verweise verwalten');
+$GLOBALS['TL_LANG']['MOD']['member_team'] = array('Mitglied-Team Verweise', 'Mitglied-Team Verweise verwalten');
+$GLOBALS['TL_LANG']['MOD']['member_registration'] = array('Mitglied-Anmeldung Verweise', 'Mitglied-Anmeldung Verweise verwalten');
 $GLOBALS['TL_LANG']['MOD']['player'] = array('Spieler', 'Spieler verwalten');
 $GLOBALS['TL_LANG']['MOD']['player_level'] = array('Spieler-Levels', 'Spieler-Levels verwalten');
 $GLOBALS['TL_LANG']['MOD']['team'] = array('Teams', 'Teams verwalten');

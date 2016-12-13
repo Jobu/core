@@ -45,3 +45,6 @@ Temporary Items
 # Ignore config files
 system/config/pathconfig.php
 system/config/localconfig.php
+
+#Ignore PHP Storm files
+.idea/

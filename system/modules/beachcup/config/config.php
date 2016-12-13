@@ -7,7 +7,25 @@ $GLOBALS['BE_MOD']['beachcup'] = array
         'tables'       => array('tl_beachcup_member_player'),
         //'callback'     => 'ClassName',
         //'key'          => array('Class', 'method'),
-        'icon'         => 'system/modules/beachcup/assets/images/member_player.png',
+        'icon'         => 'system/modules/beachcup/assets/images/reference.png',
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
+    ),
+    'member_team' => array
+    (
+        'tables'       => array('tl_beachcup_member_team'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
+        'icon'         => 'system/modules/beachcup/assets/images/reference.png',
+        //'stylesheet'   => 'path/to/stylesheet.css',
+        //'javascript'   => 'path/to/javascript.js'
+    ),
+    'member_registration' => array
+    (
+        'tables'       => array('tl_beachcup_member_registration'),
+        //'callback'     => 'ClassName',
+        //'key'          => array('Class', 'method'),
+        'icon'         => 'system/modules/beachcup/assets/images/reference.png',
         //'stylesheet'   => 'path/to/stylesheet.css',
         //'javascript'   => 'path/to/javascript.js'
     ),

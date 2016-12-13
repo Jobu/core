@@ -13,9 +13,9 @@
 
 
 /**
- * Table tl_beachcup_member_player
+ * Table tl_beachcup_member_registration
  */
-$GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
+$GLOBALS['TL_DCA']['tl_beachcup_member_registration'] = array
     (
 
     // Config
@@ -38,7 +38,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
         'sorting' => array
         (
             'mode'                    => 2,
-            'fields'                  => array('player_id'),
+            'fields'                  => array('registration_id'),
             'flag'                    => 1,
             'panelLayout'             => 'filter,sort,search,limit'
         ),
@@ -46,7 +46,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
         (
             'fields'                  => array('id'),
             'format'                  => '%s',
-            'label_callback'          => array('tl_beachcup_member_player', 'setLabel'),
+            'label_callback'          => array('tl_beachcup_member_registration', 'setLabel'),
         ),
         'global_operations' => array
         (
@@ -62,20 +62,20 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_player']['edit'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_registration']['edit'],
                 'href'                => 'act=edit',
                 'icon'                => 'edit.gif'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_player']['delete'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_registration']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.gif',
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_player']['show'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_beachcup_member_registration']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.gif'
             )
@@ -98,7 +98,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
     'palettes' => array
     (
         '__selector__'                => array(''),
-        'default'                     => '{general_legend},player_id,member_id'
+        'default'                     => '{general_legend},registration_id,member_id'
     ),
 
     // Subpalettes
@@ -120,7 +120,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
         ),
         'member_id' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_member_player']['member_id'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_member_registration']['member_id'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
@@ -129,21 +129,21 @@ $GLOBALS['TL_DCA']['tl_beachcup_member_player'] = array
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL"
         ),
-        'player_id' => array
+        'registration_id' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_member_player']['player_id'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_member_registration']['registration_id'],
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
-            'foreignKey'              => 'tl_beachcup_player.CONCAT(name, " ", surname, " (", tax_number, ")")',
+            'foreignKey'              => 'tl_beachcup_registration.CONCAT((SELECT CONCAT(player.name, " ", player.surname) FROM tl_beachcup_team AS team JOIN tl_beachcup_player AS player ON player.id = team.player_1 WHERE team.id = tl_beachcup_registration.team_id), " und ", (SELECT CONCAT(player.name, " ", player.surname) FROM tl_beachcup_team AS team JOIN tl_beachcup_player AS player ON player.id = team.player_2 WHERE team.id = tl_beachcup_registration.team_id), " - ", (SELECT CONCAT(stage.name_de, " - ", tournament.name_de) FROM tl_beachcup_tournament AS tournament JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id WHERE tournament.id = tl_beachcup_registration.tournament_id))',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL"
         )
     )
 );
 
-class tl_beachcup_member_player extends Backend
+class tl_beachcup_member_registration extends Backend
 {
     /**
      * Import the back end user object
@@ -156,6 +156,22 @@ class tl_beachcup_member_player extends Backend
 
     public function setLabel($row)
     {
-        return $this -> Database -> prepare("SELECT CONCAT(tl_member.username, ' - ', tl_beachcup_player.name, ' ', tl_beachcup_player.surname, ' (', tl_beachcup_player.tax_number, ')') as `label` FROM tl_beachcup_member_player JOIN tl_beachcup_player ON tl_beachcup_member_player.player_id = tl_beachcup_player.id JOIN tl_member ON tl_beachcup_member_player.member_id = tl_member.id WHERE tl_beachcup_member_player.id = ?") -> execute($row["id"]) -> label;
+        return $this->Database->prepare("SELECT
+                                              CONCAT(member.username, ' - ', player_1.name, ' und ', player_2.name, ' - ', stage.name_de, ' - ', tournament.name_de) AS `label`
+                                            FROM tl_beachcup_member_registration AS map
+                                              JOIN tl_member AS member ON member.id = map.member_id
+                                              JOIN tl_beachcup_registration AS registration ON registration.id = map.registration_id
+                                              JOIN tl_beachcup_team AS team ON team.id = registration.team_id
+                                              JOIN (SELECT
+                                                      player.id,
+                                                      concat(player.name, ' ', player.surname) AS name
+                                                    FROM tl_beachcup_player AS player) AS player_1 ON player_1.id = team.player_1
+                                              JOIN (SELECT
+                                                      player.id,
+                                                      concat(player.name, ' ', player.surname) AS name
+                                                    FROM tl_beachcup_player AS player) AS player_2 ON player_2.id = team.player_2
+                                              JOIN tl_beachcup_tournament AS tournament ON tournament.id = registration.tournament_id
+                                              JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
+                                            WHERE map.id = ?;") -> execute($row["id"]) -> label;
     }
 }
