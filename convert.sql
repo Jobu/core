@@ -1,6 +1,4 @@
-#Run before updating the database
-#TODO
-
+#Before this run the database update in the contao backend
 #Run after updating the database
 INSERT INTO tl_beachcup_member_team (tstamp, member_id, team_id)
   SELECT

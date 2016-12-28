@@ -24,5 +24,10 @@ $GLOBALS['TL_CONFIG']['websiteTitle'] = 'Beachcup';
 $GLOBALS['TL_CONFIG']['rewriteURL'] = true;
 $GLOBALS['TL_CONFIG']['addLanguageToUrl'] = true;
 $GLOBALS['TL_CONFIG']['debugMode'] = false;
-$GLOBALS['TL_CONFIG']['useSMTP'] = false;
+$GLOBALS['TL_CONFIG']['useSMTP'] = true;
+$GLOBALS['TL_CONFIG']['smtpHost'] = 'smtp.google.com';
+$GLOBALS['TL_CONFIG']['smtpUser'] = 'info@beachcup.it';
+$GLOBALS['TL_CONFIG']['smtpPass'] = 'B3@chcup';
+$GLOBALS['TL_CONFIG']['smtpEnc'] = 'ssl';
+$GLOBALS['TL_CONFIG']['smtpPort'] = 465;
 ### INSTALL SCRIPT STOP ###

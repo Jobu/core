@@ -176,6 +176,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 wizard', 'datepicker'=>true, 'rgxp'=>'date'),
+            'load_callback'           => array(array('tl_beachcup_tournament', 'setDate')),
             'sql'                     => "varchar(11) NOT NULL default ''"
         ),
         'max_age' => array
@@ -229,5 +230,15 @@ class tl_beachcup_tournament extends Backend
                 return $group;
                 break;
         }
+    }
+
+    public function setDate($value, \DataContainer $dc)
+    {
+        if(empty($value))
+        {
+            //$value =
+        }
+
+        return $value;
     }
 }

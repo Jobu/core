@@ -74,6 +74,88 @@ class EfgCallbacks extends Backend
         //Check for tax_number
         if($objWidget->id == 33 || $objWidget->id == 43)
         {
+            //Check if tax number is valid
+            if($_REQUEST["country"] == "it")
+            {
+                $cf = $_REQUEST["tax_number"];
+                $valid = true;
+                
+                if($cf == "") $valid = false;
+                if(strlen($cf) != 16) $valid = false;
+
+                $cf = strtoupper($cf);
+                
+                if(!preg_match("/[A-Z0-9]+$/", $cf)) $valid = false;
+                
+                $s = 0;
+                
+                for($i=1; $i<=13; $i+=2)
+                {
+                    $c = $cf[$i];
+                    
+                    if("0" <= $c and $c <= "9")
+                    {
+                        $s += ord($c) - ord("0");
+                    }
+                    else
+                    {
+                        $s += ord($c) - ord("A");
+                    }
+                }
+
+                for($i=0; $i<=14; $i+=2)
+                {
+                    $c = $cf[$i];
+                    
+                    switch($c)
+                    {
+                        case "0":  $s += 1;  break;
+                        case "1":  $s += 0;  break;
+                        case "2":  $s += 5;  break;
+                        case "3":  $s += 7;  break;
+                        case "4":  $s += 9;  break;
+                        case "5":  $s += 13;  break;
+                        case "6":  $s += 15;  break;
+                        case "7":  $s += 17;  break;
+                        case "8":  $s += 19;  break;
+                        case "9":  $s += 21;  break;
+                        case "A":  $s += 1;  break;
+                        case "B":  $s += 0;  break;
+                        case "C":  $s += 5;  break;
+                        case "D":  $s += 7;  break;
+                        case "E":  $s += 9;  break;
+                        case "F":  $s += 13;  break;
+                        case "G":  $s += 15;  break;
+                        case "H":  $s += 17;  break;
+                        case "I":  $s += 19;  break;
+                        case "J":  $s += 21;  break;
+                        case "K":  $s += 2;  break;
+                        case "L":  $s += 4;  break;
+                        case "M":  $s += 18;  break;
+                        case "N":  $s += 20;  break;
+                        case "O":  $s += 11;  break;
+                        case "P":  $s += 3;  break;
+                        case "Q":  $s += 6;  break;
+                        case "R":  $s += 8;  break;
+                        case "S":  $s += 12;  break;
+                        case "T":  $s += 14;  break;
+                        case "U":  $s += 16;  break;
+                        case "V":  $s += 10;  break;
+                        case "W":  $s += 22;  break;
+                        case "X":  $s += 25;  break;
+                        case "Y":  $s += 24;  break;
+                        case "Z":  $s += 23;  break;
+                    }
+                }
+
+                if(chr($s % 26 + ord("A")) != $cf[15]) $valid = false;
+
+                if(!$valid)
+                {
+                    $objWidget->addError("{{ifnlng::it}}Die Steuernummer ist ungültig.{{ifnlng}}{{iflng::it}}Il codice fiscale non é valido.{{iflng}}");
+                }
+            }
+
             //Check if member player link already exists
             $links = $this->Database->prepare("SELECT * FROM tl_beachcup_member_player AS mp JOIN tl_beachcup_player AS p ON mp.player_id = p.id WHERE LOWER(p.tax_number) = LOWER(?) AND mp.member_id = ?;")->execute(array($_REQUEST["tax_number"], $_REQUEST["user"]));
             
@@ -147,7 +229,7 @@ class EfgCallbacks extends Backend
         {
             //Check for max_teams and set the registration state
             $max_teams = $this->Database->prepare("select max_teams from tl_beachcup_stage join tl_beachcup_tournament on tl_beachcup_stage.id = tl_beachcup_tournament.stage_id where tl_beachcup_tournament.id = ?")->execute(array($_REQUEST["tournament_id"]))->max_teams;
-            $current_teams = $this->Database->prepare("select count(*) as current_teams from tl_beachcup_tournament join tl_beachcup_registration on tl_beachcup_tournament.id = tl_beachcup_registration.tournament_id join tl_beachcup_registration_state on tl_beachcup_registration.state_id=tl_beachcup_registration_state.id  where tl_beachcup_tournament.id = ? and tl_beachcup_registration_state.code in ('PROCESSING','COMPLETE','INCOMPLETE')")->execute(array($_REQUEST["tournament_id"]))->current_teams;
+            $current_teams = $this->Database->prepare("select count(*) as current_teams from tl_beachcup_tournament join tl_beachcup_registration on tl_beachcup_tournament.id = tl_beachcup_registration.tournament_id join tl_beachcup_registration_state on tl_beachcup_registration.state_id=tl_beachcup_registration_state.id  where tl_beachcup_tournament.id = ? and tl_beachcup_registration_state.code in ('PROCESSING', 'COMPLETE', 'INCOMPLETE')")->execute(array($_REQUEST["tournament_id"]))->current_teams;
 
             if($max_teams <= $current_teams)
             {
@@ -171,7 +253,7 @@ class EfgCallbacks extends Backend
 
             if($max_teams <= $current_teams)
             {
-                $arrSubmitted['state_id'] = 5;
+                $arrSubmitted["state_id"] = 5;
             }
         }
 

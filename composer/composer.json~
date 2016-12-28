@@ -4,14 +4,16 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "contao-community-alliance/composer-client": "~0.12"
+        "contao-community-alliance/composer-client": "~0.12",
+        "contao-legacy/efg": ">=2.2.1.9005,<2.3-dev"
     },
     "prefer-stable": true,
     "minimum-stability": "dev",
     "config": {
         "preferred-install": "dist",
         "cache-dir": "cache",
-        "component-dir": "../assets/components"
+        "component-dir": "../assets/components",
+		"secure-http": false
     },
     "repositories": [
         {
@@ -24,13 +26,12 @@
         },
         {
             "type": "composer",
-            "url": "https://legacy-packages-via.contao-community-alliance.org/"
+            "url": "http://legacy-packages-via.contao-community-alliance.org/"
         }
     ],
     "extra": {
         "contao": {
             "migrated": "done"
         }
-    },
-    "secure-http": false
+    }
 }

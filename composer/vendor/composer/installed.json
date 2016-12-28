@@ -6,12 +6,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/contao-community-alliance/composerized-contao-core.git",
-            "reference": "5e97ea9ca84a3e4906910c392e8dce1a61350446"
+            "reference": "98a1e22e08ea2bde264f3cb3a0582f6d02ba5fd7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/contao-community-alliance/composerized-contao-core/zipball/5e97ea9ca84a3e4906910c392e8dce1a61350446",
-            "reference": "5e97ea9ca84a3e4906910c392e8dce1a61350446",
+            "url": "https://api.github.com/repos/contao-community-alliance/composerized-contao-core/zipball/98a1e22e08ea2bde264f3cb3a0582f6d02ba5fd7",
+            "reference": "98a1e22e08ea2bde264f3cb3a0582f6d02ba5fd7",
             "shasum": "3.5.4"
         },
         "require": {
@@ -19,55 +19,6 @@
         },
         "type": "metapackage",
         "installation-source": "dist"
-    },
-    {
-        "name": "contao-community-alliance/composer-plugin",
-        "version": "2.4.1",
-        "version_normalized": "2.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/contao-community-alliance/composer-plugin.git",
-            "reference": "6371d9d383e9b8faf9fcd68388f16ab2e37890df"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/contao-community-alliance/composer-plugin/zipball/6371d9d383e9b8faf9fcd68388f16ab2e37890df",
-            "reference": "6371d9d383e9b8faf9fcd68388f16ab2e37890df",
-            "shasum": ""
-        },
-        "require": {
-            "composer-plugin-api": "^1.0",
-            "php": ">=5.3.2"
-        },
-        "conflict": {
-            "contao-community-alliance/composer": "<0.9-dev",
-            "contao/core": "3.0.*"
-        },
-        "replace": {
-            "contao-community-alliance/composer-installer": "1.7.1"
-        },
-        "require-dev": {
-            "composer/composer": "~1.0@dev",
-            "contao/core": ">=2.11,<4.0",
-            "phpcq/all-tasks": "~1.1"
-        },
-        "time": "2016-02-16 04:41:46",
-        "type": "composer-plugin",
-        "extra": {
-            "class": "ContaoCommunityAlliance\\Composer\\Plugin\\Plugin"
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "ContaoCommunityAlliance\\Composer\\Plugin\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-3.0+"
-        ],
-        "description": "Composer plugin that provide contao integration and installer.",
-        "homepage": "http://c-c-a.org/"
     },
     {
         "name": "contao-community-alliance/composer-client",
@@ -220,6 +171,116 @@
             "Data storage",
             "Form",
             "e-mail"
+        ]
+    },
+    {
+        "name": "contao/core-bundle",
+        "version": "3.5.4",
+        "version_normalized": "3.5.4.0",
+        "type": "metapackage"
+    },
+    {
+        "name": "contao-community-alliance/composer-plugin",
+        "version": "2.4.3",
+        "version_normalized": "2.4.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/contao-community-alliance/composer-plugin.git",
+            "reference": "238935db1452e7b4b640b052ca1f602cd82053c4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/contao-community-alliance/composer-plugin/zipball/238935db1452e7b4b640b052ca1f602cd82053c4",
+            "reference": "238935db1452e7b4b640b052ca1f602cd82053c4",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "^1.0",
+            "php": ">=5.3.2"
+        },
+        "conflict": {
+            "contao-community-alliance/composer": "<0.9-dev",
+            "contao/core": "3.0.*"
+        },
+        "replace": {
+            "contao-community-alliance/composer-installer": "1.7.1"
+        },
+        "require-dev": {
+            "composer/composer": "~1.0@dev",
+            "contao/core": ">=2.11,<4.0",
+            "phpcq/all-tasks": "~1.1"
+        },
+        "time": "2016-07-04 10:10:10",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "ContaoCommunityAlliance\\Composer\\Plugin\\Plugin"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "ContaoCommunityAlliance\\Composer\\Plugin\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0+"
+        ],
+        "description": "Composer plugin that provide contao integration and installer.",
+        "homepage": "http://c-c-a.org/"
+    },
+    {
+        "name": "terminal42/contao-conditionalselectmenu",
+        "version": "3.0.3",
+        "version_normalized": "3.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/terminal42/contao-conditionalselectmenu.git",
+            "reference": "03a615ff79055580e9fee363add14b79e7bc44b4"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/terminal42/contao-conditionalselectmenu/zipball/03a615ff79055580e9fee363add14b79e7bc44b4",
+            "reference": "03a615ff79055580e9fee363add14b79e7bc44b4",
+            "shasum": ""
+        },
+        "require": {
+            "contao-community-alliance/composer-plugin": "~2.4 || ~3.0",
+            "contao/core-bundle": "~3.2 || ~4.1",
+            "php": ">=5.3.2"
+        },
+        "replace": {
+            "contao-legacy/conditionalselectmenu": "self.version"
+        },
+        "time": "2016-10-07 08:01:51",
+        "type": "contao-module",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.0.x-dev",
+                "dev-develop": "3.0.x-dev"
+            },
+            "contao": {
+                "sources": {
+                    "": "system/modules/conditionalselectmenu"
+                }
+            }
+        },
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0+"
+        ],
+        "authors": [
+            {
+                "name": "terminal42 gmbh",
+                "homepage": "http://terminal42.ch"
+            }
+        ],
+        "description": "conditional select menu extension for Contao Open Source CMS",
+        "keywords": [
+            "conditional",
+            "contao",
+            "form",
+            "select"
         ]
     }
 ]

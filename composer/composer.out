@@ -1,17 +1,4 @@
 <span style="color:green;">Loading composer repositories with package information</span>
+<warning>Warning: Accessing legacy-packages-via.contao-community-alliance.org over http which is an insecure protocol.</warning>
 <span style="color:green;">Updating dependencies</span>
-  - Removing <span style="color:green;">contao-community-alliance/composer-client</span> (<span style="color:yellow;">0.16.3</span>)
-  - Installing <span style="color:green;">contao-community-alliance/composer-client</span> (<span style="color:yellow;">0.16.4</span>)
-    Downloading
-
-  - installed <span style="color:green;">110</span> files
-  - Installing <span style="color:green;">contao-legacy/xls_export</span> (<span style="color:yellow;">3.0.0.9020</span>)
-    Downloading
-
-  - installed <span style="color:green;">10</span> files
-  - Installing <span style="color:green;">contao-legacy/efg</span> (<span style="color:yellow;">2.2.1.9005</span>)
-    Downloading
-
-  - installed <span style="color:green;">87</span> files
-<span style="color:green;">Writing lock file</span>
 <span style="color:green;">Generating autoload files</span>
