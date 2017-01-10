@@ -1,50 +1,40 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
+# OS
 .DS_Store
-.AppleDouble
-.LSOverride
+Thumbs.db
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Ignore config files
-system/config/pathconfig.php
-system/config/localconfig.php
-
-#Ignore PHP Storm files
+# IDEs
+.buildpath
+.project
+.settings/
+.build/
 .idea/
+nbproject/
+
+# Contao
+/.htaccess
+/*.xml
+/composer
+/contao/update.phar.php
+/files/*
+/assets/css/*
+/assets/images/*/*
+/assets/js/*
+/share/*.xml
+/system/cache/*
+/system/config/dcaconfig.php
+/system/config/initconfig.php
+/system/config/langconfig.php
+/system/config/localconfig.php
+/system/config/pathconfig.php
+/system/cron/cron.txt
+/system/logs/*
+/system/modules/!composer
+/system/modules/*/.skip
+/system/tmp/*
+/templates/*
+/vendor/
+
+# See contao/core#7576
+!/assets/css/index.html
+!/assets/images/*/index.html
+!/assets/js/index.html
