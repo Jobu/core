@@ -1,0 +1,1 @@
+mysqldump -u root -p contao tl_extension tl_form tl_form_field tl_layout tl_module tl_page tl_theme > data.sql
