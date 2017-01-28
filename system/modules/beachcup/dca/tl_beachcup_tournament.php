@@ -165,7 +165,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'filter'                  => true,
             'inputType'               => 'select',
             'foreignKey'              => 'tl_beachcup_stage.CONCAT((SELECT CONCAT(tl_beachcup_season.name_de, " [", tl_beachcup_season.year, "]") FROM tl_beachcup_season WHERE tl_beachcup_season.id = tl_beachcup_stage.season_id), " - ", tl_beachcup_stage.name_de)',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50', 'submitOnChange'=>true),
             'sql'                     => "int(10) unsigned NOT NULL"
         ),
         'date' => array
@@ -174,9 +174,9 @@ $GLOBALS['TL_DCA']['tl_beachcup_tournament'] = array
             'exclude'                 => true,
             'sorting'                 => true,
             'search'                  => true,
-            'inputType'               => 'text',
-            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50 wizard', 'datepicker'=>true, 'rgxp'=>'date'),
-            'load_callback'           => array(array('tl_beachcup_tournament', 'setDate')),
+            'inputType'               => 'select',
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'options_callback'        => array('tl_beachcup_tournament', 'setDate'),
             'sql'                     => "varchar(11) NOT NULL default ''"
         ),
         'max_age' => array
@@ -232,13 +232,38 @@ class tl_beachcup_tournament extends Backend
         }
     }
 
-    public function setDate($value, \DataContainer $dc)
+    public function setDate(\DataContainer $dc)
     {
-        if(empty($value))
+        $values = $this->getProtectedValue($dc->activeRecord, "arrCache");
+        $stage_id = $values["stage_id"];
+
+        if(!empty($stage_id))
         {
-            //$value =
+            $row = $this->Database->prepare("SELECT start_date, end_date FROM tl_beachcup_stage WHERE id = ?")->execute($values["stage_id"])->fetchAssoc();
+            $options = $this->createDateRangeArray($row["start_date"], $row["end_date"]);
+
+            return $options;
         }
 
-        return $value;
+        return array();
+    }
+
+    private function getProtectedValue($obj, $name)
+    {
+        $array = (array) $obj;
+        return $array[chr(0) . "*" . chr(0) . $name];
+    }
+
+    private function createDateRangeArray($startTimestamp, $endTimestamp)
+    {
+        $dates = array();
+
+        for($i=0; $i <= (abs($startTimestamp - $endTimestamp) / 60 / 60 / 24); $i++)
+        {
+            $timestamp = strtotime("+{$i} day", $startTimestamp);
+            $dates[$timestamp] = date("d.m.Y", $timestamp);
+        }
+
+        return $dates;
     }
 }
