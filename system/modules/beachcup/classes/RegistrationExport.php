@@ -31,7 +31,6 @@ class RegistrationExport
     {
         $database = \Contao\Database::getInstance();
         $stage_id = $database->query("SELECT s.id FROM tl_beachcup_stage AS s WHERE s.start_date >= UNIX_TIMESTAMP() ORDER BY s.start_date ASC LIMIT 1")->fetchAssoc()["id"];
-        $stage_id = 14;
 
         if(!empty($stage_id))
         {
