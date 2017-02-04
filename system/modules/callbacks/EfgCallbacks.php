@@ -3,10 +3,11 @@ class EfgCallbacks extends Backend
 {    
     public function customStoreFormData($arrSet, $objForm)
     {
+        global $objPage;
         $property = (new ReflectionClass($objForm))->getProperty("objModel");
         $property->setAccessible(true);
         $formId = $property->getValue($objForm)->id;
-        
+
         //Check if form is player form and save the player and/or member-player relation
         if($formId == 4 || $formId == 8)
         {
@@ -25,7 +26,19 @@ class EfgCallbacks extends Backend
             }
 
             $this->Database->prepare("INSERT INTO tl_beachcup_member_player (tl_beachcup_member_player.tstamp, tl_beachcup_member_player.player_id, tl_beachcup_member_player.member_id) VALUES (now(), ? , ?)")->execute(array($player["id"], $arrSet["user"]));
-            
+
+            if($arrSet["redirect"])
+            {
+                $alias = "meine-teams";
+
+                if($objPage->language == "it")
+                {
+                    $alias = "le-mie-squadre";
+                }
+
+                EfgCallbacks::redirectByAlias($alias);
+            }
+
             return array();
         }
 
@@ -41,6 +54,18 @@ class EfgCallbacks extends Backend
             }
 
             $this->Database->prepare("INSERT INTO tl_beachcup_member_team (tl_beachcup_member_team.tstamp, tl_beachcup_member_team.member_id, tl_beachcup_member_team.team_id) VALUES (UNIX_TIMESTAMP(), ?, ?)")->execute(array($arrSet["user"], $team["id"]));
+
+            if($arrSet["redirect"])
+            {
+                $alias = "meine-anmeldungen";
+
+                if($objPage->language == "it")
+                {
+                    $alias = "le-mie-iscrizioni";
+                }
+
+                EfgCallbacks::redirectByAlias($alias);
+            }
 
             return array();
         }
@@ -260,5 +285,10 @@ class EfgCallbacks extends Backend
         return $arrSubmitted;
     }
     */
+
+    public function redirectByAlias($alias)
+    {
+        \Controller::redirect(\Controller::generateFrontendUrl($this->Database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($alias)->fetchAssoc()));
+    }
 }
 ?>
