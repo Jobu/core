@@ -30,7 +30,8 @@ class RegistrationExport
     public function export(\Contao\DC_Table $dc)
     {
         $database = \Contao\Database::getInstance();
-        $stage_id = $database->query("SELECT s.id FROM tl_beachcup_stage AS s WHERE s.start_date >= UNIX_TIMESTAMP() ORDER BY s.start_date ASC LIMIT 1")->fetchAssoc()["id"];
+        $row = $database->query("SELECT s.id FROM tl_beachcup_stage AS s WHERE (s.start_date <= UNIX_TIMESTAMP() and s.end_date >= UNIX_TIMESTAMP()) or s.start_date >= UNIX_TIMESTAMP() ORDER BY s.start_date ASC LIMIT 1;")->fetchAssoc();
+        $stage_id = $row["id"];
 
         if(!empty($stage_id))
         {
