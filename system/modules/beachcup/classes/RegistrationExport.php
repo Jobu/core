@@ -48,7 +48,7 @@ class RegistrationExport
                                     join tl_beachcup_tournament on tl_beachcup_tournament.id = tl_beachcup_registration.tournament_id
                                     join tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id
                                     join tl_beachcup_stage on tl_beachcup_stage.id = tl_beachcup_tournament.stage_id
-                                    where tl_beachcup_stage.id = $stage_id and tl_beachcup_registration_state.code != 'REJECTED'
+                                    where tl_beachcup_stage.id = " . $stage_id . " and tl_beachcup_registration_state.code != 'REJECTED'
                                     order by tl_beachcup_tournament.date, tl_beachcup_tournament.name_de, tl_beachcup_registration.tstamp;")->fetchAllAssoc();
 
             if (count($data) > 0)
@@ -73,15 +73,14 @@ class RegistrationExport
                 {
                     for($j = 0; $j < count($headers); $j++)
                     {
-
-                        $xls->setcell(array("sheetname" => "Anmeldungen", "row" => $i, "col" => $j, "data" => @mb_convert_encoding($data[$i][$headers[$j]], "CP1252",  $GLOBALS["TL_CONFIG"]["characterSet"])));
+                        $xls->setcell(array("sheetname" => "Anmeldungen", "row" => $i, "col" => $j, "data" => @mb_convert_encoding($data[$i-1][$headers[$j]], "CP1252",  $GLOBALS["TL_CONFIG"]["characterSet"])));
                     }
                 }
 
                 $xls->sendfile("Anmeldungen.xls");
             }
         }
-        
+
         \Contao\Controller::redirect('contao/main.php?do=registration');
     }
 }

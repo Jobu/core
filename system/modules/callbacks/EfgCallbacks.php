@@ -16,7 +16,7 @@ class EfgCallbacks extends Backend
                 $objDate = new \Date($arrSet["birth_date"]);
                 $arrSet["birth_date"] = $objDate->tstamp;
             }
-            
+
             $player = $this->Database->prepare("SELECT tl_beachcup_player.id FROM tl_beachcup_player WHERE LOWER(tl_beachcup_player.tax_number) = LOWER(?)")->execute($arrSet["tax_number"])->fetchAssoc();
 
             if(empty($player))
@@ -245,8 +245,14 @@ class EfgCallbacks extends Backend
 
                 $objWidget->addError($error);
             }
-            
+
             //Check for double player registration in one day
+            if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"]))->fetchAssoc())))
+            {
+                $player = $this->Database->prepare("SELECT CONCAT(p.name, ' ', p.surname) as name FROM tl_beachcup_player AS p WHERE p.id = ?")->execute($player)->fetchAssoc();
+                $player = $player["name"];
+                $objWidget->addError("{{ifnlng::it}}Der Spieler $player nimmt bereits an diesem Turnier teil.{{ifnlng}}{{iflng::it}}Il giocatore $player giá partecipa a questo torneo.{{iflng}}");
+            }
         }
         
         //Check state_id hidden field
