@@ -8,6 +8,55 @@
 
 <div id="main_map"></div>
 
+<script type="application/ld+json">
+[
+    <?php
+        $eventHtml = '';
+        for($i=0; $i<count($this->stages); $i++)
+        {
+            if($i > 0) {
+                $eventHtml .= ',';
+            }
+            $stage = $this->stages[$i];
+            $tournamentsDesc = '';  
+            $tournaments = $stage["tournaments"];
+            for($j=0; $j<count($tournaments); $j++)
+            {
+                $tournament = $tournaments[$j];
+                if($j > 0) {
+                    $tournamentsDesc .= ' | ';
+                }
+                $tournamentsDesc .= $tournament["description"];
+            }
+
+            $eventHtml .= '{'.                
+                '"@context": "http://schema.org",'.
+                '"@type": "SportsEvent",'.
+                '"name": "'.$stage["name"].'",'.
+                '"description": "'.$tournamentsDesc.'",'.
+                '"image": "'.$stage["src"].'",'.
+                '"startDate": "'.$stage["start_date_iso8601"].'",'.
+                '"endDate": "'.$stage["end_date_iso8601"].'",'.
+                '"url": "'.$stage["link"].'",'.
+                '"location": {'.
+                    '"@type": "Place",'.
+                    '"name": "'.$stage["name"].'",'.
+                    '"url": "'.$stage["link"].'",'.
+                    '"address": "'.$stage["address"].'",'.
+                    '"geo": {'.
+                        '"@type": "GeoCoordinates",'.
+                        '"latitude": "'.$stage["latitude"].'",'.
+                        '"longitude": "'.$stage["longitude"].'"'.
+                    '}'.
+                '}'.
+            '}';            
+        }
+
+        echo $eventHtml;
+    ?>
+]
+</script>
+
 <script type="text/javascript">
     jQuery(document).ready( function(){
         (function($){
@@ -144,10 +193,10 @@
                     $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->registerLink . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
                 }
                 else if($today > $stageEndDate) {
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><a href="' . $this->resultsLink . '" class="ribbon blue"><span>' . $this->translations["results"] . '</span></a><div class="location-title"><div class="tournament-list">';
+                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->resultsLink . '" class="ribbon blue"><span>' . $this->translations["results"] . '</span></a><div class="location-title"><div class="tournament-list">';
                 }
                 else {
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description" itemscope itemtype="http://schema.org/Event"><div class="location-title"><div class="tournament-list">';
+                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><div class="location-title"><div class="tournament-list">';
                 }                                    
                 
                 foreach($stage["tournaments"] as $tournament)
@@ -155,7 +204,7 @@
                     $html .= '<div class="et-date">' . $tournament["description"] . '</div>';
                 }
 
-                $html .= '</div><a itemprop="url" href="' . $stage["link"] . '"><h2 itemprop="name">' . $stage["name"] . '</h2></a><span itemprop="location" itemscope itemtype="http://schema.org/Place"><meta itemprop="name" content="' . $stage["name"] . '"><a itemprop="url" href="' . $stage["link"] . '"></a><meta itemprop="address" content="' . $stage["address"] . '"><span itemprop="geo" itemscope itemtype="http://schema.org/GeoCoordinates"><meta itemprop="latitude" content="' . $stage["latitude"] . '"><meta itemprop="longitude" content="' . $stage["longitude"] . '"></span></span></div><img class="location-image" src="' . $stage["src"] . '"><div class="location-rating"><span class="et-date">' . $stage["date"] . '</span></div></div></div>';
+                $html .= '</div><a href="' . $stage["link"] . '"><h2>' . $stage["name"] . '</h2></a><span><a href="' . $stage["link"] . '"></a></span></div><img class="location-image" src="' . $stage["src"] . '"><div class="location-rating"><span class="et-date">' . $stage["date"] . '</span></div></div></div>';
             
                 echo 'et_add_marker(' . $i . ', ' . $stage["latitude"] . ', ' . $stage["longitude"] . ', \'' . $html . '\');markerPointList.push(new google.maps.LatLng (' . $stage["latitude"] . ', ' . $stage["longitude"] . '));';
             }

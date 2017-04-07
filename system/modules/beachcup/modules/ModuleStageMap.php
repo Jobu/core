@@ -86,7 +86,9 @@ class ModuleStageMap extends \Module
             $src = deserialize($stage["picture"]);
             $file = \FilesModel::findByUuid($src);
             $path = $file->path;
-            $stage["src"] = $path;
+            $stage["src"] = \Environment::get('base').$path;
+            $stage["start_date_iso8601"] = \Date::parse(\DateTime::ATOM, $stage["start_date"]);
+            $stage["end_date_iso8601"] = \Date::parse(\DateTime::ATOM, $stage["end_date"]);
             
             if($stage["start_date"] == $stage["end_date"])
             {
@@ -97,10 +99,11 @@ class ModuleStageMap extends \Module
                 $stage["date"] = \Date::parse("j.", $stage["start_date"]) . $conjunction . \Date::parse("j. F Y", $stage["end_date"]);
             }
             
-            if(($alias = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($objPage->alias)->fetchAssoc()) != null)
-            {
-                $stage["link"] = $this->generateFrontendUrl($alias, "/../$stagesAlias/$this->detailsKey/" . $stage["id"]);
-            }
+            //if(($alias = $database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($objPage->alias)->fetchAssoc()) != null)
+            //{
+                //$stage["link"] = $this->generateFrontendUrl(array($objPage->alias), "/../$stagesAlias/$this->detailsKey/" . $stage["id"]);
+                $stage["link"] = \Environment::get('base').$objPage->language.'/'.$stagesAlias.'/'.$this->detailsKey.'/'. $stage["id"].'.html';
+            //}
             
             $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament_type.description_$language AS description 
                                                         FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id 
