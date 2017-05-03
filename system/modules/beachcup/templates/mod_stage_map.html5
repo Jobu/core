@@ -32,7 +32,7 @@
             $eventHtml .= '{'.                
                 '"@context": "http://schema.org",'.
                 '"@type": "SportsEvent",'.
-                '"name": "'.$stage["name"].'",'.
+                '"name": "'.$tournamentsDesc.'",'.
                 '"description": "'.$tournamentsDesc.'",'.
                 '"image": "'.$stage["src"].'",'.
                 '"startDate": "'.$stage["start_date_iso8601"].'",'.

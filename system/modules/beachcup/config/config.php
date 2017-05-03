@@ -139,7 +139,8 @@ $GLOBALS['FE_MOD']['beachcup'] = array
     'total_results' => 'ModuleTotalResults',
     'registration_list' => 'ModuleRegistrationList',
     'player_list' => 'ModulePlayerList',
-    'team_list' => 'ModuleTeamList'
+    'team_list' => 'ModuleTeamList',
+    'former_results' => 'ModuleFormerResults'
 );
 
 /**
