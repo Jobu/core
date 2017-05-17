@@ -177,7 +177,7 @@ class EfgCallbacks extends Backend
 
                 if(!$valid)
                 {
-                    $objWidget->addError("{{ifnlng::it}}Die Steuernummer ist ungültig.{{ifnlng}}{{iflng::it}}Il codice fiscale non é valido.{{iflng}}");
+                    $objWidget->addError("{{ifnlng::it}}Die Steuernummer ist ungültig.{{ifnlng}}{{iflng::it}}Il codice fiscale non è valido.{{iflng}}");
                 }
             }
 
@@ -186,7 +186,7 @@ class EfgCallbacks extends Backend
             
             if($links->numRows)
             {
-                $objWidget->addError("{{ifnlng::it}}Sie haben bereits diesen Spieler angelegt.{{ifnlng}}{{iflng::it}}Hai già creato questo giocatore.{{iflng}}");
+                $objWidget->addError("{{ifnlng::it}}Dieser Spieler wurde bereits angelegt.{{ifnlng}}{{iflng::it}}Questo atleta è già stato creato.{{iflng}}");
             }
         }
         
@@ -198,13 +198,13 @@ class EfgCallbacks extends Backend
             
             if($teams->numRows)
             {
-                $objWidget->addError("{{ifnlng::it}}Ein Team mit den gleichen Spielern wurde bereits angelegt.{{ifnlng}}{{iflng::it}}Una squadra con gli stessi giocatori era già stato creato.{{iflng}}");
+                $objWidget->addError("{{ifnlng::it}}Ein Team mit den gleichen Spielern existiert bereits im System.{{ifnlng}}{{iflng::it}}Esiste già una squadra nel sistema che è composta dagli stessi atleti.{{iflng}}");
             }
             
             //Check for same player
             if($_REQUEST["player_1"] == $_REQUEST["player_2"])
             {
-                $objWidget->addError("{{ifnlng::it}}Sie haben zweimal den gleichen Spieler gewählt.{{ifnlng}}{{iflng::it}}Hai scelto due volte lo stesso giocatore.{{iflng}}");
+                $objWidget->addError("{{ifnlng::it}}Teamzusammensetzung ungültig.{{ifnlng}}{{iflng::it}}Composizione squadra non valida.{{iflng}}");
             }
         }
         
@@ -220,11 +220,11 @@ class EfgCallbacks extends Backend
                 {
                     if($row["birthYear"] < $max_age)
                     {
-                        $error = "Einer der Spieler ist zu alt für das ausgewählte Turnier.";
+                        $error = "Mindestens ein Spieler im Team ist zu alt für das ausgewählte Turnier.";
 
                         if($objWidget->id == 29)
                         {
-                            $error = "Uno dei giocatori è troppo vecchio per il torneo scelto.";
+                            $error = "Almeno un atleta della squadra supera l'età massima definita per il torneo.";
                         }
 
                         $objWidget->addError($error);
@@ -251,7 +251,7 @@ class EfgCallbacks extends Backend
             {
                 $player = $this->Database->prepare("SELECT CONCAT(p.name, ' ', p.surname) as name FROM tl_beachcup_player AS p WHERE p.id = ?")->execute($player)->fetchAssoc();
                 $player = $player["name"];
-                $objWidget->addError("{{ifnlng::it}}Der Spieler $player nimmt bereits an diesem Turnier teil.{{ifnlng}}{{iflng::it}}Il giocatore $player giá partecipa a questo torneo.{{iflng}}");
+                $objWidget->addError("{{ifnlng::it}}Der Spieler $player nimmt an diesem Turnier bereits teil.{{ifnlng}}{{iflng::it}}L'atleta $player partecipa già a questo torneo.{{iflng}}");
             }
         }
         
