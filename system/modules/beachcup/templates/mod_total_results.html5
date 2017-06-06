@@ -15,19 +15,19 @@ if(count($this->teams) > 0) {
             switch($position)
             {
                 case 0:
-                    echo "<dt class='gold'>&#127942;</dt><dd class='gold'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    echo "<dt class='gold'>&#127942;</dt><dd class='gold'>" . $this->teams[$count]["player_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
                     break;
                     
                 case 1:
-                    echo "<dt class='silver'>&#127942;</dt><dd class='silver'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    echo "<dt class='silver'>&#127942;</dt><dd class='silver'>" . $this->teams[$count]["player_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
                     break;
                     
                 case 2:
-                    echo "<dt class='bronze'>&#127942;</dt><dd class='bronze'>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    echo "<dt class='bronze'>&#127942;</dt><dd class='bronze'>" . $this->teams[$count]["player_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
                     break;
                     
                 default:
-                    echo "<dt></dt><dd>" . $this->teams[$count]["team_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
+                    echo "<dt></dt><dd>" . $this->teams[$count]["player_name"] . " <span class='points'>" . $this->teams[$count]["total_points"] . "</points></dd></br>";
                     break;
             }
         
