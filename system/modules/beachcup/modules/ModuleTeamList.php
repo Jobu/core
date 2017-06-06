@@ -68,6 +68,5 @@ class ModuleTeamList extends \Module
         
         $this->Template->translations = $translations;
         $this->Template->teams = $teams;
-        
     }
 }
