@@ -71,7 +71,7 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
                                                     and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
-                                                    and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.start_date)) 
+                                                    and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')                                                    
                                                     and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2000-01-01'
                                                 order by player_name, points desc
@@ -99,7 +99,7 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
                                                     and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
-                                                    and DATE(NOW()) >= DATE(from_unixtime(tl_beachcup_stage.start_date)) 
+                                                    and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')
                                                     and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2000-01-01'
                                                 order by player_name, points desc
