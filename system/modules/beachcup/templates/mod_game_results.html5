@@ -14,13 +14,24 @@ if(count($this->teams) > 0) {
             
             echo "<details><summary>" . $this->teams[$count]["tournament_name"] . "</summary><dl class='ranking'>";
             
+            $tournamentIndex = 0;
+            $lastTournamentPoints = 0;
             while($tournament_id == $this->teams[$count]["tournament_id"])
             {
-                echo "<dt></dt><dd>" . $this->teams[$count]["team_name"];
+                $tournamentPoints = $this->teams[$count]["points"];
+                if($tournamentIndex === 0 || $tournamentPoints !== $lastTournamentPoints) {
+                    echo "<dt></dt>";
+                } else {
+                    echo "<dt class='same-ranking'></dt>";
+                }
+
+                echo "<dd>" . $this->teams[$count]["team_name"];
                 if($this->teams[$count]["tournament_code"] != 'YOUTH' && $this->teams[$count]["tournament_code"] != 'CHAMPIONSHIP') {
-                    echo " <span class='points'>" . $this->teams[$count]["points"] . "</span>";
+                    echo " <span class='points'>" . $tournamentPoints . "</span>";
                 }
                 echo "</dd></br>";
+                $lastTournamentPoints = $tournamentPoints;
+                $tournamentIndex++;
                 $count++;
             }
             

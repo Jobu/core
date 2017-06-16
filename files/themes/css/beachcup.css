@@ -316,6 +316,11 @@ dl.ranking dt:before
     counter-increment: custom-counter;
 }
 
+dl.ranking dt.same-ranking:before
+{
+    counter-increment: custom-counter 0;
+}
+
 dl.ranking dt.gold
 {
     color: gold;
