@@ -59,18 +59,23 @@ class ModuleRegistrationList extends \Module
                                                   JOIN tl_beachcup_registration AS registration ON registration.id = map.registration_id
                                                   JOIN tl_beachcup_registration_state AS state ON state.id = registration.state_id
                                                   JOIN tl_beachcup_team AS team ON team.id = registration.team_id
-                                                  JOIN (SELECT
-                                                          player.id,
-                                                          concat(player.name, ' ', player.surname) AS name
-                                                        FROM tl_beachcup_player AS player) AS player_1 ON player_1.id = team.player_1
-                                                  JOIN (SELECT
-                                                          player.id,
-                                                          concat(player.name, ' ', player.surname) AS name
-                                                        FROM tl_beachcup_player AS player) AS player_2 ON player_2.id = team.player_2
+                                                  JOIN (
+                                                    SELECT player.id, concat(player.name, ' ', player.surname) AS name 
+                                                    FROM tl_beachcup_member_player mplayer
+                                                    JOIN tl_beachcup_player AS player on player.id = mplayer.player_id
+                                                    WHERE mplayer.member_id = ?
+                                                  ) AS player_1 ON player_1.id = team.player_1
+                                                  JOIN (
+                                                    SELECT player.id, concat(player.name, ' ', player.surname) AS name 
+                                                    FROM tl_beachcup_member_player mplayer
+                                                    JOIN tl_beachcup_player AS player on player.id = mplayer.player_id
+                                                    WHERE mplayer.member_id = ?
+                                                  ) AS player_2 ON player_2.id = team.player_2
                                                   JOIN tl_beachcup_tournament AS tournament ON tournament.id = registration.tournament_id
                                                   JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
-                                                WHERE map.member_id = ?
-                                                ORDER BY tournament.date, registration.id;")->execute(array($user))->fetchAllAssoc();
+                                                  JOIN tl_beachcup_season AS season ON season.id = stage.season_id
+                                                WHERE season.active = true and map.member_id = ?
+                                                ORDER BY tournament.date, registration.id;")->execute(array($user, $user, $user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
         $this->Template->registrations = $registrations;
