@@ -1,9 +1,11 @@
 <?php
 if(count($this->players) > 0) {
-	echo "<table class='responsive-table'><tr><th>" . $this->translations["player"] . "</th></tr>";
+	//echo "<table class='responsive-table'><tr><th>" . $this->translations["player"] . "</th><th/><th/></tr>";
+	echo "<table class='responsive-table'><tr><th>" . $this->translations["player"] . "</th><th/></tr>";
 	foreach($this->players as $player)
 	{
-	    echo "<tr><td>" . $player["name"] . "</td></tr>";
+	    //echo '<tr><td>' . $player["name"] . '</td><td><a href="' . $this->editPlayerUrl . '?player=' . $player["id"] . '" class="bc-edit-icon"></a></td><td><a href="#" class="bc-delete-icon"></a></td></tr>';
+	    echo '<tr><td>' . $player["name"] . '</td><td><a href="' . $this->editPlayerUrl . '?player=' . $player["id"] . '" class="bc-edit-icon"></a></td></tr>';
 	}
 
 	echo "</table><br/><br/><br/>";

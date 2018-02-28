@@ -1,10 +1,24 @@
 <?php
 if(count($this->registrations) > 0) {
-	echo "<table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th><th>" . $this->translations["tournament"] . "</th><th>" . $this->translations["state"] . "</th></tr>";
+	echo "<table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th><th>" . $this->translations["tournament"] . "</th><th>" . $this->translations["state"] . "</th><th/></tr>";
 
 	foreach($this->registrations as $registration)
 	{
-	    echo "<tr><td>" . $registration["team"] . "</td><td>" . $registration["tournament"] . "</td><td>" . $registration["state"] . "</td></tr>";
+		$textConfirmPlaceholders = array(
+		    '{TEAM}' => $registration["team"],
+		    '{TOURNAMENT}' => $registration["tournament"],		    
+		);
+
+		$textConfirmDelete = strtr($this->translations["textConfirmDeletePattern"], $textConfirmPlaceholders);		
+	    echo '<tr><td>' . $registration["team"] . '</td><td>' . $registration["tournament"] . '</td><td>' . $registration["state"] . '</td>';
+	    if($registration["stage_enabled"] == 1) 
+	    {
+	    	echo '<td><a href="' . $this->deleteRegistrationUrl . '?act=delete&amp;registration=' . $registration["id"] . '" class="bc-delete-icon" onclick="if (!confirm(\''. $textConfirmDelete . '\')) return false;"></a></td></tr>';
+	    } 
+	    else 
+	    {
+	    	echo '<td></td></tr>';
+	    }
 	}
 
 	echo "</table><br/><br/><br/>";

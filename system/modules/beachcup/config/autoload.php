@@ -35,6 +35,10 @@ ClassLoader::addClasses(array
 	'beachcup\ModuleRegistrationList' => 'system/modules/beachcup/modules/ModuleRegistrationList.php',
 	'beachcup\ModulePlayerList'       => 'system/modules/beachcup/modules/ModulePlayerList.php',
 	'beachcup\ModuleStageList'        => 'system/modules/beachcup/modules/ModuleStageList.php',
+	'beachcup\ModuleEditPlayer'       => 'system/modules/beachcup/modules/ModuleEditPlayer.php',
+
+	// Forms
+	'beachcup\BeachcupEditForm'       => 'system/modules/beachcup/forms/BeachcupEditForm.php',
 ));
 
 
@@ -47,6 +51,7 @@ TemplateLoader::addFiles(array
 	'mod_game_results'      => 'system/modules/beachcup/templates',
 	'mod_registration_list' => 'system/modules/beachcup/templates',
 	'mod_stage_list'        => 'system/modules/beachcup/templates',
+	'mod_edit_player'       => 'system/modules/beachcup/templates',
 	'mod_stage_map'         => 'system/modules/beachcup/templates',
 	'mod_player_list'       => 'system/modules/beachcup/templates',
 	'mod_news_slider'       => 'system/modules/beachcup/templates',

@@ -44,3 +44,4 @@ $GLOBALS['TL_LANG']['FMD']['player_list'] = array('Spielerliste', 'Erzeugt eine 
 $GLOBALS['TL_LANG']['FMD']['team_list'] = array('Teamliste', 'Erzeugt eine Liste der Teams');
 $GLOBALS['TL_LANG']['FMD']['registration_list'] = array('Anmeldungsliste', 'Erzeugt eine Liste der Anmeldungen');
 $GLOBALS['TL_LANG']['FMD']['former_results'] = array('Archiv Gesamtstände', 'Erzeugt eine Liste der Gesamtstände aus den letzten Jahren');
+$GLOBALS['TL_LANG']['FMD']['edit_player'] = array('Spieler Bearbeiten', 'Erzeugt ein Formular zum Bearbeiten eines Spielers');

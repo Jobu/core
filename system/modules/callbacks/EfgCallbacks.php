@@ -6,10 +6,12 @@ class EfgCallbacks extends Backend
         global $objPage;
         $property = (new ReflectionClass($objForm))->getProperty("objModel");
         $property->setAccessible(true);
-        $formId = $property->getValue($objForm)->id;
+        //$formId = $property->getValue($objForm)->id;
+        $formAlias = $property->getValue($objForm)->alias;
 
         //Check if form is player form and save the player and/or member-player relation
-        if($formId == 4 || $formId == 8)
+        //if($formId == 4 || $formId == 8)
+        if($formAlias == 'spieler-de' || $formAlias == 'spieler-it')
         {
             if($arrSet["birth_date"] != "")
             {
@@ -42,8 +44,30 @@ class EfgCallbacks extends Backend
             return array();
         }
 
+        //Check if form is edit player form
+        //if($formId == 10)
+        if($formAlias == 'spieler-editieren-de' || $formAlias == 'spieler-editieren-it')
+        {
+            $playerIdParam = \Input::get('player');
+            $playerId = intval($playerIdParam);
+            if ($playerId > 0)
+            {
+                $this->Database->prepare("UPDATE tl_beachcup_player set tl_beachcup_player.tstamp = now(), tl_beachcup_player.address = ?, tl_beachcup_player.zip_code = ?, tl_beachcup_player.city = ?, tl_beachcup_player.country = ?, tl_beachcup_player.email = ?, tl_beachcup_player.phone_number = ?, tl_beachcup_player.shirt_size = ?, tl_beachcup_player.player_level = ? WHERE tl_beachcup_player.id = ?")->execute(array($arrSet["address"], $arrSet["zip_code"], $arrSet["city"], $arrSet["country"], $arrSet["email"], $arrSet["phone_number"], $arrSet["shirt_size"], $arrSet["player_level"], $playerId));
+            }             
+
+            $alias = "meine-spieler";
+            if($objPage->language == "it")
+            {
+                $alias = "i-miei-giocatori";
+            }
+            EfgCallbacks::redirectByAlias($alias);
+
+            return array();
+        }
+
         //Check if form is team form and save the team and/or member-team relation
-        if($formId == 5)
+        //if($formId == 5)
+        if($formAlias == 'teams')
         {
             $team = $this->Database->prepare("SELECT team.id AS id FROM tl_beachcup_team AS team WHERE (team.player_1 = ? AND team.player_2 = ?) OR (team.player_2 = ? AND team.player_1 = ?)")->execute(array($arrSet["player_1"], $arrSet["player_2"], $arrSet["player_1"], $arrSet["player_2"]))->fetchAssoc();
 
@@ -71,7 +95,8 @@ class EfgCallbacks extends Backend
         }
 
         //Check if form is registration form and save the registration and/or member-registration relation
-        if($formId == 6 || $formId == 7)
+        //if($formId == 6 || $formId == 7)
+        if($formAlias == 'anmeldungen-deutsch' || $formAlias == 'anmeldungen-italienisch')
         {
             $registration = $this->Database->prepare("SELECT registration.id FROM tl_beachcup_registration AS registration WHERE registration.tournament_id = ? AND registration.team_id = ?")->execute(array($arrSet["tournament_id"], $arrSet["team_id"]))->fetchAssoc();
 
@@ -97,88 +122,17 @@ class EfgCallbacks extends Backend
         }
         
         //Check for tax_number
-        if($objWidget->id == 33 || $objWidget->id == 43)
+        //if($objWidget->id == 33 || $objWidget->id == 43)
+        if($objWidget->name == 'tax_number')
         {
-            //Check if tax number is valid
-            if($_REQUEST["country"] == "it")
+            //Check if tax number is valid            
+            $cf = $_REQUEST["tax_number"];
+            
+            $cf = strtoupper($cf);                
+            $cfRegex = '/^[a-zA-Z]{6}[0-9]{2}[a-zA-Z][0-9]{2}[a-zA-Z][0-9]{3}[a-zA-Z]$/';
+            if (!preg_match($cfRegex, $cf))
             {
-                $cf = $_REQUEST["tax_number"];
-                $valid = true;
-                
-                if($cf == "") $valid = false;
-                if(strlen($cf) != 16) $valid = false;
-
-                $cf = strtoupper($cf);
-                
-                if(!preg_match("/[A-Z0-9]+$/", $cf)) $valid = false;
-                
-                $s = 0;
-                
-                for($i=1; $i<=13; $i+=2)
-                {
-                    $c = $cf[$i];
-                    
-                    if("0" <= $c and $c <= "9")
-                    {
-                        $s += ord($c) - ord("0");
-                    }
-                    else
-                    {
-                        $s += ord($c) - ord("A");
-                    }
-                }
-
-                for($i=0; $i<=14; $i+=2)
-                {
-                    $c = $cf[$i];
-                    
-                    switch($c)
-                    {
-                        case "0":  $s += 1;  break;
-                        case "1":  $s += 0;  break;
-                        case "2":  $s += 5;  break;
-                        case "3":  $s += 7;  break;
-                        case "4":  $s += 9;  break;
-                        case "5":  $s += 13;  break;
-                        case "6":  $s += 15;  break;
-                        case "7":  $s += 17;  break;
-                        case "8":  $s += 19;  break;
-                        case "9":  $s += 21;  break;
-                        case "A":  $s += 1;  break;
-                        case "B":  $s += 0;  break;
-                        case "C":  $s += 5;  break;
-                        case "D":  $s += 7;  break;
-                        case "E":  $s += 9;  break;
-                        case "F":  $s += 13;  break;
-                        case "G":  $s += 15;  break;
-                        case "H":  $s += 17;  break;
-                        case "I":  $s += 19;  break;
-                        case "J":  $s += 21;  break;
-                        case "K":  $s += 2;  break;
-                        case "L":  $s += 4;  break;
-                        case "M":  $s += 18;  break;
-                        case "N":  $s += 20;  break;
-                        case "O":  $s += 11;  break;
-                        case "P":  $s += 3;  break;
-                        case "Q":  $s += 6;  break;
-                        case "R":  $s += 8;  break;
-                        case "S":  $s += 12;  break;
-                        case "T":  $s += 14;  break;
-                        case "U":  $s += 16;  break;
-                        case "V":  $s += 10;  break;
-                        case "W":  $s += 22;  break;
-                        case "X":  $s += 25;  break;
-                        case "Y":  $s += 24;  break;
-                        case "Z":  $s += 23;  break;
-                    }
-                }
-
-                if(chr($s % 26 + ord("A")) != $cf[15]) $valid = false;
-
-                if(!$valid)
-                {
-                    $objWidget->addError("{{ifnlng::it}}Die Steuernummer ist ungültig.{{ifnlng}}{{iflng::it}}Il codice fiscale non è valido.{{iflng}}");
-                }
+                $objWidget->addError("{{ifnlng::it}}Die Steuernummer ist ungültig.{{ifnlng}}{{iflng::it}}Il codice fiscale non è valido.{{iflng}}");
             }
 
             //Check if member player link already exists
@@ -191,14 +145,15 @@ class EfgCallbacks extends Backend
         }
         
         //Check player_1 or player_2 select
-        if($objWidget->id == 23 || $objWidget->id == 24)
+        //if($objWidget->id == 23 || $objWidget->id == 24)
+        if($objWidget->name == 'player_1' || $objWidget->name == 'player_2')
         {
-            //Check for double teams
-            $teams = $this->Database->prepare("SELECT * FROM tl_beachcup_team as team WHERE (team.player_1 = ? and team.player_2 = ?) or (team.player_2 = ? and team.player_1 = ?)")->execute(array($_REQUEST["player_1"], $_REQUEST["player_2"], $_REQUEST["player_1"], $_REQUEST["player_2"]));
+            //Check if member team link already exists
+            $teams = $this->Database->prepare("SELECT * FROM tl_beachcup_member_team AS mt JOIN tl_beachcup_team as team on team.id = mt.team_id WHERE mt.member_id = ? AND ((team.player_1 = ? and team.player_2 = ?) or (team.player_2 = ? and team.player_1 = ?))")->execute(array($_REQUEST["user"], $_REQUEST["player_1"], $_REQUEST["player_2"], $_REQUEST["player_1"], $_REQUEST["player_2"]));
             
             if($teams->numRows)
             {
-                $objWidget->addError("{{ifnlng::it}}Ein Team mit den gleichen Spielern existiert bereits im System.{{ifnlng}}{{iflng::it}}Esiste già una squadra nel sistema che è composta dagli stessi atleti.{{iflng}}");
+                $objWidget->addError("{{ifnlng::it}}Ein Team mit den gleichen Spielern existiert bereits.{{ifnlng}}{{iflng::it}}Esiste giÃ  una squadra che Ã¨ composta dagli stessi atleti.{{iflng}}");
             }
             
             //Check for same player
@@ -209,7 +164,8 @@ class EfgCallbacks extends Backend
         }
         
         //Check team_id select
-        if($objWidget->id == 27 || $objWidget->id == 30)
+        //if($objWidget->id == 27 || $objWidget->id == 30)
+        if($objWidget->name == 'team_id')
         {
             //Check age
             $max_age = $this->Database->prepare("select max_age from tl_beachcup_tournament where tl_beachcup_tournament.id = ?")->execute(array($_REQUEST["tournament_id"]))->max_age;
@@ -220,14 +176,15 @@ class EfgCallbacks extends Backend
                 {
                     if($row["birthYear"] < $max_age)
                     {
-                        $error = "Mindestens ein Spieler im Team ist zu alt für das ausgewählte Turnier.";
+                        /*$error = "Mindestens ein Spieler im Team ist zu alt für das ausgewählte Turnier.";
 
                         if($objWidget->id == 29)
                         {
                             $error = "Almeno un atleta della squadra supera l'età massima definita per il torneo.";
                         }
 
-                        $objWidget->addError($error);
+                        $objWidget->addError($error);*/
+                        $objWidget->addError("{{ifnlng::it}}Mindestens ein Spieler im Team ist zu alt für das ausgewählte Turnier.{{ifnlng}}{{iflng::it}}Almeno un atleta della squadra supera l'età massima definita per il torneo.{{iflng}}");
                         break;
                     }
                 }
@@ -236,18 +193,20 @@ class EfgCallbacks extends Backend
             //Check double registration
             if(!empty($this->Database->prepare("SELECT * from tl_beachcup_registration join tl_beachcup_tournament on tl_beachcup_registration.tournament_id = tl_beachcup_tournament.id join tl_beachcup_team on tl_beachcup_registration.team_id = tl_beachcup_team.id where tl_beachcup_tournament.id = ? and tl_beachcup_team.id = ?")->execute(array($_REQUEST["tournament_id"], $_REQUEST["team_id"]))->fetchAllAssoc()))
             {
-                $error = "Das Team ist für dieses Turnier bereits angemeldet.";
+                /*$error = "Das Team ist für dieses Turnier bereits angemeldet.";
 
                 if($objWidget->id == 29)
                 {
                     $error = "La squadra si è già iscritta a questo torneo.";
                 }
 
-                $objWidget->addError($error);
+                $objWidget->addError($error);*/
+                $objWidget->addError("{{ifnlng::it}}Das Team ist für dieses Turnier bereits angemeldet.{{ifnlng}}{{iflng::it}}La squadra si è già iscritta a questo torneo.{{iflng}}");
             }
 
-            //Check for double player registration in one day
-            if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"]))->fetchAssoc())))
+            // Check for double player registration in one tournament
+            //if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"]))->fetchAssoc())))
+            if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? and p.id in ( SELECT p1.id FROM tl_beachcup_team AS t1 JOIN tl_beachcup_player AS p1 ON t1.player_1 = p1.id OR t1.player_2 = p1.id WHERE t1.id = ? ) GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"], $_REQUEST["team_id"]))->fetchAssoc())))
             {
                 $player = $this->Database->prepare("SELECT CONCAT(p.name, ' ', p.surname) as name FROM tl_beachcup_player AS p WHERE p.id = ?")->execute($player)->fetchAssoc();
                 $player = $player["name"];
@@ -256,7 +215,8 @@ class EfgCallbacks extends Backend
         }
         
         //Check state_id hidden field
-        if($objWidget->id == 52 || $objWidget->id == 53)
+        //if($objWidget->id == 52 || $objWidget->id == 53)
+        if($objWidget->name == 'state_id')
         {
             //Check for max_teams and set the registration state
             $max_teams = $this->Database->prepare("select max_teams from tl_beachcup_stage join tl_beachcup_tournament on tl_beachcup_stage.id = tl_beachcup_tournament.stage_id where tl_beachcup_tournament.id = ?")->execute(array($_REQUEST["tournament_id"]))->max_teams;

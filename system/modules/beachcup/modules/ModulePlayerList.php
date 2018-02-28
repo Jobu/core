@@ -44,10 +44,13 @@ class ModulePlayerList extends \Module
         $translations = array("player" => "Spieler");
         $user = !empty($this->replaceInsertTags("{{user::id}}")) ? $this->replaceInsertTags("{{user::id}}") : 0;
         
+        $editPlayerAlias = 'spieler-bearbeiten';
         if($objPage->language == "it")
         {
             $translations = array("player" => "Giocatore");
+            $editPlayerAlias = 'modifica-giocatore';
         }
+
         
         $players = $database->prepare("SELECT DISTINCT tl_beachcup_player.id, CONCAT(tl_beachcup_player.surname, ' ', tl_beachcup_player.name) as `name`
                                         FROM tl_beachcup_member_player
@@ -57,6 +60,12 @@ class ModulePlayerList extends \Module
                                         ORDER BY tl_beachcup_player.surname, tl_beachcup_player.name;")->execute(array($user))->fetchAllAssoc();
         
         $this->Template->translations = $translations;
+        $this->Template->editPlayerUrl = ModulePlayerList::getFrontendUrlByAlias($editPlayerAlias);
         $this->Template->players = $players;
+    }
+
+    public function getFrontendUrlByAlias($alias)
+    {
+        return \Controller::generateFrontendUrl($this->Database->prepare("SELECT id, alias FROM tl_page WHERE alias = ?")->execute($alias)->fetchAssoc());
     }
 }
