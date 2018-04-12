@@ -78,12 +78,17 @@ class ModuleEditPlayer extends \Module
         {
             return;
         }
-        $playerEditFormId = 10;        
-        $objFormElement = \ContentModel::findOneBy('form', $playerEditFormId);                
-        //if ($objFormElement !== null)
-        //{
-            $this->Template->editform = $this->generateEditForm($objFormElement, $objRecord);
-        //}
+                
+        $objForm = \FormModel::findOneBy('alias', 'spieler-editieren-' . $objPage->language);
+
+        if ($objForm !== null)
+        {
+            $objFormElement = \ContentModel::findOneBy('form', $objForm->id);
+        }
+        if ($objFormElement !== null)
+        {
+            $this->Template->editform = $this->generateEditForm($objFormElement, $objRecord);        
+        }
     }
 
     /**
