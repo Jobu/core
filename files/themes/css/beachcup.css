@@ -422,6 +422,10 @@ div.waiting-list {
     float: right;
 }
 
+.stage-list {
+    margin-bottom: 50px;
+}
+
 .stage-list .stage-list-item {
     position: relative;
     border: 1px solid lightgray;
@@ -597,4 +601,110 @@ div.waiting-list {
     {
         top: 100px;
     }
+}
+
+/**KALENDER STYLE***/
+.cal_calendar
+{
+ max-width: 700px;
+ width: 100%;
+ overflow: hidden;
+}
+.cal_navigation, .cal_head
+{
+ height: 40px;
+ margin: 0;
+ padding: 0;
+}
+.cal_navigation li
+{
+ float: left;
+ height: 30px;
+ padding-top: 6px;
+ text-align: center;
+ width: 33%;
+}
+.head.current 
+{
+ font-size: 25px;
+ padding-top: 0;
+}
+ 
+/***WOCHENTAGE***/
+.cal_thead li
+{
+ width: 14.285%;
+ height: 30px;
+ border: 2px solid #fff;
+ text-transform: uppercase;
+ text-align: center;
+ background-color: #616161;
+ float: left;
+ color: #fff;
+ display: table;
+ padding-top: 3px;
+}
+ 
+/***KALENDER***/
+.mod_calendar li
+{
+    -moz-box-sizing: border-box; 
+    -webkit-box-sizing: border-box; 
+    box-sizing: border-box;
+}
+.cal_body
+{
+ clear: both;
+ overflow: hidden;
+}
+.cal_body .header
+{
+ margin-top: 8px;
+}
+.cal_body ul
+{
+ clear: both;
+}
+.cal_body ul li
+{
+ width: 14.285%;
+ height: 40px;
+ border: 2px solid #fff;
+ text-transform: uppercase;
+ text-align: center;
+ background-color:#F3F3F3;
+ float: left;
+ display: table 
+}
+.label.weekend {
+ background-color: #c6d44b
+}
+.days.active {
+ background-color: #c6d44b; 
+ color: #fff
+}
+.days.active > .header {
+ display: none
+}
+.upcoming 
+{
+ font-size: 9px;
+ display: table-cell;
+ vertical-align: middle;
+}
+.upcoming > a {
+ color: #fff;
+}
+.days
+{
+ border: 1px solid #aaa;
+}
+.event.cal_1.upcoming {
+    display: inline-block;
+    border-top: 1px solid white;
+    width: 100%;
+    padding-top: 2px;
+}
+.event.cal_1.upcoming.first {
+    border-top: none;
 }
