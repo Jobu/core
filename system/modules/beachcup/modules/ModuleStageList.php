@@ -48,16 +48,6 @@ class ModuleStageList extends \Module
         global $objPage;
         $database = \Database::getInstance();
 
-        if(!empty($this->Input->get($this->detailsKey)))
-        {
-            $this->compileDetailsView($this->Input->get($this->detailsKey));
-            $this->Template->details = true;
-        }
-        else
-        {
-            $this->compileListView();
-            $this->Template->list = true;
-        }
         $registerAlias = "meine-spieler";
         $resultsAlias = "etappenstaende";
         if($objPage->language == "it") {
@@ -72,11 +62,22 @@ class ModuleStageList extends \Module
         {
             $resultsLink = $this->generateFrontendUrl($resultsPage);
         }
-        $this->Template->registerLink = $registerLink;
+
+        if(!empty($this->Input->get($this->detailsKey)))
+        {
+            $this->compileDetailsView($this->Input->get($this->detailsKey), $registerLink);
+            $this->Template->details = true;
+        }
+        else
+        {
+            $this->compileListView($registerLink);
+            $this->Template->list = true;
+        }
+                
         $this->Template->resultsLink = $resultsLink;
     }
     
-    private function compileListView()
+    private function compileListView($registerLink)
     {
         global $objPage;
         $database = \Database::getInstance();
@@ -91,7 +92,7 @@ class ModuleStageList extends \Module
             $translations = array("register" => "Iscrizione", "results" => "Risultati");
         }
         
-        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture 
+        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.ext_registration_url, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture 
                                     FROM tl_beachcup_stage JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id 
                                     JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
                                     WHERE tl_beachcup_season.active = true
@@ -117,6 +118,17 @@ class ModuleStageList extends \Module
             {
                 $stage["link"] = $this->generateFrontendUrl($alias, "/$this->detailsKey/" . $stage["id"]);
             }
+
+            if(empty($stage["ext_registration_url"]))
+            {
+                $stage["registerLink"] = $registerLink;
+                $stage["is_external_registration"] = false;
+            }
+            else
+            {
+                $stage["registerLink"] = $stage["ext_registration_url"];
+                $stage["is_external_registration"] = true;
+            }
             
             $stage["tournaments"] = $database->prepare("SELECT tl_beachcup_tournament.name_$language AS name 
                                                         FROM tl_beachcup_tournament 
@@ -129,7 +141,7 @@ class ModuleStageList extends \Module
         $this->Template->stages = $stages;
     }
     
-    private function compileDetailsView($id)
+    private function compileDetailsView($id, $registerLink)
     {
         global $objPage;
         $database = \Database::getInstance();
@@ -146,7 +158,7 @@ class ModuleStageList extends \Module
             $translations = array("tournaments" => array("title" => "Tornei e squadre partecipanti", "name" => "Nome", "date" => "Data"), "venue" => array("title" => "Luogo di manifestazione", "address" => "Indirizzo"), "organizer" => array("title" => "Organizzatore"), "register" => "Iscrizione", "results" => "Risultati", "waitingList" => "Lista d'attesa");
         }
         
-        $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_venue.picture, 
+        $stage = $database->prepare("SELECT tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.description_$language AS description, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_stage.is_enabled, tl_beachcup_stage.ext_registration_url, tl_beachcup_venue.picture, 
             tl_beachcup_venue.name_$language AS venue_name, tl_beachcup_venue.description_$language AS venue_description, tl_beachcup_venue.address_$language AS venue_address, tl_beachcup_venue.zip_code AS venue_zip_code, 
             tl_beachcup_venue.city_$language AS venue_city, tl_beachcup_organizer.name_$language AS organizer_name, tl_beachcup_organizer.description_$language AS organizer_description, tl_beachcup_organizer.contact_person, 
             tl_beachcup_organizer.email, tl_beachcup_organizer.phone, tl_beachcup_organizer.fax, tl_beachcup_organizer.mobile_phone 
@@ -167,6 +179,17 @@ class ModuleStageList extends \Module
         else
         {
             $stage["date"] = \Date::parse("j.", $stage["start_date"]) . $conjunction . \Date::parse("j. F Y", $stage["end_date"]);
+        }
+
+        if(empty($stage["ext_registration_url"]))
+        {
+            $stage["registerLink"] = $registerLink;
+            $stage["is_external_registration"] = false;
+        }
+        else
+        {
+            $stage["registerLink"] = $stage["ext_registration_url"];
+            $stage["is_external_registration"] = true;
         }
                 
         $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name, tl_beachcup_registration_state.code  registration_state

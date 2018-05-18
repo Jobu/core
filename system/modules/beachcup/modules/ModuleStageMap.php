@@ -73,7 +73,7 @@ class ModuleStageMap extends \Module
             $resultsLink = $this->generateFrontendUrl($resultsPage);
         }
 
-        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude, tl_beachcup_venue.address_$language AS address 
+        $stages = $database->query("SELECT tl_beachcup_stage.id, tl_beachcup_stage.is_enabled, tl_beachcup_stage.ext_registration_url, tl_beachcup_stage.name_$language AS name, tl_beachcup_stage.start_date, tl_beachcup_stage.end_date, tl_beachcup_venue.picture, tl_beachcup_venue.latitude, tl_beachcup_venue.longitude, tl_beachcup_venue.address_$language AS address 
                                     FROM tl_beachcup_stage 
                                     JOIN tl_beachcup_venue ON tl_beachcup_stage.venue_id = tl_beachcup_venue.id 
                                     JOIN tl_beachcup_season ON tl_beachcup_stage.season_id = tl_beachcup_season.id 
@@ -105,6 +105,17 @@ class ModuleStageMap extends \Module
                 $stage["link"] = \Environment::get('base').$objPage->language.'/'.$stagesAlias.'/'.$this->detailsKey.'/'. $stage["id"].'.html';
             //}
             
+            if(empty($stage["ext_registration_url"]))
+            {
+                $stage["registerLink"] = $registerLink;
+                $stage["is_external_registration"] = false;
+            }
+            else
+            {
+                $stage["registerLink"] = $stage["ext_registration_url"];
+                $stage["is_external_registration"] = true;
+            }            
+
             $stage["tournaments"] = $database->prepare("SELECT DISTINCT tl_beachcup_tournament_type.description_$language AS description 
                                                         FROM tl_beachcup_tournament JOIN tl_beachcup_tournament_type ON tl_beachcup_tournament.type_id = tl_beachcup_tournament_type.id 
                                                         WHERE tl_beachcup_tournament.stage_id = ?
@@ -113,8 +124,7 @@ class ModuleStageMap extends \Module
         }
         
         $this->Template->translations = $translations;
-        $this->Template->stages = $stages;
-        $this->Template->registerLink = $registerLink;
+        $this->Template->stages = $stages;        
         $this->Template->resultsLink = $resultsLink;
 	}
 }

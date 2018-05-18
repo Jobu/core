@@ -13,7 +13,14 @@ if($this->list)
         echo "<div class='stage-list-item'>";
         if($stage["is_enabled"] == 1 && $today <= $stageEndDate)
         {
-            echo "<a href='" . $this->registerLink . "' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
+            if($stage["is_external_registration"] === true)
+            {
+                echo "<a href='" . $stage["registerLink"] . "' target='_blank' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
+            }
+            else 
+            {
+                echo "<a href='" . $stage["registerLink"] . "' class='ribbon red'><span>" . $this->translations["register"] . "</span></a>";
+            }
         } 
         else if($today > $stageEndDate) {
             echo "<a href='" . $this->resultsLink . "' class='ribbon blue'><span>" . $this->translations["results"] . "</span></a>";
@@ -42,7 +49,14 @@ echo "<div class='teaser clearfix'>
         <h1>" . $this->stage["name"] . "</h1>
         <p><i class='date-tag'>" . $this->stage["date"] . "</i></p>";
     if($this->stage["is_enabled"] == 1 && $today <= $stageEndDate) {
-        echo "<p><a class='register-button' href='" . $this->registerLink . "'><b>" . $this->translations["register"] . "</b></a></p>";
+        if($this->stage["is_external_registration"] === true)
+        {
+            echo "<p><a target='_blank' class='register-button' href='" . $this->stage["registerLink"] . "'><b>" . $this->translations["register"] . "</b></a></p>";
+        }
+        else
+        {
+            echo "<p><a class='register-button' href='" . $this->stage["registerLink"] . "'><b>" . $this->translations["register"] . "</b></a></p>";
+        }
     } 
     else if($today > $stageEndDate) {
         echo "<p><a class='results-button' href='" . $this->resultsLink . "'><b>" . $this->translations["results"] . "</b></a></p>";

@@ -2169,7 +2169,7 @@ class Formdata extends \Frontend
 										FROM tl_beachcup_tournament AS tournament
 										JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
 										JOIN tl_beachcup_season ON stage.season_id = tl_beachcup_season.id
-										WHERE stage.is_enabled = 1 AND datediff(FROM_UNIXTIME(tournament.date),CURDATE( )) > 2 AND tl_beachcup_season.active = true;";
+										WHERE stage.is_enabled = 1 AND stage.ext_registration_url = '' AND datediff(FROM_UNIXTIME(tournament.date),CURDATE( )) > 2 AND tl_beachcup_season.active = true;";
 					}
 					else if($sqlLookupOrder == "custom_sql_registration_tournament_it")
 					{
@@ -2177,7 +2177,7 @@ class Formdata extends \Frontend
 										FROM tl_beachcup_tournament AS tournament
 										JOIN tl_beachcup_stage AS stage ON stage.id = tournament.stage_id
 										JOIN tl_beachcup_season ON stage.season_id = tl_beachcup_season.id
-										WHERE stage.is_enabled = 1 AND datediff(FROM_UNIXTIME(tournament.date),CURDATE( )) > 2 AND tl_beachcup_season.active = true;";
+										WHERE stage.is_enabled = 1 AND stage.ext_registration_url = '' AND datediff(FROM_UNIXTIME(tournament.date),CURDATE( )) > 2 AND tl_beachcup_season.active = true;";
 					}
 					
 					if (!empty($sqlLookupTable))

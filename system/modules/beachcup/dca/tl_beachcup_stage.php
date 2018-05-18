@@ -104,7 +104,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_stage'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-        'default'                     => '{general_legend},name_de,description_de,name_it,description_it,start_date,end_date,organizer_id,venue_id,season_id;{administration_legend},is_enabled;'
+        'default'                     => '{general_legend},name_de,description_de,name_it,description_it,start_date,end_date,organizer_id,venue_id,season_id,ext_registration_url;{administration_legend},is_enabled;'
 	),
 
 	// Subpalettes
@@ -225,6 +225,16 @@ $GLOBALS['TL_DCA']['tl_beachcup_stage'] = array
             'inputType'               => 'checkbox',
             'eval'                    => array('tl_class'=>'w50'),
             'sql'                     => "boolean NOT NULL default false"
+        ),
+        'ext_registration_url' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_stage']['ext_registration_url'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'text',
+            'eval'                    => array('rgxp'=>'url'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         )
 	)
 );

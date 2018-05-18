@@ -190,7 +190,14 @@
                 $stageEndDate->setTime(0, 0, 0);                
                 
                 if($stage["is_enabled"] == 1 && $today <= $stageEndDate) {
-                    $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->registerLink . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
+                    if($stage["is_external_registration"] === true)
+                    {
+                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $stage["registerLink"] . '" target="_blank" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
+                    }
+                    else 
+                    {
+                        $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $stage["registerLink"] . '" class="ribbon red"><span>' . $this->translations["register"] . '</span></a><div class="location-title"><div class="tournament-list">';
+                    }                    
                 }
                 else if($today > $stageEndDate) {
                     $html = '<div id="marker_' . $i . '" class="marker_info"><div class="location-description"><a href="' . $this->resultsLink . '" class="ribbon blue"><span>' . $this->translations["results"] . '</span></a><div class="location-title"><div class="tournament-list">';

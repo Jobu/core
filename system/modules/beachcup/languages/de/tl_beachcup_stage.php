@@ -29,6 +29,9 @@ $GLOBALS['TL_LANG']['tl_beachcup_stage']['venue_id'][1] = 'Wählen Sie hier den 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['season_id'][0] = 'Saison';
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['season_id'][1] = 'Wählen Sie hier die Saison aus.';
 
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['ext_registration_url'][0] = 'Externe Anmeldeseite';
+$GLOBALS['TL_LANG']['tl_beachcup_stage']['ext_registration_url'][1] = 'Geben Sie hier die URL der externen Anmeldeseite ein.';
+
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['administration_legend'] = 'Administration';
 
 $GLOBALS['TL_LANG']['tl_beachcup_stage']['is_enabled'][0] = 'Aktiviert';
