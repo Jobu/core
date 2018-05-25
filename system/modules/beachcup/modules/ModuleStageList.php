@@ -184,12 +184,20 @@ class ModuleStageList extends \Module
         if(empty($stage["ext_registration_url"]))
         {
             $stage["registerLink"] = $registerLink;
-            $stage["is_external_registration"] = false;
+            $stage["is_external_registration"] = false;            
         }
         else
         {
             $stage["registerLink"] = $stage["ext_registration_url"];
             $stage["is_external_registration"] = true;
+            if($objPage->language == "it")
+            {
+                $translations["tournaments"]["title"] = "Tornei";
+            }
+            else
+            {
+                $translations["tournaments"]["title"] = "Turniere";
+            }
         }
                 
         $teams = $database->prepare("SELECT tl_beachcup_stage.id AS stage_id, tl_beachcup_tournament.id AS tournament_id, tl_beachcup_tournament.date AS tournament_date, tl_beachcup_tournament.name_de AS tournament_name_de, tl_beachcup_tournament.name_it AS tournament_name_it, team.team_name, tl_beachcup_registration_state.code  registration_state

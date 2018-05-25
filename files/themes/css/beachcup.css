@@ -1,6 +1,7 @@
 h1, h2, h3, h4, h5, h6
 {
     padding-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 body::-webkit-scrollbar
@@ -707,4 +708,50 @@ div.waiting-list {
 }
 .event.cal_1.upcoming.first {
     border-top: none;
+}
+
+/***EVENT LIST***/
+.event.layout_list.upcoming {
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    width: inherit;
+    display: block;    
+    font-size: inherit;
+    margin-left: 24px;
+}
+.event.layout_list.upcoming h2 {
+    margin-bottom: 0;    
+}
+.event.layout_list.upcoming h2 a {
+    color: #adbb32;
+}
+.event.layout_list.upcoming .ce_text {
+    margin-bottom: 0;   
+}
+.event.layout_list.upcoming img {
+    float: left;
+    margin-right: 15px;
+    border-radius: 10px;
+    max-width: 128px;
+}
+.event.layout_list.upcoming::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.event.cal_1.upcoming.first {
+    border-top: 1px solid lightgray;
+}
+.mod_eventlist .header::before {
+    background: url(images/beachcup-calendar-icon.png);
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    float: left;
+    content: "";
+    margin-right: 10px;
 }
