@@ -73,7 +73,7 @@ class ModuleTotalResults extends \Module
                                                     and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')                                                    
-                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2000-01-01'
+                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2001-01-01'
                                                 order by player_name, points desc
                                             ) sq,
                                             (SELECT @row_num := 1) x,
@@ -101,7 +101,7 @@ class ModuleTotalResults extends \Module
                                                     and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')
-                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2000-01-01'
+                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2001-01-01'
                                                 order by player_name, points desc
                                             ) sq,
                                             (SELECT @row_num := 1) x,
