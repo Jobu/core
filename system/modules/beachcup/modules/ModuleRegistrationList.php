@@ -86,8 +86,11 @@ class ModuleRegistrationList extends \Module
                                                 WHERE season.active = true and map.member_id = ?
                                                 ORDER BY tournament.date, registration.id;")->execute(array($user, $user, $user))->fetchAllAssoc();
         
-        $this->Template->translations = $translations;        
-        $this->Template->deleteRegistrationUrl = $this->generateFrontendUrl($objPage->row());
+        $this->Template->translations = $translations;
+        if(!is_null($objPage)) 
+        {
+          $this->Template->deleteRegistrationUrl = $this->generateFrontendUrl($objPage->row());
+        }       
         $this->Template->registrations = $registrations;
     }
 

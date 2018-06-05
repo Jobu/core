@@ -711,7 +711,7 @@ div.waiting-list {
 }
 
 /***EVENT LIST***/
-.event.layout_list.upcoming {
+.event.layout_list.upcoming, .event.layout_list.bygone {
     border: 1px solid lightgray;
     border-radius: 10px;
     margin: 10px 0 10px 0;
@@ -721,27 +721,27 @@ div.waiting-list {
     font-size: inherit;
     margin-left: 24px;
 }
-.event.layout_list.upcoming h2 {
+.event.layout_list.upcoming h2, .event.layout_list.bygone h2 {
     margin-bottom: 0;    
 }
-.event.layout_list.upcoming h2 a {
+.event.layout_list.upcoming h2 a, .event.layout_list.bygone h2 a {
     color: #adbb32;
 }
-.event.layout_list.upcoming .ce_text {
+.event.layout_list.upcoming .ce_text, .event.layout_list.bygone .ce_text {
     margin-bottom: 0;   
 }
-.event.layout_list.upcoming img {
+.event.layout_list.upcoming img, .event.layout_list.bygone img {
     float: left;
     margin-right: 15px;
     border-radius: 10px;
     max-width: 128px;
 }
-.event.layout_list.upcoming::after {
+.event.layout_list.upcoming::after, .event.layout_list.bygone::after {
     content: "";
     clear: both;
     display: table;
 }
-.event.cal_1.upcoming.first {
+.event.cal_1.upcoming.first, .event.cal_1.bygone.first {
     border-top: 1px solid lightgray;
 }
 .mod_eventlist .header::before {
