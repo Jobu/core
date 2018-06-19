@@ -55,8 +55,8 @@ $GLOBALS['TL_LANG']['tl_beachcup_player']['administration_legend'] = 'Administra
 $GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][0] = 'Eigenerklärung';
 $GLOBALS['TL_LANG']['tl_beachcup_player']['is_confirmed'][1] = 'Spieler hat Eigenerklärung übermittelt.';
 
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][0] = 'FIPAV';
-$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][1] = 'Der Spieler ist FIPAV-tesseriert.';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][0] = 'OPES';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['is_fipav'][1] = 'Der Spieler ist OPES-tesseriert.';
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][0] = 'ärztliches Zeugnis';
 $GLOBALS['TL_LANG']['tl_beachcup_player']['has_medical_certificate'][1] = 'Spieler hat ärtztliches Zeugnis übermittelt.';
