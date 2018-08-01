@@ -206,7 +206,7 @@ class ModuleStageList extends \Module
                                     LEFT OUTER JOIN tl_beachcup_registration ON tl_beachcup_registration.tournament_id = tl_beachcup_tournament.id
                                     LEFT OUTER JOIN tl_beachcup_registration_state on tl_beachcup_registration_state.id = tl_beachcup_registration.state_id AND tl_beachcup_registration_state.code != 'REJECTED'
                                     LEFT OUTER JOIN (SELECT tl_beachcup_team.id AS id, GROUP_CONCAT(CONCAT(tl_beachcup_player.name, ' ', tl_beachcup_player.surname) SEPARATOR $separator) AS team_name FROM tl_beachcup_team JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id GROUP BY tl_beachcup_team.id) AS team ON team.id = tl_beachcup_registration.team_id 
-                                    WHERE tl_beachcup_tournament.stage_id = ? 
+                                    WHERE tl_beachcup_tournament.stage_id = ? and not (team.team_name is not null and tl_beachcup_registration_state.code is null)
                                     ORDER BY tl_beachcup_tournament.date, tl_beachcup_tournament.name_".$language.", tl_beachcup_registration.id")->execute($id)->fetchAllAssoc();
 
         foreach($teams as &$team)
