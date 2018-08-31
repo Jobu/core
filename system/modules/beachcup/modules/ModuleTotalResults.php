@@ -70,7 +70,7 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_team ON tl_beachcup_registration.team_id = tl_beachcup_team.id
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
-                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
+                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')                                                    
                                                     and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2001-01-01'
@@ -79,7 +79,7 @@ class ModuleTotalResults extends \Module
                                             (SELECT @row_num := 1) x,
                                             (SELECT @prev_value := '') y
                                         ) q
-                                        where q.RowNumber < 5
+                                        where q.RowNumber < 6
                                         group by q.tournament_name_de, q.tournament_name_it, q.player_name
                                         UNION
                                         select q.tournament_name_de, q.tournament_name_it, q.player_name, sum(q.points) AS total_points
@@ -98,7 +98,7 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_team ON tl_beachcup_registration.team_id = tl_beachcup_team.id
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
-                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED')
+                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')
                                                     and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2001-01-01'
@@ -107,7 +107,7 @@ class ModuleTotalResults extends \Module
                                             (SELECT @row_num := 1) x,
                                             (SELECT @prev_value := '') y
                                         ) q
-                                        where q.RowNumber < 5
+                                        where q.RowNumber < 6
                                         group by q.tournament_name_de, q.tournament_name_it, q.player_name
                                     ) totalteamlist
                                     ORDER BY tournament_name_de, total_points DESC")->fetchAllAssoc();

@@ -2185,7 +2185,7 @@ Questa e-mail è stata generata dal sistema in modo automatico. Non rispondere a
       </trans-unit>
       <trans-unit id="MSC.location">
         <source>Location</source>
-        <target>Posizione</target>
+        <target>Luogo</target>
       </trans-unit>
       <trans-unit id="MSC.download">
         <source>Download %s</source>

@@ -1,7 +1,7 @@
 <!-- indexer::stop -->
 <header id="main-header">
-	<div class="logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}"><img src="./files/themes/images/logo.png"></a></div>
-	<div class="mobile-logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}"><img src="./files/themes/images/mobile_logo.png"></a></div>
+	<div class="logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}/home.html"><img src="./files/themes/images/logo.png"></a></div>
+	<div class="mobile-logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}/home.html"><img src="./files/themes/images/mobile_logo.png"></a></div>
 	<div class="container clearfix">
 		<div id="top-navigation">
 			<nav>
@@ -17,5 +17,6 @@
 			<span></span>
 		</div>
 	</div>
+	<!--<div id="logo-breaking-news"><a href="http://www.beachcup.it/it/finale-nazionale-u16-2018.html"><img src="./files/2018/events/logo-campionato-beachvolley.png"></a></div>-->
 </header>
 <!-- indexer::continue -->
