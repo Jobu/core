@@ -142,7 +142,7 @@
 	var et_window_width;
 
 	$(document).ready( function(){
-		var $et_top_menu = $( 'ul.nav' ),
+		var $et_top_menu = $('#menu-pages ul.level_1'),
 			$featured_slider = $('#et-slider-wrapper'),
 			$et_listings_item = $('#et-listings li'),
 			$comment_form = $('form#commentform'),
@@ -155,7 +155,7 @@
 			delay		: 500, 										// one second delay on mouseout
 			animation	: { opacity : 'show', height : 'show' },	// fade-in and slide-down animation
 			speed		: 'fast', 									// faster animation speed
-			autoArrows	: true, 									// disable generation of arrow mark-up
+			cssArrows	: true, 									// disable generation of arrow mark-up
 			dropShadows	: false										// disable drop shadows
 		});
 
@@ -265,7 +265,7 @@
 			});
 		});
 
-		et_duplicate_menu( $('ul.nav'), $('.mobile_nav'), 'mobile_menu', 'et_mobile_menu' );
+		et_duplicate_menu( $et_top_menu, $('.mobile_nav'), 'mobile_menu', 'et_mobile_menu' );
 
 		$('body').append( $('#et-list-view').clone().removeClass('et-normal-listings').addClass('et-mobile-listings') );
 		$et_mobile_listings_item = $('.et-mobile-listings li');

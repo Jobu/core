@@ -1,4 +1,4 @@
-<ul id="menu-pages" class="nav">
+<ul class="<?= $this->level ?> <?= ($this->level == 'level_1') ? 'nav' : '' ?>" role="<?= ($this->level == 'level_1') ? 'menubar' : 'menu' ?>">
   <?php foreach ($this->items as $item): ?>
     <?php if ($item['isActive']): ?>
       <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item"><a><?= $item['link'] ?></a><?= $item['subitems'] ?></li>

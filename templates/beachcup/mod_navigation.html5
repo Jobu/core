@@ -4,7 +4,7 @@
 	<div class="mobile-logo"><a href="{{env::path}}{{iflng::de}}de{{iflng::it}}it{{iflng}}/home.html"><img src="./files/themes/images/mobile_logo.png"></a></div>
 	<div class="container clearfix">
 		<div id="top-navigation">
-			<nav>
+			<nav id="menu-pages">
 				<?= $this->items ?>
 			</nav>
 		</div>
