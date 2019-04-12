@@ -44,6 +44,9 @@ $GLOBALS['TL_LANG']['tl_beachcup_player']['phone_number'][1] = 'Geben Sie hier d
 
 $GLOBALS['TL_LANG']['tl_beachcup_player']['body_legend'] = 'Körper Informationen';
 
+$GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_top'][0] = 'Shirt/Damen-Top';
+$GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_top'][1] = 'Wählen Sie hier zwischen Shirt oder Damen-Top aus.';
+
 $GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_size'][0] = 'Shirt Größe';
 $GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_size'][1] = 'Wählen Sie hier die Shirt-Größe aus.';
 

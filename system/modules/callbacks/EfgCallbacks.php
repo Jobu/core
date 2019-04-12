@@ -23,7 +23,7 @@ class EfgCallbacks extends Backend
 
             if(empty($player))
             {
-                $this->Database->prepare("INSERT INTO tl_beachcup_player (tl_beachcup_player.tstamp, tl_beachcup_player.name, tl_beachcup_player.surname, tl_beachcup_player.birth_date, tl_beachcup_player.birth_place, tl_beachcup_player.gender, tl_beachcup_player.address, tl_beachcup_player.zip_code, tl_beachcup_player.city, tl_beachcup_player.country, tl_beachcup_player.tax_number, tl_beachcup_player.email, tl_beachcup_player.phone_number, tl_beachcup_player.shirt_size, tl_beachcup_player.player_level, tl_beachcup_player.has_privacy) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute($arrSet);
+                $this->Database->prepare("INSERT INTO tl_beachcup_player (tl_beachcup_player.tstamp, tl_beachcup_player.name, tl_beachcup_player.surname, tl_beachcup_player.birth_date, tl_beachcup_player.birth_place, tl_beachcup_player.gender, tl_beachcup_player.address, tl_beachcup_player.zip_code, tl_beachcup_player.city, tl_beachcup_player.country, tl_beachcup_player.tax_number, tl_beachcup_player.email, tl_beachcup_player.phone_number, tl_beachcup_player.shirt_top, tl_beachcup_player.shirt_size, tl_beachcup_player.player_level, tl_beachcup_player.has_privacy) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")->execute($arrSet);
                 $player = $this->Database->prepare("SELECT tl_beachcup_player.id FROM tl_beachcup_player WHERE LOWER(tl_beachcup_player.tax_number) = LOWER(?)")->execute($arrSet["tax_number"])->fetchAssoc();
             }
 
@@ -52,7 +52,7 @@ class EfgCallbacks extends Backend
             $playerId = intval($playerIdParam);
             if ($playerId > 0)
             {
-                $this->Database->prepare("UPDATE tl_beachcup_player set tl_beachcup_player.tstamp = now(), tl_beachcup_player.address = ?, tl_beachcup_player.zip_code = ?, tl_beachcup_player.city = ?, tl_beachcup_player.country = ?, tl_beachcup_player.email = ?, tl_beachcup_player.phone_number = ?, tl_beachcup_player.shirt_size = ?, tl_beachcup_player.player_level = ? WHERE tl_beachcup_player.id = ?")->execute(array($arrSet["address"], $arrSet["zip_code"], $arrSet["city"], $arrSet["country"], $arrSet["email"], $arrSet["phone_number"], $arrSet["shirt_size"], $arrSet["player_level"], $playerId));
+                $this->Database->prepare("UPDATE tl_beachcup_player set tl_beachcup_player.tstamp = now(), tl_beachcup_player.address = ?, tl_beachcup_player.zip_code = ?, tl_beachcup_player.city = ?, tl_beachcup_player.country = ?, tl_beachcup_player.email = ?, tl_beachcup_player.phone_number = ?, tl_beachcup_player.shirt_top = ?, tl_beachcup_player.shirt_size = ?, tl_beachcup_player.player_level = ? WHERE tl_beachcup_player.id = ?")->execute(array($arrSet["address"], $arrSet["zip_code"], $arrSet["city"], $arrSet["country"], $arrSet["email"], $arrSet["phone_number"], $arrSet["shirt_top"], $arrSet["shirt_size"], $arrSet["player_level"], $playerId));
             }             
 
             $alias = "meine-spieler";

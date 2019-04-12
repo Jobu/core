@@ -50,7 +50,7 @@ class ModuleEditPlayer extends \Module
         }
         
         //$editFields = array_keys($GLOBALS['TL_DCA']['tl_beachcup_player']['fields']);
-        $editFields = array('name','surname','birth_date','birth_place','gender','address','zip_code','city','country','email','phone_number','tax_number','shirt_size','player_level');
+        $editFields = array('name','surname','birth_date','birth_place','gender','address','zip_code','city','country','email','phone_number','tax_number','shirt_top','shirt_size','player_level');
         /*$arrFields = array_keys($GLOBALS['TL_DCA']['tl_beachcup_player']['fields']);
         foreach ($arrFields as $strField)
         {

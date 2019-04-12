@@ -97,7 +97,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
 	'palettes' => array
 	(
 		'__selector__'                => array(''),
-        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;'
+        'default'                     => '{general_legend},name,surname,birth_date,birth_place,gender,tax_number;{address_legend},address,zip_code,city,country;{contact_legend},email,phone_number;{body_legend},shirt_top,shirt_size,player_level;{administration_legend},is_confirmed,is_fipav,has_medical_certificate,has_privacy,has_shirt;'
 	),
 
 	// Subpalettes
@@ -164,7 +164,7 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'sorting'                 => true,
             'search'                  => true,
             'inputType'               => 'select',
-            'options'                 => array('male', 'female', 'other'),
+            'options'                 => array('male', 'female'),
             'reference'               => &$GLOBALS['TL_LANG']['MSC'],
             'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "varchar(255) NOT NULL default ''"
@@ -239,6 +239,18 @@ $GLOBALS['TL_DCA']['tl_beachcup_player'] = array
             'inputType'               => 'text',
             'eval'                    => array('mandatory'=>true, 'minlength'=>16, 'maxlength'=>16, 'tl_class'=>'w50', 'unique'=>true),
             'sql'                     => "varchar(16) NOT NULL default ''"
+        ),
+        'shirt_top' => array
+        (
+            'label'                   => &$GLOBALS['TL_LANG']['tl_beachcup_player']['shirt_top'],
+            'exclude'                 => true,
+            'sorting'                 => true,
+            'search'                  => true,
+            'inputType'               => 'select',
+            'options'                 => array('shirt', 'top'),
+            'reference'               => &$GLOBALS['TL_LANG']['MSC'],
+            'eval'                    => array('mandatory'=>true, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(255) NOT NULL default ''"
         ),
         'shirt_size' => array
         (
