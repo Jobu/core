@@ -70,10 +70,10 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_team ON tl_beachcup_registration.team_id = tl_beachcup_team.id
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
-                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP')
+                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP' or tl_beachcup_tournament_type.code = 'ADULT' or tl_beachcup_tournament_type.code = 'KING')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')                                                    
-                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2001-01-01'
+                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') >= '2002-01-01'
                                                 order by player_name, points desc, birth_date DESC 
                                             ) sq,
                                             (SELECT @row_num := 1) x,
@@ -98,10 +98,10 @@ class ModuleTotalResults extends \Module
                                                 JOIN tl_beachcup_team ON tl_beachcup_registration.team_id = tl_beachcup_team.id
                                                 JOIN tl_beachcup_player ON tl_beachcup_team.player_1 = tl_beachcup_player.id OR tl_beachcup_team.player_2 = tl_beachcup_player.id
                                                 WHERE tl_beachcup_season.active = true
-                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP')
+                                                    and (tl_beachcup_tournament_type.code = 'OPEN' or tl_beachcup_tournament_type.code = 'AMATEUR' or tl_beachcup_tournament_type.code = 'MIXED' or tl_beachcup_tournament_type.code = 'CHAMPIONSHIP' or tl_beachcup_tournament_type.code = 'ADULT' or tl_beachcup_tournament_type.code = 'KING')
                                                     and tl_beachcup_tournament.date < UNIX_TIMESTAMP() 
                                                     and  tl_beachcup_registration_state.code in ('COMPLETE','INCOMPLETE')
-                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2001-01-01'
+                                                    and DATE_FORMAT(DATE_ADD(FROM_UNIXTIME(0), INTERVAL tl_beachcup_player.birth_date SECOND), '%Y-%m-%d') < '2002-01-01'
                                                 order by player_name, points desc, birth_date DESC
                                             ) sq,
                                             (SELECT @row_num := 1) x,
