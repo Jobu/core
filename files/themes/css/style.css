@@ -119,12 +119,14 @@ body.et_map_full_screen.single-listing #main-header { position: relative; }
 	#main-header .container, #filter-bar .container { text-align: left; margin: 0 auto; width: 750px; position: relative; }
 	.container { text-align: left; margin: 0 auto; width: 960px; position: relative; }
 		#logo, #top-navigation { float: left; }
-		#login { color: white; }
+		/*#login { color: white; }*/
 		#login .link-text { font-weight: 800; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
 		#login .link-text span { font-weight: 300; }
 		#login img { height: 30px; }
-		#login div { display: inline-block; vertical-align: middle; }
-		#login:hover { cursor: pointer; }
+		#login .ce_hyperlink.block { line-height: 2; }
+		#login-it .ce_hyperlink.block { line-height: 2; }
+		/*#login div { display: inline-block; vertical-align: middle; }*/
+		/*#login:hover { cursor: pointer; }*/
 		/*#top-navigation { padding-right: 145px; }*/
 			#top-navigation nav { float: left; padding: 21px 0 0 11px; text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5); }
 				#top-navigation li  { display: inline-block; }
