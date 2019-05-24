@@ -774,3 +774,7 @@ div.waiting-list {
     content: "";
     margin-right: 10px;
 }
+#players-list, #teams-list, #registrations-list {
+    height: 300px;
+    overflow-y: auto;
+}

@@ -1,12 +1,12 @@
 <?php
 if(count($this->teams) > 0) {
-	echo "<table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th></tr>";
+	echo "<div id='teams-list'><table class='responsive-table'><tr><th>" . $this->translations["team"] . "</th></tr>";
 
 	foreach($this->teams as $team)
 	{
 	    echo "<tr><td>" . $team["name"] . "</td></tr>";
 	}
 
-	echo "</table><br/><br/><br/>";
+	echo "</table></div><br/><br/><br/>";
 }
 ?>

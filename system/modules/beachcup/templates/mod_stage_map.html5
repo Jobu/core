@@ -32,12 +32,24 @@
             $eventHtml .= '{'.                
                 '"@context": "http://schema.org",'.
                 '"@type": "SportsEvent",'.
-                '"name": "'.$tournamentsDesc.'",'.
+                '"name": "Beachcup '.$stage["name"].'",'.
                 '"description": "'.$tournamentsDesc.'",'.
                 '"image": "'.$stage["src"].'",'.
                 '"startDate": "'.$stage["start_date_iso8601"].'",'.
                 '"endDate": "'.$stage["end_date_iso8601"].'",'.
                 '"url": "'.$stage["link"].'",'.
+                '"offers": {'.
+                  '"@type": "Offer",'.
+                  '"validFrom": "'.$stage["start_date_iso8601"].'",'.
+                  '"availability": "https://schema.org/InStock",'.
+                  '"price": "40",'.
+                  '"priceCurrency": "EUR",'.
+                  '"url": "'.$stage["link"].'"'.
+                '},'.
+                '"performer": {'.
+                  '"@type": "Organization",'.
+                  '"name": "Raiffeisen Beachcup"'.
+                '},'.
                 '"location": {'.
                     '"@type": "Place",'.
                     '"name": "'.$stage["name"].'",'.
