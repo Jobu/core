@@ -106,13 +106,16 @@ jQuery(document).ready(function() {
 		$et_contact_message = jQuery('#et-contact-message'),
 		et_message = '';
 
-	$et_inputs.live('focus', function(){
+	// $et_inputs.live('focus', function(){
+	jQuery('#et_contact_form').on('focus', 'input[type=text],textarea', function(){
 		if ( jQuery(this).val() === jQuery(this).siblings('label').text() ) jQuery(this).val("");
-	}).live('blur', function(){
+	//}).live('blur', function(){
+	}).on('blur', 'input[type=text],textarea', function(){
 		if (jQuery(this).val() === "") jQuery(this).val( jQuery(this).siblings('label').text() );
 	});
 
-	$et_contact_form.live('submit', function() {
+	//$et_contact_form.live('submit', function() {
+	jQuery('#et-contact').on('submit', '#et_contact_form', function(){
 		et_contact_error = false;
 		et_message = '<ul>';
 
