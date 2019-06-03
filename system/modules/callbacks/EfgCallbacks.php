@@ -206,7 +206,7 @@ class EfgCallbacks extends Backend
 
             // Check for double player registration in one tournament
             //if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"]))->fetchAssoc())))
-            if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.tournament_id = ? and p.id in ( SELECT p1.id FROM tl_beachcup_team AS t1 JOIN tl_beachcup_player AS p1 ON t1.player_1 = p1.id OR t1.player_2 = p1.id WHERE t1.id = ? ) GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"], $_REQUEST["team_id"]))->fetchAssoc())))
+            if(!empty(($player = $this->Database->prepare("SELECT p.id FROM tl_beachcup_registration AS r JOIN tl_beachcup_team AS t ON r.team_id = t.id JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id WHERE r.state_id != 4 and r.tournament_id = ? and p.id in ( SELECT p1.id FROM tl_beachcup_team AS t1 JOIN tl_beachcup_player AS p1 ON t1.player_1 = p1.id OR t1.player_2 = p1.id WHERE t1.id = ? ) GROUP BY p.id HAVING count(*) > 0")->execute(array($_REQUEST["tournament_id"], $_REQUEST["team_id"]))->fetchAssoc())))
             {
                 $player = $this->Database->prepare("SELECT CONCAT(p.name, ' ', p.surname) as name FROM tl_beachcup_player AS p WHERE p.id = ?")->execute($player)->fetchAssoc();
                 $player = $player["name"];
