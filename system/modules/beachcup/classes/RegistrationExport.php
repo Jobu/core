@@ -52,44 +52,48 @@ class RegistrationExport
                                       SELECT p.id player_id, sum(r.points) points
                                       FROM tl_beachcup_registration AS r
                                       JOIN tl_beachcup_tournament tm on tm.id = r.tournament_id
+                                      JOIN tl_beachcup_tournament_type tt on tt.id = tm.type_id
                                       JOIN tl_beachcup_stage st on st.id = tm.stage_id
                                       JOIN tl_beachcup_season s on s.id = st.season_id
                                       JOIN tl_beachcup_team AS t ON r.team_id = t.id 
                                       JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id 
-                                      WHERE r.state_id != 4 and s.year = (select max(year) - 1 from tl_beachcup_season)
+                                      WHERE r.state_id != 4 and s.year = (select max(year) - 1 from tl_beachcup_season) and (tt.code = 'OPEN' or tt.code = 'AMATEUR' or tt.code = 'MIXED' or tt.code = 'CHAMPIONSHIP' or tt.code = 'ADULT' or tt.code = 'KING')
                                       GROUP BY p.id
                                     ) p1_lastyear on p1_lastyear.player_id = p1.id
                                     left outer join (
                                       SELECT p.id player_id, sum(r.points) points
                                       FROM tl_beachcup_registration AS r
                                       JOIN tl_beachcup_tournament tm on tm.id = r.tournament_id
+                                      JOIN tl_beachcup_tournament_type tt on tt.id = tm.type_id
                                       JOIN tl_beachcup_stage st on st.id = tm.stage_id
                                       JOIN tl_beachcup_season s on s.id = st.season_id
                                       JOIN tl_beachcup_team AS t ON r.team_id = t.id 
                                       JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id 
-                                      WHERE r.state_id != 4 and s.year = (select max(year) from tl_beachcup_season)
+                                      WHERE r.state_id != 4 and s.year = (select max(year) from tl_beachcup_season) and (tt.code = 'OPEN' or tt.code = 'AMATEUR' or tt.code = 'MIXED' or tt.code = 'CHAMPIONSHIP' or tt.code = 'ADULT' or tt.code = 'KING')
                                       GROUP BY p.id
                                     ) p1_curryear on p1_curryear.player_id = p1.id
                                     left outer join (
                                       SELECT p.id player_id, sum(r.points) points
                                       FROM tl_beachcup_registration AS r
                                       JOIN tl_beachcup_tournament tm on tm.id = r.tournament_id
+                                      JOIN tl_beachcup_tournament_type tt on tt.id = tm.type_id
                                       JOIN tl_beachcup_stage st on st.id = tm.stage_id
                                       JOIN tl_beachcup_season s on s.id = st.season_id
                                       JOIN tl_beachcup_team AS t ON r.team_id = t.id 
                                       JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id 
-                                      WHERE r.state_id != 4 and s.year = (select max(year) - 1 from tl_beachcup_season)
+                                      WHERE r.state_id != 4 and s.year = (select max(year) - 1 from tl_beachcup_season) and (tt.code = 'OPEN' or tt.code = 'AMATEUR' or tt.code = 'MIXED' or tt.code = 'CHAMPIONSHIP' or tt.code = 'ADULT' or tt.code = 'KING')
                                       GROUP BY p.id
                                     ) p2_lastyear on p2_lastyear.player_id = p2.id
                                     left outer join (
                                       SELECT p.id player_id, sum(r.points) points
                                       FROM tl_beachcup_registration AS r
                                       JOIN tl_beachcup_tournament tm on tm.id = r.tournament_id
+                                      JOIN tl_beachcup_tournament_type tt on tt.id = tm.type_id
                                       JOIN tl_beachcup_stage st on st.id = tm.stage_id
                                       JOIN tl_beachcup_season s on s.id = st.season_id
                                       JOIN tl_beachcup_team AS t ON r.team_id = t.id 
                                       JOIN tl_beachcup_player AS p ON t.player_1 = p.id or t.player_2 = p.id 
-                                      WHERE r.state_id != 4 and s.year = (select max(year) from tl_beachcup_season)
+                                      WHERE r.state_id != 4 and s.year = (select max(year) from tl_beachcup_season) and (tt.code = 'OPEN' or tt.code = 'AMATEUR' or tt.code = 'MIXED' or tt.code = 'CHAMPIONSHIP' or tt.code = 'ADULT' or tt.code = 'KING')
                                       GROUP BY p.id
                                     ) p2_curryear on p2_curryear.player_id = p2.id
                                     where tl_beachcup_stage.id = " . $stage_id . " and tl_beachcup_registration_state.code != 'REJECTED'
